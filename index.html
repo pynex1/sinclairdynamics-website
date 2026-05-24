@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sinclair Dynamics — Technical consulting and project management. Complex problems. Practical solutions. Based in Johannesburg, South Africa.">
+<title>Sinclair Dynamics — Your Technical Problem-Solver</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+.hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; background: linear-gradient(135deg, var(--slate) 0%, #0D2433 60%, #0A1D28 100%); padding-top: 68px; }
+.hero-bg-pattern { position: absolute; inset: 0; opacity: 0.04; background-image: repeating-linear-gradient(45deg, var(--teal-bright) 0, var(--teal-bright) 1px, transparent 0, transparent 50%); background-size: 30px 30px; }
+.hero-accent { position: absolute; right: -100px; top: 50%; transform: translateY(-50%); width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(26,122,110,0.15) 0%, transparent 70%); }
+.hero-content { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; padding: 80px 40px; }
+.hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(52px, 8vw, 96px); line-height: 0.95; letter-spacing: -0.01em; text-transform: uppercase; color: var(--white); margin-bottom: 12px; }
+.hero h1 span { color: var(--teal-bright); }
+.hero-sub { font-family: var(--font-display); font-weight: 300; font-size: clamp(22px, 3.5vw, 36px); letter-spacing: 0.05em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 40px; }
+.hero-body { font-size: 17px; line-height: 1.7; color: rgba(255,255,255,0.7); max-width: 580px; margin-bottom: 48px; }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.about-strip { background: linear-gradient(135deg, var(--slate) 0%, var(--slate-light) 100%); color: var(--white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-img-wrap { position: relative; border-radius: 8px; overflow: hidden; }
+.about-img-wrap img { width: 100%; height: 280px; object-fit: cover; filter: saturate(0.7); }
+.about-img-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(26,122,110,0.3) 0%, transparent 60%); }
+
+/* 2x2 SERVICE GRID */
+.services-grid-2x2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 60px; }
+.service-card { background: var(--white); padding: 48px 40px; border-top: 3px solid transparent; transition: all 0.3s; text-decoration: none; color: inherit; display: block; }
+.service-card:hover { border-top-color: var(--teal); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(30,58,74,0.1); }
+.service-icon-wrap { margin-bottom: 24px; }
+.service-icon-wrap svg { color: var(--teal); }
+.service-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 24px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--slate); margin-bottom: 8px; }
+.service-tagline { font-size: 13px; color: var(--teal); font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+.service-card p { font-size: 15px; line-height: 1.7; color: #556B77; }
+.service-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); text-decoration: none; }
+.service-link::after { content: '→'; transition: transform 0.2s; }
+.service-card:hover .service-link::after { transform: translateX(4px); }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+.hero .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+.hero h1 { animation: fadeUp 0.6s ease 0.1s both; }
+.hero .hero-sub { animation: fadeUp 0.6s ease 0.2s both; }
+.hero .hero-body { animation: fadeUp 0.6s ease 0.3s both; }
+.hero .hero-actions { animation: fadeUp 0.6s ease 0.4s both; }
+.hero .stats-row { animation: fadeUp 0.6s ease 0.5s both; }
+@media (max-width: 900px) { .hero-content { padding: 60px 24px; } .about-grid { grid-template-columns: 1fr; gap: 40px; } .services-grid-2x2 { grid-template-columns: 1fr; } }
+</style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W94Z1196CH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-W94Z1196CH');
+</script>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="58" height="58" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="10" fill="#E8392A"/><rect x="27" y="27" width="20" height="20" rx="4" fill="#C0281A" opacity="0.5"/><path d="M24 14.5a1.5 1.5 0 0 1 1.5 1.5v1.2a7.5 7.5 0 0 1 2.6 1.08l.85-.85a1.5 1.5 0 0 1 2.12 2.12l-.85.85A7.5 7.5 0 0 1 31.3 23H32.5a1.5 1.5 0 0 1 0 3h-1.2a7.5 7.5 0 0 1-1.08 2.6l.85.85a1.5 1.5 0 0 1-2.12 2.12l-.85-.85A7.5 7.5 0 0 1 25.5 31.8V33a1.5 1.5 0 0 1-3 0v-1.2a7.5 7.5 0 0 1-2.6-1.08l-.85.85a1.5 1.5 0 0 1-2.12-2.12l.85-.85A7.5 7.5 0 0 1 16.7 26H15.5a1.5 1.5 0 0 1 0-3h1.2a7.5 7.5 0 0 1 1.08-2.6l-.85-.85a1.5 1.5 0 0 1 2.12-2.12l.85.85a7.5 7.5 0 0 1 2.6-1.08V16a1.5 1.5 0 0 1 1.5-1.5zm0 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" fill="white"/></svg>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="project-management.html">Project Management</a>
+    <a href="technical-consulting.html">Technical Consulting</a>
+    <a href="ai-digital.html">AI & Digital</a>
+    <a href="energy-systems.html">Energy & Power</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Get In Touch</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Sinclair Dynamics — Johannesburg, South Africa</div>
+    <h1>Your Technical<br><span>Problem-Solver</span><br>For Hire.</h1>
+    <div class="hero-sub">Complex Problems. Practical Solutions.</div>
+    <p class="hero-body">Two decades of engineering, project management, and technical consulting across infrastructure, product development, energy systems, and emerging technology. I bring the kind of thinking that finds the answer when others have stopped looking — and the delivery discipline to see it through.</p>
+    <div class="hero-actions">
+      <a href="about.html" class="btn-primary">About Ainsley</a>
+      <a href="contact.html" class="btn-outline">Start a Conversation</a>
+    </div>
+    <div class="stats-row">
+      <div class="stat-item"><div class="stat-number">20+</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat-item"><div class="stat-number">Public</div><div class="stat-label">& Private Sector</div></div>
+      <div class="stat-item"><div class="stat-number">National</div><div class="stat-label">& International</div></div>
+      <div class="stat-item"><div class="stat-number">CSM®</div><div class="stat-label">Certified ScrumMaster</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="creds-bar">
+  <div class="creds-inner">
+    <div class="cred-item"><span class="cred-label">Foundation</span><span class="cred-value">Mechatronics Engineer — Honours Degree</span></div>
+    <div class="cred-item"><span class="cred-label">Delivery</span><span class="cred-value">Certified ScrumMaster® — Agile & Waterfall</span></div>
+    <div class="cred-item"><span class="cred-label">Innovation</span><span class="cred-value">Certified in AI Application & Fluency — 2026</span></div>
+    <div class="cred-item"><span class="cred-label">Base</span><span class="cred-value">Johannesburg — Available Across Africa</span></div>
+  </div>
+</div>
+
+<section style="background: var(--off-white);">
+  <div class="section-inner">
+    <div class="section-eyebrow">What I Do</div>
+    <h2 class="section-title">Areas of <span>Expertise</span></h2>
+    <p class="section-lead">A deliberately broad skill set built over two decades of showing up, figuring it out, and delivering — across industries, borders, and problem types.</p>
+
+    <div class="services-grid-2x2">
+
+      <!-- PROJECT MANAGEMENT -->
+      <a href="project-management.html" class="service-card">
+        <div class="service-icon-wrap">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="10" width="36" height="30" rx="3"/>
+            <path d="M6 18h36"/>
+            <path d="M14 6v8M34 6v8"/>
+            <path d="M13 28l5 5 13-11"/>
+          </svg>
+        </div>
+        <h3>Project Management</h3>
+        <div class="service-tagline">Your technical edge in every decision</div>
+        <p>Senior delivery experience across major infrastructure and technology programmes. The difference between managing a process and understanding what it's actually building.</p>
+        <span class="service-link">Explore</span>
+      </a>
+
+      <!-- TECHNICAL CONSULTING -->
+      <a href="technical-consulting.html" class="service-card">
+        <div class="service-icon-wrap">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="7"/>
+            <path d="M24 6v4M24 38v4M6 24h4M38 24h4M10.1 10.1l2.8 2.8M35.1 35.1l2.8 2.8M10.1 37.9l2.8-2.8M35.1 12.9l2.8-2.8"/>
+          </svg>
+        </div>
+        <h3>Technical Consulting</h3>
+        <div class="service-tagline">The engineer who figures it out</div>
+        <p>Product design, systems integration, hardware development, and automation. From initial brief to working solution — with the engineering rigour to get it right.</p>
+        <span class="service-link">Explore</span>
+      </a>
+
+      <!-- AI & DIGITAL -->
+      <a href="ai-digital.html" class="service-card">
+        <div class="service-icon-wrap">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="10" width="36" height="24" rx="3"/>
+            <path d="M16 34v6M32 34v6M10 40h28"/>
+            <circle cx="17" cy="22" r="2.5"/>
+            <circle cx="31" cy="22" r="2.5"/>
+            <path d="M17 22h14M17 19.5l-4-4M31 19.5l4-4M17 24.5l-3 4M31 24.5l3 4"/>
+          </svg>
+        </div>
+        <h3>AI & Digital</h3>
+        <div class="service-tagline">Tomorrow's tools, today's accountability</div>
+        <p>Practical AI-assisted workflows, process automation, and digital tooling — applied responsibly with full professional accountability for every output.</p>
+        <span class="service-link">Explore</span>
+      </a>
+
+      <!-- ENERGY & POWER -->
+      <a href="energy-systems.html" class="service-card">
+        <div class="service-icon-wrap">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" xmlns="http://www.w3.org/2000/svg">
+            <path d="M26 6L12 26h10l-2 16 16-22H26L28 6z"/>
+          </svg>
+        </div>
+        <h3>Energy & Power Systems</h3>
+        <div class="service-tagline">Cutting through the noise</div>
+        <p>Independent advisory on renewable energy, backup power, and optimisation. Grounded in detailed analysis and simulation — not supplier incentives.</p>
+        <span class="service-link">Explore</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="about-strip">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-eyebrow" style="color:var(--teal-bright);"><span style="display:inline-block;width:24px;height:2px;background:var(--teal-bright);margin-right:10px;vertical-align:middle;"></span>Who I Am</div>
+        <h2 class="section-title" style="color:var(--white);">Ainsley <span>Williams</span></h2>
+        <p class="body-text">Ainsley is a Mechatronics Engineer and Project Manager with a career that has taken him from the drawing boards of major national infrastructure programmes to construction sites across the continent, from the boardrooms of investor negotiations to the workbench of hardware prototyping. He brings analytical rigour, practical delivery experience, and a genuine curiosity for how things work — and how to make them work better.</p>
+        <p class="body-text">Based in Johannesburg and available for both employed and independent engagements, Ainsley is the kind of person you bring in when the problem is complex, the stakes are real, and you need someone who will figure it out.</p>
+        <a href="about.html" class="btn-primary" style="margin-top:16px;">Full Profile</a>
+      </div>
+      <div>
+        <div class="about-img-wrap" style="margin-bottom:20px;">
+          <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="Infrastructure">
+          <div class="about-img-overlay"></div>
+        </div>
+        <div class="dark-highlight"><strong>Available For</strong>Contract and freelance engagements · Employed roles · Project-based consulting · Technical advisory</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-inner" style="text-align:center;">
+    <div class="section-eyebrow" style="justify-content:center;">Ready When You Are</div>
+    <h2 class="section-title">Let's <span>Talk</span></h2>
+    <p class="section-lead" style="margin:0 auto 40px;">Whether you have a project, a challenge, or just want to explore whether there's a fit — get in touch. I respond promptly and without obligation.</p>
+    <a href="contact.html" class="btn-primary">Start a Conversation</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <svg width="56" height="56" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:16px;"><rect width="48" height="48" rx="10" fill="#E8392A"/><rect x="27" y="27" width="20" height="20" rx="4" fill="#C0281A" opacity="0.5"/><path d="M24 14.5a1.5 1.5 0 0 1 1.5 1.5v1.2a7.5 7.5 0 0 1 2.6 1.08l.85-.85a1.5 1.5 0 0 1 2.12 2.12l-.85.85A7.5 7.5 0 0 1 31.3 23H32.5a1.5 1.5 0 0 1 0 3h-1.2a7.5 7.5 0 0 1-1.08 2.6l.85.85a1.5 1.5 0 0 1-2.12 2.12l-.85-.85A7.5 7.5 0 0 1 25.5 31.8V33a1.5 1.5 0 0 1-3 0v-1.2a7.5 7.5 0 0 1-2.6-1.08l-.85.85a1.5 1.5 0 0 1-2.12-2.12l.85-.85A7.5 7.5 0 0 1 16.7 26H15.5a1.5 1.5 0 0 1 0-3h1.2a7.5 7.5 0 0 1 1.08-2.6l-.85-.85a1.5 1.5 0 0 1 2.12-2.12l.85.85a7.5 7.5 0 0 1 2.6-1.08V16a1.5 1.5 0 0 1 1.5-1.5zm0 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" fill="white"/></svg>
+        <div class="footer-tagline">Engineering Intelligence. Delivered.</div>
+        <p>Technical consulting and project management from Johannesburg, South Africa. Available for national and international engagements.</p>
+      </div>
+      <div class="footer-col"><h4>Services</h4><a href="project-management.html">Project Management</a><a href="technical-consulting.html">Technical Consulting</a><a href="ai-digital.html">AI & Digital</a><a href="energy-systems.html">Energy & Power Systems</a></div>
+      <div class="footer-col"><h4>Connect</h4><a href="about.html">About Ainsley</a><a href="contact.html">Contact</a><a href="https://www.linkedin.com/in/ainsley-williams-18107015/" target="_blank" class="footer-linkedin"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:6px;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn Profile</a><p style="font-size:13px;margin-top:8px;line-height:1.5;">For detailed career history and credentials, connect on LinkedIn.</p></div>
+    </div>
+    <div class="footer-bottom"><span class="footer-copy">© 2026 Sinclair Dynamics. All rights reserved.</span><span class="footer-eng-intel">Engineering Intelligence. Delivered.</span></div>
+  </div>
+</footer>
+</body>
+</html>
