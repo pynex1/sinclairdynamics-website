@@ -43,6 +43,25 @@ nav {
   padding: 10px 22px; border-radius: 4px; text-decoration: none; transition: background 0.2s;
 }
 .nav-cta:hover { background: var(--red-dark); }
+.nav-monitor {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--teal-bright);
+  padding: 8px 20px;
+  border-radius: 4px;
+  border: 2px solid var(--teal-bright);
+  text-decoration: none;
+  transition: all 0.2s;
+  margin-right: 8px;
+}
+.nav-monitor:hover {
+  background: var(--teal-bright);
+  color: var(--dark);
+}
 
 /* PAGE HERO */
 .page-hero {
