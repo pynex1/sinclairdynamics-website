@@ -44,6 +44,14 @@
 .hero .hero-actions { animation: fadeUp 0.6s ease 0.4s both; }
 .hero .stats-row { animation: fadeUp 0.6s ease 0.5s both; }
 @media (max-width: 900px) { .hero-content { padding: 60px 24px; } .about-grid { grid-template-columns: 1fr; gap: 40px; } .services-grid-2x2 { grid-template-columns: 1fr; } }
+
+.named-engagement { display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: start; background: var(--teal-pale); border-left: 4px solid var(--teal); border-radius: 0 8px 8px 0; padding: 44px 48px; text-decoration: none; color: inherit; transition: all 0.3s; }
+.named-engagement:hover { box-shadow: 0 20px 40px rgba(30,58,74,0.1); transform: translateY(-4px); }
+.named-engagement-label { font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; }
+.named-engagement h3 { font-family: var(--font-display); font-weight: 800; font-size: 30px; text-transform: uppercase; letter-spacing: 0.03em; color: var(--slate); margin-bottom: 12px; line-height: 1.05; }
+.named-engagement p { font-size: 15px; line-height: 1.75; color: #2A4A44; max-width: 640px; }
+.named-engagement .service-link { margin-top: 20px; }
+@media (max-width: 900px) { .named-engagement { grid-template-columns: 1fr; gap: 24px; padding: 32px 28px; } }
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-W94Z1196CH"></script>
@@ -93,7 +101,7 @@
   <div class="hero-bg-pattern"></div>
   <div class="hero-accent"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Sinclair Dynamics — Johannesburg, South Africa</div>
+    <div class="hero-eyebrow">Sinclair Dynamics · Johannesburg, South Africa</div>
     <h1>Your Technical<br><span>Problem-Solver</span><br>For Hire.</h1>
     <div class="hero-sub">Complex Problems. Practical Solutions.</div>
     <p class="hero-body">Two decades of engineering, project management, and technical consulting across infrastructure, product development, energy systems, and emerging technology. I bring the kind of thinking that finds the answer when others have stopped looking, and the delivery discipline to see it through.</p>
@@ -191,6 +199,29 @@
   </div>
 </section>
 
+<section>
+  <div class="section-inner" style="padding-top:80px;padding-bottom:80px;">
+    <a href="monitoring-calibration.html" class="named-engagement">
+      <div>
+        <svg width="64" height="64" viewBox="0 0 48 48" fill="none" stroke="#1A7A6E" stroke-width="1.8" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 28h44" opacity="0.35"/>
+          <path d="M4 28Q11 10 18 28Q25 46 32 28Q39 10 46 28"/>
+          <path d="M11 28V19M25 28v9M39 28V19" opacity="0.5"/>
+          <circle cx="11" cy="19" r="2.4" fill="#1A7A6E" stroke="none"/>
+          <circle cx="25" cy="37" r="2.4" fill="#1A7A6E" stroke="none"/>
+          <circle cx="39" cy="19" r="2.4" fill="#1A7A6E" stroke="none"/>
+        </svg>
+      </div>
+      <div>
+        <div class="named-engagement-label">A Defined Engagement</div>
+        <h3>Monitoring Calibration</h3>
+        <p>What you measure, how often you look, and what that gap is costing you. Most reporting cadences were inherited rather than designed, from a time when a person had to do the looking. This is a structured review of whether your intervals are short enough to catch the things that move fastest.</p>
+        <span class="service-link">Explore</span>
+      </div>
+    </a>
+  </div>
+</section>
+
 <section class="about-strip">
   <div class="section-inner">
     <div class="about-grid">
@@ -229,7 +260,7 @@
         <div class="footer-tagline">Engineering Intelligence. Delivered.</div>
         <p>Technical consulting and project management from Johannesburg, South Africa. Available for national and international engagements.</p>
       </div>
-      <div class="footer-col"><h4>Services</h4><a href="project-management.html">Project Management</a><a href="technical-consulting.html">Technical Consulting</a><a href="ai-digital.html">AI & Digital</a><a href="energy-systems.html">Energy & Power Systems</a></div>
+      <div class="footer-col"><h4>Services</h4><a href="project-management.html">Project Management</a><a href="technical-consulting.html">Technical Consulting</a><a href="ai-digital.html">AI & Digital</a><a href="energy-systems.html">Energy & Power Systems</a><a href="monitoring-calibration.html">Monitoring Calibration</a></div>
       <div class="footer-col"><h4>Connect</h4><a href="about.html">About Ainsley</a><a href="contact.html">Contact</a><a href="https://www.linkedin.com/in/ainsley-williams-18107015/" target="_blank" class="footer-linkedin"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:6px;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn Profile</a><p style="font-size:13px;margin-top:8px;line-height:1.5;">For detailed career history and credentials, connect on LinkedIn.</p></div>
     </div>
     <div class="footer-bottom"><span class="footer-copy">© 2026 Sinclair Dynamics. All rights reserved.</span><span class="footer-eng-intel">Engineering Intelligence. Delivered.</span></div>
