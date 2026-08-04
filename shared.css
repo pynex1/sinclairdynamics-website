@@ -308,3 +308,11 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
   .form-spine { margin-top: 24px; }
   .form-optional-pair { grid-template-columns: 1fr; gap: 0; }
 }
+
+/* AI ASSISTANT EMBED
+   Sits below the human contact routes on the contact page only. Deliberately
+   not a floating launcher and deliberately not on every page: the assistant is
+   an alternative to the form, never a gate in front of a person.
+   loading="lazy" keeps it off the critical path for visitors who never scroll. */
+.ai-embed { width: 100%; height: 640px; border: none; border-radius: 8px; display: block; }
+@media (max-width: 700px) { .ai-embed { height: 520px; } }
