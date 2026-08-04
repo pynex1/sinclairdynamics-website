@@ -268,3 +268,43 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
   .cred-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 0 0 20px; }
   .stats-row { gap: 28px; }
 }
+
+/* CONTACT FORM: BRANCHING FLOW
+   The form is drawn as a small flowchart. Two entry routes converge into a
+   single spine of fields. Required fields sit on the spine with solid nodes.
+   Optional fields hang off it on a dashed spur. Nothing is labelled
+   "required" or "optional" in words; the drawing carries it. */
+
+.form-branches { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 0; }
+.form-branch { cursor: pointer; border: 1px solid #D0DCE0; background: var(--white); border-radius: 6px; padding: 16px; transition: border-color 0.2s, background 0.2s; }
+.form-branch:hover { border-color: var(--teal); }
+.form-branch.is-active { border-color: var(--teal); background: var(--teal-pale); }
+.form-branch-icon { color: var(--gray-mid); line-height: 0; margin-bottom: 10px; transition: color 0.2s; }
+.form-branch.is-active .form-branch-icon { color: var(--teal); }
+.form-branch-label { font-family: var(--font-display); font-weight: 600; font-size: 15px; letter-spacing: 0.02em; color: var(--slate); line-height: 1.25; }
+
+/* Both routes converge into the head of the spine rather than a neutral
+   midpoint: same route, same person, no lesser path. */
+.form-converge { width: 100%; height: 40px; display: block; }
+
+.form-spine { display: grid; grid-template-columns: 30px 1fr; }
+.spine-node { position: relative; }
+.spine-node .line { position: absolute; left: 14px; top: 0; bottom: 0; border-left: 1px solid var(--teal); opacity: 0.45; }
+.spine-node .dot { position: absolute; left: 10px; top: 8px; width: 9px; height: 9px; border-radius: 50%; background: var(--teal); }
+.spine-node .dot-hollow { position: absolute; left: 11px; top: 9px; width: 7px; height: 7px; border-radius: 50%; border: 1px solid var(--gray-mid); background: var(--off-white); }
+.spine-node .spur { position: absolute; left: 15px; top: 12px; width: 15px; border-top: 1px dashed var(--gray-mid); }
+/* The only point on the diagram where something leaves the page. */
+.spine-node .dot-end { position: absolute; left: 10px; top: 8px; width: 9px; height: 9px; border-radius: 50%; background: var(--red); }
+
+.form-optional { padding-left: 16px; border-left: 1px dashed #D0DCE0; }
+.form-optional-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-optional .form-group label { color: var(--gray-mid); }
+.form-optional .form-group input { border-style: dashed; }
+.form-optional .form-group input:focus { border-style: solid; }
+
+@media (max-width: 700px) {
+  .form-branches { grid-template-columns: 1fr; }
+  .form-converge { display: none; }
+  .form-spine { margin-top: 24px; }
+  .form-optional-pair { grid-template-columns: 1fr; gap: 0; }
+}

@@ -118,37 +118,91 @@
           <form id="contact-form" action="https://formspree.io/f/mvzyqlql" method="POST" onsubmit="handleSubmit(event)">
             <input type="hidden" name="_subject" value="New enquiry from sinclairdynamics.co">
             <input type="text" name="_gotcha" style="display:none">
-            <div class="form-group">
-              <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" placeholder="Your name" required>
+            <!-- Records which route the visitor chose, so the reply can be
+                 pitched correctly. The visitor never sees a category label. -->
+            <input type="hidden" name="route" id="route" value="known">
+
+            <div class="form-branches" role="radiogroup" aria-label="How would you describe your situation?">
+              <div class="form-branch is-active" data-branch="known" role="radio" tabindex="0" aria-checked="true">
+                <div class="form-branch-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                    aria-hidden="true">
+                    <circle cx="12" cy="12" r="8" />
+                    <circle cx="12" cy="12" r="2.5" />
+                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+                  </svg>
+                </div>
+                <div class="form-branch-label">I know what the problem is</div>
+              </div>
+              <div class="form-branch" data-branch="vague" role="radio" tabindex="0" aria-checked="false">
+                <div class="form-branch-icon">
+                  <!-- The sampled waveform, carried over from the Monitoring
+                       Calibration page. Data read too slowly to see properly. -->
+                  <svg width="22" height="22" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"
+                    aria-hidden="true">
+                    <path d="M2 28h44" opacity="0.35" />
+                    <path d="M4 28Q11 10 18 28Q25 46 32 28Q39 10 46 28" />
+                    <path d="M11 28V19M25 28v9M39 28V19" opacity="0.5" />
+                    <circle cx="11" cy="19" r="2.4" fill="currentColor" stroke="none" />
+                    <circle cx="25" cy="37" r="2.4" fill="currentColor" stroke="none" />
+                    <circle cx="39" cy="19" r="2.4" fill="currentColor" stroke="none" />
+                  </svg>
+                </div>
+                <div class="form-branch-label">Something is off and I cannot pin it down</div>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+
+            <svg class="form-converge" viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M150 0 C150 20, 15 20, 15 40" fill="none" stroke="#2AADA0" stroke-width="1.2"
+                vector-effect="non-scaling-stroke" opacity="0.75" />
+              <path d="M450 0 C450 20, 15 20, 15 40" fill="none" stroke="#2AADA0" stroke-width="1.2"
+                vector-effect="non-scaling-stroke" opacity="0.75" />
+            </svg>
+
+            <div class="form-spine">
+
+              <div class="spine-node"><span class="line"></span><span class="dot"></span></div>
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+              </div>
+
+              <div class="spine-node"><span class="line"></span><span class="dot"></span></div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+              </div>
+
+              <div class="spine-node"><span class="line"></span><span class="spur"></span><span
+                  class="dot-hollow"></span></div>
+              <div class="form-optional">
+                <div class="form-optional-pair">
+                  <div class="form-group">
+                    <label for="organisation">Organisation (optional)</label>
+                    <input type="text" id="organisation" name="organisation" placeholder="Company or organisation">
+                  </div>
+                  <div class="form-group">
+                    <label for="phone">Phone (optional)</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+27 83 000 0000">
+                  </div>
+                </div>
+              </div>
+
+              <div class="spine-node"><span class="line"></span><span class="dot"></span></div>
+              <div class="form-group">
+                <!-- The only thing the branch selection changes. -->
+                <label for="message" id="message-label">What is the problem, and what have you tried?</label>
+                <textarea id="message" name="message" placeholder="As much or as little as you like."
+                  required></textarea>
+              </div>
+
+              <div class="spine-node"><span class="dot-end"></span></div>
+              <div>
+                <button type="submit" class="form-submit">Send Message</button>
+                <p class="form-note">I typically respond within one business day.</p>
+              </div>
+
             </div>
-            <div class="form-group">
-              <label for="organisation">Organisation (optional)</label>
-              <input type="text" id="organisation" name="organisation" placeholder="Company or organisation">
-            </div>
-            <div class="form-group">
-              <label for="enquiry">Nature of Enquiry</label>
-              <select id="enquiry" name="enquiry" required>
-                <option value="" disabled selected>Select an area</option>
-                <option value="pm">Project Management</option>
-                <option value="consulting">Technical Consulting</option>
-                <option value="energy">Energy & Power Systems</option>
-                <option value="ai">AI & Digital</option>
-                <option value="employment">Employment Opportunity</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message"
-                placeholder="Tell me about your project, requirement, or opportunity..." required></textarea>
-            </div>
-            <button type="submit" class="form-submit">Send Message</button>
-            <p class="form-note">I typically respond within one business day.</p>
           </form>
           <div class="form-success" id="form-success">
             ✓ Thank you. Your message has been received. I'll be in touch shortly.
@@ -232,6 +286,40 @@
         alert('Something went wrong. Please try again or email ainsley@sinclairdynamics.co directly.');
       }
     }
+
+    /* Branch selection changes the message field's label and placeholder,
+       and records the route on a hidden field. Nothing else changes: no
+       fields appear, disappear, or reorder. */
+    (function () {
+      const COPY = {
+        known: ['What is the problem, and what have you tried?', 'As much or as little as you like.'],
+        vague: ['What made you start wondering?', 'A vague sense is enough to work with.']
+      };
+      const cards = document.querySelectorAll('.form-branch');
+      const label = document.getElementById('message-label');
+      const message = document.getElementById('message');
+      const route = document.getElementById('route');
+
+      function select(card) {
+        cards.forEach(function (other) {
+          const on = other === card;
+          other.classList.toggle('is-active', on);
+          other.setAttribute('aria-checked', on ? 'true' : 'false');
+        });
+        const key = card.getAttribute('data-branch');
+        route.value = key;
+        label.textContent = COPY[key][0];
+        message.placeholder = COPY[key][1];
+      }
+
+      cards.forEach(function (card) {
+        card.addEventListener('click', function () { select(card); });
+        // Keyboard parity with the mouse, since these carry radio roles.
+        card.addEventListener('keydown', function (e) {
+          if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); select(card); }
+        });
+      });
+    })();
   </script>
   <!-- Sinclair Dynamics AI Sales Chatbot Widget -->
   <script src="https://ais-pre-nbavlaah2a5f6xrjqmr2db-748514491942.europe-west2.run.app/api/embed.js" async>
