@@ -18,6 +18,10 @@
 .hero-body { font-size: 17px; line-height: 1.7; color: rgba(255,255,255,0.7); max-width: 580px; margin-bottom: 48px; }
 .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
 .about-strip { background: linear-gradient(135deg, var(--slate) 0%, var(--slate-light) 100%); color: var(--white); }
+    .about-strip .body-text { color: rgba(255,255,255,0.72); }
+    .about-strip .section-lead { color: rgba(255,255,255,0.65); }
+    .about-strip .section-eyebrow { color: var(--teal-bright); }
+    .about-strip .section-eyebrow::before { background: var(--teal-bright); }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 .about-img-wrap { position: relative; border-radius: 8px; overflow: hidden; }
 .about-img-wrap img { width: 100%; height: 280px; object-fit: cover; filter: saturate(0.7); }
@@ -226,7 +230,7 @@
   <div class="section-inner">
     <div class="about-grid">
       <div>
-        <div class="section-eyebrow" style="color:var(--teal-bright);"><span style="display:inline-block;width:24px;height:2px;background:var(--teal-bright);margin-right:10px;vertical-align:middle;"></span>Who I Am</div>
+        <div class="section-eyebrow">Who I Am</div>
         <h2 class="section-title" style="color:var(--white);">Ainsley <span>Williams</span></h2>
         <p class="body-text">Ainsley is a Mechatronics Engineer and Project Manager with a career that has taken him from the drawing boards of major national infrastructure programmes to construction sites across the continent, from the boardrooms of investor negotiations to the workbench of hardware prototyping. He brings analytical rigour, practical delivery experience, and a genuine curiosity for how things workand how to make them work better.</p>
         <p class="body-text">Based in Johannesburg and available for both employed and independent engagements, Ainsley is the kind of person you bring in when the problem is complex, the stakes are real, and you need someone who will figure it out.</p>
