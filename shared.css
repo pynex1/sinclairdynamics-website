@@ -156,12 +156,15 @@ section { position: relative; }
 
 /* SERVICE CARDS */
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2px; margin-top: 60px; }
+/* Radius standard: 4px is the "broken edge". Enough that the corner is not
+   sharp, and no more. Larger containers keep their existing 6px and 8px,
+   since a chamfer is proportional to the part. Nothing exceeds 8px. */
 .service-card {
   background: var(--white); padding: 48px 40px;
-  border-top: 3px solid transparent;
-  transition: all 0.3s; text-decoration: none; color: inherit; display: block;
+  border-top: 3px solid transparent; border-radius: 4px;
+  transition: all 0.3s ease-out; text-decoration: none; color: inherit; display: block;
 }
-.service-card:hover { border-top-color: var(--teal); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(30,58,74,0.1); }
+.service-card:hover { border-top-color: var(--teal); transform: translateY(-4px); box-shadow: 0 10px 24px rgba(30,58,74,0.10); }
 .service-icon { width: 52px; height: 52px; margin-bottom: 24px; color: var(--teal); }
 .service-card h3 {
   font-family: var(--font-display); font-weight: 700; font-size: 22px;
