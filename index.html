@@ -15,7 +15,8 @@
    Credentials now sit in the creds bar near the foot of the page.
    --------------------------------------------------------------------------- */
 .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; background: linear-gradient(135deg, var(--slate) 0%, #0D2433 60%, #0A1D28 100%); padding-top: 68px; }
-.hero-bg-pattern { position: absolute; inset: 0; opacity: 0.04; background-image: repeating-linear-gradient(45deg, var(--teal-bright) 0, var(--teal-bright) 1px, transparent 0, transparent 50%); background-size: 30px 30px; }
+/* .hero-bg-pattern removed 8 August 2026: the same 45-degree hatch withdrawn from
+   shared.css. See the note there. .hero-accent is a radial wash, not hatch, and stays. */
 .hero-accent { position: absolute; right: -100px; top: 50%; transform: translateY(-50%); width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(26,122,110,0.15) 0%, transparent 70%); }
 .hero-content { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; padding: 80px 40px; width: 100%; }
 .hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(46px, 7vw, 88px); line-height: 0.95; letter-spacing: -0.01em; text-transform: uppercase; color: var(--white); margin-bottom: 14px; }
@@ -218,7 +219,6 @@
 
 <!-- ===== 1. HERO: the cause, stated so nobody has to admit fault ===== -->
 <section class="hero">
-  <div class="hero-bg-pattern"></div>
   <div class="hero-accent"></div>
 
   <svg class="hero-wave" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true" focusable="false">

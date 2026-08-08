@@ -86,11 +86,11 @@ nav {
   position: relative; overflow: hidden; padding-top: 68px;
   background: linear-gradient(135deg, var(--slate) 0%, #0D2433 100%);
 }
-.page-hero-bg {
-  position: absolute; inset: 0; opacity: 0.04;
-  background-image: repeating-linear-gradient(45deg, var(--teal-bright) 0, var(--teal-bright) 1px, transparent 0, transparent 50%);
-  background-size: 30px 30px;
-}
+/* The 45-degree hatch that lived here was removed on 8 August 2026. It was
+   harmless behind type alone, but it put a second set of diagonals on the
+   page beside the hero figures and argued nothing, which the figures are
+   held to. Removed site-wide rather than switched off per page. If texture
+   is ever wanted again, it has to earn its place the way a figure does. */
 .page-hero-content {
   position: relative; z-index: 2;
   max-width: 1100px; margin: 0 auto; padding: 60px 40px 70px; width: 100%;

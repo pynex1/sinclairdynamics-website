@@ -42,6 +42,122 @@
   <meta name="twitter:image" content="https://www.sinclairdynamics.co/og-image.png">
   <!-- Canonical -->
   <link rel="canonical" href="https://www.sinclairdynamics.co/contact.html">
+<style>
+/* ---------------------------------------------------------------------------
+   PAGE LOCAL STYLES
+   Kept on the page rather than in shared.css, consistent with how the homepage
+   and the about page were handled. Nothing here overrides a shared class.
+
+   HERO FIGURE: A CONTINUITY TEST
+   Built 8 August 2026. Each hero figure has to be that page's own argument
+   drawn rather than decoration, and the failure modes ruled out at the start
+   were the envelope, the speech bubble and the signal strength motif, all of
+   which say "communication" without saying anything.
+
+   THE ARGUMENT. A continuity test is what you run before you trust anything
+   downstream. It does not ask whether two things are connected, which you
+   cannot tell by looking; it confirms whether the connection is real. Getting
+   in touch is therefore the beginning of a measurement rather than of a sale.
+
+   WHY IT IS A CLOSED LOOP. Continuity is a property of a circuit, not of a
+   line. The current leaves the meter, goes up one lead, through the probe,
+   along the conductor, through the section nobody can see, back down the other
+   probe and lead, and returns. A connection that goes one way is not a
+   connection. The first version animated only the middle third and read as a
+   line with a device attached.
+
+   WHY THERE ARE OTHER RUNS. A continuity test tests one path at a time. The
+   other five are not failed and not unavailable, they are simply not the one
+   under test, which is what the unprobed test points say. It also gives the
+   page an honest answer to the objection already recorded against it: several
+   routes exist, and one of them is confirmed in front of you.
+
+   WHY IT IS DRAWN AS NOTATION. The meter is a circle with the continuity tone
+   symbol in it, which is what a schematic actually draws, and the probes are
+   leads with tips on the node. An earlier version drew a meter as an object
+   with a body, a face and terminals, and the figure then spoke two languages:
+   schematic runs beside a picture of a thing. Nothing on this site draws a
+   thing. Every figure draws a relationship.
+
+   INTERACTION.
+   - Rest: the probes are already on the test points and the meter is already
+     set to continuity. The still state has to carry the whole argument, since
+     plenty of readers will never press.
+   - Hover: the instrument acknowledges the hand. Nothing has been measured.
+   - Press: the current runs the loop, the unseen section resolves as the
+     current reaches it, and the tone fires only once the current is home. The
+     order matters: the path proves itself first and the meter reports second.
+   - Press again resets, which is how a test button behaves.
+
+   THREE THINGS A LATER SESSION NEEDS TO KNOW
+   1. The animation timings are derived from the loop length, which measured
+      815 units, with the unseen section between 43 and 61 percent of the way
+      round. Change any coordinate on the loop and the reveal and tone delays
+      must be recomputed, not nudged.
+   2. The dash gap must stay longer than the path. An earlier version had a gap
+      of 1220 against a path of 1216 and the pattern's next repeat entered from
+      the far end, giving one lap plus a stray.
+   3. The per-run stroke gradients are tuned against the hero headline at this
+      width. The headline is clamped between 42px and 76px, so on a wide monitor
+      the type reaches further right and the fade points may need to follow.
+      Those percentages are tied to the type, not chosen for themselves.
+      --------------------------------------------------------------------- */
+.ct-toggle { position: absolute; opacity: 0; width: 0; height: 0; }
+.ct-fig { position: absolute; inset: 0; z-index: 3; pointer-events: none; display: block; }
+.ct-fig svg { display: block; width: 100%; height: 100%; }
+.ct-fig .hit { fill: #fff; fill-opacity: 0; pointer-events: all; cursor: pointer; }
+
+.ct-fig .alt    { transition: opacity 0.3s ease-out; }
+.ct-fig .a1 { opacity: 0.24; } .ct-fig .a2 { opacity: 0.16; } .ct-fig .a3 { opacity: 0.11; }
+.ct-fig .b1 { opacity: 0.21; } .ct-fig .b2 { opacity: 0.13; }
+.ct-fig .altpad { opacity: 0.26; transition: opacity 0.3s ease-out; }
+.ct-fig .cond   { opacity: 0.55; transition: opacity 0.25s ease-out; }
+.ct-fig .unk    { opacity: 0.18; transition: opacity 0.25s ease-out; }
+.ct-fig .pad    { opacity: 0.46; transition: opacity 0.25s ease-out; }
+.ct-fig .prb    { opacity: 0.34; transition: opacity 0.25s ease-out; }
+.ct-fig .met    { opacity: 0.32; transition: opacity 0.25s ease-out; }
+.ct-fig .tone   { opacity: 0.11; transition: opacity 0.3s ease-out; }
+.ct-fig .rev    { stroke-dasharray: 151; stroke-dashoffset: 151; }
+.ct-fig .pulse  { opacity: 0; }
+
+/* Hover: the instrument acknowledges the hand, and nothing is measured. */
+.ct-fig .hit:hover ~ .fig .met  { opacity: 1; }
+.ct-fig .hit:hover ~ .fig .prb  { opacity: 0.9; }
+.ct-fig .hit:hover ~ .fig .pad  { opacity: 1; }
+.ct-fig .hit:hover ~ .fig .tone { opacity: 0.5; }
+
+/* Keyboard parity: the control is a real checkbox, so it is focusable and
+   operable by space. The focus state has to be visible or it is a trap. */
+.ct-toggle:focus-visible ~ .ct-fig .met  { opacity: 1; }
+.ct-toggle:focus-visible ~ .ct-fig .tone { opacity: 0.5; }
+
+/* The test. */
+.ct-toggle:checked ~ .ct-fig .unk    { opacity: 0; }
+.ct-toggle:checked ~ .ct-fig .alt    { opacity: 0.07; }
+.ct-toggle:checked ~ .ct-fig .altpad { opacity: 0.10; }
+.ct-toggle:checked ~ .ct-fig .cond   { opacity: 0.88; }
+.ct-toggle:checked ~ .ct-fig .tone   { opacity: 0.90; }
+.ct-toggle:checked ~ .ct-fig .rev   { animation: ctDraw 0.28s linear 0.80s forwards; }
+.ct-toggle:checked ~ .ct-fig .pulse { opacity: 0.95; animation: ctRun 1.5s ease-in-out 0.15s forwards; }
+.ct-toggle:checked ~ .ct-fig .t1 { animation: ctPing 0.4s ease-out 1.65s both; }
+.ct-toggle:checked ~ .ct-fig .t2 { animation: ctPing 0.4s ease-out 1.77s both; }
+.ct-toggle:checked ~ .ct-fig .t3 { animation: ctPing 0.4s ease-out 1.89s both; }
+
+@keyframes ctDraw { to { stroke-dashoffset: 0; } }
+@keyframes ctRun  { from { stroke-dashoffset: 80; } to { stroke-dashoffset: -815; } }
+@keyframes ctPing { from { opacity: 0; } to { opacity: 1; } }
+
+/* Reduced motion removes the travel only. The unseen section still resolves and
+   the tone still fires, so the result survives with nothing moving, which is the
+   test any animated figure on this site has to pass. */
+@media (prefers-reduced-motion: reduce) {
+  .ct-toggle:checked ~ .ct-fig .rev   { animation: none; stroke-dashoffset: 0; }
+  .ct-toggle:checked ~ .ct-fig .pulse { animation: none; opacity: 0; }
+  .ct-toggle:checked ~ .ct-fig .t1,
+  .ct-toggle:checked ~ .ct-fig .t2,
+  .ct-toggle:checked ~ .ct-fig .t3 { animation: none; opacity: 1; }
+}
+</style>
 </head>
 
 <body>
@@ -55,7 +171,14 @@
   </nav>
 
   <section class="page-hero">
-    <div class="page-hero-bg"></div>
+    <!-- Hero figure: a continuity test. Full reasoning and the three
+         maintenance warnings are in the .ct-fig block in the page style
+         above. Read that before editing this.
+         The control is a real checkbox so the figure is operable by keyboard
+         as well as pointer. It carries no visible label because the still
+         state is the argument and the instrument is legible without one. -->
+    <input type="checkbox" id="continuity-test" class="ct-toggle" aria-label="Run the continuity test on the hero figure">
+    <label for="continuity-test" class="ct-fig"><svg viewBox="0 0 1200 480" preserveAspectRatio="xMaxYMax meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A bundle of conductors drawn schematically. One of them is probed at two points and tested for continuity by a meter symbol below."><defs><linearGradient id="ctMask" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#fff" stop-opacity="0.3"/><stop offset="25%" stop-color="#fff" stop-opacity="0.5"/><stop offset="55%" stop-color="#fff" stop-opacity="0.82"/><stop offset="80%" stop-color="#fff" stop-opacity="1"/></linearGradient><mask id="ctm"><rect width="1200" height="480" fill="url(#ctMask)"/></mask><linearGradient id="gA1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="20%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="40%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient><linearGradient id="gA2" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="10%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="32%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient><linearGradient id="gA3" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="27%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="48%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient><linearGradient id="gB1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="30%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="50%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient><linearGradient id="gB2" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="24%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="46%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient><linearGradient id="gC" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="34%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="54%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient></defs><rect class="hit" x="680" y="0" width="520" height="480"/><g mask="url(#ctm)" fill="none" stroke="#2AADA0" stroke-linecap="round" stroke-linejoin="round" pointer-events="none" class="fig"><path class="alt a3" d="M0,112 H640 L692,80 H1058" stroke="url(#gA3)" stroke-width="1.4"/><path class="alt a2" d="M0,150 H820 L872,118 H1160" stroke="url(#gA2)" stroke-width="1.7"/><path class="alt a1" d="M0,190 H700 L760,154 H1160" stroke="url(#gA1)" stroke-width="1.9"/><path class="alt b1" d="M0,272 H780 L836,238 H1160" stroke="url(#gB1)" stroke-width="1.9"/><path class="alt b2" d="M0,312 H660 L714,280 H1104" stroke="url(#gB2)" stroke-width="1.6"/><g class="altpad"><circle cx="930" cy="80" r="6.5" stroke-width="1.1" opacity="0.6"/><circle cx="1010" cy="118" r="6.5" stroke-width="1.1"/><circle cx="980" cy="238" r="6.5" stroke-width="1.1" opacity="0.8"/></g><path class="cond" d="M0,222 H820 L875,186 H900" stroke="url(#gC)" stroke-width="2.4"/><path class="cond" d="M1050,186 H1160" stroke-width="2.4"/><path class="unk" d="M900,186 H1050" stroke-width="2.4" stroke-dasharray="4 8"/><path class="rev" d="M900,186 H1050" stroke-width="2.4" opacity="0.85"/><path class="pulse" d="M896,392 C810,392 790,320 790,248 L790,222 L820,222 L875,186 L1090,186 L1090,212 C1102,300 1050,392 964,392" stroke-width="3.4" stroke-dasharray="80 950"/><g class="prb"><path d="M790,248 C790,320 810,392 896,392" stroke-width="1.6"/><path d="M1090,212 C1102,300 1050,392 964,392" stroke-width="1.6"/><path d="M790,231 L783,248 L797,248 Z" fill="#2AADA0" stroke="none"/><path d="M1090,195 L1083,212 L1097,212 Z" fill="#2AADA0" stroke="none"/></g><g class="pad"><circle cx="790" cy="222" r="7.5" stroke-width="1.1"/><circle cx="790" cy="222" r="3.2" fill="#2AADA0" stroke="none"/><circle cx="1090" cy="186" r="7.5" stroke-width="1.1"/><circle cx="1090" cy="186" r="3.2" fill="#2AADA0" stroke="none"/></g><g class="met"><circle cx="930" cy="392" r="34" stroke-width="1.5"/></g><g class="tone"><circle cx="922" cy="392" r="2.7" fill="#2AADA0" stroke="none"/><path class="t1" d="M927.1,385.9 A8,8 0 0 1 927.1,398.1" stroke-width="1.3"/><path class="t2" d="M930.7,381.7 A13.5,13.5 0 0 1 930.7,402.3" stroke-width="1.3"/><path class="t3" d="M934.2,377.4 A19,19 0 0 1 934.2,406.6" stroke-width="1.3"/></g></g></svg></label>
     <div class="page-hero-content">
       <div class="hero-eyebrow">Contact</div>
       <h1>Start a<br><span>conversation.</span></h1>
