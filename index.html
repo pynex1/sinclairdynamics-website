@@ -32,16 +32,67 @@
    The horizontal mask fades it out under the text column and lets it carry
    weight on the right, where the layout is empty. It is the only element on
    the page that moves.
+
+   FOUR STAGES, ALL RUNNING LEFT TO RIGHT. Revised 8 August 2026.
+   Everything reads in the direction of time. The previous version drew left
+   to right and then retreated right to left, which read as the drawing
+   undoing itself rather than as something happening to the data.
+
+     1. The real signal draws in, and the sample points land on it as the
+        sweep passes each one.
+     2. The smooth trend those points appear to form draws in over the top.
+     3. The real signal ERASES left to right, taking its sample points with
+        it, and leaves the trend alone on screen. This is the stage that
+        carries the argument: it is what happens when the underlying data is
+        summarised away and only the report remains.
+     4. The trend then erases left to right as well. The false picture fades
+        too, having already been acted on.
+
+   Sample points leave with the real signal because the readings are
+   supporting data as well. What a report leaves behind is the trend, not the
+   observations that produced it. Keeping the dots would leave evidence still
+   visible, which weakens the claim.
+
+   TIMELINE, in seconds, at a 28s loop. The appearance phase is unchanged
+   from the previous 22s version in absolute time: nothing before 15.8s
+   moves any differently. All the added length sits after the point where the
+   argument is already legible, so the figure still catches a reader early.
+     0.0  - 5.5   real signal draws            (0%    - 19.6%)
+     5.7  - 6.6   sample points land, staggered left to right by delay
+    10.6  - 15.8  trend draws                  (37.9% - 56.4%)
+    15.8  - 18.0  HOLD: the comparison stands  (56.4% - 64.3%)
+    18.0  - 22.0  real signal and points erase (64.3% - 78.6%)
+    22.0  - 25.0  HOLD: the trend stands alone (78.6% - 89.3%)
+    25.0  - 28.0  trend erases                 (89.3% - 100%)
+
+   MECHANISM. Drawing left to right is stroke-dashoffset running from the
+   path length down to zero. Erasing left to right is the same offset
+   continuing past zero into negative, which pulls the visible dash out from
+   the start rather than from the end. One continuous property, no new
+   elements, and the hold sits at zero.
    --------------------------------------------------------------------------- */
 .hero-wave { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 38vh; min-height: 220px; max-height: 340px; z-index: 1; pointer-events: none;
   -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.18) 40%, rgba(0,0,0,0.75) 72%, #000 100%);
           mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.18) 40%, rgba(0,0,0,0.75) 72%, #000 100%); }
-.wave-true  { stroke: var(--teal-bright); stroke-width: 1.4; fill: none; opacity: 0; stroke-dasharray: 2920; stroke-dashoffset: 2920; animation: waveTrue 22s linear infinite; }
-.wave-dot   { fill: var(--teal-bright); opacity: 0; animation: waveDot 22s linear infinite; }
-.wave-false { stroke: var(--teal-bright); stroke-width: 2; fill: none; opacity: 0; stroke-dasharray: 1700; stroke-dashoffset: 1700; animation: waveFalse 22s linear infinite; }
-@keyframes waveTrue  { 0% { stroke-dashoffset: 2920; opacity: 0; } 4% { opacity: 0.16; } 25% { stroke-dashoffset: 0; } 82% { stroke-dashoffset: 0; opacity: 0.16; } 92%, 100% { opacity: 0; } }
-@keyframes waveDot   { 0%, 28% { opacity: 0; } 38% { opacity: 1; } 82% { opacity: 1; } 92%, 100% { opacity: 0; } }
-@keyframes waveFalse { 0%, 48% { stroke-dashoffset: 1700; opacity: 0; } 52% { opacity: 0.65; } 72% { stroke-dashoffset: 0; } 82% { stroke-dashoffset: 0; opacity: 0.65; } 92%, 100% { opacity: 0; } }
+.wave-true  { stroke: var(--teal-bright); stroke-width: 1.4; fill: none; opacity: 0; stroke-dasharray: 2920; stroke-dashoffset: 2920; animation: waveTrue 28s linear infinite; }
+.wave-dot   { fill: var(--teal-bright); opacity: 0; animation: waveDot 28s linear infinite; }
+.wave-false { stroke: var(--teal-bright); stroke-width: 2; fill: none; opacity: 0; stroke-dasharray: 1700; stroke-dashoffset: 1700; animation: waveFalse 28s linear infinite; }
+
+/* The points land, and later leave, in the order the sweep reaches them. A
+   single delay per point staggers both ends, which is what is wanted: the
+   left-most point is the first to appear and the first to go. */
+.wave-dot:nth-of-type(1) { animation-delay: 0s;    }
+.wave-dot:nth-of-type(2) { animation-delay: 0.5s;  }
+.wave-dot:nth-of-type(3) { animation-delay: 1s;    }
+.wave-dot:nth-of-type(4) { animation-delay: 1.5s;  }
+.wave-dot:nth-of-type(5) { animation-delay: 2s;    }
+.wave-dot:nth-of-type(6) { animation-delay: 2.5s;  }
+.wave-dot:nth-of-type(7) { animation-delay: 3s;    }
+.wave-dot:nth-of-type(8) { animation-delay: 3.5s;  }
+
+@keyframes waveTrue  { 0% { stroke-dashoffset: 2920; opacity: 0; } 3.1% { opacity: 0.16; } 19.6% { stroke-dashoffset: 0; } 64.3% { stroke-dashoffset: 0; } 78.6%, 100% { stroke-dashoffset: -2920; } }
+@keyframes waveDot   { 0%, 20.4% { opacity: 0; } 23.6% { opacity: 1; } 64.3% { opacity: 1; } 66.1%, 100% { opacity: 0; } }
+@keyframes waveFalse { 0%, 37.9% { stroke-dashoffset: 1700; opacity: 0; } 40.7% { opacity: 0.65; } 56.4% { stroke-dashoffset: 0; } 89.3% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -1700; } }
 /* Anyone who has asked for less motion gets the final state as a still image.
    The argument survives intact without any of it moving. */
 @media (prefers-reduced-motion: reduce) {
