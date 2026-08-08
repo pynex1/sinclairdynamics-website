@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Ainsley Williams — Technical Consultant | Sinclair Dynamics</title>
+<title>Ainsley Williams | Mechatronics Engineer, Sinclair Dynamics, Johannesburg</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
@@ -14,190 +14,293 @@
   gtag('js', new Date());
   gtag('config', 'G-W94Z1196CH');
 </script>
-<meta name="description" content="Ainsley Williams is a Mechatronics Engineer and Project Manager based in Johannesburg with 20+ years experience in infrastructure, product development, and technical consulting across South Africa and Africa.">
-<meta name="keywords" content="technical consultant Johannesburg, technical problem solver, project manager Gauteng, mechatronics engineer South Africa, engineering consulting Johannesburg, Sinclair Dynamics, Ainsley Williams">
-<meta name="author" content="Ainsley Williams — Sinclair Dynamics">
+<meta name="description" content="Two decades of engineering where disciplines meet, and a monitoring platform designed, built and run by one person. Background to Sinclair Dynamics, Johannesburg.">
+<meta name="keywords" content="Ainsley Williams, Sinclair Dynamics, mechatronics engineer Johannesburg, engineering consultant South Africa, monitoring calibration, solar monitoring platform, systems integration South Africa">
+<meta name="author" content="Ainsley Williams, Sinclair Dynamics">
 <meta name="robots" content="index, follow">
 <!-- Open Graph -->
-<meta property="og:type" content="website">
+<meta property="og:type" content="profile">
 <meta property="og:url" content="https://www.sinclairdynamics.co/about.html">
-<meta property="og:title" content="About Ainsley Williams — Sinclair Dynamics">
-<meta property="og:description" content="Ainsley Williams is a Mechatronics Engineer and Project Manager based in Johannesburg with 20+ years experience in infrastructure, product development, and technical consulting across South Africa and Africa.">
+<meta property="og:title" content="The work was never in one discipline | Ainsley Williams, Sinclair Dynamics">
+<meta property="og:description" content="Two decades of engineering where disciplines meet, and a monitoring platform designed, built and run by one person. Background to Sinclair Dynamics, Johannesburg.">
 <meta property="og:image" content="https://www.sinclairdynamics.co/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Sinclair Dynamics">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="About Ainsley Williams — Sinclair Dynamics">
-<meta name="twitter:description" content="Ainsley Williams is a Mechatronics Engineer and Project Manager based in Johannesburg with 20+ years experience in infrastructure, product development, and technical consulting across South Africa and Africa.">
+<meta name="twitter:title" content="The work was never in one discipline | Ainsley Williams, Sinclair Dynamics">
+<meta name="twitter:description" content="Two decades of engineering where disciplines meet, and a monitoring platform designed, built and run by one person. Background to Sinclair Dynamics, Johannesburg.">
 <meta name="twitter:image" content="https://www.sinclairdynamics.co/og-image.png">
 <!-- Canonical -->
 <link rel="canonical" href="https://www.sinclairdynamics.co/about.html">
+
+<style>
+/* ---------------------------------------------------------------------------
+   PAGE LOCAL STYLES
+   Kept on the page rather than in shared.css, consistent with how the homepage
+   was handled. Nothing here overrides a shared class; it only adds the three
+   constructions this page needs and no other page currently uses.
+   --------------------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------------------
+   SPECIFICATION PLATE
+   A nameplate, not a stats row. It describes a machine rather than a person,
+   which is why it can sit in the body of the page without inverting the layer
+   order. Construction follows .cred-card: dark ground, accent on the top edge,
+   and 4px broken on all four corners: a physical part has every edge broken,
+   not two, and the accent border already carries the orientation.
+   Observation and samples are two separate rows on purpose. Hourly on its own
+   invites the reader to think the platform glances at an instant once an hour.
+   The sample count says it reads an interval.
+   --------------------------------------------------------------------------- */
+.plate {
+  background: var(--slate); border-top: 3px solid var(--teal-bright);
+  border-radius: 4px; padding: 26px 26px 20px;
+}
+.plate-heading {
+  font-family: var(--font-display); font-weight: 700; font-size: 11px;
+  letter-spacing: 0.25em; text-transform: uppercase; color: var(--teal-bright);
+  margin-bottom: 18px;
+}
+.plate-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 16px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.plate-row:last-child { border-bottom: none; }
+.plate-label {
+  font-family: var(--font-display); font-size: 12px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: rgba(255,255,255,0.5);
+}
+.plate-value {
+  font-family: var(--font-display); font-weight: 700; font-size: 18px;
+  color: var(--white); white-space: nowrap;
+}
+.plate-value.accent { color: var(--teal-bright); }
+
+/* ---------------------------------------------------------------------------
+   LAPSED AUTHORISATIONS
+   Deliberately not a card. A credential that needs a currency disclaimer is
+   evidence in the wrong container, so it sits below the grid as one line with
+   the lapse stated outright rather than implied by the word "prior".
+   --------------------------------------------------------------------------- */
+.lapsed {
+  font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.45);
+  max-width: 760px; margin-top: 34px; padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+}
+
+/* ---------------------------------------------------------------------------
+   WRITING PANEL
+   A box that contains a link is itself the link, so the whole panel is the
+   anchor and sits on the navigable tier: 4px of travel and the tight shadow.
+   The arrow is retained inside as the visual signal.
+   Width is held below the column on purpose. A single item stretched full
+   width reads as a row with its siblings missing.
+   --------------------------------------------------------------------------- */
+.writing-panel {
+  display: block; text-decoration: none; max-width: 640px;
+  background: var(--teal-pale); border-left: 4px solid var(--teal);
+  border-radius: 4px; padding: 26px 30px;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+.writing-panel:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(30,58,74,0.10); }
+.writing-panel:active { transform: translateY(0); box-shadow: 0 2px 6px rgba(30,58,74,0.14); transition-duration: 0.1s; }
+.writing-panel-label {
+  font-family: var(--font-display); font-weight: 700; font-size: 11px;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal);
+  margin-bottom: 8px;
+}
+.writing-panel-title {
+  font-family: var(--font-display); font-weight: 800; font-size: 24px;
+  line-height: 1.15; text-transform: uppercase; color: var(--slate);
+  margin-bottom: 10px;
+}
+.writing-panel p { font-size: 15px; line-height: 1.7; color: #2A4A44; margin-bottom: 16px; }
+.writing-panel .go {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-display); font-weight: 700; font-size: 13px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal);
+}
+.writing-panel .go::after { content: '\2192'; transition: transform 0.2s ease-out; }
+.writing-panel:hover .go::after { transform: translateX(4px); }
+
+@media (max-width: 900px) {
+  .plate { margin-top: 8px; }
+}
+
+/* Travel removed for anyone who has asked for less motion. Every other state
+   change still fires, so no feedback is lost. */
+@media (prefers-reduced-motion: reduce) {
+  .writing-panel, .writing-panel:hover, .writing-panel:active { transform: none; }
+  .writing-panel:hover .go::after { transform: none; }
+}
+</style>
 </head>
 <body>
 <nav>
   <a href="index.html" class="nav-logo"><img src="sinclair-nav-icon.png" alt="Sinclair Dynamics" style="height:52px;width:auto;"></a>
   <div class="nav-links">
     <a href="index.html">Home</a><a href="project-management.html">Project Management</a>
-    <a href="technical-consulting.html">Technical Consulting</a><a href="ai-digital.html">AI & Digital</a>
-    <a href="energy-systems.html">Energy & Power</a><a href="about.html" class="active">About</a><a href="contact.html">Contact</a>
+    <a href="technical-consulting.html">Technical Consulting</a><a href="ai-digital.html">AI &amp; Digital</a>
+    <a href="energy-systems.html">Energy &amp; Power</a><a href="about.html" class="active">About</a><a href="contact.html">Contact</a>
   </div>
   <a href="https://monitor.sinclairdynamics.co" class="nav-monitor">System Monitor</a><a href="contact.html" class="nav-cta">Get In Touch</a>
 </nav>
 
+<!-- ===== 1. HERO =====================================================
+     States what the page is for rather than praising the person. The
+     seam figure belongs here and is built in a separate visual pass:
+     one join, carrying, no comparison and no fault shown. Static, with
+     a single opacity step on hover. The comparison figure (poor fit-up
+     beside good fit-up) belongs to the wider work section elsewhere and
+     is deliberately not previewed here.
+     ================================================================== -->
 <section class="page-hero">
   <div class="page-hero-bg"></div>
+  <!-- SEAM FIGURE MOUNTS HERE. See sd-reference-visual-language. -->
   <div class="page-hero-content">
     <div class="hero-eyebrow">About</div>
-    <h1>Twenty years of<br><span>showing up,<br>figuring it out,</span><br>and delivering.</h1>
+    <h1>The work<br>is always<br><span>in the seam.</span></h1>
+    <p class="page-hero-sub">Ainsley Williams, mechatronics engineer in Johannesburg. Two decades spent where one discipline stops and another starts.</p>
   </div>
 </section>
 
+<!-- ===== 2. THE PLATFORM: present tense, verifiable, and the credibility slot ==
+     Opens where the homepage proof strip stops rather than repeating it.
+     The homepage keeps first claim on "I designed it, I built it, and I run it"
+     because it meets the reader cold.
+     ========================================================================= -->
 <section>
   <div class="section-inner">
     <div class="two-col-wide">
       <div>
-        <div class="section-eyebrow">The Person</div>
-        <h2 class="section-title">Meet <span>Ainsley</span></h2>
-        <p class="body-text">
-          Ainsley Williams is a Mechatronics Engineer, Project Manager, and technical consultant 
-          based in Johannesburg, South Africa. He is the kind of professional who is equally at 
-          home in a boardroom, on a construction site, or at a workbench. And who brings the same 
-          analytical precision and practical resourcefulness to every environment he enters.
-        </p>
-        <p class="body-text">
-          Formally qualified with an Honours degree in Mechatronics Engineering, Ainsley has spent 
-          two decades accumulating the kind of experience that cannot be manufactured. The experience 
-          of actually doing things, in the field, under real conditions, with real consequences. 
-          He has managed major national infrastructure programmes, led large multidisciplinary teams, 
-          co-founded ventures across multiple African countries, developed commercial products from 
-          brief to working prototype, and now applies emerging AI tools with the same professional 
-          rigour that characterises everything else he does.
-        </p>
-        <p class="body-text">
-          Colleagues and clients consistently remark on his ability to engage with complex, 
-          unfamiliar problems and find a workable path forward. Regardless of domain. 
-          That quality, combined with strong communication skills, genuine technical depth, 
-          and a track record of delivery, makes Ainsley a rare and valuable asset to any 
-          team or project he joins.
-        </p>
-        <div class="pull-quote">
-          <p>"The kind of person you bring in when the problem is complex, the stakes are real, and you need someone who will figure it out."</p>
-        </div>
+        <div class="section-eyebrow">Where I Am Now</div>
+        <h2 class="section-title">The Solar <span>Monitor</span></h2>
+        <p class="body-text">The Solar Monitor watches six installations for several owners, and each one reports through a different manufacturer's platform. Those platforms do not agree with one another about what they are measuring or how often. Reconciling that is half the work, and it is the half nobody finds interesting.</p>
+        <p class="body-text">The other half is that nobody reads dashboards. Numbers and charts are placed in front of a person who has no time to interpret them, so the interpretation never happens. This platform observes each site on a schedule instead, writes up what changed and what is likely causing it, and answers questions about it in plain language. The charts still exist. They are not the point.</p>
+        <p class="body-text">The monitor can be talked to. A site owner asks what happened yesterday and gets a sentence rather than a chart. The assistant on the contact page of this site is the same build answering a different subject. Neither one improvises: what each is allowed to see is settled before it is asked anything.</p>
       </div>
       <div>
-        <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&q=80"
-             alt="Electrical infrastructure" style="width:100%;height:360px;object-fit:cover;border-radius:6px;filter:saturate(0.75);margin-bottom:24px;">
-        <div class="highlight-box">
-          <strong>Sinclair Dynamics</strong>
-          Ainsley's independent consulting practice: the vehicle through which he delivers engineering and project management services to clients who need a trusted, senior technical resource without the overhead of a large firm. Available for both short-term engagements and longer-term embedded roles.
+        <div class="plate">
+          <div class="plate-heading">Running Now</div>
+          <div class="plate-row"><span class="plate-label">Sites</span><span class="plate-value">Six</span></div>
+          <div class="plate-row"><span class="plate-label">Owners</span><span class="plate-value">Several</span></div>
+          <div class="plate-row"><span class="plate-label">Source platforms</span><span class="plate-value">Five</span></div>
+          <div class="plate-row"><span class="plate-label">Observation</span><span class="plate-value">Hourly</span></div>
+          <div class="plate-row"><span class="plate-label">Samples per observation</span><span class="plate-value">Ten</span></div>
+          <div class="plate-row"><span class="plate-label">Correction</span><span class="plate-value">Weather</span></div>
+          <div class="plate-row"><span class="plate-label">Write access</span><span class="plate-value accent">None</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ===== 3. THE CAREER, TOLD AS SEAMS ================================
+     Each entry is named for the boundary the role sat on rather than
+     for a chapter of a story. A reader who scans only the headings gets
+     the intersection claim, made by the evidence instead of asserted.
+     ================================================================== -->
 <section style="background: var(--off-white);">
   <div class="section-inner">
-    <div class="section-eyebrow">The Journey</div>
-    <h2 class="section-title">A Career Worth <span>Knowing About</span></h2>
-    <p class="section-lead">Not every engineering career follows the same track. Ainsley's has not, and that is precisely what makes it interesting.</p>
+    <div class="section-eyebrow">How I Got Here</div>
+    <h2 class="section-title">The work was never<br><span>in one discipline.</span></h2>
+    <p class="section-lead">The route runs from national infrastructure to a software platform. What the stops have in common is not a subject. Each one sat where two things met, and no single specialist owned the ground in between.</p>
 
     <div class="story-section">
-      <div class="story-era">Where It Started</div>
-      <h3>Learning to Build the Big Stuff</h3>
-      <p class="body-text">Ainsley began his engineering career in a major consulting firm, working on the kind of infrastructure that most people only ever see from a car window. National roadways, toll facilities, urban precincts, and the sprawling electrical systems that keep a modern city running. It was during this period that he cut his teeth on the technical fundamentals of electrical and civil infrastructure design, construction supervision, and the particular discipline required to deliver on national programmes with highly visible outcomes. One of those early projects was the infrastructure upgrades for the 2010 FIFA World Cup in Johannesburg. A formative experience in delivering under pressure, at scale, and in the public eye.</p>
+      <div class="story-era">Consulting Engineering</div>
+      <h3>Electrical inside civil</h3>
+      <p class="body-text">I started in a large consulting firm on national roadways, toll facilities, urban precincts, and the electrical systems that run underneath them. Electrical infrastructure does not sit beside civil infrastructure. It runs through it, and the drawings are produced by different people. The Johannesburg infrastructure upgrades for the 2010 FIFA World Cup were where I first saw what happens to a programme when the date cannot move.</p>
     </div>
 
     <div class="story-section">
-      <div class="story-era">Going Further</div>
-      <h3>Africa Beyond Borders</h3>
-      <p class="body-text">As his career developed, Ainsley's work began to take him further afield. He was part of the team that delivered the commissioning and acceptance testing for a landmark private toll concession in West Africa. A project that was notable not just for its technical complexity but for its significance as a first-of-its-kind in the region. Working in unfamiliar environments, navigating different regulatory frameworks, and managing expectations across cultures and time zones are skills that don't appear on any university syllabus. Ainsley learned them the way most enduring lessons are learned. By doing.</p>
+      <div class="story-era">West Africa</div>
+      <h3>Design meets what was built</h3>
+      <p class="body-text">I worked on the commissioning and acceptance testing of a private toll concession in West Africa, the first of its kind in the region. Commissioning is a seam by definition. It is the point where the thing that was designed meets the thing that was actually built, and the two are never identical. Doing it under an unfamiliar regulatory framework adds a second seam that appears on no drawing.</p>
     </div>
 
     <div class="story-section">
-      <div class="story-era">Taking the Wheel</div>
-      <h3>From Engineer to Leader</h3>
-      <p class="body-text">Ainsley's growing reputation as someone who could be trusted with complex, high-value work led to progressively senior roles in project and contract management within the electrical contracting sector. He eventually reached Director level, overseeing a division of a major national contracting organisation. Responsible for large teams, significant contract portfolios, tendering strategy, subcontractor development, and the performance of multiple project managers across multiple active contracts simultaneously. It was here that his ability to operate at both the strategic and operational level was fully tested. And proven.</p>
+      <div class="story-era">Electrical Contracting</div>
+      <h3>Engineering meets money</h3>
+      <p class="body-text">I moved into project and contract management, and eventually ran a division of a national contractor: several project managers, multiple active contracts, tendering strategy, subcontractor development. A technically correct decision that loses the contract is not a correct decision. Where exactly that line falls is not taught anywhere, and getting it wrong is expensive in both directions.</p>
     </div>
 
     <div class="story-section">
-      <div class="story-era">The Startup Chapter</div>
-      <h3>Building Something From Nothing</h3>
-      <p class="body-text">No interesting career is entirely linear, and Ainsley's is no exception. He co-founded and led operations for an agri-processing startup operating across multiple African countries. A venture that took him deep into the world of investor relations, legal and commercial negotiation, cross-border logistics, and the particular challenges of building something genuinely new in developing markets. It was one of the most formative experiences of his career. Not because it went according to plan, but because it exposed him to the full lifecycle of a business venture and the people who inhabit that world.</p>
+      <div class="story-era">Agri-processing</div>
+      <h3>A plant, investors, four countries</h3>
+      <p class="body-text">I co-founded an agri-processing venture and led its operations, working between South Africa, Malawi and Uganda, with investors in Cyprus and the United States. Cross-border logistics, commercial and legal negotiation, and underneath all of it a plant that had to work. It did not go to plan. I learned more there about what a business actually needs from its engineering than on any project that went well.</p>
     </div>
 
     <div class="story-section">
-      <div class="story-era">Where He Is Now</div>
-      <h3>Consulting, Creating, and Looking Forward</h3>
-      <p class="body-text">Today, Ainsley operates through Sinclair Dynamics. His independent consulting practice. Taking on engagements that draw on the full range of his experience. He works with clients on product development, energy systems, project management, and digital automation, and he brings AI tools into his practice with the same practical, accountable approach that characterises everything else he does. He holds current certifications in Agile delivery and AI application, and he continues to develop his skills actively as the landscape evolves. He is equally open to the right employed role as he is to the next interesting consulting engagement. And he brings the same commitment to both.</p>
+      <div class="story-era">The Platform</div>
+      <h3>Hardware meets software</h3>
+      <p class="body-text">Sinclair Dynamics is the practice I run now, and the monitoring platform came out of it. It is the same kind of edge as the others: a physical system on one side, software watching it on the other, and the decisions that matter all in between. The platform stands on established engineering, on mathematics settled since the 1940s, and on a capability that did not exist two years ago. None of those three is mine. Putting them together is.</p>
     </div>
   </div>
 </section>
 
+<!-- ===== 4. CREDENTIALS: they reassure, they do not introduce =========
+     Three items, each stated as the issuing body states it, and each
+     tied to something demonstrable rather than to a capability it did
+     not produce. Lapsed authorisations sit below the grid rather than
+     inside it.
+     ================================================================== -->
 <section class="dark-section">
   <div class="section-inner">
     <div class="section-eyebrow">Credentials</div>
-    <h2 class="section-title">Qualifications & <span>Certifications</span></h2>
-    <p class="section-lead">Formally qualified, continuously developing, and practically experienced across disciplines that matter.</p>
+    <h2 class="section-title">What is <span>on paper</span></h2>
+    <p class="section-lead">Three items. Each stated the way the issuing body states it.</p>
     <div class="creds-grid">
       <div class="cred-card">
-        <div class="cred-card-label">Engineering Foundation</div>
-        <div class="cred-card-title">Honours Degree in Mechatronics Engineering</div>
-        <div class="cred-card-body">A multidisciplinary engineering qualification combining mechanical, electrical, electronic, and software engineering, providing the broad technical foundation that underpins everything Ainsley does. Graduated with distinction-level recognition.</div>
+        <div class="cred-card-label">Engineering</div>
+        <div class="cred-card-title">BSc (Eng) Mechatronics</div>
+        <div class="cred-card-body">University of Cape Town, 2003, awarded with honours. Four years across electrical, electronic, mechanical and software engineering, housed in the electrical department because mechatronics is instrumentation and control. It is itself a discipline assembled out of four others.</div>
       </div>
       <div class="cred-card">
-        <div class="cred-card-label">Agile Delivery</div>
-        <div class="cred-card-title">Certified ScrumMaster® (CSM)</div>
-        <div class="cred-card-body">Formally certified in Agile project delivery and the Scrum framework, enabling Ainsley to lead technology and product development projects using iterative, adaptive methodologies alongside traditional Waterfall approaches.</div>
+        <div class="cred-card-label">Delivery</div>
+        <div class="cred-card-title">Certified ScrumMaster&reg;</div>
+        <div class="cred-card-body">Scrum Alliance, September 2025, valid to September 2027. The platform is built the way it describes: numbered sprints, a written plan before any code, and a handover document at every close.</div>
       </div>
       <div class="cred-card">
-        <div class="cred-card-label">Project Management</div>
-        <div class="cred-card-title">Project Management Fundamentals</div>
-        <div class="cred-card-body">Formal certification in project management principles and practice, complementing two decades of hands-on delivery experience with structured methodology and current best practice.</div>
-      </div>
-      <div class="cred-card">
-        <div class="cred-card-label">AI & Technology</div>
-        <div class="cred-card-title">AI Application & Fluency — Certified</div>
-        <div class="cred-card-body">Formally certified in AI fluency and responsible AI application by Anthropic: an early and deliberate commitment to applying AI with professional rigour and accountability.</div>
-      </div>
-      <div class="cred-card">
-        <div class="cred-card-label">Prior Professional Training</div>
-        <div class="cred-card-title">High Voltage Systems & Quality Management</div>
-        <div class="cred-card-body">Formal training in operating regulations for high voltage systems at Responsible Person level, and ISO 9001 quality management systems awareness: knowledge actively applied in infrastructure project environments.</div>
-      </div>
-      <div class="cred-card">
-        <div class="cred-card-label">Continuous Development</div>
-        <div class="cred-card-title">Ongoing Learning</div>
-        <div class="cred-card-body">Ainsley maintains an active and deliberate approach to professional development, particularly in AI, digital tools, and project management methodology, as a reflection of his broader commitment to staying relevant and effective in a changing environment.</div>
+        <div class="cred-card-label">AI Practice</div>
+        <div class="cred-card-title">AI Fluency: Framework and Foundations</div>
+        <div class="cred-card-body">Anthropic. Concerned with using these tools accountably rather than with operating them. Every article on this site states the rules it was written under, which is the same claim made where it can be checked.</div>
       </div>
     </div>
+    <p class="lapsed">Previously held, all now lapsed: ORHVS Responsible Person for high voltage systems, ISO 9001 quality management awareness, and ACSA airside induction and access permit for works at OR Tambo International Airport, a National Key Point, requiring assessment, security vetting and police clearance. The authorisations have expired. The disciplines they enforced have not.</p>
   </div>
 </section>
 
-<section style="background:var(--off-white);">
-    <div class="section-inner" style="padding-top:70px;padding-bottom:70px;">
-      <div class="section-eyebrow">Occasional Writing</div>
-      <h2 class="section-title">Older Ideas,<br><span>Newer Problems</span></h2>
-      <p class="body-text" style="max-width:720px;">Most of the interesting problems in engineering and in business are not new ones. The
-        constraints move. The failure modes tend not to. Ainsley writes occasionally about settled ideas that turn out to
-        explain something current, usually because he has just run into one.</p>
-      <div class="highlight-box" style="max-width:720px;">
-        <strong>The Content You Did Not Notice</strong>
-        Why "you can always spot AI writing" tells you almost nothing about how much AI writing you have read, and what
-        the instinct is actually detecting.
-        <span style="display:block;margin-top:14px;"><a href="spotting-ai-writing.html" class="service-link"
-            style="margin-top:0;">Read it</a></span>
-      </div>
-    </div>
-  </section>
+<!-- ===== 5. OCCASIONAL WRITING ========================================
+     One article, presented as one considered thing rather than as a row
+     with its siblings missing. The cadence is stated so the reader does
+     not have to count.
+     ================================================================== -->
+<section style="background: var(--off-white);">
+  <div class="section-inner" style="padding-top:70px;padding-bottom:70px;">
+    <div class="section-eyebrow">Occasional Writing</div>
+    <h2 class="section-title">Older Ideas,<br><span>Newer Problems</span></h2>
+    <p class="body-text" style="max-width:640px;margin-bottom:30px;">Most of the interesting problems in engineering and in business are not new ones. The constraints move. The failure modes tend not to. I write occasionally about settled ideas that turn out to explain something current, usually because I have just run into one. Occasional is meant literally.</p>
+    <a class="writing-panel" href="spotting-ai-writing.html">
+      <div class="writing-panel-label">On Working With AI</div>
+      <div class="writing-panel-title">The Content You Did Not Notice</div>
+      <p>Why "you can always spot AI writing" tells you almost nothing about how much AI writing you have read, and what the instinct is actually detecting.</p>
+      <span class="go">Read it</span>
+    </a>
+  </div>
+</section>
 
+<!-- ===== 6. CLOSE: one route out =====================================
+     The homepage close already owns the two routes framing, so this one
+     points at the assistant instead: a lower commitment option that the
+     page has already introduced.
+     ================================================================== -->
 <section>
   <div class="section-inner" style="text-align:center;">
-    <div class="section-eyebrow" style="justify-content:center;">The Next Chapter</div>
-    <h2 class="section-title">Let's Write It <span>Together</span></h2>
-    <p class="section-lead" style="margin:0 auto 40px;">Whether you're looking for a senior PM, a technical consultant, or simply someone to help think through a complex problem. Ainsley would welcome the conversation.</p>
+    <div class="section-eyebrow" style="justify-content:center;">Contact</div>
+    <h2 class="section-title">If any of that<br><span>was familiar</span></h2>
+    <p class="section-lead" style="margin:0 auto 40px;">The contact page is where this goes next. There is an assistant on it as well, which will answer questions about any of the above and asks less of you than writing to me does.</p>
     <a href="contact.html" class="btn-primary">Get In Touch</a>
   </div>
 </section>
@@ -206,14 +309,14 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <svg width="56" height="56" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:16px;"><rect width="48" height="48" rx="10" fill="#E8392A"/><rect x="27" y="27" width="20" height="20" rx="4" fill="#C0281A" opacity="0.5"/><path d="M24 14.5a1.5 1.5 0 0 1 1.5 1.5v1.2a7.5 7.5 0 0 1 2.6 1.08l.85-.85a1.5 1.5 0 0 1 2.12 2.12l-.85.85A7.5 7.5 0 0 1 31.3 23H32.5a1.5 1.5 0 0 1 0 3h-1.2a7.5 7.5 0 0 1-1.08 2.6l.85.85a1.5 1.5 0 0 1-2.12 2.12l-.85-.85A7.5 7.5 0 0 1 25.5 31.8V33a1.5 1.5 0 0 1-3 0v-1.2a7.5 7.5 0 0 1-2.6-1.08l-.85.85a1.5 1.5 0 0 1-2.12-2.12l.85-.85A7.5 7.5 0 0 1 16.7 26H15.5a1.5 1.5 0 0 1 0-3h1.2a7.5 7.5 0 0 1 1.08-2.6l-.85-.85a1.5 1.5 0 0 1 2.12-2.12l.85.85a7.5 7.5 0 0 1 2.6-1.08V16a1.5 1.5 0 0 1 1.5-1.5zm0 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" fill="white"/></svg>
+        <svg width="56" height="56" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:16px;" aria-hidden="true"><rect width="48" height="48" rx="10" fill="#E8392A"/><rect x="27" y="27" width="20" height="20" rx="4" fill="#C0281A" opacity="0.5"/><path d="M24 14.5a1.5 1.5 0 0 1 1.5 1.5v1.2a7.5 7.5 0 0 1 2.6 1.08l.85-.85a1.5 1.5 0 0 1 2.12 2.12l-.85.85A7.5 7.5 0 0 1 31.3 23H32.5a1.5 1.5 0 0 1 0 3h-1.2a7.5 7.5 0 0 1-1.08 2.6l.85.85a1.5 1.5 0 0 1-2.12 2.12l-.85-.85A7.5 7.5 0 0 1 25.5 31.8V33a1.5 1.5 0 0 1-3 0v-1.2a7.5 7.5 0 0 1-2.6-1.08l-.85.85a1.5 1.5 0 0 1-2.12-2.12l.85-.85A7.5 7.5 0 0 1 16.7 26H15.5a1.5 1.5 0 0 1 0-3h1.2a7.5 7.5 0 0 1 1.08-2.6l-.85-.85a1.5 1.5 0 0 1 2.12-2.12l.85.85a7.5 7.5 0 0 1 2.6-1.08V16a1.5 1.5 0 0 1 1.5-1.5zm0 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" fill="white"/></svg>
         <div class="footer-tagline">Engineering Intelligence. Delivered.</div>
-        <p>Technical consulting and project management from Johannesburg, South Africa. Available for national and international engagements.</p>
+        <p>Technical consulting and engineering from Johannesburg, South Africa. Working with clients across the continent.</p>
       </div>
-      <div class="footer-col"><h4>Services</h4><a href="project-management.html">Project Management</a><a href="technical-consulting.html">Technical Consulting</a><a href="ai-digital.html">AI & Digital</a><a href="energy-systems.html">Energy & Power Systems</a><a href="monitoring-calibration.html">Monitoring Calibration</a></div>
-      <div class="footer-col"><h4>Connect</h4><a href="about.html">About Ainsley</a><a href="contact.html">Contact</a><a href="https://www.linkedin.com/in/ainsley-williams-18107015/" target="_blank" class="footer-linkedin"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:6px;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn Profile</a><p style="font-size:13px;margin-top:8px;line-height:1.5;">For detailed career history and credentials, connect on LinkedIn.</p></div>
+      <div class="footer-col"><h4>Services</h4><a href="monitoring-calibration.html">Monitoring Calibration</a><a href="project-management.html">Project Management</a><a href="technical-consulting.html">Technical Consulting</a><a href="ai-digital.html">AI &amp; Digital</a><a href="energy-systems.html">Energy &amp; Power Systems</a></div>
+      <div class="footer-col"><h4>Connect</h4><a href="about.html">About Ainsley</a><a href="contact.html">Contact</a><a href="https://www.linkedin.com/in/ainsley-williams-18107015/" target="_blank" rel="noopener" class="footer-linkedin"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:6px;" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn Profile</a><p style="font-size:13px;margin-top:8px;line-height:1.5;">Profile and work history on LinkedIn.</p></div>
     </div>
-    <div class="footer-bottom"><span class="footer-copy">© 2026 Sinclair Dynamics. All rights reserved.</span><span class="footer-eng-intel">Engineering Intelligence. Delivered.</span></div>
+    <div class="footer-bottom"><span class="footer-copy">&copy; 2026 Sinclair Dynamics. All rights reserved.</span><span class="footer-eng-intel">Engineering Intelligence. Delivered.</span></div>
   </div>
 </footer>
 </body></html>
