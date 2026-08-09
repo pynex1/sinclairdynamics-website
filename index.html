@@ -1,31 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Monitoring Calibration and Technical Consulting | Sinclair Dynamics, Johannesburg</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared.css">
-<style>
-/* ---------------------------------------------------------------------------
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitoring Calibration and Technical Consulting | Sinclair Dynamics, Johannesburg</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    /* ---------------------------------------------------------------------------
    HERO
    The stats row was removed: it carried four credentials in the highest
    position on the page, which inverts the layer order the page is built on.
    Credentials now sit in the creds bar near the foot of the page.
    --------------------------------------------------------------------------- */
-.hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; background: linear-gradient(135deg, var(--slate) 0%, #0D2433 60%, #0A1D28 100%); padding-top: 68px; }
-/* .hero-bg-pattern removed 8 August 2026: the same 45-degree hatch withdrawn from
-   shared.css. See the note there. .hero-accent is a radial wash, not hatch, and stays. */
-.hero-accent { position: absolute; right: -100px; top: 50%; transform: translateY(-50%); width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(26,122,110,0.15) 0%, transparent 70%); }
-.hero-content { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; padding: 80px 40px; width: 100%; }
-.hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(46px, 7vw, 88px); line-height: 0.95; letter-spacing: -0.01em; text-transform: uppercase; color: var(--white); margin-bottom: 14px; }
-.hero h1 span { color: var(--teal-bright); }
-.hero-sub { font-family: var(--font-display); font-weight: 300; font-size: clamp(20px, 3vw, 32px); letter-spacing: 0.04em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 34px; max-width: 700px; line-height: 1.15; }
-.hero-body { font-size: 17px; line-height: 1.75; color: rgba(255,255,255,0.7); max-width: 580px; margin-bottom: 44px; }
-.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--slate) 0%, #0D2433 60%, #0A1D28 100%);
+      padding-top: 68px;
+    }
 
-/* ---------------------------------------------------------------------------
+    /* .hero-bg-pattern removed 8 August 2026: the same 45-degree hatch withdrawn from
+   shared.css. See the note there. .hero-accent is a radial wash, not hatch, and stays. */
+    .hero-accent {
+      position: absolute;
+      right: -100px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(26, 122, 110, 0.15) 0%, transparent 70%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 40px;
+      width: 100%;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(46px, 7vw, 88px);
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+
+    .hero h1 span {
+      color: var(--teal-bright);
+    }
+
+    .hero-sub {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(20px, 3vw, 32px);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 34px;
+      max-width: 700px;
+      line-height: 1.15;
+    }
+
+    .hero-body {
+      font-size: 17px;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 580px;
+      margin-bottom: 44px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ---------------------------------------------------------------------------
    ALIASING FIGURE
    A real signal (faint), sample points taken at a wide interval (every one of
    them landing exactly on the curve), and the smooth trend those points appear
@@ -72,353 +137,801 @@
    the start rather than from the end. One continuous property, no new
    elements, and the hold sits at zero.
    --------------------------------------------------------------------------- */
-.hero-wave { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 38vh; min-height: 220px; max-height: 340px; z-index: 1; pointer-events: none;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.18) 40%, rgba(0,0,0,0.75) 72%, #000 100%);
-          mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.18) 40%, rgba(0,0,0,0.75) 72%, #000 100%); }
-.wave-true  { stroke: var(--teal-bright); stroke-width: 1.4; fill: none; opacity: 0; stroke-dasharray: 2920; stroke-dashoffset: 2920; animation: waveTrue 28s linear infinite; }
-.wave-dot   { fill: var(--teal-bright); opacity: 0; animation: waveDot 28s linear infinite; }
-.wave-false { stroke: var(--teal-bright); stroke-width: 2; fill: none; opacity: 0; stroke-dasharray: 1700; stroke-dashoffset: 1700; animation: waveFalse 28s linear infinite; }
+    .hero-wave {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 38vh;
+      min-height: 220px;
+      max-height: 340px;
+      z-index: 1;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.18) 40%, rgba(0, 0, 0, 0.75) 72%, #000 100%);
+      mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.18) 40%, rgba(0, 0, 0, 0.75) 72%, #000 100%);
+    }
 
-/* The points land, and later leave, in the order the sweep reaches them. A
+    .wave-true {
+      stroke: var(--teal-bright);
+      stroke-width: 1.4;
+      fill: none;
+      opacity: 0;
+      stroke-dasharray: 2920;
+      stroke-dashoffset: 2920;
+      animation: waveTrue 28s linear infinite;
+    }
+
+    .wave-dot {
+      fill: var(--teal-bright);
+      opacity: 0;
+      animation: waveDot 28s linear infinite;
+    }
+
+    .wave-false {
+      stroke: var(--teal-bright);
+      stroke-width: 2;
+      fill: none;
+      opacity: 0;
+      stroke-dasharray: 1700;
+      stroke-dashoffset: 1700;
+      animation: waveFalse 28s linear infinite;
+    }
+
+    /* The points land, and later leave, in the order the sweep reaches them. A
    single delay per point staggers both ends, which is what is wanted: the
    left-most point is the first to appear and the first to go. */
-.wave-dot:nth-of-type(1) { animation-delay: 0s;    }
-.wave-dot:nth-of-type(2) { animation-delay: 0.5s;  }
-.wave-dot:nth-of-type(3) { animation-delay: 1s;    }
-.wave-dot:nth-of-type(4) { animation-delay: 1.5s;  }
-.wave-dot:nth-of-type(5) { animation-delay: 2s;    }
-.wave-dot:nth-of-type(6) { animation-delay: 2.5s;  }
-.wave-dot:nth-of-type(7) { animation-delay: 3s;    }
-.wave-dot:nth-of-type(8) { animation-delay: 3.5s;  }
+    .wave-dot:nth-of-type(1) {
+      animation-delay: 0s;
+    }
 
-@keyframes waveTrue  { 0% { stroke-dashoffset: 2920; opacity: 0; } 3.1% { opacity: 0.16; } 19.6% { stroke-dashoffset: 0; } 64.3% { stroke-dashoffset: 0; } 78.6%, 100% { stroke-dashoffset: -2920; } }
-@keyframes waveDot   { 0%, 20.4% { opacity: 0; } 23.6% { opacity: 1; } 64.3% { opacity: 1; } 66.1%, 100% { opacity: 0; } }
-@keyframes waveFalse { 0%, 37.9% { stroke-dashoffset: 1700; opacity: 0; } 40.7% { opacity: 0.65; } 56.4% { stroke-dashoffset: 0; } 89.3% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -1700; } }
-/* Anyone who has asked for less motion gets the final state as a still image.
+    .wave-dot:nth-of-type(2) {
+      animation-delay: 0.5s;
+    }
+
+    .wave-dot:nth-of-type(3) {
+      animation-delay: 1s;
+    }
+
+    .wave-dot:nth-of-type(4) {
+      animation-delay: 1.5s;
+    }
+
+    .wave-dot:nth-of-type(5) {
+      animation-delay: 2s;
+    }
+
+    .wave-dot:nth-of-type(6) {
+      animation-delay: 2.5s;
+    }
+
+    .wave-dot:nth-of-type(7) {
+      animation-delay: 3s;
+    }
+
+    .wave-dot:nth-of-type(8) {
+      animation-delay: 3.5s;
+    }
+
+    @keyframes waveTrue {
+      0% {
+        stroke-dashoffset: 2920;
+        opacity: 0;
+      }
+
+      3.1% {
+        opacity: 0.16;
+      }
+
+      19.6% {
+        stroke-dashoffset: 0;
+      }
+
+      64.3% {
+        stroke-dashoffset: 0;
+      }
+
+      78.6%,
+      100% {
+        stroke-dashoffset: -2920;
+      }
+    }
+
+    @keyframes waveDot {
+
+      0%,
+      20.4% {
+        opacity: 0;
+      }
+
+      23.6% {
+        opacity: 1;
+      }
+
+      64.3% {
+        opacity: 1;
+      }
+
+      66.1%,
+      100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes waveFalse {
+
+      0%,
+      37.9% {
+        stroke-dashoffset: 1700;
+        opacity: 0;
+      }
+
+      40.7% {
+        opacity: 0.65;
+      }
+
+      56.4% {
+        stroke-dashoffset: 0;
+      }
+
+      89.3% {
+        stroke-dashoffset: 0;
+      }
+
+      100% {
+        stroke-dashoffset: -1700;
+      }
+    }
+
+    /* Anyone who has asked for less motion gets the final state as a still image.
    The argument survives intact without any of it moving. */
-@media (prefers-reduced-motion: reduce) {
-  .wave-true, .wave-dot, .wave-false { animation: none; }
-  .wave-true  { stroke-dashoffset: 0; opacity: 0.16; }
-  .wave-dot   { opacity: 1; }
-  .wave-false { stroke-dashoffset: 0; opacity: 0.65; }
-}
+    @media (prefers-reduced-motion: reduce) {
 
-/* ---------------------------------------------------------------------------
+      .wave-true,
+      .wave-dot,
+      .wave-false {
+        animation: none;
+      }
+
+      .wave-true {
+        stroke-dashoffset: 0;
+        opacity: 0.16;
+      }
+
+      .wave-dot {
+        opacity: 1;
+      }
+
+      .wave-false {
+        stroke-dashoffset: 0;
+        opacity: 0.65;
+      }
+    }
+
+    /* ---------------------------------------------------------------------------
    SYMPTOM ROWS
    Acknowledgement tier: 2px of travel, no shadow. These do not go anywhere,
    so the movement confirms the cursor and nothing more. The left rule
    changing state does the real work.
    --------------------------------------------------------------------------- */
-.symptom { background: var(--white); border-left: 3px solid #B9D6D1; border-radius: 0 4px 4px 0; padding: 26px 30px; margin-bottom: 2px; transition: border-left-color 0.2s ease-out, transform 0.2s ease-out; }
-.symptom:hover { border-left-color: var(--teal); transform: translateX(2px); }
-.symptom h3 { font-family: var(--font-display); font-weight: 700; font-size: 21px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--slate); margin-bottom: 8px; }
-.symptom p { font-size: 15px; line-height: 1.75; color: #556B77; }
-.symptom-bridge { font-size: 17px; line-height: 1.8; color: #334E5C; max-width: 680px; margin-top: 36px; }
+    .symptom {
+      background: var(--white);
+      border-left: 3px solid #B9D6D1;
+      border-radius: 0 4px 4px 0;
+      padding: 26px 30px;
+      margin-bottom: 2px;
+      transition: border-left-color 0.2s ease-out, transform 0.2s ease-out;
+    }
 
-/* ---------------------------------------------------------------------------
+    .symptom:hover {
+      border-left-color: var(--teal);
+      transform: translateX(2px);
+    }
+
+    .symptom h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 21px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--slate);
+      margin-bottom: 8px;
+    }
+
+    .symptom p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #556B77;
+    }
+
+    .symptom-bridge {
+      font-size: 17px;
+      line-height: 1.8;
+      color: #334E5C;
+      max-width: 680px;
+      margin-top: 36px;
+    }
+
+    /* ---------------------------------------------------------------------------
    NAMED ENGAGEMENT
    Navigable tier: 4px of travel with a shadow. The shadow is what makes it
    legible as a door rather than a panel.
    --------------------------------------------------------------------------- */
-.named-engagement { display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: start; background: var(--teal-pale); border-left: 4px solid var(--teal); border-radius: 0 8px 8px 0; padding: 44px 48px; text-decoration: none; color: inherit; margin-top: 40px; transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; }
-.named-engagement:hover { box-shadow: 0 10px 24px rgba(30,58,74,0.10); transform: translateY(-4px); }
-.named-engagement-label { font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; }
-.named-engagement h3 { font-family: var(--font-display); font-weight: 800; font-size: 30px; text-transform: uppercase; letter-spacing: 0.03em; color: var(--slate); margin-bottom: 12px; line-height: 1.05; }
-.named-engagement p { font-size: 15px; line-height: 1.75; color: #2A4A44; max-width: 640px; }
-.named-engagement .service-link { margin-top: 20px; }
+    .named-engagement {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 40px;
+      align-items: start;
+      background: var(--teal-pale);
+      border-left: 4px solid var(--teal);
+      border-radius: 0 8px 8px 0;
+      padding: 44px 48px;
+      text-decoration: none;
+      color: inherit;
+      margin-top: 40px;
+      transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    }
 
-/* SERVICE GRID: four discipline cards, copy untouched pending stage 2. */
-.services-grid-2x2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 44px; }
-.service-card { background: var(--white); padding: 44px 38px; border-top: 3px solid transparent; border-radius: 4px; transition: border-top-color 0.3s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease-out; text-decoration: none; color: inherit; display: block; }
-.service-card:hover { border-top-color: var(--teal); transform: translateY(-4px); box-shadow: 0 10px 24px rgba(30,58,74,0.10); }
-.service-icon-wrap { margin-bottom: 24px; }
-.service-icon-wrap svg { color: var(--teal); }
-.service-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 24px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--slate); margin-bottom: 8px; }
-.service-card p { font-size: 15px; line-height: 1.7; color: #556B77; }
+    .named-engagement:hover {
+      box-shadow: 0 10px 24px rgba(30, 58, 74, 0.10);
+      transform: translateY(-4px);
+    }
 
-/* ---------------------------------------------------------------------------
+    .named-engagement-label {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+
+    .named-engagement h3 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 30px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--slate);
+      margin-bottom: 12px;
+      line-height: 1.05;
+    }
+
+    .named-engagement p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #2A4A44;
+      max-width: 640px;
+    }
+
+    .named-engagement .service-link {
+      margin-top: 20px;
+    }
+
+    /* SERVICE GRID: four discipline cards, copy untouched pending stage 2. */
+    .services-grid-2x2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 44px;
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 44px 38px;
+      border-top: 3px solid transparent;
+      border-radius: 4px;
+      transition: border-top-color 0.3s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease-out;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .service-card:hover {
+      border-top-color: var(--teal);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(30, 58, 74, 0.10);
+    }
+
+    .service-icon-wrap {
+      margin-bottom: 24px;
+    }
+
+    .service-icon-wrap svg {
+      color: var(--teal);
+    }
+
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--slate);
+      margin-bottom: 8px;
+    }
+
+    .service-card p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #556B77;
+    }
+
+    /* ---------------------------------------------------------------------------
    CREDIBILITY STRIP
    A box that contains a link is itself the link. Adopted as standard, so
    these sit on the navigable tier with the full 4px lift.
    --------------------------------------------------------------------------- */
-.proof-strip { background: linear-gradient(135deg, var(--slate) 0%, var(--slate-light) 100%); color: var(--white); }
-.proof-strip .section-title { color: var(--white); }
-.proof-strip .section-title span { color: var(--teal-bright); }
-.proof-strip .body-text { color: rgba(255,255,255,0.72); }
-.proof-strip .section-eyebrow { color: var(--teal-bright); }
-.proof-strip .section-eyebrow::before { background: var(--teal-bright); }
-.proof-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 60px; align-items: start; }
-.proof-box { display: block; text-decoration: none; background: rgba(42,173,160,0.12); border-left: 4px solid var(--teal-bright); border-radius: 0 4px 4px 0; padding: 22px 26px; font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.75); margin-bottom: 16px; transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, background 0.2s ease-out; }
-.proof-box:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,0.30); background: rgba(42,173,160,0.18); }
-.proof-box strong { display: block; font-family: var(--font-display); font-weight: 700; font-size: 16px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--teal-bright); margin-bottom: 6px; }
-.proof-box .go { display: inline-block; margin-top: 12px; font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal-bright); }
-.proof-box .go::after { content: '\2192'; display: inline-block; margin-left: 7px; transition: transform 0.2s ease-out; }
-.proof-box:hover .go::after { transform: translateX(4px); }
+    .proof-strip {
+      background: linear-gradient(135deg, var(--slate) 0%, var(--slate-light) 100%);
+      color: var(--white);
+    }
 
-@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-.hero .hero-eyebrow { animation: fadeUp 0.6s ease both; }
-.hero h1 { animation: fadeUp 0.6s ease 0.1s both; }
-.hero .hero-sub { animation: fadeUp 0.6s ease 0.2s both; }
-.hero .hero-body { animation: fadeUp 0.6s ease 0.3s both; }
-.hero .hero-actions { animation: fadeUp 0.6s ease 0.4s both; }
+    .proof-strip .section-title {
+      color: var(--white);
+    }
 
-@media (max-width: 900px) {
-  .hero-content { padding: 60px 24px; }
-  .hero-wave { height: 26vh; min-height: 160px; opacity: 0.7; }
-  .services-grid-2x2 { grid-template-columns: 1fr; }
-  .proof-grid { grid-template-columns: 1fr; gap: 40px; }
-  .named-engagement { grid-template-columns: 1fr; gap: 24px; padding: 32px 28px; }
-  .symptom { padding: 22px 24px; }
-}
-</style>
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-W94Z1196CH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-W94Z1196CH');
-</script>
-<meta name="description" content="Most reporting intervals were inherited rather than derived. Sinclair Dynamics reviews what you measure, how often you look, and what that gap is costing you. Johannesburg, South Africa.">
-<meta name="keywords" content="monitoring calibration, reporting interval review, sampling interval business reporting, detection gap analysis, technical consultant Johannesburg, engineering consulting Johannesburg, systems integration South Africa, Sinclair Dynamics, Ainsley Williams">
-<meta name="author" content="Ainsley Williams, Sinclair Dynamics">
-<meta name="robots" content="index, follow">
-<!-- Open Graph. The homepage preview leads with the business, because a bare
+    .proof-strip .section-title span {
+      color: var(--teal-bright);
+    }
+
+    .proof-strip .body-text {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .proof-strip .section-eyebrow {
+      color: var(--teal-bright);
+    }
+
+    .proof-strip .section-eyebrow::before {
+      background: var(--teal-bright);
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .proof-box {
+      display: block;
+      text-decoration: none;
+      background: rgba(42, 173, 160, 0.12);
+      border-left: 4px solid var(--teal-bright);
+      border-radius: 0 4px 4px 0;
+      padding: 22px 26px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 16px;
+      transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, background 0.2s ease-out;
+    }
+
+    .proof-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.30);
+      background: rgba(42, 173, 160, 0.18);
+    }
+
+    .proof-box strong {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--teal-bright);
+      margin-bottom: 6px;
+    }
+
+    .proof-box .go {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal-bright);
+    }
+
+    .proof-box .go::after {
+      content: '\2192';
+      display: inline-block;
+      margin-left: 7px;
+      transition: transform 0.2s ease-out;
+    }
+
+    .proof-box:hover .go::after {
+      transform: translateX(4px);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero .hero-eyebrow {
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero h1 {
+      animation: fadeUp 0.6s ease 0.1s both;
+    }
+
+    .hero .hero-sub {
+      animation: fadeUp 0.6s ease 0.2s both;
+    }
+
+    .hero .hero-body {
+      animation: fadeUp 0.6s ease 0.3s both;
+    }
+
+    .hero .hero-actions {
+      animation: fadeUp 0.6s ease 0.4s both;
+    }
+
+    @media (max-width: 900px) {
+      .hero-content {
+        padding: 60px 24px;
+      }
+
+      .hero-wave {
+        height: 26vh;
+        min-height: 160px;
+        opacity: 0.7;
+      }
+
+      .services-grid-2x2 {
+        grid-template-columns: 1fr;
+      }
+
+      .proof-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .named-engagement {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 32px 28px;
+      }
+
+      .symptom {
+        padding: 22px 24px;
+      }
+    }
+  </style>
+  <!-- Google Analytics -->
+  <!-- Analytics removed 9 August 2026, pending the consent gate and privacy
+     notice. Non-essential tracking must not fire before consent, and the
+     gate belongs with the nav and footer single sourcing rather than
+     duplicated per page. Property G-W94Z1196CH. -->
+  <meta name="description"
+    content="Most reporting intervals were inherited rather than derived. Sinclair Dynamics reviews what you measure, how often you look, and what that gap is costing you. Johannesburg, South Africa.">
+  <meta name="keywords"
+    content="monitoring calibration, reporting interval review, sampling interval business reporting, detection gap analysis, technical consultant Johannesburg, engineering consulting Johannesburg, systems integration South Africa, Sinclair Dynamics, Ainsley Williams">
+  <meta name="author" content="Ainsley Williams, Sinclair Dynamics">
+  <meta name="robots" content="index, follow">
+  <!-- Open Graph. The homepage preview leads with the business, because a bare
      URL can be shared in any context and the recipient needs to know who it is.
      The hook belongs on the pages it introduces, not here. -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.sinclairdynamics.co/">
-<meta property="og:title" content="Sinclair Dynamics | Monitoring Calibration and Technical Consulting">
-<meta property="og:description" content="Most reporting intervals were inherited rather than derived. Sinclair Dynamics reviews what you measure, how often you look, and what that gap is costing you.">
-<meta property="og:image" content="https://www.sinclairdynamics.co/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:site_name" content="Sinclair Dynamics">
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sinclair Dynamics | Monitoring Calibration and Technical Consulting">
-<meta name="twitter:description" content="Most reporting intervals were inherited rather than derived. Sinclair Dynamics reviews what you measure, how often you look, and what that gap is costing you.">
-<meta name="twitter:image" content="https://www.sinclairdynamics.co/og-image.png">
-<!-- Canonical -->
-<link rel="canonical" href="https://www.sinclairdynamics.co/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sinclairdynamics.co/">
+  <meta property="og:title" content="Sinclair Dynamics | Monitoring Calibration and Technical Consulting">
+  <meta property="og:description"
+    content="Most reporting intervals were inherited rather than derived. Sinclair Dynamics reviews what you measure, how often you look, and what that gap is costing you.">
+  <meta property="og:image" content="https://www.sinclairdynamics.co/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Sinclair Dynamics">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sinclair Dynamics | Monitoring Calibration and Technical Consulting">
+  <meta name="twitter:description"
+    content="Most reporting intervals were inherited rather than derived. Sinclair Dynamics reviews what you measure, how often you look, and what that gap is costing you.">
+  <meta name="twitter:image" content="https://www.sinclairdynamics.co/og-image.png">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.sinclairdynamics.co/">
 </head>
+
 <body>
-<nav>
-  <a href="index.html" class="nav-logo"><img src="sinclair-nav-icon.png" alt="Sinclair Dynamics" style="height:52px;width:auto;"></a>
-  <div class="nav-links">
-    <a href="index.html" class="active">Home</a>
-    <a href="project-management.html">Project Management</a>
-    <a href="technical-consulting.html">Technical Consulting</a>
-    <a href="ai-digital.html">AI &amp; Digital</a>
-    <a href="energy-systems.html">Energy &amp; Power</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
-  <a href="https://monitor.sinclairdynamics.co" class="nav-monitor">System Monitor</a><a href="contact.html" class="nav-cta">Get In Touch</a>
-</nav>
-
-<!-- ===== 1. HERO: the cause, stated so nobody has to admit fault ===== -->
-<section class="hero">
-  <div class="hero-accent"></div>
-
-  <svg class="hero-wave" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-    <path class="wave-true" d="M 0 167 L 6 185 L 12 201 L 18 213 L 24 219 L 30 219 L 36 214 L 42 204 L 48 188 L 54 170 L 60 150 L 66 130 L 72 112 L 78 96 L 84 86 L 90 81 L 96 81 L 102 87 L 108 99 L 114 115 L 120 133 L 126 153 L 132 173 L 138 191 L 144 206 L 150 215 L 156 220 L 162 218 L 168 211 L 174 199 L 180 183 L 186 163 L 192 143 L 198 124 L 204 106 L 210 92 L 216 83 L 222 80 L 228 82 L 234 91 L 240 104 L 246 121 L 252 140 L 258 160 L 264 179 L 270 196 L 276 209 L 282 218 L 288 220 L 294 217 L 300 208 L 306 194 L 312 176 L 318 157 L 324 137 L 330 117 L 336 101 L 342 89 L 348 82 L 354 80 L 360 85 L 366 94 L 372 109 L 378 127 L 384 147 L 390 167 L 396 185 L 402 201 L 408 213 L 414 219 L 420 219 L 426 214 L 432 204 L 438 188 L 444 170 L 450 150 L 456 130 L 462 112 L 468 96 L 474 86 L 480 81 L 486 81 L 492 87 L 498 99 L 504 115 L 510 133 L 516 153 L 522 173 L 528 191 L 534 206 L 540 215 L 546 220 L 552 218 L 558 211 L 564 199 L 570 183 L 576 163 L 582 143 L 588 124 L 594 106 L 600 92 L 606 83 L 612 80 L 618 82 L 624 91 L 630 104 L 636 121 L 642 140 L 648 160 L 654 179 L 660 196 L 666 209 L 672 218 L 678 220 L 684 217 L 690 208 L 696 194 L 702 176 L 708 157 L 714 137 L 720 117 L 726 101 L 732 89 L 738 82 L 744 80 L 750 85 L 756 94 L 762 109 L 768 127 L 774 147 L 780 167 L 786 185 L 792 201 L 798 213 L 804 219 L 810 219 L 816 214 L 822 204 L 828 188 L 834 170 L 840 150 L 846 130 L 852 112 L 858 96 L 864 86 L 870 81 L 876 81 L 882 87 L 888 99 L 894 115 L 900 133 L 906 153 L 912 173 L 918 191 L 924 206 L 930 215 L 936 220 L 942 218 L 948 211 L 954 199 L 960 183 L 966 163 L 972 143 L 978 124 L 984 106 L 990 92 L 996 83 L 1002 80 L 1008 82 L 1014 91 L 1020 104 L 1026 121 L 1032 140 L 1038 160 L 1044 179 L 1050 196 L 1056 209 L 1062 218 L 1068 220 L 1074 217 L 1080 208 L 1086 194 L 1092 176 L 1098 157 L 1104 137 L 1110 117 L 1116 101 L 1122 89 L 1128 82 L 1134 80 L 1140 85 L 1146 94 L 1152 109 L 1158 127 L 1164 147 L 1170 167 L 1176 185 L 1182 201 L 1188 213 L 1194 219 L 1200 219"/>
-    <path class="wave-false" d="M -90 208 C -65 198, 10 169, 60 150 C 110 131, 160 103, 210 92 C 260 81, 310 78, 360 85 C 410 91, 460 115, 510 133 C 560 152, 610 182, 660 196 C 710 211, 760 222, 810 219 C 860 217, 910 200, 960 183 C 1010 166, 1060 134, 1110 117 C 1160 100, 1235 87, 1260 81"/>
-    <circle class="wave-dot" cx="60" cy="150" r="4"/>
-    <circle class="wave-dot" cx="210" cy="92" r="4"/>
-    <circle class="wave-dot" cx="360" cy="85" r="4"/>
-    <circle class="wave-dot" cx="510" cy="133" r="4"/>
-    <circle class="wave-dot" cx="660" cy="196" r="4"/>
-    <circle class="wave-dot" cx="810" cy="220" r="4"/>
-    <circle class="wave-dot" cx="960" cy="183" r="4"/>
-    <circle class="wave-dot" cx="1110" cy="117" r="4"/>
-  </svg>
-
-  <div class="hero-content">
-    <div class="hero-eyebrow">Sinclair Dynamics &middot; Johannesburg, South Africa</div>
-    <h1>Measuring often<br>enough used to be<br><span>too expensive.</span></h1>
-    <div class="hero-sub">That constraint moved. The reporting cycles it created did not.</div>
-    <p class="hero-body">When a person had to do the looking, the interval was set by what that person could sustain. It was the correct decision at the time and it is still in place nearly everywhere. What sits in the gap is the failure nobody could date, the cost nobody attributed, and the service whose value cannot be demonstrated to the person paying for it.</p>
-    <div class="hero-actions">
-      <a href="monitoring-calibration.html" class="btn-primary">Monitoring Calibration</a>
-      <a href="contact.html" class="btn-outline">Start a Conversation</a>
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="sinclair-nav-icon.png" alt="Sinclair Dynamics"
+        style="height:52px;width:auto;"></a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="project-management.html">Project Management</a>
+      <a href="technical-consulting.html">Technical Consulting</a>
+      <a href="ai-digital.html">AI &amp; Digital</a>
+      <a href="energy-systems.html">Energy &amp; Power</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </div>
-  </div>
-</section>
+    <a href="https://monitor.sinclairdynamics.co" class="nav-monitor">System Monitor</a><a href="contact.html"
+      class="nav-cta">Get In Touch</a>
+  </nav>
 
-<!-- ===== 2. SYMPTOMS: how the fault is actually experienced, then the door ===== -->
-<section style="background: var(--off-white);">
-  <div class="section-inner">
-    <div class="section-eyebrow">How It Shows Up</div>
-    <h2 class="section-title">The numbers look fine.<br><span>The outcome does not match them.</span></h2>
-    <div class="pull-quote" style="max-width:680px;margin-top:0;">
-      <p>"Under-sampled data does not go quiet. It gives you a confident, stable, plausible picture of something that is not happening."</p>
-    </div>
-    <p class="section-lead" style="margin-bottom:40px;">It arrives in one of three ways.</p>
+  <!-- ===== 1. HERO: the cause, stated so nobody has to admit fault ===== -->
+  <section class="hero">
+    <div class="hero-accent"></div>
 
-    <div class="symptom">
-      <h3>The reporting is right and the result is not</h3>
-      <p>Every figure is accurate and reviewed on schedule. The outcome keeps landing somewhere the reporting never indicated, and no single number was ever wrong enough to question.</p>
-    </div>
-    <div class="symptom">
-      <h3>Nobody can say when it started</h3>
-      <p>Something failed. There is a date for when it was noticed and none for when it began, so the cost cannot be sized and the same thing cannot be caught earlier next time.</p>
-    </div>
-    <div class="symptom">
-      <h3>The value is real and cannot be shown</h3>
-      <p>You deliver something that works and cannot evidence it to the person paying for it. This is the same fault seen from the supplier's side, and it is the widest and least obvious of the three.</p>
-    </div>
+    <svg class="hero-wave" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <path class="wave-true"
+        d="M 0 167 L 6 185 L 12 201 L 18 213 L 24 219 L 30 219 L 36 214 L 42 204 L 48 188 L 54 170 L 60 150 L 66 130 L 72 112 L 78 96 L 84 86 L 90 81 L 96 81 L 102 87 L 108 99 L 114 115 L 120 133 L 126 153 L 132 173 L 138 191 L 144 206 L 150 215 L 156 220 L 162 218 L 168 211 L 174 199 L 180 183 L 186 163 L 192 143 L 198 124 L 204 106 L 210 92 L 216 83 L 222 80 L 228 82 L 234 91 L 240 104 L 246 121 L 252 140 L 258 160 L 264 179 L 270 196 L 276 209 L 282 218 L 288 220 L 294 217 L 300 208 L 306 194 L 312 176 L 318 157 L 324 137 L 330 117 L 336 101 L 342 89 L 348 82 L 354 80 L 360 85 L 366 94 L 372 109 L 378 127 L 384 147 L 390 167 L 396 185 L 402 201 L 408 213 L 414 219 L 420 219 L 426 214 L 432 204 L 438 188 L 444 170 L 450 150 L 456 130 L 462 112 L 468 96 L 474 86 L 480 81 L 486 81 L 492 87 L 498 99 L 504 115 L 510 133 L 516 153 L 522 173 L 528 191 L 534 206 L 540 215 L 546 220 L 552 218 L 558 211 L 564 199 L 570 183 L 576 163 L 582 143 L 588 124 L 594 106 L 600 92 L 606 83 L 612 80 L 618 82 L 624 91 L 630 104 L 636 121 L 642 140 L 648 160 L 654 179 L 660 196 L 666 209 L 672 218 L 678 220 L 684 217 L 690 208 L 696 194 L 702 176 L 708 157 L 714 137 L 720 117 L 726 101 L 732 89 L 738 82 L 744 80 L 750 85 L 756 94 L 762 109 L 768 127 L 774 147 L 780 167 L 786 185 L 792 201 L 798 213 L 804 219 L 810 219 L 816 214 L 822 204 L 828 188 L 834 170 L 840 150 L 846 130 L 852 112 L 858 96 L 864 86 L 870 81 L 876 81 L 882 87 L 888 99 L 894 115 L 900 133 L 906 153 L 912 173 L 918 191 L 924 206 L 930 215 L 936 220 L 942 218 L 948 211 L 954 199 L 960 183 L 966 163 L 972 143 L 978 124 L 984 106 L 990 92 L 996 83 L 1002 80 L 1008 82 L 1014 91 L 1020 104 L 1026 121 L 1032 140 L 1038 160 L 1044 179 L 1050 196 L 1056 209 L 1062 218 L 1068 220 L 1074 217 L 1080 208 L 1086 194 L 1092 176 L 1098 157 L 1104 137 L 1110 117 L 1116 101 L 1122 89 L 1128 82 L 1134 80 L 1140 85 L 1146 94 L 1152 109 L 1158 127 L 1164 147 L 1170 167 L 1176 185 L 1182 201 L 1188 213 L 1194 219 L 1200 219" />
+      <path class="wave-false"
+        d="M -90 208 C -65 198, 10 169, 60 150 C 110 131, 160 103, 210 92 C 260 81, 310 78, 360 85 C 410 91, 460 115, 510 133 C 560 152, 610 182, 660 196 C 710 211, 760 222, 810 219 C 860 217, 910 200, 960 183 C 1010 166, 1060 134, 1110 117 C 1160 100, 1235 87, 1260 81" />
+      <circle class="wave-dot" cx="60" cy="150" r="4" />
+      <circle class="wave-dot" cx="210" cy="92" r="4" />
+      <circle class="wave-dot" cx="360" cy="85" r="4" />
+      <circle class="wave-dot" cx="510" cy="133" r="4" />
+      <circle class="wave-dot" cx="660" cy="196" r="4" />
+      <circle class="wave-dot" cx="810" cy="220" r="4" />
+      <circle class="wave-dot" cx="960" cy="183" r="4" />
+      <circle class="wave-dot" cx="1110" cy="117" r="4" />
+    </svg>
 
-    <p class="symptom-bridge">All three are one fault. The interval between one look and the next is longer than the time the thing needs to go wrong in. Where that gap is wide, reporting stays correct and stops being useful, and nothing in the report says so.</p>
-
-    <a href="monitoring-calibration.html" class="named-engagement">
-      <div>
-        <svg width="64" height="64" viewBox="0 0 48 48" fill="none" stroke="#1A7A6E" stroke-width="1.8" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M2 28h44" opacity="0.35"/>
-          <path d="M4 28Q11 10 18 28Q25 46 32 28Q39 10 46 28"/>
-          <path d="M11 28V19M25 28v9M39 28V19" opacity="0.5"/>
-          <circle cx="11" cy="19" r="2.4" fill="#1A7A6E" stroke="none"/>
-          <circle cx="25" cy="37" r="2.4" fill="#1A7A6E" stroke="none"/>
-          <circle cx="39" cy="19" r="2.4" fill="#1A7A6E" stroke="none"/>
-        </svg>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Sinclair Dynamics &middot; Johannesburg, South Africa</div>
+      <h1>Measuring often<br>enough used to be<br><span>too expensive.</span></h1>
+      <div class="hero-sub">That constraint moved. The reporting cycles it created did not.</div>
+      <p class="hero-body">When a person had to do the looking, the interval was set by what that person could sustain.
+        It was the correct decision at the time and it is still in place nearly everywhere. What sits in the gap is the
+        failure nobody could date, the cost nobody attributed, and the service whose value cannot be demonstrated to the
+        person paying for it.</p>
+      <div class="hero-actions">
+        <a href="monitoring-calibration.html" class="btn-primary">Monitoring Calibration</a>
+        <a href="contact.html" class="btn-outline">Start a Conversation</a>
       </div>
-      <div>
-        <div class="named-engagement-label">A Defined Engagement</div>
-        <h3>Monitoring Calibration</h3>
-        <p>A structured review of three things set against each other: what you measure, how often somebody actually looks, and how fast each of those can move from healthy to costing you money. Side by side they show where the gap is wide. Approximately two weeks, fixed fee, and a written finding that can be circulated internally without further explanation.</p>
-        <span class="service-link">Explore</span>
+    </div>
+  </section>
+
+  <!-- ===== 2. SYMPTOMS: how the fault is actually experienced, then the door ===== -->
+  <section style="background: var(--off-white);">
+    <div class="section-inner">
+      <div class="section-eyebrow">How It Shows Up</div>
+      <h2 class="section-title">The numbers look fine.<br><span>The outcome does not match them.</span></h2>
+      <div class="pull-quote" style="max-width:680px;margin-top:0;">
+        <p>"Under-sampled data does not go quiet. It gives you a confident, stable, plausible picture of something that
+          is not happening."</p>
       </div>
-    </a>
-  </div>
-</section>
+      <p class="section-lead" style="margin-bottom:40px;">It arrives in one of three ways.</p>
 
-<!-- ===== 3. THE WIDER WORK: what sits behind the door, not beside it ===== -->
-<section>
-  <div class="section-inner">
-    <div class="section-eyebrow">What Happens Next</div>
-    <h2 class="section-title">Finding the gap is one job.<br><span>Closing it is another.</span></h2>
-    <p class="body-text" style="max-width:640px;">A calibration answers a question. Some arrive already knowing the answer and needing something built, replaced, instrumented, or approached a different way. That is the work the finding points at, and it is not a separate business.</p>
-    <p class="body-text" style="max-width:640px;">These are not four services to choose between. They are the ground the work is done on. Most engagements cross more than one, because a problem worth bringing here rarely sits cleanly inside a single discipline, and that is usually why it has not been solved yet.</p>
+      <div class="symptom">
+        <h3>The reporting is right and the result is not</h3>
+        <p>Every figure is accurate and reviewed on schedule. The outcome keeps landing somewhere the reporting never
+          indicated, and no single number was ever wrong enough to question.</p>
+      </div>
+      <div class="symptom">
+        <h3>Nobody can say when it started</h3>
+        <p>Something failed. There is a date for when it was noticed and none for when it began, so the cost cannot be
+          sized and the same thing cannot be caught earlier next time.</p>
+      </div>
+      <div class="symptom">
+        <h3>The value is real and cannot be shown</h3>
+        <p>You deliver something that works and cannot evidence it to the person paying for it. This is the same fault
+          seen from the supplier's side, and it is the widest and least obvious of the three.</p>
+      </div>
 
-    <div class="services-grid-2x2">
+      <p class="symptom-bridge">All three are one fault. The interval between one look and the next is longer than the
+        time the thing needs to go wrong in. Where that gap is wide, reporting stays correct and stops being useful, and
+        nothing in the report says so.</p>
 
-      <!-- PROJECT MANAGEMENT -->
-      <a href="project-management.html" class="service-card">
-        <div class="service-icon-wrap">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="6" y="10" width="36" height="30" rx="3"/>
-            <path d="M6 18h36"/>
-            <path d="M14 6v8M34 6v8"/>
-            <path d="M13 28l5 5 13-11"/>
+      <a href="monitoring-calibration.html" class="named-engagement">
+        <div>
+          <svg width="64" height="64" viewBox="0 0 48 48" fill="none" stroke="#1A7A6E" stroke-width="1.8"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2 28h44" opacity="0.35" />
+            <path d="M4 28Q11 10 18 28Q25 46 32 28Q39 10 46 28" />
+            <path d="M11 28V19M25 28v9M39 28V19" opacity="0.5" />
+            <circle cx="11" cy="19" r="2.4" fill="#1A7A6E" stroke="none" />
+            <circle cx="25" cy="37" r="2.4" fill="#1A7A6E" stroke="none" />
+            <circle cx="39" cy="19" r="2.4" fill="#1A7A6E" stroke="none" />
           </svg>
         </div>
-        <h3>Project Management</h3>
-        <div class="service-tagline">Your technical edge in every decision</div>
-        <p>Senior delivery experience across major infrastructure and technology programmes. The difference between managing a process and understanding what it's actually building.</p>
-        <span class="service-link">Explore</span>
-      </a>
-
-      <!-- TECHNICAL CONSULTING -->
-      <a href="technical-consulting.html" class="service-card">
-        <div class="service-icon-wrap">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="24" cy="24" r="7"/>
-            <path d="M24 6v4M24 38v4M6 24h4M38 24h4M10.1 10.1l2.8 2.8M35.1 35.1l2.8 2.8M10.1 37.9l2.8-2.8M35.1 12.9l2.8-2.8"/>
-          </svg>
+        <div>
+          <div class="named-engagement-label">A Defined Engagement</div>
+          <h3>Monitoring Calibration</h3>
+          <p>A structured review of three things set against each other: what you measure, how often somebody actually
+            looks, and how fast each of those can move from healthy to costing you money. Side by side they show where
+            the gap is wide. Approximately two weeks, fixed fee, and a written finding that can be circulated internally
+            without further explanation.</p>
+          <span class="service-link">Explore</span>
         </div>
-        <h3>Technical Consulting</h3>
-        <div class="service-tagline">The engineer who figures it out</div>
-        <p>Product design, systems integration, hardware development, and automation. From initial brief to working solution, with the engineering rigour to get it right.</p>
-        <span class="service-link">Explore</span>
       </a>
+    </div>
+  </section>
 
-      <!-- AI & DIGITAL -->
-      <a href="ai-digital.html" class="service-card">
-        <div class="service-icon-wrap">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="6" y="10" width="36" height="24" rx="3"/>
-            <path d="M16 34v6M32 34v6M10 40h28"/>
-            <circle cx="17" cy="22" r="2.5"/>
-            <circle cx="31" cy="22" r="2.5"/>
-            <path d="M17 22h14M17 19.5l-4-4M31 19.5l4-4M17 24.5l-3 4M31 24.5l3 4"/>
-          </svg>
+  <!-- ===== 3. THE WIDER WORK: what sits behind the door, not beside it ===== -->
+  <section>
+    <div class="section-inner">
+      <div class="section-eyebrow">What Happens Next</div>
+      <h2 class="section-title">Finding the gap is one job.<br><span>Closing it is another.</span></h2>
+      <p class="body-text" style="max-width:640px;">A calibration answers a question. Some arrive already knowing the
+        answer and needing something built, replaced, instrumented, or approached a different way. That is the work the
+        finding points at, and it is not a separate business.</p>
+      <p class="body-text" style="max-width:640px;">These are not four services to choose between. They are the ground
+        the work is done on. Most engagements cross more than one, because a problem worth bringing here rarely sits
+        cleanly inside a single discipline, and that is usually why it has not been solved yet.</p>
+
+      <div class="services-grid-2x2">
+
+        <!-- PROJECT MANAGEMENT -->
+        <a href="project-management.html" class="service-card">
+          <div class="service-icon-wrap">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="6" y="10" width="36" height="30" rx="3" />
+              <path d="M6 18h36" />
+              <path d="M14 6v8M34 6v8" />
+              <path d="M13 28l5 5 13-11" />
+            </svg>
+          </div>
+          <h3>Project Management</h3>
+          <div class="service-tagline">Your technical edge in every decision</div>
+          <p>Senior delivery experience across major infrastructure and technology programmes. The difference between
+            managing a process and understanding what it's actually building.</p>
+          <span class="service-link">Explore</span>
+        </a>
+
+        <!-- TECHNICAL CONSULTING -->
+        <a href="technical-consulting.html" class="service-card">
+          <div class="service-icon-wrap">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="24" cy="24" r="7" />
+              <path
+                d="M24 6v4M24 38v4M6 24h4M38 24h4M10.1 10.1l2.8 2.8M35.1 35.1l2.8 2.8M10.1 37.9l2.8-2.8M35.1 12.9l2.8-2.8" />
+            </svg>
+          </div>
+          <h3>Technical Consulting</h3>
+          <div class="service-tagline">The engineer who figures it out</div>
+          <p>Product design, systems integration, hardware development, and automation. From initial brief to working
+            solution, with the engineering rigour to get it right.</p>
+          <span class="service-link">Explore</span>
+        </a>
+
+        <!-- AI & DIGITAL -->
+        <a href="ai-digital.html" class="service-card">
+          <div class="service-icon-wrap">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="6" y="10" width="36" height="24" rx="3" />
+              <path d="M16 34v6M32 34v6M10 40h28" />
+              <circle cx="17" cy="22" r="2.5" />
+              <circle cx="31" cy="22" r="2.5" />
+              <path d="M17 22h14M17 19.5l-4-4M31 19.5l4-4M17 24.5l-3 4M31 24.5l3 4" />
+            </svg>
+          </div>
+          <h3>AI &amp; Digital</h3>
+          <div class="service-tagline">Tomorrow's tools, today's accountability</div>
+          <p>Practical AI-assisted workflows, process automation, and digital tooling. Applied responsibly, with full
+            professional accountability for every output.</p>
+          <span class="service-link">Explore</span>
+        </a>
+
+        <!-- ENERGY & POWER -->
+        <a href="energy-systems.html" class="service-card">
+          <div class="service-icon-wrap">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M26 6L12 26h10l-2 16 16-22H26L28 6z" />
+            </svg>
+          </div>
+          <h3>Energy &amp; Power Systems</h3>
+          <div class="service-tagline">Cutting through the noise</div>
+          <p>Independent advisory on renewable energy, backup power, and optimisation. Grounded in detailed analysis and
+            simulation, not supplier incentives.</p>
+          <span class="service-link">Explore</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. THE PROOF: a working system and written reasoning, not references ===== -->
+  <section class="proof-strip">
+    <div class="section-inner">
+      <div class="section-eyebrow">Instead Of References</div>
+      <h2 class="section-title">I would rather show you<br><span>something running.</span></h2>
+      <div class="proof-grid">
+        <div>
+          <p class="body-text">Anyone can produce a reference letter. Very few can hand over a working system and say
+            what it caught.</p>
+          <p class="body-text">Sinclair Dynamics Solar Monitor watches six solar installations across several owners. I
+            designed it, I built it, and I run it. It exists because I had been doing the same analysis by hand for
+            years and concluded that the interval was the problem rather than the analysis. It is not what I sell. It is
+            the method, running somewhere it can be inspected.</p>
+          <p class="body-text">The reasoning is written down as well, at whatever length the argument needs. That is a
+            slower way to be assessed than a list of qualifications, and a more useful one, because you can disagree
+            with it.</p>
+          <a href="about.html" class="btn-outline" style="margin-top:8px;">Full Background</a>
         </div>
-        <h3>AI &amp; Digital</h3>
-        <div class="service-tagline">Tomorrow's tools, today's accountability</div>
-        <p>Practical AI-assisted workflows, process automation, and digital tooling. Applied responsibly, with full professional accountability for every output.</p>
-        <span class="service-link">Explore</span>
-      </a>
-
-      <!-- ENERGY & POWER -->
-      <a href="energy-systems.html" class="service-card">
-        <div class="service-icon-wrap">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M26 6L12 26h10l-2 16 16-22H26L28 6z"/>
-          </svg>
+        <div>
+          <a class="proof-box" href="https://monitor.sinclairdynamics.co"><strong>The Platform</strong>Victron, Huawei
+            and Deye hardware, reaching one interface through five separate third party services that were never
+            designed to agree with each other. Weather corrected performance analysis, with every site observed once an
+            hour.<span class="go">Open the monitor</span></a>
+          <a class="proof-box" href="spotting-ai-writing.html"><strong>Written Down</strong>Why people are so confident
+            they can spot AI writing, and what that confidence is actually measuring.<span class="go">Read it</span></a>
         </div>
-        <h3>Energy &amp; Power Systems</h3>
-        <div class="service-tagline">Cutting through the noise</div>
-        <p>Independent advisory on renewable energy, backup power, and optimisation. Grounded in detailed analysis and simulation, not supplier incentives.</p>
-        <span class="service-link">Explore</span>
-      </a>
+      </div>
+    </div>
+  </section>
 
+  <!-- ===== 5. CREDENTIALS: layer three. They reassure. They do not introduce. ===== -->
+  <div class="creds-bar">
+    <div class="creds-inner">
+      <div class="cred-item"><span class="cred-label">Foundation</span><span class="cred-value">BSc (Eng) Mechatronics,
+          University of Cape Town</span></div>
+      <div class="cred-item"><span class="cred-label">Delivery</span><span class="cred-value">Certified
+          ScrumMaster&reg;</span></div>
+      <div class="cred-item"><span class="cred-label">Accountability</span><span class="cred-value">Certified in AI
+          Fluency and Application</span></div>
+      <div class="cred-item"><span class="cred-label">Base</span><span class="cred-value">Johannesburg: Working Across
+          Africa</span></div>
     </div>
   </div>
-</section>
 
-<!-- ===== 4. THE PROOF: a working system and written reasoning, not references ===== -->
-<section class="proof-strip">
-  <div class="section-inner">
-    <div class="section-eyebrow">Instead Of References</div>
-    <h2 class="section-title">I would rather show you<br><span>something running.</span></h2>
-    <div class="proof-grid">
-      <div>
-        <p class="body-text">Anyone can produce a reference letter. Very few can hand over a working system and say what it caught.</p>
-        <p class="body-text">Sinclair Dynamics Solar Monitor watches six solar installations across several owners. I designed it, I built it, and I run it. It exists because I had been doing the same analysis by hand for years and concluded that the interval was the problem rather than the analysis. It is not what I sell. It is the method, running somewhere it can be inspected.</p>
-        <p class="body-text">The reasoning is written down as well, at whatever length the argument needs. That is a slower way to be assessed than a list of qualifications, and a more useful one, because you can disagree with it.</p>
-        <a href="about.html" class="btn-outline" style="margin-top:8px;">Full Background</a>
-      </div>
-      <div>
-        <a class="proof-box" href="https://monitor.sinclairdynamics.co"><strong>The Platform</strong>Victron, Huawei and Deye hardware, reaching one interface through five separate third party services that were never designed to agree with each other. Weather corrected performance analysis, with every site observed once an hour.<span class="go">Open the monitor</span></a>
-        <a class="proof-box" href="spotting-ai-writing.html"><strong>Written Down</strong>Why people are so confident they can spot AI writing, and what that confidence is actually measuring.<span class="go">Read it</span></a>
-      </div>
+  <!-- ===== 6. CLOSING: two routes in, neither of which requires a diagnosis ===== -->
+  <section>
+    <div class="section-inner" style="text-align:center;">
+      <div class="section-eyebrow" style="justify-content:center;">Where To Start</div>
+      <h2 class="section-title">You do not have to know<br><span>what is wrong yet.</span></h2>
+      <p class="section-lead" style="margin:0 auto 40px;">There are two ways in. One is for a problem you can already
+        describe. The other is for the sense that something is off without being able to say what it is. Both arrive in
+        the same place, and neither of them costs anything to use.</p>
+      <a href="contact.html" class="btn-primary">Start a Conversation</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== 5. CREDENTIALS: layer three. They reassure. They do not introduce. ===== -->
-<div class="creds-bar">
-  <div class="creds-inner">
-    <div class="cred-item"><span class="cred-label">Foundation</span><span class="cred-value">BSc (Eng) Mechatronics, University of Cape Town</span></div>
-    <div class="cred-item"><span class="cred-label">Delivery</span><span class="cred-value">Certified ScrumMaster&reg;</span></div>
-    <div class="cred-item"><span class="cred-label">Accountability</span><span class="cred-value">Certified in AI Fluency and Application</span></div>
-    <div class="cred-item"><span class="cred-label">Base</span><span class="cred-value">Johannesburg: Working Across Africa</span></div>
-  </div>
-</div>
-
-<!-- ===== 6. CLOSING: two routes in, neither of which requires a diagnosis ===== -->
-<section>
-  <div class="section-inner" style="text-align:center;">
-    <div class="section-eyebrow" style="justify-content:center;">Where To Start</div>
-    <h2 class="section-title">You do not have to know<br><span>what is wrong yet.</span></h2>
-    <p class="section-lead" style="margin:0 auto 40px;">There are two ways in. One is for a problem you can already describe. The other is for the sense that something is off without being able to say what it is. Both arrive in the same place, and neither of them costs anything to use.</p>
-    <a href="contact.html" class="btn-primary">Start a Conversation</a>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <svg width="56" height="56" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:16px;" aria-hidden="true"><rect width="48" height="48" rx="10" fill="#E8392A"/><rect x="27" y="27" width="20" height="20" rx="4" fill="#C0281A" opacity="0.5"/><path d="M24 14.5a1.5 1.5 0 0 1 1.5 1.5v1.2a7.5 7.5 0 0 1 2.6 1.08l.85-.85a1.5 1.5 0 0 1 2.12 2.12l-.85.85A7.5 7.5 0 0 1 31.3 23H32.5a1.5 1.5 0 0 1 0 3h-1.2a7.5 7.5 0 0 1-1.08 2.6l.85.85a1.5 1.5 0 0 1-2.12 2.12l-.85-.85A7.5 7.5 0 0 1 25.5 31.8V33a1.5 1.5 0 0 1-3 0v-1.2a7.5 7.5 0 0 1-2.6-1.08l-.85.85a1.5 1.5 0 0 1-2.12-2.12l.85-.85A7.5 7.5 0 0 1 16.7 26H15.5a1.5 1.5 0 0 1 0-3h1.2a7.5 7.5 0 0 1 1.08-2.6l-.85-.85a1.5 1.5 0 0 1 2.12-2.12l.85.85a7.5 7.5 0 0 1 2.6-1.08V16a1.5 1.5 0 0 1 1.5-1.5zm0 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" fill="white"/></svg>
-        <div class="footer-tagline">Engineering Intelligence. Delivered.</div>
-        <p>Technical consulting and engineering from Johannesburg, South Africa. Working with clients across the continent.</p>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <svg width="56" height="56" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:16px;"
+            aria-hidden="true">
+            <rect width="48" height="48" rx="10" fill="#E8392A" />
+            <rect x="27" y="27" width="20" height="20" rx="4" fill="#C0281A" opacity="0.5" />
+            <path
+              d="M24 14.5a1.5 1.5 0 0 1 1.5 1.5v1.2a7.5 7.5 0 0 1 2.6 1.08l.85-.85a1.5 1.5 0 0 1 2.12 2.12l-.85.85A7.5 7.5 0 0 1 31.3 23H32.5a1.5 1.5 0 0 1 0 3h-1.2a7.5 7.5 0 0 1-1.08 2.6l.85.85a1.5 1.5 0 0 1-2.12 2.12l-.85-.85A7.5 7.5 0 0 1 25.5 31.8V33a1.5 1.5 0 0 1-3 0v-1.2a7.5 7.5 0 0 1-2.6-1.08l-.85.85a1.5 1.5 0 0 1-2.12-2.12l.85-.85A7.5 7.5 0 0 1 16.7 26H15.5a1.5 1.5 0 0 1 0-3h1.2a7.5 7.5 0 0 1 1.08-2.6l-.85-.85a1.5 1.5 0 0 1 2.12-2.12l.85.85a7.5 7.5 0 0 1 2.6-1.08V16a1.5 1.5 0 0 1 1.5-1.5zm0 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"
+              fill="white" />
+          </svg>
+          <div class="footer-tagline">Engineering Intelligence. Delivered.</div>
+          <p>Technical consulting and engineering from Johannesburg, South Africa. Working with clients across the
+            continent.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4><a href="monitoring-calibration.html">Monitoring Calibration</a><a
+            href="project-management.html">Project Management</a><a href="technical-consulting.html">Technical
+            Consulting</a><a href="ai-digital.html">AI &amp; Digital</a><a href="energy-systems.html">Energy &amp; Power
+            Systems</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4><a href="about.html">About Ainsley</a><a href="contact.html">Contact</a><a
+            href="https://www.linkedin.com/in/ainsley-williams-18107015/" target="_blank" class="footer-linkedin"><svg
+              width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+              style="vertical-align:middle;margin-right:6px;" aria-hidden="true">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>LinkedIn Profile</a>
+          <p style="font-size:13px;margin-top:8px;line-height:1.5;">For detailed career history and credentials, connect
+            on LinkedIn.</p>
+        </div>
       </div>
-      <div class="footer-col"><h4>Services</h4><a href="monitoring-calibration.html">Monitoring Calibration</a><a href="project-management.html">Project Management</a><a href="technical-consulting.html">Technical Consulting</a><a href="ai-digital.html">AI &amp; Digital</a><a href="energy-systems.html">Energy &amp; Power Systems</a></div>
-      <div class="footer-col"><h4>Connect</h4><a href="about.html">About Ainsley</a><a href="contact.html">Contact</a><a href="https://www.linkedin.com/in/ainsley-williams-18107015/" target="_blank" class="footer-linkedin"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:6px;" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn Profile</a><p style="font-size:13px;margin-top:8px;line-height:1.5;">For detailed career history and credentials, connect on LinkedIn.</p></div>
+      <div class="footer-bottom"><span class="footer-copy">&copy; 2026 Sinclair Dynamics. All rights
+          reserved.</span><span class="footer-eng-intel">Engineering Intelligence. Delivered.</span></div>
     </div>
-    <div class="footer-bottom"><span class="footer-copy">&copy; 2026 Sinclair Dynamics. All rights reserved.</span><span class="footer-eng-intel">Engineering Intelligence. Delivered.</span></div>
-  </div>
-</footer>
+  </footer>
 </body>
+
 </html>
