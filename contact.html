@@ -44,115 +44,151 @@
    Kept on the page rather than in shared.css, consistent with how the homepage
    and the about page were handled. Nothing here overrides a shared class.
 
-   HERO FIGURE: A CONTINUITY TEST
-   Built 8 August 2026. Each hero figure has to be that page's own argument
-   drawn rather than decoration, and the failure modes ruled out at the start
-   were the envelope, the speech bubble and the signal strength motif, all of
-   which say "communication" without saying anything.
+   HERO FIGURE: ROUTES, DRAWN AND NOT YET TAKEN
+   Rebuilt 9 August 2026. This replaces the continuity test built on 8 August.
+   The reasoning for the replacement is recorded here because the old figure
+   was correct against its own specification and was still wrong.
 
-   THE ARGUMENT. A continuity test is what you run before you trust anything
-   downstream. It does not ask whether two things are connected, which you
-   cannot tell by looking; it confirms whether the connection is real. Getting
-   in touch is therefore the beginning of a measurement rather than of a sale.
+   WHY THE CONTINUITY TEST WAS WITHDRAWN. It was operated by pressing, and the
+   rule that made the press safe was that the still state must carry the whole
+   argument because most readers will never press. If that is true then the
+   press carries none of the argument, which makes it delight added on top of a
+   complete claim. That is the fashion register's definition of interaction and
+   the site is not in that register. Removing it also makes the interaction
+   grammar uniform for the first time: every figure on this site now answers to
+   hover and to nothing else.
 
-   WHY IT IS A CLOSED LOOP. Continuity is a property of a circuit, not of a
-   line. The current leaves the meter, goes up one lead, through the probe,
-   along the conductor, through the section nobody can see, back down the other
-   probe and lead, and returns. A connection that goes one way is not a
-   connection. The first version animated only the middle third and read as a
-   line with a device attached.
+   WHY THE METER WENT WITH IT. A meter reports a conclusion. The reader must
+   look at the drawing and draw the conclusion themselves, which is the same
+   rule as no legends and no explanatory labelling. The instrument is the person
+   reading, not an object on the page. Nothing on this site draws a thing; every
+   figure draws a relationship, and the meter was the last remaining thing.
 
-   WHY THERE ARE OTHER RUNS. A continuity test tests one path at a time. The
-   other five are not failed and not unavailable, they are simply not the one
-   under test, which is what the unprobed test points say. It also gives the
-   page an honest answer to the objection already recorded against it: several
-   routes exist, and one of them is confirmed in front of you.
+   WHAT IS DRAWN. Six routes crossing the frame at different weights and
+   opacities. Each has one section drawn dashed. On a services or site drawing,
+   dashed does not mean broken and does not mean hidden: it means proposed.
+   The route is surveyed, specified and drawn, and it has not been built yet.
+   Solid is what exists. That makes the rest state true without qualification,
+   which is the constraint the old figure kept failing: the reader has not made
+   contact, and the figure says exactly that and nothing more.
 
-   WHY IT IS DRAWN AS NOTATION. The meter is a circle with the continuity tone
-   symbol in it, which is what a schematic actually draws, and the probes are
-   leads with tips on the node. An earlier version drew a meter as an object
-   with a body, a face and terminals, and the figure then spoke two languages:
-   schematic runs beside a picture of a thing. Nothing on this site draws a
-   thing. Every figure draws a relationship.
+   WHY IT ACCUMULATES. Hovering a route resolves its dashed section to solid,
+   and it stays. The claim is about the route rather than about the reader:
+   this route runs end to end, which is true of every channel on this page
+   whether or not anyone hovers anything. The figure is answering a question it
+   was pointed at, and then declining to un-answer it. Nothing in it asserts
+   that contact was made, which is the line the meter crossed.
 
-   INTERACTION.
-   - Rest: the probes are already on the test points and the meter is already
-     set to continuity. The still state has to carry the whole argument, since
-     plenty of readers will never press.
-   - Hover: the instrument acknowledges the hand. Nothing has been measured.
-   - Press: the current runs the loop, the unseen section resolves as the
-     current reaches it, and the tone fires only once the current is home. The
-     order matters: the path proves itself first and the meter reports second.
-   - Press again resets, which is how a test button behaves.
+   THE ASYMMETRY WITH THE ABOUT PAGE FIGURE IS DELIBERATE. That one resets and
+   this one does not. A datum frame cannot be half established, so a figure that
+   held partial state would show something false about the thing it depicts. A
+   set of routes can perfectly well be partly explored.
+
+   WHY RESOLVING MUST NOT BRIGHTEN THE RUN. The depth in this figure comes from
+   the runs sitting at different weights and opacities. If every resolved run
+   came forward, a reader who hovered several would end up with a flat page of
+   equal lines and the texture would be gone. Resolve the state, keep the
+   hierarchy. Each run group carries its own opacity and the dash-to-solid
+   change happens inside that group, so it multiplies rather than overrides.
+
+   WHY THIS USES A SCRIPT, WHICH IS THE SAFER CHOICE HERE. CSS has no memory of
+   hover, so accumulation cannot be done without one. That is not the fragility
+   this site has been bitten by: the silent failures in the visual language
+   section 8 came from CSS selectors matching nothing and rendering perfectly.
+   This script warns to the console if a hit band has no run to resolve, so a
+   wiring fault announces itself instead of hiding.
 
    THREE THINGS A LATER SESSION NEEDS TO KNOW
-   1. The animation timings are derived from the loop length, which measured
-      815 units, with the unseen section between 43 and 61 percent of the way
-      round. Change any coordinate on the loop and the reveal and tone delays
-      must be recomputed, not nudged.
-   2. The dash gap must stay longer than the path. An earlier version had a gap
-      of 1220 against a path of 1216 and the pattern's next repeat entered from
-      the far end, giving one lap plus a stray.
+   1. The hit shapes are siblings of the drawing group and sit OUTSIDE the
+      masked group, deliberately. Hit testing through a mask is unreliable, and
+      the old figure already lost a session to a broken sibling relationship.
+      They are stroked paths, so pointer-events must stay "stroke": with the
+      default of "fill" they would have no target at all and the figure would
+      go quiet while rendering perfectly.
+   2. No painted coordinate may leave the viewBox. Every run stops at or before
+      x=1160 in a 1200 wide frame. A hit band drawn past the edge would size the
+      layout to the painted extent and push the figure out of the hero.
    3. The per-run stroke gradients are tuned against the hero headline at this
       width. The headline is clamped between 42px and 76px, so on a wide monitor
       the type reaches further right and the fade points may need to follow.
       Those percentages are tied to the type, not chosen for themselves.
-      --------------------------------------------------------------------- */
-.ct-toggle { position: absolute; opacity: 0; width: 0; height: 0; }
+
+   NO SELF-STARTING MOTION. Nothing here animates on its own, so the one-moving-
+   element rule is satisfied trivially and there is nothing for reduced motion
+   to strip. Opacity changes are not travel, so they are kept under
+   prefers-reduced-motion: the feedback survives and only movement would go,
+   and there is no movement.
+   --------------------------------------------------------------------- */
 .ct-fig { position: absolute; inset: 0; z-index: 3; pointer-events: none; display: block; }
 .ct-fig svg { display: block; width: 100%; height: 100%; }
-.ct-fig .hit { fill: #fff; fill-opacity: 0; pointer-events: all; cursor: pointer; }
 
-.ct-fig .alt    { transition: opacity 0.3s ease-out; }
-.ct-fig .a1 { opacity: 0.24; } .ct-fig .a2 { opacity: 0.16; } .ct-fig .a3 { opacity: 0.11; }
-.ct-fig .b1 { opacity: 0.21; } .ct-fig .b2 { opacity: 0.13; }
-.ct-fig .altpad { opacity: 0.26; transition: opacity 0.3s ease-out; }
-.ct-fig .cond   { opacity: 0.55; transition: opacity 0.25s ease-out; }
-.ct-fig .unk    { opacity: 0.18; transition: opacity 0.25s ease-out; }
-.ct-fig .pad    { opacity: 0.46; transition: opacity 0.25s ease-out; }
-.ct-fig .prb    { opacity: 0.34; transition: opacity 0.25s ease-out; }
-.ct-fig .met    { opacity: 0.32; transition: opacity 0.25s ease-out; }
-.ct-fig .tone   { opacity: 0.11; transition: opacity 0.3s ease-out; }
-.ct-fig .rev    { stroke-dasharray: 151; stroke-dashoffset: 151; }
-.ct-fig .pulse  { opacity: 0; }
+/* Hit shapes. Stroked paths rather than rectangles, so the target follows the
+   run through its riser instead of approximating it with a box. Hovering
+   anywhere along a run resolves it, not just over the unbuilt section, because
+   a reader who has to find the dashed part to discover the figure answers will
+   never discover it.
 
-/* Hover: the instrument acknowledges the hand, and nothing is measured. */
-.ct-fig .hit:hover ~ .fig .met  { opacity: 1; }
-.ct-fig .hit:hover ~ .fig .prb  { opacity: 0.9; }
-.ct-fig .hit:hover ~ .fig .pad  { opacity: 1; }
-.ct-fig .hit:hover ~ .fig .tone { opacity: 0.5; }
+   WHY THEY START AT x=620 RATHER THAN AT THE LEFT EDGE. The figure sits at
+   z-index 3 and .page-hero-content at z-index 2, so the figure is above the
+   type. A hit shape running the full width would cover the headline and the
+   body copy and block text selection along each band. Nothing in this hero is
+   clickable so the cost is selection only, but it is a real cost for reach the
+   reader is unlikely to use, since nobody hovers a headline expecting a
+   drawing to answer. 620 clears the body copy on a wide viewport.
 
-/* Keyboard parity: the control is a real checkbox, so it is focusable and
-   operable by space. The focus state has to be visible or it is a trap. */
-.ct-toggle:focus-visible ~ .ct-fig .met  { opacity: 1; }
-.ct-toggle:focus-visible ~ .ct-fig .tone { opacity: 0.5; }
+   The width is a flicker control as well as a target. A dwell timer was the
+   alternative and was rejected: a detent responds when the hand reaches it,
+   not after the hand has waited. Narrow bands are the geometric answer. */
+.ct-fig .ct-hit { fill: none; stroke: #fff; stroke-opacity: 0; stroke-width: 26; pointer-events: stroke; }
 
-/* The test. */
-.ct-toggle:checked ~ .ct-fig .unk    { opacity: 0; }
-.ct-toggle:checked ~ .ct-fig .alt    { opacity: 0.07; }
-.ct-toggle:checked ~ .ct-fig .altpad { opacity: 0.10; }
-.ct-toggle:checked ~ .ct-fig .cond   { opacity: 0.88; }
-.ct-toggle:checked ~ .ct-fig .tone   { opacity: 0.90; }
-.ct-toggle:checked ~ .ct-fig .rev   { animation: ctDraw 0.28s linear 0.80s forwards; }
-.ct-toggle:checked ~ .ct-fig .pulse { opacity: 0.95; animation: ctRun 1.5s ease-in-out 0.15s forwards; }
-.ct-toggle:checked ~ .ct-fig .t1 { animation: ctPing 0.4s ease-out 1.65s both; }
-.ct-toggle:checked ~ .ct-fig .t2 { animation: ctPing 0.4s ease-out 1.77s both; }
-.ct-toggle:checked ~ .ct-fig .t3 { animation: ctPing 0.4s ease-out 1.89s both; }
+/* Per-run opacity. These are the values the runs already carried, unchanged. */
+.ct-fig .r-a3 { opacity: 0.11; }
+.ct-fig .r-a2 { opacity: 0.16; }
+.ct-fig .r-a1 { opacity: 0.24; }
+.ct-fig .r-c  { opacity: 0.55; }
+.ct-fig .r-b1 { opacity: 0.21; }
+.ct-fig .r-b2 { opacity: 0.13; }
 
-@keyframes ctDraw { to { stroke-dashoffset: 0; } }
-@keyframes ctRun  { from { stroke-dashoffset: 80; } to { stroke-dashoffset: -815; } }
-@keyframes ctPing { from { opacity: 0; } to { opacity: 1; } }
+/* The unbuilt section, and the built one drawn over it. Two paths on the same
+   geometry, cross-fading. */
+.ct-fig .run path { transition: opacity 0.28s ease-out, stroke-width 0.28s ease-out; }
+.ct-fig .gap  { opacity: 0.45; }
+.ct-fig .link { opacity: 0; }
+.ct-fig .run.is-linked .gap  { opacity: 0; }
+.ct-fig .run.is-linked .link { opacity: 1; }
 
-/* Reduced motion removes the travel only. The unseen section still resolves and
-   the tone still fires, so the result survives with nothing moving, which is the
-   test any animated figure on this site has to pass. */
-@media (prefers-reduced-motion: reduce) {
-  .ct-toggle:checked ~ .ct-fig .rev   { animation: none; stroke-dashoffset: 0; }
-  .ct-toggle:checked ~ .ct-fig .pulse { animation: none; opacity: 0; }
-  .ct-toggle:checked ~ .ct-fig .t1,
-  .ct-toggle:checked ~ .ct-fig .t2,
-  .ct-toggle:checked ~ .ct-fig .t3 { animation: none; opacity: 1; }
-}
+/* A resolved run also gains half a unit of stroke weight across its whole
+   length, not only across the section that resolved.
+
+   WHY WEIGHT AND NOT BRIGHTNESS. The faint runs sit at 0.11 and 0.13, where a
+   dashed line and a solid line are very nearly indistinguishable, so the
+   dash-to-solid change alone reads only on the strongest runs. Brightening
+   would flatten the figure, since the depth comes from the runs sitting at
+   different opacities. Weight is the honest alternative and it is also the
+   drawing convention: on a services layout, what exists is drawn heavier than
+   what is proposed.
+
+   WHY A FIXED INCREMENT RATHER THAN A RATIO. The same absolute gain on every
+   run means the change is equally legible on all six while the hierarchy
+   between them is preserved exactly. A ratio would give the heavy runs the
+   larger visible change, which is the wrong way round.
+
+   NOTE FOR THE VISUAL LANGUAGE. The inspect tier is specified as opacity only.
+   Stroke weight is neither opacity nor travel, so this is a genuine extension
+   of the tier rather than an application of it, and 3.3 should record it. */
+.ct-fig .run.is-linked.r-a3 path { stroke-width: 1.9; }
+.ct-fig .run.is-linked.r-a2 path { stroke-width: 2.2; }
+.ct-fig .run.is-linked.r-a1 path { stroke-width: 2.4; }
+.ct-fig .run.is-linked.r-c  path { stroke-width: 2.9; }
+.ct-fig .run.is-linked.r-b1 path { stroke-width: 2.4; }
+.ct-fig .run.is-linked.r-b2 path { stroke-width: 2.1; }
+
+/* Nodes. Absolute opacities, held outside the run groups so they read at the
+   same weight regardless of which run they sit on. Unchanged from the previous
+   figure: these were test points and they are now connection points, which is
+   what a node on a route drawing is. */
+.ct-fig .altpad { opacity: 0.26; }
+.ct-fig .pad    { opacity: 0.46; }
 </style>
 </head>
 
@@ -167,14 +203,16 @@
   </nav>
 
   <section class="page-hero">
-    <!-- Hero figure: a continuity test. Full reasoning and the three
-         maintenance warnings are in the .ct-fig block in the page style
+    <!-- Hero figure: routes drawn and not yet taken. Full reasoning and the
+         three maintenance warnings are in the .ct-fig block in the page style
          above. Read that before editing this.
-         The control is a real checkbox so the figure is operable by keyboard
-         as well as pointer. It carries no visible label because the still
-         state is the argument and the instrument is legible without one. -->
-    <input type="checkbox" id="continuity-test" class="ct-toggle" aria-label="Run the continuity test on the hero figure">
-    <label for="continuity-test" class="ct-fig"><svg viewBox="0 0 1200 480" preserveAspectRatio="xMaxYMax meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A bundle of conductors drawn schematically. One of them is probed at two points and tested for continuity by a meter symbol below."><defs><linearGradient id="ctMask" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#fff" stop-opacity="0.3"/><stop offset="25%" stop-color="#fff" stop-opacity="0.5"/><stop offset="55%" stop-color="#fff" stop-opacity="0.82"/><stop offset="80%" stop-color="#fff" stop-opacity="1"/></linearGradient><mask id="ctm"><rect width="1200" height="480" fill="url(#ctMask)"/></mask><linearGradient id="gA1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="20%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="40%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient><linearGradient id="gA2" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="10%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="32%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient><linearGradient id="gA3" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="27%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="48%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient><linearGradient id="gB1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="30%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="50%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient><linearGradient id="gB2" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="24%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="46%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient><linearGradient id="gC" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="34%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="54%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient></defs><rect class="hit" x="680" y="0" width="520" height="480"/><g mask="url(#ctm)" fill="none" stroke="#2AADA0" stroke-linecap="round" stroke-linejoin="round" pointer-events="none" class="fig"><path class="alt a3" d="M0,112 H640 L692,80 H1058" stroke="url(#gA3)" stroke-width="1.4"/><path class="alt a2" d="M0,150 H820 L872,118 H1160" stroke="url(#gA2)" stroke-width="1.7"/><path class="alt a1" d="M0,190 H700 L760,154 H1160" stroke="url(#gA1)" stroke-width="1.9"/><path class="alt b1" d="M0,272 H780 L836,238 H1160" stroke="url(#gB1)" stroke-width="1.9"/><path class="alt b2" d="M0,312 H660 L714,280 H1104" stroke="url(#gB2)" stroke-width="1.6"/><g class="altpad"><circle cx="930" cy="80" r="6.5" stroke-width="1.1" opacity="0.6"/><circle cx="1010" cy="118" r="6.5" stroke-width="1.1"/><circle cx="980" cy="238" r="6.5" stroke-width="1.1" opacity="0.8"/></g><path class="cond" d="M0,222 H820 L875,186 H900" stroke="url(#gC)" stroke-width="2.4"/><path class="cond" d="M1050,186 H1160" stroke-width="2.4"/><path class="unk" d="M900,186 H1050" stroke-width="2.4" stroke-dasharray="4 8"/><path class="rev" d="M900,186 H1050" stroke-width="2.4" opacity="0.85"/><path class="pulse" d="M896,392 C810,392 790,320 790,248 L790,222 L820,222 L875,186 L1090,186 L1090,212 C1102,300 1050,392 964,392" stroke-width="3.4" stroke-dasharray="80 950"/><g class="prb"><path d="M790,248 C790,320 810,392 896,392" stroke-width="1.6"/><path d="M1090,212 C1102,300 1050,392 964,392" stroke-width="1.6"/><path d="M790,231 L783,248 L797,248 Z" fill="#2AADA0" stroke="none"/><path d="M1090,195 L1083,212 L1097,212 Z" fill="#2AADA0" stroke="none"/></g><g class="pad"><circle cx="790" cy="222" r="7.5" stroke-width="1.1"/><circle cx="790" cy="222" r="3.2" fill="#2AADA0" stroke="none"/><circle cx="1090" cy="186" r="7.5" stroke-width="1.1"/><circle cx="1090" cy="186" r="3.2" fill="#2AADA0" stroke="none"/></g><g class="met"><circle cx="930" cy="392" r="34" stroke-width="1.5"/></g><g class="tone"><circle cx="922" cy="392" r="2.7" fill="#2AADA0" stroke="none"/><path class="t1" d="M927.1,385.9 A8,8 0 0 1 927.1,398.1" stroke-width="1.3"/><path class="t2" d="M930.7,381.7 A13.5,13.5 0 0 1 930.7,402.3" stroke-width="1.3"/><path class="t3" d="M934.2,377.4 A19,19 0 0 1 934.2,406.6" stroke-width="1.3"/></g></g></svg></label>
+         There is no keyboard control. The previous figure carried a checkbox
+         because pressing it was a real interaction with a result. Hover now
+         resolves a route and nothing else, the rest state carries the whole
+         argument, and a tab stop leading to a purely visual reward would be
+         noise in the tab order rather than access. The aria-label describes
+         the rest state, which is the complete claim. -->
+    <div class="ct-fig"><svg viewBox="0 0 1200 480" preserveAspectRatio="xMaxYMax meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Six routes drawn across the frame. Each has one section drawn as a dashed line, marking a connection that is specified but not yet made."><defs><linearGradient id="ctMask" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#fff" stop-opacity="0.3"/><stop offset="25%" stop-color="#fff" stop-opacity="0.5"/><stop offset="55%" stop-color="#fff" stop-opacity="0.82"/><stop offset="80%" stop-color="#fff" stop-opacity="1"/></linearGradient><mask id="ctm"><rect width="1200" height="480" fill="url(#ctMask)"/></mask><linearGradient id="gA1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="20%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="40%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient><linearGradient id="gA2" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="10%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="32%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient><linearGradient id="gA3" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="27%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="48%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient><linearGradient id="gB1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="30%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="50%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient><linearGradient id="gB2" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="24%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="46%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient><linearGradient id="gC" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="34%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="54%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient></defs><path class="ct-hit" data-target="a3" d="M620,112 H640 L692,80 H1058"/><path class="ct-hit" data-target="a2" d="M620,150 H820 L872,118 H1160"/><path class="ct-hit" data-target="a1" d="M620,190 H700 L760,154 H1160"/><path class="ct-hit" data-target="c" d="M620,222 H820 L875,186 H1160"/><path class="ct-hit" data-target="b1" d="M620,272 H780 L836,238 H1160"/><path class="ct-hit" data-target="b2" d="M620,312 H660 L714,280 H1104"/><g mask="url(#ctm)" fill="none" stroke="#2AADA0" stroke-linecap="round" stroke-linejoin="round" pointer-events="none" class="fig"><g class="run r-a3" data-run="a3"><path d="M0,112 H640 L692,80 H960" stroke="url(#gA3)" stroke-width="1.4"/><path d="M1030,80 H1058" stroke-width="1.4"/><path class="gap" d="M960,80 H1030" stroke-width="1.4" stroke-dasharray="4 8"/><path class="link" d="M960,80 H1030" stroke-width="1.4"/></g><g class="run r-a2" data-run="a2"><path d="M0,150 H820 L872,118 H1040" stroke="url(#gA2)" stroke-width="1.7"/><path d="M1120,118 H1160" stroke-width="1.7"/><path class="gap" d="M1040,118 H1120" stroke-width="1.7" stroke-dasharray="4 8"/><path class="link" d="M1040,118 H1120" stroke-width="1.7"/></g><g class="run r-a1" data-run="a1"><path d="M0,190 H700 L760,154 H900" stroke="url(#gA1)" stroke-width="1.9"/><path d="M990,154 H1160" stroke-width="1.9"/><path class="gap" d="M900,154 H990" stroke-width="1.9" stroke-dasharray="4 8"/><path class="link" d="M900,154 H990" stroke-width="1.9"/></g><g class="run r-c" data-run="c"><path d="M0,222 H820 L875,186 H900" stroke="url(#gC)" stroke-width="2.4"/><path d="M1050,186 H1160" stroke-width="2.4"/><path class="gap" d="M900,186 H1050" stroke-width="2.4" stroke-dasharray="4 8"/><path class="link" d="M900,186 H1050" stroke-width="2.4"/></g><g class="run r-b1" data-run="b1"><path d="M0,272 H780 L836,238 H1010" stroke="url(#gB1)" stroke-width="1.9"/><path d="M1100,238 H1160" stroke-width="1.9"/><path class="gap" d="M1010,238 H1100" stroke-width="1.9" stroke-dasharray="4 8"/><path class="link" d="M1010,238 H1100" stroke-width="1.9"/></g><g class="run r-b2" data-run="b2"><path d="M0,312 H660 L714,280 H860" stroke="url(#gB2)" stroke-width="1.6"/><path d="M950,280 H1104" stroke-width="1.6"/><path class="gap" d="M860,280 H950" stroke-width="1.6" stroke-dasharray="4 8"/><path class="link" d="M860,280 H950" stroke-width="1.6"/></g><g class="altpad"><circle cx="930" cy="80" r="6.5" stroke-width="1.1" opacity="0.6"/><circle cx="1010" cy="118" r="6.5" stroke-width="1.1"/><circle cx="980" cy="238" r="6.5" stroke-width="1.1" opacity="0.8"/></g><g class="pad"><circle cx="790" cy="222" r="7.5" stroke-width="1.1"/><circle cx="790" cy="222" r="3.2" fill="#2AADA0" stroke="none"/><circle cx="1090" cy="186" r="7.5" stroke-width="1.1"/><circle cx="1090" cy="186" r="3.2" fill="#2AADA0" stroke="none"/></g></g></svg></div>
     <div class="page-hero-content">
       <div class="hero-eyebrow">Contact</div>
       <h1>Start a<br><span>conversation.</span></h1>
@@ -402,6 +440,22 @@
           class="footer-eng-intel">Engineering Intelligence. Delivered.</span></div>
     </div>
   </footer>
+
+  <script>
+    /* Hero figure: hovering a route resolves its unbuilt section and it stays
+       resolved. CSS has no memory of hover, which is the only reason this is a
+       script. It warns rather than failing silently if a hit band has no run,
+       because the figure faults on this site have all been quiet ones. */
+    (function () {
+      const fig = document.querySelector('.ct-fig');
+      if (!fig) return;
+      fig.querySelectorAll('.ct-hit').forEach(function (band) {
+        const run = fig.querySelector('[data-run="' + band.dataset.target + '"]');
+        if (!run) { console.warn('ct-fig: no run matching hit band', band.dataset.target); return; }
+        band.addEventListener('pointerenter', function () { run.classList.add('is-linked'); });
+      });
+    })();
+  </script>
 
   <script>
     function revealEmail() {
