@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Work | Ainsley Williams, Sinclair Dynamics, Johannesburg</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <!-- Google Analytics -->
+  <!-- Analytics removed 9 August 2026, pending the consent gate and privacy
+     notice. Non-essential tracking must not fire before consent, and the
+     gate belongs with the nav and footer single sourcing rather than
+     duplicated per page. Property G-W94Z1196CH. -->
+  <meta name="description"
+    content="Nine pieces of engineering work, from a mine to a broadcast trailer to a monitoring platform. What each person arrived saying, and what the problem turned out to be.">
+  <meta name="keywords"
+    content="Ainsley Williams, Sinclair Dynamics, engineering case studies South Africa, mechatronics engineer Johannesburg, instrumentation calibration, measurement discipline, technical consulting South Africa">
+  <meta name="author" content="Ainsley Williams, Sinclair Dynamics">
+  <meta name="robots" content="index, follow">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sinclairdynamics.co/work.html">
+  <meta property="og:title" content="What happens when someone brings me something | Sinclair Dynamics">
+  <meta property="og:description"
+    content="Nine pieces of engineering work, from a mine to a broadcast trailer to a monitoring platform. What each person arrived saying, and what the problem turned out to be.">
+  <meta property="og:image" content="https://www.sinclairdynamics.co/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Sinclair Dynamics">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What happens when someone brings me something | Sinclair Dynamics">
+  <meta name="twitter:description"
+    content="Nine pieces of engineering work, from a mine to a broadcast trailer to a monitoring platform. What each person arrived saying, and what the problem turned out to be.">
+  <meta name="twitter:image" content="https://www.sinclairdynamics.co/og-image.png">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.sinclairdynamics.co/work.html">
+
+  <style>
+    /* ---------------------------------------------------------------------------
+   PAGE LOCAL STYLES
+   Kept on the page rather than in shared.css, consistent with the homepage and
+   the about page. One construction only, and it does not override any shared
+   class beyond the heading rule it is named for.
+   --------------------------------------------------------------------------- */
+
+    /* ---------------------------------------------------------------------------
+   WORK ITEM
+   The container is .story-section, unchanged, taken from shared.css: 48px of
+   vertical padding, a hairline between siblings, none after the last. Nine
+   items sit in one unbroken run on purpose. Any visual break between them
+   would read as a grouping, and grouping by domain is the exact failure this
+   page exists to correct.
+
+   THE ONE OVERRIDE, AND WHY IT EXISTS
+   .story-section h3 is uppercase at 28px, which is correct for the about page
+   where the headings are two and three words. Here every heading is a full
+   sentence naming a fault, and a full sentence in uppercase at that size reads
+   as shouting rather than as a title. So the display face is kept, the weight
+   is kept, and the transform is dropped. Non-uppercase display type already
+   has precedent on the site at .plate-value and .form-branch-label, though not
+   previously at heading scale. Judge it on screen: if it reads as a different
+   voice from the rest of the site rather than as the same voice at sentence
+   length, this is the rule to change.
+
+   No .story-era label. On the about page that slot carries an era. The
+   equivalent here would carry an industry, and naming the industry is what
+   sorts the reader into a discipline before the account has done its work.
+   --------------------------------------------------------------------------- */
+    .story-section.work-item h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 26px;
+      line-height: 1.25;
+      letter-spacing: 0.01em;
+      text-transform: none;
+      color: var(--slate);
+      max-width: 780px;
+      margin-bottom: 20px;
+    }
+
+    .story-section.work-item .body-text {
+      max-width: 780px;
+    }
+
+    /* The lead sits above the first item and is the only place the page
+       explains itself. Second paragraph is the instruction to the reader and
+       carries the shorter gap so the two read as one thought. */
+    .work-lead .section-lead {
+      margin-bottom: 20px;
+    }
+
+    .work-lead .section-lead:last-of-type {
+      margin-bottom: 56px;
+    }
+
+    @media (max-width: 900px) {
+      .story-section.work-item h3 {
+        font-size: 23px;
+      }
+    }
+
+    /* ---------------------------------------------------------------------------
+   CONTENTS
+   The lead instructs the reader to read until one of the nine sounds like
+   something they have. That instruction is only followable if the nine
+   headings can be seen, and before this they could not be: they were five
+   thousand words apart. The contents puts all nine on the first screen in
+   the order they appear. It groups nothing, labels nothing with a discipline
+   and does not reorder, so the rule the run of items is held to still holds.
+   A continuous rule runs down the left of the list and takes colour on the
+   hovered row. Nothing travels: same reasoning as the nav indicator.
+   --------------------------------------------------------------------------- */
+    .work-contents {
+      max-width: 780px;
+      margin-bottom: 56px;
+    }
+    .work-contents-label {
+      font-family: var(--font-display); font-weight: 600; font-size: 12px;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-mid);
+      display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+    }
+    .work-contents-label::before {
+      content: ''; display: block; width: 24px; height: 2px; background: var(--gray-mid);
+    }
+    .work-contents a {
+      display: grid; grid-template-columns: 34px 1fr; align-items: baseline;
+      padding: 11px 0 11px 16px;
+      border-left: 2px solid var(--gray-light);
+      text-decoration: none;
+      transition: border-left-color 0.2s ease-out;
+    }
+    .work-contents a:hover { border-left-color: var(--teal); }
+    .work-contents .wc-n {
+      font-family: var(--font-display); font-weight: 700; font-size: 13px;
+      letter-spacing: 0.1em; color: var(--gray-mid);
+      transition: color 0.2s ease-out;
+    }
+    .work-contents .wc-t {
+      font-size: 15px; line-height: 1.45; color: var(--slate);
+      transition: color 0.2s ease-out;
+    }
+    .work-contents a:hover .wc-n,
+    .work-contents a:hover .wc-t { color: var(--teal); }
+
+    /* ---------------------------------------------------------------------------
+   ITEM NUMERAL AND LEAD PARAGRAPH
+   The numeral sits in the slot the about page gives to .story-era. That slot
+   was left empty here because the equivalent label would be an industry, and
+   naming the industry sorts the reader before the account has done its work.
+   A position in a sequence is not an industry and does not group: it is the
+   same mark on all nine and it states that the run is unbroken. It also gives
+   a reader five thousand words in some idea of how far there is to go.
+   The first paragraph of each item is set slightly larger and darker. Every
+   item opens on the arrival, so this gives each one a visible way in without
+   a break between items and without a summary line that would function as a
+   label.
+   --------------------------------------------------------------------------- */
+    .work-item-index {
+      font-family: var(--font-display); font-weight: 700; font-size: 12px;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray-mid);
+      margin-bottom: 10px;
+    }
+    .story-section.work-item .body-text:first-of-type {
+      font-size: 17px;
+      line-height: 1.75;
+      color: #3E5762;
+    }
+    /* Fixed nav is 68px. Without this a jump link lands with the heading
+       underneath it. */
+    .story-section.work-item { scroll-margin-top: 92px; }
+
+    @media (max-width: 900px) {
+      .work-contents .wc-t { font-size: 14.5px; }
+      .work-contents a { grid-template-columns: 30px 1fr; padding-left: 12px; }
+      .story-section.work-item .body-text:first-of-type { font-size: 16px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV:START  Single-sourced block. Identical on every page except the
+       active entry, which is set from the page's own filename. To change the
+       nav, change it here and reapply to every page between these markers.
+       The Engagement joins the list between The Work and Contact when that
+       page exists; nothing else moves. The four discipline pages have left
+       the nav and are reached from the footer Services column. -->
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="sinclair-nav-icon.png" alt="Sinclair Dynamics"
+        style="height:52px;width:auto;"></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="work.html" class="active">The Work</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="contact.html" class="nav-cta">Get In Touch</a>
+  </nav>
+  <!-- NAV:END -->
+
+  <!-- ===== 1. HERO =====================================================
+       No hero figure, and that is deliberate rather than unfinished. Every
+       figure on this site went through its own design pass; designing one
+       inside a page build would put it outside that process. The argument
+       page was held to the same rule.
+       ================================================================== -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <div class="hero-eyebrow">The Work</div>
+      <h1>What happens<br>when someone<br><span>brings me something.</span></h1>
+      <p class="page-hero-sub">Nine pieces of work. A plant, a house, a trailer, a fitness device, a promotional stand, a fleet of motorcycles, a beacon network, a portfolio of solar installations, and a domestic electrical study.</p>
+    </div>
+  </section>
+
+  <!-- ===== 2. THE NINE ITEMS ===========================================
+       Order is the argument. No two consecutive items sit in the same
+       domain, so a reader cannot file the work under one industry. Do not
+       reorder to group them, do not add subheadings between them, and do
+       not label any of them with a discipline.
+       Each item is an arrival followed by a finding. No dates, no outcomes
+       after the fact, no named people, companies, sites, brands or
+       products anywhere on this page.
+       ================================================================== -->
+  <section>
+    <div class="section-inner">
+      <div class="work-lead">
+      <p class="section-lead">They have no industry in common and they are deliberately not sorted into any. What they have in common is the shape of what was actually wrong, which in almost every case was not what anyone said when they arrived.</p>
+      <p class="section-lead">Read until one of them sounds like something you have.</p>
+      </div>
+
+      <div class="work-contents" role="navigation" aria-label="The nine items">
+        <div class="work-contents-label">The nine</div>
+        <a href="#w1"><span class="wc-n">01</span><span class="wc-t">Every instrument on the plant was being measured against a mass nobody had checked</span></a>
+        <a href="#w2"><span class="wc-n">02</span><span class="wc-t">A beacon does not track anybody, which is not what anyone thought they were buying</span></a>
+        <a href="#w3"><span class="wc-n">03</span><span class="wc-t">The only complete copy of the design was the object itself</span></a>
+        <a href="#w4"><span class="wc-n">04</span><span class="wc-t">Everybody was sizing a system against a utility bill nobody had opened</span></a>
+        <a href="#w5"><span class="wc-n">05</span><span class="wc-t">Nothing that a design normally starts from was available, and none of it arrived later</span></a>
+        <a href="#w6"><span class="wc-n">06</span><span class="wc-t">A few minutes a month, per system, is what a portfolio actually affords</span></a>
+        <a href="#w7"><span class="wc-n">07</span><span class="wc-t">Every component was doing exactly what it was designed to do</span></a>
+        <a href="#w8"><span class="wc-n">08</span><span class="wc-t">The people using it did not choose it, cannot be trained on it, and cannot see it</span></a>
+        <a href="#w9"><span class="wc-n">09</span><span class="wc-t">One person to make all of it go away, on a specification that could not be written</span></a>
+      </div>
+
+        <div class="story-section work-item" id="w1">
+          <div class="work-item-index">01 / 09</div>
+          <h3>Every instrument on the plant was being measured against a mass nobody had checked</h3>
+          <p class="body-text">The conveyor scales were not producing reliable figures. The manufacturer and the installer both maintained that the equipment was working correctly, and on their own terms they were right. The calibration procedure was slow enough that people avoided it, and everyone involved had run out of ideas. The question put to me was whether to live with the instruments, abandon them, or spend money replacing them. It mattered because the plant was processing ore on behalf of its neighbours, so those scales were the basis on which the work was billed.</p>
+          <p class="body-text">The calibration that was being performed went like this. Stop the belt. Bring up an elevating platform. Lay chains of known mass across the belt, take a reading, lay more chains, take another. Do the arithmetic, enter a revised coefficient, reset the chains, and run the whole thing again. It took three or four rounds to settle, every time, on every belt.</p>
+          <p class="body-text">The arithmetic in use converged, and that is why nothing looked wrong. It agreed with the alternative whenever the error was small, and separated from it as the error grew. So each pass genuinely did produce a better reading than the one before, and repeated enough times it would have arrived at the same place. The cost sat in how many times enough was. Three or four rounds had become the accepted price of a calibration rather than a signal about the method, and every round was a stopped belt on a plant that earns while the belt runs.</p>
+          <p class="body-text">Underneath that sat something simpler. The chains themselves were the reference for every measurement on the plant, and nobody had ever weighed them or measured their length. When we did, the target figure moved. Everything referenced back to it moved with it.</p>
+          <p class="body-text">The screening on the instrumentation cabling was also earthed nowhere, and I had it terminated properly. I believed it helped. I did not establish that, and I record it as necessary work rather than as the finding.</p>
+          <p class="body-text">With the arithmetic corrected and the reference verified, four of the belts requiring revision were each brought inside tolerance in a single adjustment. The before and after states sit as numbers on the same sheet. I left the site with a small tool that takes three readings and returns the corrected coefficient, and a benchmark weight for each belt so that a rough check could be made in future without stopping anything or handling a chain.</p>
+          <p class="body-text">I did not present this as a correction, because it was not one. I set out the ways the instrument can be calibrated, and named the one I would use and what it saves.</p>
+        </div>
+
+        <div class="story-section work-item" id="w2">
+          <div class="work-item-index">02 / 09</div>
+          <h3>A beacon does not track anybody, which is not what anyone thought they were buying</h3>
+          <p class="body-text">An advertising business wanted a network of proximity beacons across venues and across its own vehicle fleet, so that people near a screen could be identified and sent something relevant, and so that advertisers could be shown that their spend had actually reached somebody. The whole commercial proposition rested on the word tracking.</p>
+          <p class="body-text">A beacon transmits an identifier a few times a second. That is the entirety of what it does. It does not detect anyone, does not know who is nearby, and cannot send anything to anybody. Every part of the thing being sold happens inside an application on a member of the public's phone, which means it depends on a partner having integrated with the estate, and on that partner's app being installed, running, and permitted to listen. There was a period when a beacon could reach a phone with no app involved at all, and that capability was withdrawn deliberately by the platform owner because of how it could be used. So the version everybody remembers did exist, and it was closed on purpose. A beacon is a lighthouse. It does not know how many ships are out there and it does not need to. It broadcasts, and the vessels that want the benefit take it.</p>
+          <p class="body-text">That correction is worth recording as a finding about communication rather than about technology. It was understood inside a conversation and gone by the next one, more than once, because the incorrect version is simpler and matches what everyone assumes. A correction that has to be made again every time is not a correction. It has to live in something that outlasts the meeting.</p>
+          <p class="body-text">The instruction I was given was to programme the beacons. What I built instead was a naming and identification scheme, because a device found on a wall two years later should say whose it is and which one it is without anybody consulting a list, and because if the estate ever grew, managing it was going to land on me. One identifier for the organisation, location encoded in one field, vendor and purpose in another, and the namespace derived from a hash of the client's own domain, so the estate's identity comes from something they own rather than from a number somebody typed once. Readable by eye off a scan.</p>
+          <p class="body-text">The finding that mattered most came from insisting on testing twice. Every position was measured in an empty stadium and again with a full house during a major fixture. One mounting position had been chosen specifically because it was reachable from ground level, which avoids working at height, permits, and everything that comes with them. It performed perfectly in the empty building and did not work at all with a crowd in it, because the signal path ran across the bowl at the height of the people standing in it. That converts high mounting from a preference into a requirement, and every venue added to the estate inherits the access and permit cost that follows. Tested once, in the condition that is convenient to test in, the estate would have been signed off and would have failed on precisely the nights it exists for.</p>
+        </div>
+
+        <div class="story-section work-item" id="w3">
+          <div class="work-item-index">03 / 09</div>
+          <h3>The only complete copy of the design was the object itself</h3>
+          <p class="body-text">A resistance band fitness device had reached working prototype, and the electronics needed to go inside a handle that was already designed. The shape could not change, because it has to sit in a hand, and the display could not move. The firmware belonged to somebody else and stayed with them. What I was asked for was the physical realisation of intelligence that already existed.</p>
+          <p class="body-text">What existed was a development board with jumper leads pushed onto both pin rails, a display module, an amplifier breakout, three switches with wires soldered directly to their legs, and two bridge resistors suspended in free air and wrapped in tape. It worked. It would not have survived being carried across a table. The only documentation was the firmware source, and source code structurally cannot state what is wired to what, so the build instruction for the circuit existed in exactly one place, which was the assembly in front of me. Unwrapping the tape was the point at which part of the design became knowable. I drew a connection schematic off the object, recording every wire by function, by pin, by colour at both ends and by destination, and it showed printed terminal labels that disagreed with the wires landing on them. Anyone rebuilding that circuit from what it said would have built something else.</p>
+          <p class="body-text">Before the production board I built a bench version, because two parties were blocked on each other and the blockage belonged to neither of them. The firmware could not be judged, since a person working three loose switches on wires cannot tell a software fault from a mis-press. Once there was something that could be set down and operated, the software could be evaluated on its own terms. The production version went in as a milled carrier board cut to the housing rather than to the circuit, with a notch and a stepped tab, and with the charging socket brought out to a point on the handle where it does not interfere with use.</p>
+          <p class="body-text">The same client came back a year later, and what was missing that time had nothing electronic in it. Development had been self funded over more than a decade, and the step in front of the business was manufacture, which nobody had costed. I built a five year monthly model of the business, where stock orders and loan drawdowns are taken by rule inside the model rather than scheduled by hand, so that the plan could be tested and argued with rather than presented. It was handed over with the input cells unlocked and the rest protected, because the point was that the client could run their own scenarios against it.</p>
+          <p class="body-text">Neither half of that work stands on its own. The costings that drive the model come out of the physical thing, so a financial mind arriving cold has no way to know which inputs matter or what a change to one of them does downstream. The reverse is equally true. Knowing the device intimately tells you nothing about what a funder needs to see, or how a manufacturing ramp consumes cash before it produces any. The two jobs ran into each other because one person held both ends, and I brought in a specialist for the statutory financial statements rather than take them to a standard I would have been guessing at.</p>
+        </div>
+
+        <div class="story-section work-item" id="w4">
+          <div class="work-item-index">04 / 09</div>
+          <h3>Everybody was sizing a system against a utility bill nobody had opened</h3>
+          <p class="body-text">People kept asking me the same question, which was some version of whether the quote in front of them was right. What sat underneath it was always the same thing. They were about to commit serious capital to a solar, inverter and battery installation, and the only number anyone had brought to the decision was a monthly account total. A monthly total tells you how much energy a household used. It says nothing about when any of it happened, and when is the entire question, because a system is sized against the shape of a day and not against a sum.</p>
+          <p class="body-text">So the service put an instrument in the distribution board first. A week of logging on the incomer and on the circuits that matter, geysers and ovens and pools, at minute resolution, and then that measured profile driven through a simulation of a proposed system to see what it would actually have done across that week. Not a rule of thumb and not a supplier's sizing sheet. The household's own behaviour, run against the equipment being considered.</p>
+          <p class="body-text">What it found was rarely the system. One client was quoted an amount that alarmed them, and the quote was correct: the installer had been told that the client never wanted to hear from the utility again, which specifies a full off grid system, and the price was that instruction faithfully executed. Another had a single occupant, a two bedroom house and no significant routine load beyond water heating. A fraction of what a system would have cost went on solar water heating instead, which dropped the account by around sixty percent and moved the household into a lower tariff band, and that compounds the saving past the units avoided. The third deliberated one decision at length, which was whether to carry an electric geyser on a larger inverter and battery and manage it by schedule, or take the geyser off the system entirely. Two reports were issued rather than one, modelling the same household and the same measured week against two configurations, because the answer needed was not a recommendation but an understanding of what was being taken on.</p>
+          <p class="body-text">The measurement also settles arguments that would otherwise run for months. A system that was not saving anything turned out to be carrying a lighting load nobody had replaced, which had forced the installer to hold the battery high to survive an evening outage, which in turn prevented the battery from cycling and suppressed the very return the owner was using to judge the system. Four things, one cause, and none of it visible without the week of data.</p>
+        </div>
+
+        <div class="story-section work-item" id="w5">
+          <div class="work-item-index">05 / 09</div>
+          <h3>Nothing that a design normally starts from was available, and none of it arrived later</h3>
+          <p class="body-text">A promotional stand needed a game inside it. Nine large illuminated buttons in a grid, one lights at random, the player has to strike it before the time runs out, it gets faster as they go, and it ends on a wrong press or a late one. The brief was about three sentences long, describing a vision that had been discussed somewhere upstream of me. It must be a game, people must push buttons, it must work. The job arrived already late.</p>
+          <p class="body-text">The lights were unspecified. LED strip was going to be cut off a roll in whatever quantity each button took, and nobody could state the type, the voltage, the current or the count. The enclosure was unspecified, so I could not be told what the electronics would be mounted to or inside. The gameplay was unspecified, and questions about scoring and difficulty came back empty. And the person who would finally wire the buttons and lights to my board was not going to be me. I established early that I would never stand in front of the finished machine.</p>
+          <p class="body-text">So each unknown was turned into something that did not need to be known. The output stage became an off the shelf relay board, because a relay does not care what is on the other side of it within its contact rating, and it terminates in screw terminals that the person actually doing the wiring can use. The channel count was held as a single value rather than as a constant, so the same system was an up to nine button game that happened to be set to nine. The electronics went onto a self supporting frame built as small as it could be, so that it could later be bolted into whatever got built around it, and a removable test panel of nine buttons sat above it on standoffs so the whole thing could be proved on a desk and then unbolted.</p>
+          <p class="body-text">The rules, the scoring, the difficulty ramp and the failure conditions are mine. They had to be, because nobody was going to supply them. Difficulty is chosen by which button you start with, so it needs no menu and no extra hardware, since nine buttons already exist. The high score decays a little each game, because otherwise one strong player early in the day makes the display meaningless for everyone after them. The score is reported on the nine lights, on a machine with no screen.</p>
+          <p class="body-text">The last piece is the one I would build again first. Every power on runs a routine that steps through each button, flashes its light, waits for the press and confirms that channel before moving on. At my bench I had a serial terminal. On site there would be no terminal, no laptop and nobody technical, so the routine reports through the only outputs the machine has, in a sequence an untrained person can be walked through by telephone and can describe back accurately without understanding any of it. When the call came that the machine was not working, that is what separated a button fault from a lighting fault on hardware I had never touched.</p>
+        </div>
+
+        <div class="story-section work-item" id="w6">
+          <div class="work-item-index">06 / 09</div>
+          <h3>A few minutes a month, per system, is what a portfolio actually affords</h3>
+          <p class="body-text">At portfolio scale the person using a solar system is not the person who owns it, financed it or maintains it, and those parties do not hold the same idea of what a working system means. When something goes wrong, the question is not whether there was power. It is what has been happening for the past month, what changed, and which of the weather, the settings, the equipment or the way the site is being used is responsible. Answering that for one system takes real attention. Across several hundred, at the staffing any such business can justify, the honest answer is a few minutes per system per month. So nobody looks, not through negligence but because looking has never been affordable.</p>
+          <p class="body-text">I built the thing that closes that gap, and I built it on my own system first because it was the only one I had. It polls each site's own interface and a weather feed continuously, and hands what it collects to an AI observer that assesses behaviour rather than plotting it. The output of that is the real problem. An observation every hour is useful once and unusable in bulk, and reading the entire history back on every question is straightforward to write and impossible to pay for. So observations compress upward through tiers, each folding into the one above at a boundary, in the way a report carries a body and a summary and an executive summary, where every level is readable on its own terms rather than being an encoding of the one beneath it. The boundaries are astronomical rather than calendar, sunrise and sunset, so they move through the year without anyone correcting them seasonally.</p>
+          <p class="body-text">The part that changed what it is for came later. A weekly graph oscillates seven times and asks you to spot which oscillation has the wrong shape, which requires attention and prior knowledge of the right shape. A written summary can state the pattern, which the graph cannot. But you can zoom into a graph and you cannot zoom into a paragraph. So the conversation is with something that has already done the analysis. It is not a search over the reports, and there is no question you have to phrase correctly. Ask what concerns you and the answer comes back reasoned against everything the system knows about that installation, at whatever depth you follow it to.</p>
+          <p class="body-text">It runs live across six sites belonging to several owners, on five manufacturers' equipment, which is where most of the engineering actually went. An audit across those sites found one site reporting half its generation because of a parsing fault that had been there since commissioning, and values sitting in the database that had never reached the observer at all. Nobody reported either. They were found by going looking.</p>
+          <p class="body-text">Both faults are the same kind of fault, and it is a common one. Nothing here originates its own data. Every value is fetched from equipment built by somebody else, published through an interface built by somebody else again, and then landed in a field on my side that carries a name and a meaning I assigned to it. That last step is where these things go wrong. Two channels arrive and only the last one is kept. A unit is assumed rather than stated. A field is added upstream and nobody downstream is told, or one is renamed and everything continues to read perfectly. The number on the screen does not flinch in any of those cases, which is precisely the difficulty: there is nothing to notice.</p>
+          <p class="body-text">So the mapping between what an installation publishes and what the system is told it means now sits in the database, where it is visible and can be inspected, rather than inside the code that does the fetching. Anything not deliberately connected is never recorded and never reasoned from. The observer never works from a number that nobody put there on purpose.</p>
+        </div>
+
+        <div class="story-section work-item" id="w7">
+          <div class="work-item-index">07 / 09</div>
+          <h3>Every component was doing exactly what it was designed to do</h3>
+          <p class="body-text">Delivery motorcycles were carrying illuminated advertising screens, and the batteries were going flat. Riders were paying for replacements, which was a problem, because the screens had been sold to them as extra income earned while doing the deliveries they already do. The reading I was given on arrival was that this was a rider behaviour problem. They were leaving the ignition on.</p>
+          <p class="body-text">They were, and there was a reason. The phone is the job, because that is where the delivery work arrives, and the phone charges off the bike. The screens are wired to the ignition too. So a rider waiting for the next trip either keeps the ignition on and runs three screens on a stationary bike, or switches off and stops receiving work. Both parties on that bike are behaving correctly and they are competing for the same switch.</p>
+          <p class="body-text">The first pass was a protection board that cut the load before the battery was damaged, which was the right proportionate fix for the complaint as it stood. It surfaced the real question. Any threshold that protected the battery properly left the screens dark for too long to be worth selling, and any threshold that kept the screens up damaged the battery. The client's description of that was a duty cycle with no acceptable setting, and that was accurate. No setting existed.</p>
+          <p class="body-text">What was missing was a measurement nobody had taken. Nobody knew what these screens actually drew, under what content, at what brightness, or how bright they need to be to be readable in the conditions they operate in. So it got measured, on a bench, against the client's own artwork in live use and against artwork built specifically for benchmarking. Several things fell out at once. The single largest lever on power was the content itself, because a white frame drives every element of every pixel at full power, which put the biggest saving in the creative department rather than in the hardware. The controller's brightness sensor was effectively on or off and went to full output whenever it decided to, which is correct behaviour for a screen that has been specified for its application, and these had not been. And the controller rebooted every time protection fired, taking well over a minute to come back, so the protection was costing more display time than the threshold suggested.</p>
+          <p class="body-text">None of that is a fault in anything. The panels were doing what panels do. The controller was doing what controllers do. The specification step, where you choose peak brightness against the conditions and the energy available, had simply never been taken, and every consequence downstream inherited that. The fixes followed from it: the brightness ceiling set in the sensing circuit rather than left to the controller, the controller given its own small permanent supply so that protection sheds the screens without restarting the system, and switching moved onto the supplies' own control inputs instead of interrupting the main power path.</p>
+        </div>
+
+        <div class="story-section work-item" id="w8">
+          <div class="work-item-index">08 / 09</div>
+          <h3>The people using it did not choose it, cannot be trained on it, and cannot see it</h3>
+          <p class="body-text">This one is mine. I built it in my own house, at my own cost, and it has to keep working because I live in it. A wife, guests and a tenant in a cottage all depend on it, and not one of them asked for it, can be sent on a course about it, or has any interest in how it decides anything. That constraint is the whole engineering problem, and it is the same constraint that applies in any plant or building where the person operating something is not the person who designed it.</p>
+          <p class="body-text">What it does is coordinate rather than schedule. A solar installation, lighting, appliances, cameras, an alarm and a tenant's cottage all sat on separate platforms with no knowledge of each other, which meant the electric geyser ran to a timer set for when the inverter ought to be able to carry it rather than for when it actually could. So the geyser stopped being a load that is on or off and became a store, holding a quantity of energy the way a battery does. It charges against a target for the end of the day, hot water and a full battery arriving together, and the target is what the household needs rather than what the vessel can reach. Export to the grid is not available here, so when generation is being curtailed with nowhere to go, the geyser is deliberately run past that target, because the alternative is that the energy is not harvested at all.</p>
+          <p class="body-text">Because nobody can be trained, everything is ranked by what a person notices. The geyser sheds first, since it can be off for several minutes and no one perceives it. Then things running that nobody deliberately started. Never the kettle or the microwave, because somebody is standing at it having just chosen to use it. The tenant is told before anything of theirs is interrupted. Every override is temporary by construction and falls back to a defined state, because an override that waits to be cancelled is a trap: whoever set it has forgotten it by the time it matters, and the failure is silent.</p>
+          <p class="body-text">The part I would point at, though, is smaller than any of that. Almost nothing in this system trusts a rated figure. The usable depth of the battery comes from how that battery behaves now, aged, rather than from its specification. The energy in the geyser is calibrated from watching how fast that vessel with that probe in that position actually moves, so the calibration absorbs the fact that the probe is in the worst place on the cylinder. What the array can currently produce is read from what it does at the moments it is being asked for everything, so the reference corrects itself downward through cloud, season and the time of day with nothing modelled and nothing predicted. Five instances of an observed number replacing a declared one, in one building, arrived at separately and before I had a name for what I was doing.</p>
+        </div>
+
+        <div class="story-section work-item" id="w9">
+          <div class="work-item-index">09 / 09</div>
+          <h3>One person to make all of it go away, on a specification that could not be written</h3>
+          <p class="body-text">A production trailer had been bought and needed to become a working broadcast unit. What arrived with it was a list of ideas held in somebody's head, a quantity of equipment already purchased, more that was known to be still coming, and a fault: the brake and indicator lights had failed shortly after collection, with the manufacturer several provinces away and no practical route back to them. What was wanted was one person who would take all of it and make it work.</p>
+          <p class="body-text">There was no documented specification and there was never going to be one, but that is not the same as not knowing what was wanted. Decades in the industry meant the requirement was held precisely and stated verbally, in terms of what the unit had to be able to do on a job. What did not exist was the translation of that into equipment, loads and positions, which is the part that has to be produced before anything can be mounted. The equipment set was partly bought, partly identified and partly unknown, so the eventual electrical load could not be stated by anybody. Where several things belonged could not be decided until the space had been worked in. The budget was personal money. And two constraints were stated at the outset that shaped nearly every decision: it travels, so anything mounted has to survive sustained vibration over whatever the route presents, and it must look uninteresting from the outside, because of what it carries.</p>
+          <p class="body-text">Those two turn up together in one detail. Five monitors had to go on the walls, and the intention was to rivet the brackets on. The panel is a sandwich with an inner skin around two millimetres thick, and rivets landing only in that skin are not the structure. So the fixings go right through the panel, with large washers spreading the load on both faces, a rounded cap head outside finished in the same white as the trailer, and a locking nut arrangement inside. That single detail answers vibration, answers the theft posture, since a rectangular pattern of visible fasteners announces exactly what is on the other side of the wall, and answers tampering, because removal now needs a person on each side.</p>
+          <p class="body-text">The same pattern runs through the rest. Aluminium is continuous on both faces of that box, so the mobile routers inside it could not reach anything until both antenna pairs were moved onto the roof. The air conditioner was discharging condensate inside the trailer, over the electronics, because its drain only falls correctly when the trailer sits level, and a trailer parked where it stopped is not level. Three purchases were scoped for that, a drain pump, a relocated drain, a bottle jack. None was bought. What it needed was a bubble level fixed to the chassis and a sequence using the jockey wheel and corner legs the trailer already has, worked round the corners until it reads level in both directions. The inverter had to be permanent but removable, so when it comes out the two plugs left behind mate to each other and the trailer simply runs on incoming supply. A changeover switch was considered and rejected, because a changeover switch is a thing somebody has to understand and operate correctly under pressure, and two plugs joining together is not.</p>
+          <p class="body-text">Then everything that could be bonded was bonded, and an earth spike made up to land on the chassis under a wing nut, so it goes on and comes off without tools and cannot be left connected when the trailer moves. That was raised by me rather than asked for. It is a compliance matter when the unit runs off a generator with no site earth, and separately it is why the crews working in there now remark that the trailer is unusually quiet.</p>
+          <p class="body-text">What decided this job was that all of it had to be one person. On any larger budget it is an engineer to specify the systems, a draughtsman to document them, an artisan to build it, and somebody else again to commission and test. That sequence is correct and it is also several times the cost, and the money here was personal. So the same person who configured the routers and the network also riveted the cable tray, drilled the countertops and bolted the monitors through the wall. And that has consequences a divided team has to hold meetings about. The tray has to clear the knees of people sitting at the desk all day and still be reachable when somebody needs to run a temporary cable mid-broadcast. The person deciding where the tray goes is the person who has watched the room being worked in. There is no handover in the middle for that to be lost across.</p>
+        </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. CLOSE: one route out =====================================
+       One route, not a fork. The page has already worked on the reader by
+       this point, and offering a choice at the moment of recognition is a
+       way of losing them to a decision. Monitoring Calibration stays
+       reachable from the nav and from the argument page.
+       ================================================================== -->
+  <section style="background: var(--off-white);">
+    <div class="section-inner" style="text-align:center;">
+      <div class="section-eyebrow" style="justify-content:center;">Contact</div>
+      <h2 class="section-title">If one of them<br><span>sounded familiar</span></h2>
+        <p class="section-lead" style="margin:0 auto 24px;">The common thread is not the industry. It is that something was working, nobody was complaining, and it was quietly costing more than anyone had established.</p>
+        <p class="section-lead" style="margin:0 auto 24px;">If you recognised your own situation in any of the above, that is usually enough to start a conversation with. You do not need to be able to describe the problem properly. Being able to describe it properly is generally the last thing that happens, not the first.</p>
+      <a href="contact.html" class="btn-primary" style="margin-top:16px;">Get In Touch</a>
+    </div>
+  </section>
+
+  <!-- FOOTER:START  Single-sourced block. Byte-identical on every page. -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <svg width="56" height="56" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:16px;"
+            aria-hidden="true">
+            <rect width="48" height="48" rx="10" fill="#E8392A" />
+            <rect x="27" y="27" width="20" height="20" rx="4" fill="#C0281A" opacity="0.5" />
+            <path
+              d="M24 14.5a1.5 1.5 0 0 1 1.5 1.5v1.2a7.5 7.5 0 0 1 2.6 1.08l.85-.85a1.5 1.5 0 0 1 2.12 2.12l-.85.85A7.5 7.5 0 0 1 31.3 23H32.5a1.5 1.5 0 0 1 0 3h-1.2a7.5 7.5 0 0 1-1.08 2.6l.85.85a1.5 1.5 0 0 1-2.12 2.12l-.85-.85A7.5 7.5 0 0 1 25.5 31.8V33a1.5 1.5 0 0 1-3 0v-1.2a7.5 7.5 0 0 1-2.6-1.08l-.85.85a1.5 1.5 0 0 1-2.12-2.12l.85-.85A7.5 7.5 0 0 1 16.7 26H15.5a1.5 1.5 0 0 1 0-3h1.2a7.5 7.5 0 0 1 1.08-2.6l-.85-.85a1.5 1.5 0 0 1 2.12-2.12l.85.85a7.5 7.5 0 0 1 2.6-1.08V16a1.5 1.5 0 0 1 1.5-1.5zm0 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"
+              fill="white" />
+          </svg>
+          <div class="footer-tagline">Engineering Intelligence. Delivered.</div>
+          <p>Technical consulting and engineering from Johannesburg, South Africa. Working with clients across the
+            continent.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4><a href="monitoring-calibration.html">Monitoring Calibration</a><a
+            href="project-management.html">Project Management</a><a href="technical-consulting.html">Technical
+            Consulting</a><a href="ai-digital.html">AI &amp; Digital</a><a href="energy-systems.html">Energy &amp; Power
+            Systems</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4><a href="work.html">The Work</a><a href="about.html">About Ainsley</a><a href="contact.html">Contact</a><a
+            href="https://www.linkedin.com/in/ainsley-williams-18107015/" target="_blank" rel="noopener" class="footer-linkedin"><svg
+              width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+              style="vertical-align:middle;margin-right:6px;" aria-hidden="true">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>LinkedIn Profile</a>
+          <p style="font-size:13px;margin-top:8px;line-height:1.5;">Profile and work history on LinkedIn.</p>
+        </div>
+      </div>
+      <div class="footer-bottom"><span class="footer-copy">&copy; 2026 Sinclair Dynamics. All rights
+          reserved.</span><span class="footer-eng-intel">Engineering Intelligence. Delivered.</span></div>
+    </div>
+  </footer>
+  <!-- FOOTER:END -->
+</body>
+
+</html>

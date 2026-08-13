@@ -193,14 +193,24 @@
 </head>
 
 <body>
-  <nav><a href="index.html" class="nav-logo"><img src="sinclair-nav-icon.png" alt="Sinclair Dynamics"
+  <!-- NAV:START  Single-sourced block. Identical on every page except the
+       active entry, which is set from the page's own filename. To change the
+       nav, change it here and reapply to every page between these markers.
+       The Engagement joins the list between The Work and Contact when that
+       page exists; nothing else moves. The four discipline pages have left
+       the nav and are reached from the footer Services column. -->
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="sinclair-nav-icon.png" alt="Sinclair Dynamics"
         style="height:52px;width:auto;"></a>
-    <div class="nav-links"><a href="index.html">Home</a><a href="project-management.html">Project Management</a><a
-        href="technical-consulting.html">Technical Consulting</a><a href="ai-digital.html">AI &amp; Digital</a><a
-        href="energy-systems.html">Energy &amp; Power</a><a href="about.html">About</a><a href="contact.html"
-        class="active">Contact</a></div><a href="https://monitor.sinclairdynamics.co" class="nav-monitor">System
-      Monitor</a><a href="contact.html" class="nav-cta">Get In Touch</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="work.html">The Work</a>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
+    <a href="contact.html" class="nav-cta">Get In Touch</a>
   </nav>
+  <!-- NAV:END -->
 
   <section class="page-hero">
     <!-- Hero figure: routes drawn and not yet taken. Full reasoning and the
@@ -403,12 +413,13 @@
     </div>
   </section>
 
+  <!-- FOOTER:START  Single-sourced block. Byte-identical on every page. -->
   <footer>
     <div class="footer-inner">
       <div class="footer-top">
         <div class="footer-brand">
-          <svg width="56" height="56" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"
-            style="margin-bottom:16px;" aria-hidden="true">
+          <svg width="56" height="56" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:16px;"
+            aria-hidden="true">
             <rect width="48" height="48" rx="10" fill="#E8392A" />
             <rect x="27" y="27" width="20" height="20" rx="4" fill="#C0281A" opacity="0.5" />
             <path
@@ -416,17 +427,17 @@
               fill="white" />
           </svg>
           <div class="footer-tagline">Engineering Intelligence. Delivered.</div>
-          <p>Technical consulting and engineering from Johannesburg, South Africa. Working with clients across
-            the continent.</p>
+          <p>Technical consulting and engineering from Johannesburg, South Africa. Working with clients across the
+            continent.</p>
         </div>
         <div class="footer-col">
           <h4>Services</h4><a href="monitoring-calibration.html">Monitoring Calibration</a><a
-            href="project-management.html">Project Management</a><a
-            href="technical-consulting.html">Technical Consulting</a><a href="ai-digital.html">AI &amp; Digital</a><a
-            href="energy-systems.html">Energy &amp; Power Systems</a>
+            href="project-management.html">Project Management</a><a href="technical-consulting.html">Technical
+            Consulting</a><a href="ai-digital.html">AI &amp; Digital</a><a href="energy-systems.html">Energy &amp; Power
+            Systems</a>
         </div>
         <div class="footer-col">
-          <h4>Connect</h4><a href="about.html">About Ainsley</a><a href="contact.html">Contact</a><a
+          <h4>Connect</h4><a href="work.html">The Work</a><a href="about.html">About Ainsley</a><a href="contact.html">Contact</a><a
             href="https://www.linkedin.com/in/ainsley-williams-18107015/" target="_blank" rel="noopener" class="footer-linkedin"><svg
               width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
               style="vertical-align:middle;margin-right:6px;" aria-hidden="true">
@@ -436,10 +447,11 @@
           <p style="font-size:13px;margin-top:8px;line-height:1.5;">Profile and work history on LinkedIn.</p>
         </div>
       </div>
-      <div class="footer-bottom"><span class="footer-copy">© 2026 Sinclair Dynamics. All rights reserved.</span><span
-          class="footer-eng-intel">Engineering Intelligence. Delivered.</span></div>
+      <div class="footer-bottom"><span class="footer-copy">&copy; 2026 Sinclair Dynamics. All rights
+          reserved.</span><span class="footer-eng-intel">Engineering Intelligence. Delivered.</span></div>
     </div>
   </footer>
+  <!-- FOOTER:END -->
 
   <script>
     /* Hero figure: hovering a route resolves its unbuilt section and it stays
