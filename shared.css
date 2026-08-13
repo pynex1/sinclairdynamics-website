@@ -343,6 +343,59 @@ section { position: relative; }
   transition-duration: 0.1s;
 }
 
+/* PROOF BOX
+   A panel that contains a call to action is itself the anchor, per the visual
+   language rule adopted 7 August 2026: the reader should not have to find the
+   small text. Commit tier, so it carries the 4px lift and the shadow that
+   marks an element as a door rather than a panel. Dark-background variant of
+   the shadow. Lived in index.html until 13 August, when a second page needed
+   it and two copies would have drifted. Built for dark sections.
+   Radius corrected from `0 4px 4px 0` on 13 August. It carried the one sided
+   radius rule that visual language 2.1 withdrew on 8 August; it was missed at
+   the time because it lived in the homepage's local styles, which that audit
+   did not open. */
+.proof-box {
+  display: block; text-decoration: none;
+  background: rgba(42,173,160,0.12);
+  border-left: 4px solid var(--teal-bright);
+  border-radius: 4px;
+  padding: 22px 26px;
+  font-size: 15px; line-height: 1.7;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 16px;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, background 0.2s ease-out;
+}
+.proof-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.30);
+  background: rgba(42,173,160,0.18);
+}
+.proof-box:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.32);
+  transition-duration: 0.1s;
+}
+.proof-box strong {
+  display: block;
+  font-family: var(--font-display); font-weight: 700; font-size: 16px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--teal-bright); margin-bottom: 6px;
+}
+/* Block, not inline-block. The body of a proof box is a bare text node, so an
+   inline affordance sits flush against the final full stop and the 12px top
+   margin does nothing. As a block it takes its own line, the margin works as
+   written, and it reads the way .linkedin-block and .service-link already do. */
+.proof-box .go {
+  display: block; margin-top: 12px;
+  font-family: var(--font-display); font-weight: 700; font-size: 13px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal-bright);
+}
+.proof-box .go::after {
+  content: '\2192'; display: inline-block; margin-left: 7px;
+  transition: transform 0.2s ease-out;
+}
+.proof-box:hover .go::after { transform: translateX(4px); }
+
 /* FOOTER */
 footer { background: var(--dark); color: rgba(255,255,255,0.5); }
 .footer-inner { max-width: 1100px; margin: 0 auto; padding: 60px 40px 40px; }
@@ -435,8 +488,10 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
   .cred-card, .cred-card:hover,
   .reveal-btn, .reveal-btn:hover, .reveal-btn:active,
   .form-branch, .form-branch:hover, .form-branch:active,
-  .linkedin-block, .linkedin-block:hover, .linkedin-block:active {
+  .linkedin-block, .linkedin-block:hover, .linkedin-block:active,
+  .proof-box, .proof-box:hover, .proof-box:active {
     transform: none;
   }
-  .linkedin-block:hover .go::after { transform: none; }
+  .linkedin-block:hover .go::after,
+  .proof-box:hover .go::after { transform: none; }
 }
