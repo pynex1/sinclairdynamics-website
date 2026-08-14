@@ -273,6 +273,177 @@
       .work-cards { grid-template-columns: 1fr; }
     }
 
+
+    /* ---------------------------------------------------------------------------
+   THE RAIL
+   Added 14 August 2026, and it answers a problem the card block created. A
+   reader who jumps in from a card has skipped eight accounts and, once inside
+   one, has no route to any of the others except back to the top. The contents
+   strip that used to sit above the run was a poor entry device and is a good
+   lateral one, so it returns here in the place it actually belonged.
+
+   WHY IT SITS BESIDE THE RUN AND NOT INSIDE IT
+   The accounts are one unbroken run on purpose: any visual break between two
+   of them reads as a grouping, and grouping is the failure this page exists to
+   correct. So an exit at the end of an account has nowhere legitimate to sit.
+   The gutter does. The accounts were already capped well short of the column
+   width, so this occupies space that was empty rather than taking any from the
+   prose.
+
+   IT IS ALSO WHERE THE EXIT BELONGS, FOR A REASON WORTH KEEPING
+   The reader most at risk of leaving does not finish an item and then decide.
+   They lose interest three paragraphs in. An exit at the end of an account
+   never reaches that person. One that is in view throughout does.
+
+   THE RAMP
+   How loud the invitation is scales with how far the reader has come. The lead
+   carries a bare affordance. This carries one sentence and an affordance,
+   because a reader down here has spent real time. The close is a full call to
+   action. Three rungs, deliberately not one repeated component.
+
+   WHY THIS AFFORDANCE IS NOT THE ONE AT THE TOP, WHICH IS NOT AN OVERSIGHT
+   The lead says "Tell me yours" and gets away with it because the sentence
+   directly above hands it a noun: describe your own situation. Nothing near
+   the rail supplies one, so the same words here leave a reader asking yours
+   what. This affordance names what is being offered instead of what the reader
+   is bringing, and "instead" reaches back to "optional" so the two lines read
+   as one thought. Do not unify the two exits. They differ because they sit in
+   different places and a repeat would flatten the ramp.
+
+   ON THE PRONOUN. Singular, and it stays singular when the assistant is doing
+   part of this work. The assistant is something Ainsley built, not a second
+   person, so a plural would claim headcount that does not exist. Positioning
+   9.3 is the governing rule. The choice between a person and the assistant is
+   named on the contact page, which is the surface that offers both.
+
+   BUILT COMPLETE WITHOUT SCRIPT, WHICH IS A CONSTRAINT RATHER THAN A STAGE
+   There is no position marker and nothing here is waiting to be lit later.
+   Two things were considered and rejected on the same grounds. A dimmed
+   current-item state would be a placeholder that looks broken until something
+   fills it. A :target rule would mark the item correctly when a reader arrives
+   by clicking and then silently keep marking it once they have scrolled past,
+   which is the fault category this site keeps meeting: renders perfectly,
+   behaves wrongly. If a marker is added later it needs to follow the scroll,
+   and until then the rail is honest about knowing nothing.
+
+   The names are objects rather than industries or disciplines. Naming the
+   industry is what sorts a reader before the account has done its work, and
+   the hero sub-line already establishes that naming the object is fine.
+
+   This is a navigation landmark and is marked as one. The card block is not:
+   nine cards of substantive prose inside a nav landmark misrepresents them.
+
+   DO NOT BUILD THIS AS A NAV ELEMENT. IT WAS, AND IT FAILED.
+   shared.css styles `nav` as a bare element selector: fixed positioning, top
+   zero, display flex, 68px high, dark background, z-index 100. That rule does
+   not say "the site nav", it says every nav element on every page. Built that
+   way this rail inherited all of it and produced one fault with five faces: it
+   sat above its own section, slid under the header, laid its three parts out
+   side by side, clipped to 68px, and rendered item 05 invisible against a dark
+   fill until hovered. The class selectors that were set did win; everything
+   not set came straight through. It is a div with role="navigation", which is
+   the same landmark to a screen reader and inherits nothing.
+
+   THE GENERAL POINT, WHICH IS WIDER THAN THIS PAGE. No page on this site can
+   use a second nav, header or footer element until those bare selectors are
+   scoped. Any new structural element should be checked against shared.css
+   before it is used, not after it renders wrongly.
+   --------------------------------------------------------------------------- */
+    .work-run {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .work-accounts { grid-column: 1; grid-row: 1; min-width: 0; }
+
+    /* margin rather than padding, deliberately. .story-section opens with 48px
+       of padding, so in flow this puts the rail label level with the first
+       item's numeral instead of 48px above it. Margin sits outside the sticky
+       box, so once the rail is stuck it still sits at 92px with no dead space
+       at the top. Padding would have carried the 48px along with it. */
+    .work-rail {
+      grid-column: 2;
+      grid-row: 1;
+      position: sticky;
+      top: 92px;
+      margin-top: 48px;
+    }
+
+    .work-rail-label {
+      font-family: var(--font-display); font-weight: 600; font-size: 12px;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-mid);
+      display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+    }
+    .work-rail-label::before {
+      content: ''; display: block; width: 18px; height: 2px; background: var(--gray-mid);
+    }
+
+    .work-rail-list { list-style: none; margin: 0; padding: 0; }
+
+    /* Colour only, no travel. Same reasoning as the nav bar: a row that shifts
+       under the cursor inside a fixed column reads as a glitch. The left rule
+       runs continuously down the list because every row carries one. */
+    .work-rail-list a {
+      display: grid; grid-template-columns: 26px 1fr; align-items: baseline;
+      gap: 6px;
+      padding: 9px 0 9px 12px;
+      border-left: 2px solid var(--gray-light);
+      text-decoration: none;
+      transition: border-left-color 0.2s ease-out;
+    }
+    .work-rail-list a:hover { border-left-color: var(--teal); }
+    .wr-n {
+      font-family: var(--font-display); font-weight: 700; font-size: 12px;
+      letter-spacing: 0.1em; color: var(--gray-mid);
+      transition: color 0.2s ease-out;
+    }
+    .wr-t {
+      font-size: 14px; line-height: 1.35; color: var(--slate);
+      transition: color 0.2s ease-out;
+    }
+    .work-rail-list a:hover .wr-n,
+    .work-rail-list a:hover .wr-t { color: var(--teal); }
+
+    .work-rail-out {
+      margin-top: 26px; padding-top: 22px;
+      border-top: 1px solid var(--gray-light);
+    }
+    /* Both lines fit on one line at this width, and the column reads as a set
+       of neat single lines, which is most of why it looks calm. text-wrap
+       balance does nothing while that holds and splits into two even lines
+       rather than stranding one word if a future edit or a different font
+       render pushes it over. Insurance, not a fix. */
+    .work-rail-out p {
+      font-size: 14px; line-height: 1.6; color: #4A6572; margin-bottom: 12px;
+      text-wrap: balance;
+    }
+    .work-rail-out .service-link { margin-top: 0; font-size: 12px; }
+
+    /* Below this the two columns cannot both hold a readable measure, so the
+       rail stops being a rail. It goes static above the accounts and the list
+       wraps into rows. It keeps every function it had; it simply stops
+       following the reader, which is the only thing the width was buying. */
+    @media (max-width: 1000px) {
+      .work-run { grid-template-columns: 1fr; gap: 0; }
+      .work-accounts { grid-column: 1; grid-row: 2; }
+      .work-rail {
+        grid-column: 1; grid-row: 1;
+        position: static;
+        margin-top: 0;
+        margin-bottom: 40px;
+      }
+      .work-rail-list {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 16px;
+      }
+      .work-rail-out { max-width: 520px; }
+    }
+
+    @media (max-width: 680px) {
+      .work-rail-list { grid-template-columns: repeat(2, 1fr); }
+    }
+
     /* ---------------------------------------------------------------------------
    REDUCED MOTION
    These classes live on this page, so the block in shared.css does not reach
@@ -421,6 +592,28 @@
        ================================================================== -->
   <section>
     <div class="section-inner">
+      <div class="work-run">
+
+      <div class="work-rail" role="navigation" aria-label="The nine">
+        <div class="work-rail-label">The nine</div>
+        <ol class="work-rail-list">
+          <li><a href="#w1"><span class="wr-n">01</span><span class="wr-t">The plant</span></a></li>
+          <li><a href="#w2"><span class="wr-n">02</span><span class="wr-t">The beacons</span></a></li>
+          <li><a href="#w3"><span class="wr-n">03</span><span class="wr-t">The handle</span></a></li>
+          <li><a href="#w4"><span class="wr-n">04</span><span class="wr-t">The utility bill</span></a></li>
+          <li><a href="#w5"><span class="wr-n">05</span><span class="wr-t">The button game</span></a></li>
+          <li><a href="#w6"><span class="wr-n">06</span><span class="wr-t">The portfolio</span></a></li>
+          <li><a href="#w7"><span class="wr-n">07</span><span class="wr-t">The motorcycles</span></a></li>
+          <li><a href="#w8"><span class="wr-n">08</span><span class="wr-t">The house</span></a></li>
+          <li><a href="#w9"><span class="wr-n">09</span><span class="wr-t">The trailer</span></a></li>
+        </ol>
+        <div class="work-rail-out">
+          <p>Reading to the end is optional.</p>
+          <a href="contact.html" class="service-link">Talk to me instead</a>
+        </div>
+      </div><!-- /.work-rail -->
+
+        <div class="work-accounts">
 
         <div class="story-section work-item" id="w1">
           <div class="work-item-index">01 / 09</div>
@@ -513,6 +706,9 @@
           <p class="body-text">Then everything that could be bonded was bonded, and an earth spike made up to land on the chassis under a wing nut, so it goes on and comes off without tools and cannot be left connected when the trailer moves. That was raised by me rather than asked for. It is a compliance matter when the unit runs off a generator with no site earth, and separately it is why the crews working in there now remark that the trailer is unusually quiet.</p>
           <p class="body-text">What decided this job was that all of it had to be one person. On any larger budget it is an engineer to specify the systems, a draughtsman to document them, an artisan to build it, and somebody else again to commission and test. That sequence is correct and it is also several times the cost, and the money here was personal. So the same person who configured the routers and the network also riveted the cable tray, drilled the countertops and bolted the monitors through the wall. And that has consequences a divided team has to hold meetings about. The tray has to clear the knees of people sitting at the desk all day and still be reachable when somebody needs to run a temporary cable mid-broadcast. The person deciding where the tray goes is the person who has watched the room being worked in. There is no handover in the middle for that to be lost across.</p>
         </div>
+
+        </div><!-- /.work-accounts -->
+      </div><!-- /.work-run -->
     </div>
   </section>
 
