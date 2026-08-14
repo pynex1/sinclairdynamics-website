@@ -455,6 +455,41 @@ section { position: relative; }
 }
 .proof-box:hover .go::after { transform: translateX(4px); }
 
+/* HIGHLIGHT BOX AS A LINK
+   Added 14 August 2026. `.highlight-box` is used twenty times across the site
+   and all but a few are static panels, so the commit tier cannot go on the
+   class itself without putting travel on eighteen things that do not move.
+   This variant applies only when the box is actually an anchor, which is the
+   check visual language 3.6 asked for after `.linkedin-block` was found to be
+   a div containing a link.
+
+   The consequence for markup: an anchor cannot be nested inside an anchor, so
+   the inner `<a class="service-link">` becomes `<span class="go">`, which is
+   how `.proof-box` and `.linkedin-block` already do it. */
+a.highlight-box {
+  display: block; text-decoration: none;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+a.highlight-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(30,58,74,0.10);
+}
+a.highlight-box:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(30,58,74,0.14);
+  transition-duration: 0.1s;
+}
+a.highlight-box .go {
+  display: block; margin-top: 14px;
+  font-family: var(--font-display); font-weight: 700; font-size: 13px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal);
+}
+a.highlight-box .go::after {
+  content: '\2192'; display: inline-block; margin-left: 7px;
+  transition: transform 0.2s ease-out;
+}
+a.highlight-box:hover .go::after { transform: translateX(4px); }
+
 /* FOOTER */
 footer { background: var(--dark); color: rgba(255,255,255,0.5); }
 .footer-inner { max-width: 1100px; margin: 0 auto; padding: 60px 40px 40px; }
@@ -553,9 +588,11 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
   .form-branch, .form-branch:hover, .form-branch:active,
   .linkedin-block, .linkedin-block:hover, .linkedin-block:active,
   .proof-box, .proof-box:hover, .proof-box:active,
-  .named-engagement, .named-engagement:hover, .named-engagement:active {
+  .named-engagement, .named-engagement:hover, .named-engagement:active,
+  a.highlight-box, a.highlight-box:hover, a.highlight-box:active {
     transform: none;
   }
   .linkedin-block:hover .go::after,
-  .proof-box:hover .go::after { transform: none; }
+  .proof-box:hover .go::after,
+  a.highlight-box:hover .go::after { transform: none; }
 }
