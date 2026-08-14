@@ -198,6 +198,65 @@ section { position: relative; }
 .service-link::after { content: '→'; transition: transform 0.2s; }
 .service-card:hover .service-link::after { transform: translateX(4px); }
 
+/* Fixed two-column grid for the four discipline cards. `.services-grid` uses
+   auto-fit and resolves to three columns at this container width, which would
+   leave a fourth card stranded on its own row. Promoted from index.html's
+   local styles on 14 August 2026 when engagement.html became the second
+   consumer, on the same basis .proof-box was promoted on 13 August. */
+.services-grid-2x2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 44px; }
+
+/* ---------------------------------------------------------------------------
+   NAMED ENGAGEMENT
+   The panel that carries a defined engagement: something with a scope, a fee
+   and an end date. Commit tier, since the whole panel is an anchor, per
+   section 3.6. The shadow is what makes it legible as a door rather than a
+   panel. 8px radius is the large-container allowance in visual language 2;
+   a chamfer is proportional to the part.
+
+   Promoted from index.html's local styles on 14 August 2026. Two things were
+   added on promotion that the local copy never had: an :active state, which
+   section 3.4 requires of every commit tier member, and an entry in the
+   reduced motion block at the foot of this file. Both were missing for the
+   same reason .proof-box's were, which is that the class lived in a page's
+   local styles where the audits did not reach it.
+
+   The local copy in index.html stays until that page is next edited, so
+   there is never a moment with two copies live and disagreeing. It wins on
+   the homepage in the meantime, being later in the cascade, and the two are
+   identical apart from the two additions above.
+   --------------------------------------------------------------------------- */
+.named-engagement {
+  display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: start;
+  background: var(--teal-pale);
+  border-left: 4px solid var(--teal);
+  border-radius: 8px;
+  padding: 44px 48px;
+  text-decoration: none; color: inherit;
+  margin-top: 40px;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+.named-engagement:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(30,58,74,0.10);
+}
+.named-engagement:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(30,58,74,0.14);
+  transition-duration: 0.1s;
+}
+.named-engagement-label {
+  font-family: var(--font-display); font-weight: 600; font-size: 12px;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 10px;
+}
+.named-engagement h3 {
+  font-family: var(--font-display); font-weight: 800; font-size: 30px;
+  text-transform: uppercase; letter-spacing: 0.03em;
+  color: var(--slate); margin-bottom: 12px; line-height: 1.05;
+}
+.named-engagement p { font-size: 15px; line-height: 1.75; color: #2A4A44; max-width: 640px; }
+.named-engagement .service-link { margin-top: 20px; }
+
 /* CREDS BAR */
 .creds-bar { background: var(--teal); padding: 40px; }
 .creds-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; }
@@ -423,6 +482,10 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
   .creds-inner { flex-direction: column; gap: 20px; }
   .cred-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 0 0 20px; }
   .stats-row { gap: 28px; }
+  /* Promoted with their components on 14 August 2026. Identical to the rules
+     index.html already carries locally at this breakpoint. */
+  .services-grid-2x2 { grid-template-columns: 1fr; }
+  .named-engagement { grid-template-columns: 1fr; gap: 24px; padding: 32px 28px; }
 }
 
 /* CONTACT FORM: BRANCHING FLOW
@@ -489,7 +552,8 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
   .reveal-btn, .reveal-btn:hover, .reveal-btn:active,
   .form-branch, .form-branch:hover, .form-branch:active,
   .linkedin-block, .linkedin-block:hover, .linkedin-block:active,
-  .proof-box, .proof-box:hover, .proof-box:active {
+  .proof-box, .proof-box:hover, .proof-box:active,
+  .named-engagement, .named-engagement:hover, .named-engagement:active {
     transform: none;
   }
   .linkedin-block:hover .go::after,
