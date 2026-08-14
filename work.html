@@ -87,65 +87,148 @@
       max-width: 780px;
     }
 
-    /* The lead sits above the first item and is the only place the page
-       explains itself. Second paragraph is the instruction to the reader and
-       carries the shorter gap so the two read as one thought. */
+    /* The lead sits above the cards and is the only place the page explains
+       itself. Second paragraph is the instruction to the reader and carries
+       the shorter gap so the two read as one thought. */
     .work-lead .section-lead {
       margin-bottom: 20px;
     }
 
     .work-lead .section-lead:last-of-type {
-      margin-bottom: 56px;
-    }
-
-    @media (max-width: 900px) {
-      .story-section.work-item h3 {
-        font-size: 23px;
-      }
+      margin-bottom: 0;
     }
 
     /* ---------------------------------------------------------------------------
-   CONTENTS
-   The lead instructs the reader to read until one of the nine sounds like
-   something they have. That instruction is only followable if the nine
-   headings can be seen, and before this they could not be: they were five
-   thousand words apart. The contents puts all nine on the first screen in
-   the order they appear. It groups nothing, labels nothing with a discipline
-   and does not reorder, so the rule the run of items is held to still holds.
-   A continuous rule runs down the left of the list and takes colour on the
-   hovered row. Nothing travels: same reasoning as the nav indicator.
+   THE EARLY EXIT
+   Added 14 August 2026. The shortest honest route through this page is the
+   hero, one paragraph, and out. A reader who already knows their own problem
+   should not have to read nine of somebody else's to find the door.
+
+   THE RULE IT IS BUILT TO, WHICH GOVERNS EVERY OTHER EXIT ON THIS PAGE.
+   How loud the invitation is scales with how much the reader has read. Here
+   it is a text affordance and nothing more, because a reader who has read one
+   paragraph has given no signal of intent, and a prominent call at this point
+   would read as discouraging them from the nine. The close of the page is a
+   full call to action, which is correct there for the opposite reason. Any
+   exit added between the two sits somewhere on that ramp. They are therefore
+   deliberately not one repeated component.
+
+   .service-link is used rather than a box or a button. It is the site's quiet
+   door: colour only, no travel, no panel. A .highlight-box anchor above nine
+   white cards would read as the first and best option rather than as an
+   alternative route.
+
+   NOTE FOR ANYONE ADDING A LINK IN PROSE HERE. There is no inline prose link
+   anywhere on this site and shared.css has no rule for one. Every link is a
+   button, a card, a box, or a nav or footer entry. Introducing one would be a
+   new site-wide convention and should be decided as one, not on this page.
    --------------------------------------------------------------------------- */
-    .work-contents {
-      max-width: 780px;
-      margin-bottom: 56px;
+    .work-lead-out {
+      margin: 14px 0 56px;
     }
-    .work-contents-label {
+
+    .work-lead-out .service-link {
+      margin-top: 0;
+    }
+
+
+    /* ---------------------------------------------------------------------------
+   THE NINE CARDS
+   Replaces the contents strip that stood here from 13 August 2026. That strip
+   listed the nine headings as jump links, which solved getting a reader in and
+   did nothing for the reader who was never going to read five thousand words.
+   The cards carry a written layer that did not exist before: each one states
+   the condition as it stood before anybody was called, in the present tense,
+   with Ainsley absent from it. A reader who reads only this block has had the
+   whole argument in about three minutes. A reader who recognises one clicks
+   into that account. Nobody is asked at the top to declare which they are.
+
+   WHY THIS IS NOT A MENU, WHICH IS THE RISK THE GEOMETRY CARRIES
+   Nine equal tiles in a grid is the visual grammar of a set of alternatives,
+   and the nine are explicitly not that. Three things argue the other way and
+   they have to survive any future edit to this block.
+     1. The 2px gap. Same value as .services-grid. White cards on off-white
+        ground separated by a hairline read as one slab with nine cells cut in
+        it, not as nine objects that happen to be near each other.
+     2. The numerals, 01 to 09, in the order the accounts appear. A position in
+        a sequence is not a category. This is the same reasoning that put the
+        numeral on each item rather than an industry label.
+     3. The rule under each numeral bleeds to the card edge, so across a row
+        the three rules sit 2px apart and read as one line crossing the block.
+        Three rows, three lines, and the block reads as a run that wraps rather
+        than as tiles that could have been in any order.
+
+   Order is the argument here exactly as it is in the run of accounts below.
+   Do not reorder these to balance the card heights.
+
+   Commit tier under visual language 3.1: the whole card is the anchor per 3.6,
+   and it takes the reader somewhere. Reduced motion strips the travel only and
+   is handled at the foot of this stylesheet, since these classes are local to
+   this page and the block in shared.css does not reach them.
+   --------------------------------------------------------------------------- */
+    .work-cards-label {
       font-family: var(--font-display); font-weight: 600; font-size: 12px;
       letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-mid);
-      display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+      display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
     }
-    .work-contents-label::before {
+    .work-cards-label::before {
       content: ''; display: block; width: 24px; height: 2px; background: var(--gray-mid);
     }
-    .work-contents a {
-      display: grid; grid-template-columns: 34px 1fr; align-items: baseline;
-      padding: 11px 0 11px 16px;
-      border-left: 2px solid var(--gray-light);
+
+    .work-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .work-card {
+      display: block;
+      background: var(--white);
+      padding: 30px 26px 32px;
+      border-radius: 4px;
+      border-top: 3px solid transparent;
       text-decoration: none;
-      transition: border-left-color 0.2s ease-out;
+      color: inherit;
+      transition: border-top-color 0.3s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease-out;
     }
-    .work-contents a:hover { border-left-color: var(--teal); }
-    .work-contents .wc-n {
-      font-family: var(--font-display); font-weight: 700; font-size: 13px;
-      letter-spacing: 0.1em; color: var(--gray-mid);
+    .work-card:hover {
+      border-top-color: var(--teal);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(30,58,74,0.10);
+    }
+    .work-card:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(30,58,74,0.14);
+      transition-duration: 0.1s;
+    }
+
+    /* Negative margins cancel the card padding so the rule reaches both edges.
+       That is what lets the three rules in a row read as one line. */
+    .work-card-head {
+      margin: 0 -26px 18px;
+      padding: 0 26px 12px;
+      border-bottom: 1px solid var(--gray-light);
+    }
+    .work-card-n {
+      font-family: var(--font-display); font-weight: 800; font-size: 26px;
+      line-height: 1; letter-spacing: 0.04em; color: var(--teal);
       transition: color 0.2s ease-out;
     }
-    .work-contents .wc-t {
-      font-size: 15px; line-height: 1.45; color: var(--slate);
-      transition: color 0.2s ease-out;
+
+    .work-card p {
+      font-size: 15px; line-height: 1.7; color: #4A6572;
     }
-    .work-contents a:hover .wc-n,
-    .work-contents a:hover .wc-t { color: var(--teal); }
+
+    .work-card .go {
+      display: block; margin-top: 18px;
+      font-family: var(--font-display); font-weight: 700; font-size: 12px;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal);
+    }
+    .work-card .go::after {
+      content: '\2192'; display: inline-block; margin-left: 7px;
+      transition: transform 0.2s ease-out;
+    }
+    .work-card:hover .go::after { transform: translateX(4px); }
 
     /* ---------------------------------------------------------------------------
    ITEM NUMERAL AND LEAD PARAGRAPH
@@ -174,10 +257,31 @@
        underneath it. */
     .story-section.work-item { scroll-margin-top: 92px; }
 
+    /* Three across needs roughly 1000px to hold a readable measure inside each
+       card. Below that it steps to two and then to one, rather than letting the
+       column narrow until the text sets badly. */
+    @media (max-width: 1000px) {
+      .work-cards { grid-template-columns: repeat(2, 1fr); }
+    }
+
     @media (max-width: 900px) {
-      .work-contents .wc-t { font-size: 14.5px; }
-      .work-contents a { grid-template-columns: 30px 1fr; padding-left: 12px; }
+      .story-section.work-item h3 { font-size: 23px; }
       .story-section.work-item .body-text:first-of-type { font-size: 16px; }
+    }
+
+    @media (max-width: 680px) {
+      .work-cards { grid-template-columns: 1fr; }
+    }
+
+    /* ---------------------------------------------------------------------------
+   REDUCED MOTION
+   These classes live on this page, so the block in shared.css does not reach
+   them. Travel goes, every other state change stays: the border colour, the
+   shadow and the arrow all still fire, so no feedback is lost.
+   --------------------------------------------------------------------------- */
+    @media (prefers-reduced-motion: reduce) {
+      .work-card, .work-card:hover, .work-card:active { transform: none; }
+      .work-card:hover .go::after { transform: none; }
     }
   </style>
 </head>
@@ -218,7 +322,89 @@
     </div>
   </section>
 
-  <!-- ===== 2. THE NINE ITEMS ===========================================
+  <!-- ===== 2. THE NINE CARDS ============================================
+       The short version of this page, and it stands on its own. Each card
+       states the condition as it stood before anybody was called: present
+       tense, concrete, and with Ainsley absent from it. A reader who stops
+       here has had the argument. Nobody is asked at the top to choose
+       between the short page and the long one.
+       The cards are written to be read against each other rather than each
+       on its own. Nine conditions with the variables changed is what makes
+       the common thread felt without any card stating it, which is why no
+       card is built to a template and why their lengths differ.
+       Off-white ground so the block reads as its own object against the
+       white the accounts sit on.
+       ================================================================== -->
+  <section style="background: var(--off-white);">
+    <div class="section-inner">
+      <div class="work-lead">
+      <p class="section-lead">They have no industry in common and they are deliberately not sorted into any. What they have in common is the shape of what was actually wrong, which in almost every case was not what anyone said when they arrived.</p>
+      <p class="section-lead">Read until one of them sounds like something you have. Or leave them unread, and describe your own situation instead.</p>
+      <div class="work-lead-out"><a href="contact.html" class="service-link">Tell me yours</a></div>
+      </div>
+
+      <div class="work-cards-label">The nine</div>
+      <div class="work-cards">
+
+        <a class="work-card" href="#w1">
+          <div class="work-card-head"><span class="work-card-n">01</span></div>
+          <p>A plant weighs ore for its neighbours, so the conveyor scales are what the work gets billed on. Calibrating one means stopping the belt and laying chains of known mass across it, three or four rounds before the figure settles. Those chains are the reference for every instrument on the site, and nobody has weighed them. Replacing the scales is not affordable. Nothing on record states what accuracy they are meant to reach.</p>
+          <span class="go">Read the account</span>
+        </a>
+
+        <a class="work-card" href="#w2">
+          <div class="work-card-head"><span class="work-card-n">02</span></div>
+          <p>An advertising business is buying a beacon estate for its venues and its vehicle fleet, and selling advertisers proof that a spend reached somebody. A beacon transmits an identifier a few times a second. It detects nobody, knows nobody is there, and sends nothing. The capability that would have made the proposition true did exist, and the platform owner withdrew it deliberately. Everything remaining depends on an app being installed, running, and permitted to listen.</p>
+          <span class="go">Read the account</span>
+        </a>
+
+        <a class="work-card" href="#w3">
+          <div class="work-card-head"><span class="work-card-n">03</span></div>
+          <p>A resistance band trainer works as a prototype and now has to go inside a handle that is already designed. The shape cannot change, because it sits in a hand. The display cannot move. The firmware belongs to another party and stays with them. What exists is a development board, jumper leads, three switches soldered at the legs, and two resistors suspended in tape. The only complete record of the circuit is the assembly itself.</p>
+          <span class="go">Read the account</span>
+        </a>
+
+        <a class="work-card" href="#w4">
+          <div class="work-card-head"><span class="work-card-n">04</span></div>
+          <p>A household is about to commit serious capital to solar, inverter and battery. The only number anyone has brought to the decision is a monthly account total. A total states how much energy was used and nothing about when any of it happened, and when is what a system is sized against. Every quote in front of them is defensible by the person who wrote it.</p>
+          <span class="go">Read the account</span>
+        </a>
+
+        <a class="work-card" href="#w5">
+          <div class="work-card-head"><span class="work-card-n">05</span></div>
+          <p>A promotional stand needs a game in it, and the job is already late. Nine illuminated buttons, one lights at random, strike it before the time runs out. The brief runs to three sentences. The lights are unspecified, the enclosure is unspecified, the scoring and the difficulty are unspecified, and questions about any of it come back empty. Somebody else will wire the buttons and lights. Whoever builds this will never stand in front of the finished machine.</p>
+          <span class="go">Read the account</span>
+        </a>
+
+        <a class="work-card" href="#w6">
+          <div class="work-card-head"><span class="work-card-n">06</span></div>
+          <p>Across a portfolio, the person using a solar system is not the person who owns it, financed it, or maintains it, and the three do not hold the same idea of a working system. Establishing what has actually been happening at one site takes real attention. What a portfolio can afford is a few minutes per system per month, whoever is doing the looking. So nobody looks properly, and none of that is negligence.</p>
+          <span class="go">Read the account</span>
+        </a>
+
+        <a class="work-card" href="#w7">
+          <div class="work-card-head"><span class="work-card-n">07</span></div>
+          <p>Delivery motorcycles carry illuminated advertising screens, sold to the riders as income earned on trips they already make. The batteries are going flat and the riders are paying for the replacements. The reading offered on arrival is that the riders leave the ignition on. They do. The phone is where the work arrives and it charges off the bike, and the screens are on the ignition as well. Switch off and the work stops coming.</p>
+          <span class="go">Read the account</span>
+        </a>
+
+        <a class="work-card" href="#w8">
+          <div class="work-card-head"><span class="work-card-n">08</span></div>
+          <p>A house runs its solar, lighting, appliances, cameras, alarm and a tenant's cottage on separate platforms that know nothing about each other. A wife, guests and a tenant all depend on it. None of them asked for it, can be sent on a course about it, or has any interest in how it decides anything. Export to the grid is not available here. It has to keep working, because the person who built it lives in it.</p>
+          <span class="go">Read the account</span>
+        </a>
+
+        <a class="work-card" href="#w9">
+          <div class="work-card-head"><span class="work-card-n">09</span></div>
+          <p>A production trailer has been bought and has to become a working broadcast unit. Some of the equipment is bought, some is identified, some is not known yet, so nobody can state the eventual electrical load. There is no written specification and there will not be one, though the requirement is held precisely and stated verbally by somebody with decades in the industry. The brake and indicator lights failed shortly after collection, and the manufacturer is several provinces away. It travels, so anything mounted has to survive sustained vibration. It must look uninteresting from the outside, because of what it carries. The budget is personal money.</p>
+          <span class="go">Read the account</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. THE NINE ACCOUNTS =========================================
        Order is the argument. No two consecutive items sit in the same
        domain, so a reader cannot file the work under one industry. Do not
        reorder to group them, do not add subheadings between them, and do
@@ -226,26 +412,15 @@
        Each item is an arrival followed by a finding. No dates, no outcomes
        after the fact, no named people, companies, sites, brands or
        products anywhere on this page.
+
+       Each account has to give a reader something its card did not. Not a
+       longer version of the same thing: a second fault underneath the
+       first, or a measurement nobody had taken. That was checked across all
+       nine when the cards were written. If an account is ever shortened,
+       check that what remains still repays the reader who came down here.
        ================================================================== -->
   <section>
     <div class="section-inner">
-      <div class="work-lead">
-      <p class="section-lead">They have no industry in common and they are deliberately not sorted into any. What they have in common is the shape of what was actually wrong, which in almost every case was not what anyone said when they arrived.</p>
-      <p class="section-lead">Read until one of them sounds like something you have.</p>
-      </div>
-
-      <div class="work-contents" role="navigation" aria-label="The nine items">
-        <div class="work-contents-label">The nine</div>
-        <a href="#w1"><span class="wc-n">01</span><span class="wc-t">Every instrument on the plant was being measured against a mass nobody had checked</span></a>
-        <a href="#w2"><span class="wc-n">02</span><span class="wc-t">A beacon does not track anybody, which is not what anyone thought they were buying</span></a>
-        <a href="#w3"><span class="wc-n">03</span><span class="wc-t">The only complete copy of the design was the object itself</span></a>
-        <a href="#w4"><span class="wc-n">04</span><span class="wc-t">Everybody was sizing a system against a utility bill nobody had opened</span></a>
-        <a href="#w5"><span class="wc-n">05</span><span class="wc-t">Nothing that a design normally starts from was available, and none of it arrived later</span></a>
-        <a href="#w6"><span class="wc-n">06</span><span class="wc-t">A few minutes a month, per system, is what a portfolio actually affords</span></a>
-        <a href="#w7"><span class="wc-n">07</span><span class="wc-t">Every component was doing exactly what it was designed to do</span></a>
-        <a href="#w8"><span class="wc-n">08</span><span class="wc-t">The people using it did not choose it, cannot be trained on it, and cannot see it</span></a>
-        <a href="#w9"><span class="wc-n">09</span><span class="wc-t">One person to make all of it go away, on a specification that could not be written</span></a>
-      </div>
 
         <div class="story-section work-item" id="w1">
           <div class="work-item-index">01 / 09</div>
@@ -341,7 +516,7 @@
     </div>
   </section>
 
-  <!-- ===== 3. CLOSE: one route out =====================================
+  <!-- ===== 4. CLOSE: one route out =====================================
        One route, not a fork. The page has already worked on the reader by
        this point, and offering a choice at the moment of recognition is a
        way of losing them to a decision. Monitoring Calibration stays
