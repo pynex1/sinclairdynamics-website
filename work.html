@@ -453,6 +453,149 @@
     @media (prefers-reduced-motion: reduce) {
       .work-card, .work-card:hover, .work-card:active { transform: none; }
       .work-card:hover .go::after { transform: none; }
+      /* Rotation is travel, so under reduced motion the object still indexes
+         but does so as a jump. The state change survives; only the movement
+         goes, which is what the site's rule requires. That behaviour is in the
+         script rather than here, because CSS cannot see it. */
+    }
+
+    /* ---------------------------------------------------------------------------
+   HERO FIGURE: THE ELEVEN FACED SOLID
+   Built 15 August 2026. Specified at visual language 7.6 and derived from the
+   work document section 2.8. Nine faces are the nine engagements on this page.
+   Two are apertures, and they are permanent: the shape does not close, because
+   a shape that fitted perfectly would belong to somebody with no problem.
+
+   Two faces meet at an edge when their engagements share a shape of situation.
+   That gives thirteen adjacencies and nothing between the nine is invented. The
+   nine alone cannot be closed into a solid, because three of them have fewer
+   than three neighbours in the record, so two further faces close it.
+
+   HOW IT WAS BUILT, because it must never be adjusted by hand
+   The adjacency graph is planar and 3-connected, so by Steinitz a convex solid
+   with exactly these combinatorics exists. It was constructed, not searched
+   for: Tutte embedding, Maxwell-Cremona lift, then canonicalised to the unique
+   realisation with every edge tangent to a common sphere. The vertices in the
+   script below are that solid. Regenerate them; do not edit them.
+
+   WHY THERE IS A WASH AND NOT A FILL
+   Line work alone cannot separate three things: the ground, the inside of the
+   object seen through an aperture, and a sight line that enters one aperture
+   and leaves through the other. Filling the faces would have separated them,
+   at the cost of making this the one figure on the site that is a tinted body
+   rather than line work on plain ground. So the background moves instead. A
+   soft wash sits behind, in the register of .hero-accent on the index page,
+   and the object holds it back. The object itself is untouched.
+   That also removes a value nobody could have chosen honestly. With a fill,
+   looking straight through the object needed a tone, and no tone is truthful,
+   because what you are looking at is the background. Here the object simply
+   stops occluding and the background shows.
+
+   THE WASH MUST NOT BE CONCENTRIC WITH THE OBJECT
+   This is the whole of it, and it is easy to undo by tidying. A wash centred
+   on the object has its entire falloff inside the silhouette, so every view
+   through an aperture shows an even glow with no edge, and it reads as a light
+   source inside the object rather than as a background behind it. What proves
+   a background is behind is seeing one falloff edge on both sides of the
+   outline at once. So the wash is offset and its radius is set so the band
+   crosses the silhouette. If the object, the placement or the scale ever
+   change, that condition must be re-established and not assumed.
+
+   FOUR THINGS A LATER SESSION NEEDS TO KNOW
+   1. The mounting was verified in the frame the figure is drawn in, not in the
+      object's own frame. An earlier pass validated the stops in one frame and
+      drew them through another, which rendered perfectly and was wrong.
+   2. No face is square to the reader at any stop. The flattest is 28.7 degrees
+      off square. A face square on is the object posing.
+   3. No painted coordinate leaves the viewBox at any stop. The fit is computed
+      across all six, not the one that happens to be showing.
+   4. The straight-through region is a hairline at every stop and reaches a
+      fifth of the silhouette at 38 degrees, which is between stops. It exists
+      only while the object is turning. Anything tested at the stops alone will
+      miss it entirely.
+      --------------------------------------------------------------------- */
+    .work-solid {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .work-solid svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .work-solid .hit {
+      fill: #fff;
+      fill-opacity: 0;
+      pointer-events: all;
+    }
+
+    .work-solid .fig {
+      pointer-events: none;
+    }
+
+    /* Object lines are edges where material stops. Interior lines are seen
+       through an aperture, so they sit one weight lighter and one step back.
+       Fixed steps rather than a gradient by depth: a continuous response is
+       the pointer tracking effect wearing a different mechanism. */
+    .work-solid .body {
+      stroke: var(--teal-bright);
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .work-solid .inner {
+      stroke: var(--teal-bright);
+      stroke-width: 0.7;
+      stroke-linecap: butt;
+      opacity: 0.45;
+      fill: none;
+    }
+
+    /* An edge of an opening is where material stops. An edge between two faces
+       is where it folds and carries on, and which folds fall on the outline is
+       a fact about where the reader is standing rather than about the object.
+       So boundaries carry one fixed increment of weight over folds, and the
+       same increment in both tiers, per 3.3. The increment is 0.5, and it was
+       reached by taking the folds DOWN rather than the boundaries up, so that
+       the heaviest line on the figure did not get heavier and the object did
+       not gain weight overall to make one distinction visible.
+       That puts the far folds at 0.7, below the roughly 0.9 floor section 3.3
+       sets. It was checked rather than assumed: at the stop with the most
+       interior line work the far folds still read clearly, because the far
+       tier has contrast to spare against this ground. If the ground or the
+       opacity ever change, check it again rather than trusting the number.
+       This puts a second meaning on stroke weight, which already carries near
+       against far. The two do not collide here because the far tier is also
+       held back in opacity, but a third distinction could not be added this
+       way and would need its own carrier. */
+    .work-solid .rim {
+      stroke: var(--teal-bright);
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .work-solid .inner-rim {
+      stroke: var(--teal-bright);
+      stroke-width: 1.2;
+      stroke-linecap: butt;
+      opacity: 0.45;
+      fill: none;
+    }
+
+    /* The inside of the object, one faint step darker than the ground it is
+       cut into. Not shading: one flat value for every interior surface. */
+    .work-solid .cavity {
+      fill: #000;
+      fill-opacity: 0.14;
+      stroke: none;
     }
   </style>
 </head>
@@ -480,12 +623,76 @@
   <!-- NAV:END -->
 
   <!-- ===== 1. HERO =====================================================
-       No hero figure, and that is deliberate rather than unfinished. Every
-       figure on this site went through its own design pass; designing one
-       inside a page build would put it outside that process. The argument
-       page was held to the same rule.
+       The hero figure was designed in its own pass, as every figure on this
+       site has been, and built on 15 August 2026. It is an eleven faced solid
+       derived from which of the nine pieces of work below share the same
+       underlying situation. Two of its faces are permanent openings.
        ================================================================== -->
   <section class="page-hero">
+  <!-- The eleven faced solid, built 15 August 2026. Full reasoning and the four
+       maintenance warnings are in the .work-solid block in the page style
+       above. Read that before editing this.
+       The rest state below is real drawn geometry, so the figure exists with
+       no script at all. The script replaces it on load and indexes it. -->
+    <div class="work-solid">
+      <svg viewBox="0 0 1200 480" preserveAspectRatio="xMaxYMax meet" xmlns="http://www.w3.org/2000/svg" role="img"
+        aria-label="A solid of eleven faces turning about a single axis. Nine faces are the nine pieces of work below, meeting along an edge wherever two of them share the same underlying situation. Two are permanent openings through which the inside is visible.">
+        <defs>
+          <!-- The horizontal fade. Every figure behind text carries one. The
+               floor is high because this figure has a silhouette, and a low
+               floor makes one side of it dissolve. -->
+          <linearGradient id="wsg" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#fff" stop-opacity="0.30" />
+            <stop offset="46%" stop-color="#fff" stop-opacity="0.48" />
+            <stop offset="68%" stop-color="#fff" stop-opacity="0.82" />
+            <stop offset="88%" stop-color="#fff" stop-opacity="1" />
+          </linearGradient>
+          <!-- The wash that the object holds back. It is deliberately NOT
+               concentric with the object: 200 units right and 155 down from
+               the object's own centre, with a radius large enough that its
+               falloff band crosses the silhouette. That is what makes it read
+               as behind. Centred, its whole falloff sits inside the outline,
+               so looking through an aperture shows an even glow with no edge
+               in it, which is what a lamp inside an object looks like.
+               The stops are a smoothstep rather than a linear ramp, so the
+               band is soft and has no corner in it. -->
+          <radialGradient id="wsw" gradientUnits="userSpaceOnUse" cx="1080" cy="400" r="300">
+            <stop offset="0%" stop-color="#1A7A6E" stop-opacity="0.18" />
+            <stop offset="20%" stop-color="#1A7A6E" stop-opacity="0.1613" />
+            <stop offset="35%" stop-color="#1A7A6E" stop-opacity="0.1293" />
+            <stop offset="50%" stop-color="#1A7A6E" stop-opacity="0.09" />
+            <stop offset="65%" stop-color="#1A7A6E" stop-opacity="0.0507" />
+            <stop offset="80%" stop-color="#1A7A6E" stop-opacity="0.0187" />
+            <stop offset="90%" stop-color="#1A7A6E" stop-opacity="0.005" />
+            <stop offset="100%" stop-color="#1A7A6E" stop-opacity="0.0" />
+          </radialGradient>
+          <mask id="wsm">
+            <rect width="1200" height="480" fill="url(#wsg)" />
+          </mask>
+          <!-- The wash is faded like everything else, and then the object is
+               painted black into the mask so the wash stops at its silhouette.
+               The occluder path is regenerated every frame by the script. -->
+          <mask id="wswm">
+            <rect width="1200" height="480" fill="url(#wsg)" />
+            <path class="occl" fill="#000" fill-rule="evenodd" d="M762.49,427.22L711.16,239.09L785.11,96.07L905.92,127.99L944.35,159.77L1099.5,338.08ZM827.92,230.44L1099.5,338.08L866.62,360.86L827.17,232.71Z" />
+          </mask>
+        </defs>
+        <rect class="wash" x="0" y="0" width="1200" height="480" fill="url(#wsw)" mask="url(#wswm)" />
+        <rect class="hit" data-stop="0" x="680.0" y="40.0" width="86.7" height="440.0" />
+        <rect class="hit" data-stop="1" x="766.7" y="40.0" width="86.7" height="440.0" />
+        <rect class="hit" data-stop="2" x="853.3" y="40.0" width="86.7" height="440.0" />
+        <rect class="hit" data-stop="3" x="940.0" y="40.0" width="86.7" height="440.0" />
+        <rect class="hit" data-stop="4" x="1026.7" y="40.0" width="86.7" height="440.0" />
+        <rect class="hit" data-stop="5" x="1113.3" y="40.0" width="86.7" height="440.0" />
+        <g class="fig" mask="url(#wsm)">
+          <path class="cavity" fill-rule="evenodd" d="M1099.5,338.08L866.62,360.86L785.11,96.07ZM827.92,230.44L1099.5,338.08L866.62,360.86L827.17,232.71Z" />
+          <path class="inner" d="M882.93,171.37L827.92,230.44M827.92,230.44L826.5,230.54M826.5,230.54L827.92,230.44M827.92,230.44L882.93,171.37" />
+          <path class="inner-rim" d="M827.92,230.44L827.17,232.71M1099.5,338.08L827.92,230.44" />
+          <path class="body" d="M762.49,427.22L794.6,339.93M794.6,339.93L785.11,96.07M785.11,96.07L711.16,239.09M711.16,239.09L762.49,427.22M866.62,360.86L794.6,339.93M762.49,427.22L866.62,360.86M905.92,127.99L785.11,96.07M1099.5,338.08L944.35,159.77M944.35,159.77L905.92,127.99" />
+          <path class="rim" d="M1099.5,338.08L866.62,360.86M762.49,427.22L1099.5,338.08M785.11,96.07L1099.5,338.08M785.11,96.07L866.62,360.86" />
+        </g>
+      </svg>
+    </div>
     <div class="page-hero-content">
       <div class="hero-eyebrow">The Work</div>
       <h1>What happens<br>when someone<br><span>brings me something.</span></h1>
@@ -767,6 +974,304 @@
     </div>
   </footer>
   <!-- FOOTER:END -->
+  <!-- The eleven faced solid. Projection, hidden line removal, the wash
+       occluder and indexing. The solid itself is data: change the engagements
+       and regenerate, never edit the numbers. Reasoning is in the .work-solid
+       style block. -->
+  <script>
+    (function () {
+      'use strict';
+
+      // Ten vertices, with the mounting already applied, centred on the axis
+      // of rotation. Eleven faces as cycles of vertex indices. Two of them are
+      // apertures. Generated, not drawn.
+      var V = [[-0.65745,-0.05842,-0.88766],[0.60841,-0.19429,-1.1587],[-0.56161,-1.33059,-0.32265],[0.76307,0.54669,-0.04195],[1.35538,-0.58825,1.08628],[0.65803,0.54979,-0.39911],[0.47006,0.79461,-0.12799],[-1.25583,1.3917,0.66483],[-0.51378,-0.61007,0.79041],[-0.86627,-0.50117,0.39654]];
+      var F = [[7,6,5,1,0],[2,0,1],[2,9,7,0],[4,2,1],[5,3,4,1],[8,9,2],[4,8,2],[6,7,4,3],[5,6,3],[7,8,4],[9,8,7]];
+      var AP = [3, 9];
+      var AXLE = [0.341551,0.938405,0.052336];
+      var STOPS = [0.698132,1.745329,2.792527,3.839724,4.886922,5.934119];
+      var OX = 860.0, OY = 247.0, SC = 140.0;
+
+      var root = document.querySelector('.work-solid');
+      if (!root) { console.warn('work-solid: wrapper not found, figure left as drawn'); return; }
+      var body = root.querySelector('path.body');
+      var rim = root.querySelector('path.rim');
+      var inner = root.querySelector('path.inner');
+      var innerRim = root.querySelector('path.inner-rim');
+      var cavity = root.querySelector('path.cavity');
+      var occl = root.querySelector('path.occl');
+      var hits = root.querySelectorAll('rect.hit');
+      if (!body || !rim || !inner || !innerRim || !cavity || !occl) {
+        console.warn('work-solid: a path element is missing, figure left as drawn');
+        return;
+      }
+      if (hits.length !== STOPS.length) {
+        console.warn('work-solid: ' + hits.length + ' hit strips for ' + STOPS.length +
+                     ' stops, indexing disabled');
+        return;
+      }
+
+      function sub(a, b) { return [a[0]-b[0], a[1]-b[1], a[2]-b[2]]; }
+      function cross(a, b) {
+        return [a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0]];
+      }
+      function dot(a, b) { return a[0]*b[0] + a[1]*b[1] + a[2]*b[2]; }
+
+      var NRM = F.map(function (cy) {
+        var p0 = V[cy[0]], n = cross(sub(V[cy[1]], p0), sub(V[cy[2]], p0));
+        var c = [0,0,0];
+        cy.forEach(function (i) { c[0]+=V[i][0]; c[1]+=V[i][1]; c[2]+=V[i][2]; });
+        if (dot(n, c) < 0) n = [-n[0], -n[1], -n[2]];
+        var m = Math.sqrt(dot(n, n));
+        return [n[0]/m, n[1]/m, n[2]/m];
+      });
+
+      // Which edges bound an opening. Material stops at a boundary and carries
+      // on across a fold. Computed once, because it is a property of the solid
+      // and not of the viewpoint.
+      var RIM = {};
+      AP.forEach(function (f) {
+        var cy = F[f], i, a, b;
+        for (i = 0; i < cy.length; i++) {
+          a = cy[i]; b = cy[(i+1) % cy.length];
+          RIM[Math.min(a,b) + '_' + Math.max(a,b)] = 1;
+        }
+      });
+      function isRim(a, b) { return RIM[Math.min(a,b) + '_' + Math.max(a,b)] === 1; }
+
+      // Rotation about the axle. Rodrigues, so no matrix library is needed.
+      function turn(p, t) {
+        var c = Math.cos(t), s = Math.sin(t), k = AXLE;
+        var kx = cross(k, p), kd = dot(k, p) * (1 - c);
+        return [p[0]*c + kx[0]*s + k[0]*kd,
+                p[1]*c + kx[1]*s + k[1]*kd,
+                p[2]*c + kx[2]*s + k[2]*kd];
+      }
+
+      function area2(poly) {
+        var a = 0, i, j;
+        for (i = 0; i < poly.length; i++) {
+          j = (i+1) % poly.length;
+          a += poly[i][0]*poly[j][1] - poly[j][0]*poly[i][1];
+        }
+        return a;
+      }
+      function ccw(poly) { return area2(poly) > 0 ? poly : poly.slice().reverse(); }
+
+      // Clipping against a nearly tangent edge produces repeated vertices.
+      // They are harmless to look at and not harmless in an even-odd path.
+      function dedupe(poly) {
+        var out = [], i;
+        for (i = 0; i < poly.length; i++) {
+          if (!out.length ||
+              Math.hypot(poly[i][0]-out[out.length-1][0],
+                         poly[i][1]-out[out.length-1][1]) > 1e-6) out.push(poly[i]);
+        }
+        while (out.length > 1 &&
+               Math.hypot(out[0][0]-out[out.length-1][0],
+                          out[0][1]-out[out.length-1][1]) <= 1e-6) out.pop();
+        return out;
+      }
+
+      // Silhouette of a convex body: the hull of its projected vertices.
+      // Monotone chain, then wound the same way as everything else.
+      function hull(pts) {
+        var p = pts.slice().sort(function (a, b) {
+          return a[0] === b[0] ? a[1] - b[1] : a[0] - b[0];
+        });
+        function half(src) {
+          var out = [], i, o;
+          for (i = 0; i < src.length; i++) {
+            while (out.length >= 2) {
+              o = out.length;
+              var cr = (out[o-1][0]-out[o-2][0])*(src[i][1]-out[o-2][1]) -
+                       (out[o-1][1]-out[o-2][1])*(src[i][0]-out[o-2][0]);
+              if (cr <= 0) out.pop(); else break;
+            }
+            out.push(src[i]);
+          }
+          out.pop();
+          return out;
+        }
+        return ccw(half(p).concat(half(p.slice().reverse())));
+      }
+
+      // Sutherland-Hodgman. Both polygons convex, so the result is convex.
+      function clipPoly(subject, window) {
+        var out = subject.slice(), i, k, a, b, ex, ey, src, prev, cur, pin, cin, den, d;
+        for (i = 0; i < window.length; i++) {
+          a = window[i]; b = window[(i+1) % window.length];
+          ex = b[0]-a[0]; ey = b[1]-a[1];
+          src = out; out = [];
+          if (!src.length) return [];
+          prev = src[src.length-1];
+          pin = (-ey*(prev[0]-a[0]) + ex*(prev[1]-a[1])) >= 0;
+          for (k = 0; k < src.length; k++) {
+            cur = src[k];
+            cin = (-ey*(cur[0]-a[0]) + ex*(cur[1]-a[1])) >= 0;
+            if (cin !== pin) {
+              d = [cur[0]-prev[0], cur[1]-prev[1]];
+              den = -ey*d[0] + ex*d[1];
+              if (Math.abs(den) > 1e-12) {
+                var u = (-ey*(a[0]-prev[0]) + ex*(a[1]-prev[1])) / den;
+                out.push([prev[0]+d[0]*u, prev[1]+d[1]*u]);
+              }
+            }
+            if (cin) out.push(cur);
+            prev = cur; pin = cin;
+          }
+        }
+        return out;
+      }
+
+      // Cut a segment down to the part inside a convex window.
+      function clip(p, q, poly) {
+        var dx = q[0]-p[0], dy = q[1]-p[1], t0 = 0, t1 = 1, i, a, b, ex, ey, den, nu, t;
+        for (i = 0; i < poly.length; i++) {
+          a = poly[i]; b = poly[(i+1) % poly.length];
+          ex = b[0]-a[0]; ey = b[1]-a[1];
+          den = -ey*dx + ex*dy;
+          nu = -ey*(a[0]-p[0]) + ex*(a[1]-p[1]);
+          if (Math.abs(den) < 1e-9) { if (nu < 0) return null; continue; }
+          t = nu/den;
+          if (den > 0) { if (t > t0) t0 = t; } else { if (t < t1) t1 = t; }
+          if (t0 > t1) return null;
+        }
+        return [[p[0]+t0*dx, p[1]+t0*dy], [p[0]+t1*dx, p[1]+t1*dy]];
+      }
+
+      function n2(x) { return Math.round(x * 100) / 100; }
+      function ring(poly) {
+        var d = '', i;
+        for (i = 0; i < poly.length; i++) {
+          d += (i ? 'L' : 'M') + n2(poly[i][0]) + ',' + n2(poly[i][1]);
+        }
+        return d + 'Z';
+      }
+
+      function render(t) {
+        var i, f, g, a, b, seg, k;
+        var scr = V.map(function (v) {
+          var p = turn(v, t);
+          return [OX + p[0]*SC, OY - p[1]*SC];
+        });
+        var vis = NRM.map(function (n) { return turn(n, t)[2] > 0; });
+
+        var seen = {}, bodyD = [], rimD = [], innerD = [], innerRimD = [];
+        for (f = 0; f < F.length; f++) {
+          if (!vis[f]) continue;
+          var cy = F[f];
+          for (i = 0; i < cy.length; i++) {
+            a = cy[i]; b = cy[(i+1) % cy.length];
+            var key = Math.min(a,b) + '_' + Math.max(a,b);
+            if (seen[key]) continue;
+            seen[key] = 1;
+            (isRim(a, b) ? rimD : bodyD).push(
+              'M' + n2(scr[a][0]) + ',' + n2(scr[a][1]) +
+              'L' + n2(scr[b][0]) + ',' + n2(scr[b][1]));
+          }
+        }
+
+        // Where the sight line enters one aperture and leaves through the
+        // other. There it meets no surface, so the wash must show through and
+        // the cavity must not be painted.
+        var through = [];
+        for (k = 0; k < AP.length; k++) {
+          f = AP[k];
+          if (!vis[f]) continue;
+          var winF = ccw(F[f].map(function (i) { return scr[i]; }));
+          for (var m = 0; m < AP.length; m++) {
+            g = AP[m];
+            if (g === f || vis[g]) continue;
+            var cut = clipPoly(winF.slice(), ccw(F[g].map(function (i) { return scr[i]; })));
+            // A hairline is not a region. Below this the sight line does not
+            // meaningfully pass through, and a zero area ring in an even-odd
+            // path is a fault waiting to happen.
+            var cd = dedupe(cut);
+            if (cd.length >= 3 && Math.abs(area2(cd)) / 2 >= 2.0) through.push(ccw(cd));
+          }
+        }
+        var throughD = through.map(ring).join('');
+
+        var occlD = ring(hull(scr)) + throughD;
+        var cavityD = '';
+        for (k = 0; k < AP.length; k++) {
+          f = AP[k];
+          if (!vis[f]) continue;
+          cavityD += ring(ccw(F[f].map(function (i) { return scr[i]; })));
+        }
+        if (cavityD) cavityD += throughD;
+
+        for (k = 0; k < AP.length; k++) {
+          f = AP[k];
+          if (!vis[f]) continue;
+          var win = ccw(F[f].map(function (i) { return scr[i]; }));
+          for (g = 0; g < F.length; g++) {
+            if (vis[g] || AP.indexOf(g) !== -1) continue;
+            var cg = F[g];
+            for (i = 0; i < cg.length; i++) {
+              a = cg[i]; b = cg[(i+1) % cg.length];
+              seg = clip(scr[a], scr[b], win);
+              if (!seg) continue;
+              if (Math.hypot(seg[1][0]-seg[0][0], seg[1][1]-seg[0][1]) < 0.5) continue;
+              (isRim(a, b) ? innerRimD : innerD).push(
+                'M' + n2(seg[0][0]) + ',' + n2(seg[0][1]) +
+                'L' + n2(seg[1][0]) + ',' + n2(seg[1][1]));
+            }
+          }
+        }
+
+        body.setAttribute('d', bodyD.join(''));
+        rim.setAttribute('d', rimD.join(''));
+        inner.setAttribute('d', innerD.join(''));
+        innerRim.setAttribute('d', innerRimD.join(''));
+        cavity.setAttribute('d', cavityD);
+        occl.setAttribute('d', occlD);
+      }
+
+      // Indexing. The object steps to a stop and holds. It does not track the
+      // pointer, does not turn continuously, and does not reset when the
+      // pointer leaves: the reader joins it where it is and leaves it where
+      // they left it.
+      var TWO_PI = Math.PI * 2;
+      var current = STOPS[0], target = STOPS[0], raf = null, t0 = 0, from = 0;
+      var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+      var DURATION = 340;
+
+      function step(now) {
+        var u = Math.min(1, (now - t0) / DURATION);
+        var e = 1 - Math.pow(1 - u, 3);            // ease out, no overshoot
+        current = from + (target - from) * e;
+        render(current);
+        if (u < 1) raf = window.requestAnimationFrame(step);
+        else { raf = null; current = target; }
+      }
+
+      function goTo(index) {
+        var want = STOPS[index];
+        // Shortest way round, so a step is always a step and never a lap.
+        var d = ((want - current) % TWO_PI + TWO_PI + Math.PI) % TWO_PI - Math.PI;
+        if (Math.abs(d) < 1e-6) return;
+        if (still && still.matches) {        // reduced motion removes travel only
+          current = current + d; target = current; render(current); return;
+        }
+        from = current; target = current + d; t0 = performance.now();
+        if (raf === null) raf = window.requestAnimationFrame(step);
+      }
+
+      Array.prototype.forEach.call(hits, function (rect) {
+        var index = parseInt(rect.getAttribute('data-stop'), 10);
+        if (isNaN(index) || index < 0 || index >= STOPS.length) {
+          console.warn('work-solid: hit strip has no valid data-stop, ignored');
+          return;
+        }
+        rect.addEventListener('pointerenter', function () { goTo(index); });
+      });
+
+      render(current);
+    }());
+  </script>
+
 </body>
 
 </html>
