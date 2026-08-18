@@ -314,43 +314,16 @@
    so the movement confirms the cursor and nothing more. The left rule
    changing state does the real work.
    --------------------------------------------------------------------------- */
-    .symptom {
-      background: var(--white);
-      border-left: 3px solid #B9D6D1;
-      border-radius: 4px;
-      padding: 26px 30px;
-      margin-bottom: 2px;
-      transition: border-left-color 0.2s ease-out, transform 0.2s ease-out;
-    }
-
-    .symptom:hover {
-      border-left-color: var(--teal);
-      transform: translateX(2px);
-    }
-
-    .symptom h3 {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 21px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--slate);
-      margin-bottom: 8px;
-    }
-
-    .symptom p {
-      font-size: 15px;
-      line-height: 1.75;
-      color: #556B77;
-    }
-
-    .symptom-bridge {
-      font-size: 17px;
-      line-height: 1.8;
-      color: #334E5C;
-      max-width: 680px;
-      margin-top: 36px;
-    }
+    /* .symptom, .symptom h3, .symptom p and .symptom-bridge were promoted to
+       shared.css on 18 August 2026, when platform.html became their second
+       consumer. Same move as .proof-box and .named-engagement, and the local
+       copies are removed here in the same deploy so there is never a moment
+       with two copies live.
+       Two things were corrected on promotion and both are visible on this page.
+       The hover travel was translateX(2px) and is now the tier's translateY(-2px),
+       which closes item 3 on this page and item 8 site wide. And the card is now
+       in the reduced motion block, which it had never been in, so a reader who
+       asked for less motion keeps the border lift and loses only the travel. */
 
     /* SERVICE GRID: four discipline cards, copy untouched pending stage 2.
        .services-grid-2x2 and .named-engagement moved to shared.css on
@@ -487,9 +460,7 @@
         gap: 40px;
       }
 
-      .symptom {
-        padding: 22px 24px;
-      }
+      /* .symptom breakpoint padding promoted with the class. */
     }
   </style>
   <!-- Google Analytics -->
@@ -740,18 +711,31 @@
           <p class="body-text">The reasoning is written down as well, at whatever length the argument needs. That is a
             slower way to be assessed than a list of qualifications, and a more useful one, because you can disagree
             with it.</p>
-          <a href="about.html" class="btn-outline" style="margin-top:8px;">Full Background</a>
+          <!-- Relabelled 18 August 2026. It read "Full Background" directly beneath three
+               paragraphs about the platform, so it borrowed its noun from them and promised
+               the platform page while going to the about page. Positioning 8.3 records that
+               an affordance takes its subject from the sentence above it and is therefore
+               not portable. The destination was always correct; the label was not. -->
+          <a href="about.html" class="btn-outline" style="margin-top:8px;">About Ainsley</a>
         </div>
         <div>
-          <!-- Points at contact rather than at the platform domain. Access there is by
-               OAuth allowlist, so the previous link offered a door and delivered a login.
-               Temporary: all four walkthrough offers move to the platform page when it
-               exists. See the site record. -->
-          <a class="proof-box" href="contact.html"><strong>The Platform</strong>Victron, Huawei
+          <!-- Repointed to platform.html on 18 August 2026, when that page shipped.
+               This box previously went to contact.html carrying a temporary walkthrough
+               offer, written that way because the platform had no page of its own and a
+               link to the live system delivered a login rather than a door. That was one
+               of four such surfaces and the exit condition was always the page existing.
+               The walkthrough offer has not been deleted, it has moved to where it now
+               belongs, which is the foot of the platform page, after a reader has been
+               given something to ask about. The sentence about the system not being public
+               stays here, because it corrects an assumption a reader genuinely makes when
+               told something is running.
+               Still outstanding: the same offer on energy-systems.html and on
+               interval-question.html. -->
+          <a class="proof-box" href="platform.html"><strong>The Platform</strong>Victron, Huawei
             and Deye hardware, reaching one interface through five separate third party services that were never
             designed to agree with each other. Weather corrected performance analysis, with every site observed once an
-            hour. It carries live data for real owners, so it is not a public system. I will walk you through
-            it.<span class="go">Ask for a walkthrough</span></a>
+            hour. It carries live data for real owners, so it is not a public system.<span class="go">What it watches,
+              and what it has caught</span></a>
           <a class="proof-box" href="spotting-ai-writing.html"><strong>Written Down</strong>Why people are so confident
             they can spot AI writing, and what that confidence is actually measuring.<span class="go">Read
               it</span></a>

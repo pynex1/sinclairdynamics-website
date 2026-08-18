@@ -171,6 +171,50 @@ section { position: relative; }
   text-transform: uppercase; color: var(--slate); margin-bottom: 16px; line-height: 1.1;
 }
 
+/* SYMPTOM CARDS
+   Promoted from index.html's local styles on 18 August 2026, when platform.html
+   became the second consumer. Same precedent as .proof-box and .named-engagement:
+   a page-local class moves here the first time a second page needs it, and the
+   local copy is removed in the same deploy so there is never a moment with two
+   copies live. .service-card is on the outstanding list precisely because that
+   was not done for it and the two copies drifted.
+
+   ACKNOWLEDGEMENT TIER. The card goes nowhere and commits the reader to nothing.
+   The state is carried by the left border lifting from a desaturated teal to the
+   full accent, and the travel is the tier's 2px.
+
+   TWO THINGS WERE CORRECTED ON PROMOTION, both of which the local copy had wrong
+   and neither of which changes how the card looks at rest.
+
+   1. The travel was translateX(2px). The acknowledgement tier travels
+      translateY(-2px) and this was the only member on the site moving sideways.
+      It is site record item 8 and index.html item 3, and promoting the class is
+      the moment it costs nothing to fix.
+   2. The card was in no reduced motion block, here or on index.html, so a reader
+      who had asked for less motion still got the travel. It is in the block at
+      the foot of this file now, which removes the travel and keeps the border
+      lift, so no feedback is lost. */
+.symptom {
+  background: var(--white);
+  border-left: 3px solid #B9D6D1;
+  border-radius: 4px;
+  padding: 26px 30px;
+  margin-bottom: 2px;
+  transition: border-left-color 0.2s ease-out, transform 0.2s ease-out;
+}
+.symptom:hover { border-left-color: var(--teal); transform: translateY(-2px); }
+.symptom:active { transform: translateY(0); transition-duration: 0.1s; }
+.symptom h3 {
+  font-family: var(--font-display); font-weight: 700; font-size: 21px;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--slate); margin-bottom: 8px;
+}
+.symptom p { font-size: 15px; line-height: 1.75; color: #556B77; }
+.symptom-bridge {
+  font-size: 17px; line-height: 1.8; color: #334E5C;
+  max-width: 680px; margin-top: 36px;
+}
+
 /* SERVICE CARDS */
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2px; margin-top: 60px; }
 /* Radius standard: 4px is the "broken edge". Enough that the corner is not
@@ -520,6 +564,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
   /* Promoted with their components on 14 August 2026. Identical to the rules
      index.html already carries locally at this breakpoint. */
   .services-grid-2x2 { grid-template-columns: 1fr; }
+  .symptom { padding: 22px 24px; }
   .named-engagement { grid-template-columns: 1fr; gap: 24px; padding: 32px 28px; }
 }
 
@@ -589,6 +634,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
   .linkedin-block, .linkedin-block:hover, .linkedin-block:active,
   .proof-box, .proof-box:hover, .proof-box:active,
   .named-engagement, .named-engagement:hover, .named-engagement:active,
+  .symptom, .symptom:hover, .symptom:active,
   a.highlight-box, a.highlight-box:hover, a.highlight-box:active {
     transform: none;
   }
