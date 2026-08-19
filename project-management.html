@@ -89,13 +89,15 @@
 </head>
 
 <body>
-  <!-- NAV:START  Single-sourced block. Identical on every page except the
-       active entry, which is set from the page's own filename. To change the
-       nav, change it here and reapply to every page between these markers.
-       Five entries as of 14 August 2026: The Engagement now exists and sits
-       between The Work and Contact. Nothing else moved. The four discipline
-       pages are not in the nav; they are reached from engagement.html and
-       from the footer Services column. -->
+  <!-- NAV:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE FILE.
+       It is written from _nav_canonical.html by apply-chrome.py, and any hand
+       edit made here will be silently overwritten the next time that script
+       runs. Change the fragment, then run the script.
+       Identical on every page except the active entry, which the script sets
+       from the page's own filename. Five entries as of 14 August 2026: The
+       Engagement sits between The Work and Contact. The four discipline pages
+       and every other page outside the nav carry no active entry at all,
+       which is correct rather than an omission. -->
   <nav>
     <a href="index.html" class="nav-logo"><img src="sinclair-nav-icon.png" alt="Sinclair Dynamics"
         style="height:52px;width:auto;"></a>
@@ -269,7 +271,16 @@
     </div>
   </section>
 
-  <!-- FOOTER:START  Single-sourced block. Byte-identical on every page. -->
+  <!-- FOOTER:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE
+       FILE. It is written from _footer_canonical.html by apply-chrome.py, and
+       any hand edit made here will be silently overwritten the next time that
+       script runs. Change the fragment, then run the script.
+       Byte-identical on every page, with no per-page variation of any kind.
+       The four column headings are singular by design and name a mode rather
+       than a count. That is a different job from the section heading on
+       engagement.html, which is singular because there is one defined
+       engagement and goes plural when a second is written. Do not "correct"
+       Discipline to Disciplines on the strength of that rule. -->
   <footer>
     <div class="footer-inner">
       <div class="footer-top">
@@ -287,13 +298,15 @@
             continent.</p>
         </div>
         <div class="footer-col">
-          <h4>Services</h4><a href="monitoring-calibration.html">Monitoring Calibration</a><a
-            href="project-management.html">Project Management</a><a href="technical-consulting.html">Technical
-            Consulting</a><a href="ai-digital.html">AI &amp; Digital</a><a href="energy-systems.html">Energy &amp; Power
-            Systems</a>
+          <h4>Engagement</h4><a href="monitoring-calibration.html">Monitoring Calibration</a>
+          <h4>Discipline</h4><a href="project-management.html">Project Management</a><a
+            href="technical-consulting.html">Technical Consulting</a><a href="ai-digital.html">AI &amp; Digital</a><a
+            href="energy-systems.html">Energy &amp; Power Systems</a>
         </div>
         <div class="footer-col">
-          <h4>Connect</h4><a href="work.html">The Work</a><a href="about.html">About Ainsley</a><a href="contact.html">Contact</a><a
+          <h4>Intelligence</h4><a href="platform.html">The Monitoring Platform</a>
+          <h4>Connection</h4><a href="about.html">About Ainsley</a><a href="work.html">The Work</a><a
+            href="engagement.html">The Engagement</a><a href="contact.html">Contact</a><a
             href="https://www.linkedin.com/in/ainsley-williams-18107015/" target="_blank" rel="noopener" class="footer-linkedin"><svg
               width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
               style="vertical-align:middle;margin-right:6px;" aria-hidden="true">
@@ -304,7 +317,7 @@
         </div>
       </div>
       <div class="footer-bottom"><span class="footer-copy">&copy; 2026 Sinclair Dynamics. All rights
-          reserved.</span><span class="footer-eng-intel">Engineering Intelligence. Delivered.</span></div>
+          reserved.</span><a class="footer-legal" href="privacy.html">Privacy Notice</a></div>
     </div>
   </footer>
   <!-- FOOTER:END -->

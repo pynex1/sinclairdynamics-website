@@ -548,7 +548,24 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
 .footer-linkedin:hover { color: var(--teal-bright); }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
 .footer-copy { font-size: 13px; }
-.footer-eng-intel { font-family: var(--font-display); font-weight: 700; font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal-bright); }
+/* The footer bottom bar carries the copyright on the left and the privacy
+   notice link on the right. `.footer-eng-intel` lived here until 19 August
+   2026 and held a second copy of the brand tagline in that right-hand slot,
+   duplicating the one under the mark a few hundred pixels above it. It was
+   removed when the privacy link took that slot, and the rule went with the
+   markup in the same change rather than being left behind as dead CSS. That
+   is the fault `.nav-monitor` is on the outstanding list for.
+   `.footer-legal` moves by colour only, per the text link exemption in the
+   visual language: a line of text that shifts under the cursor disrupts
+   reading. */
+.footer-legal { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+.footer-legal:hover { color: var(--teal-bright); }
+
+/* The middle and right footer columns each carry two headings now, so every
+   heading after the first in a column needs air above it. `:first-child`
+   rather than a modifier class, so a third group added later is spaced
+   correctly without anybody remembering to do anything. */
+.footer-col h4:not(:first-child) { margin-top: 28px; }
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
