@@ -8,17 +8,34 @@ WHAT THIS IS
 The nav and footer are the same on every page of this site, apart from which
 nav entry is marked active. Until now they were duplicated into each page file
 by hand, so changing either meant editing thirteen files and hoping none of
-them drifted. This script makes two fragment files authoritative and writes
+them drifted. This script makes three fragment files authoritative and writes
 them into every page:
 
     _nav_canonical.html      the nav block, with no active entry set
     _footer_canonical.html   the footer block, complete
+    _consent_canonical.html  the consent banner, complete
 
-Each page file carries a pair of marker comments. Everything between and
-including each pair is replaced. Nothing else in any file is touched.
+Each page file carries a pair of marker comments per block. Everything
+between and including each pair is replaced. Nothing else in any file is
+touched.
 
     <!-- NAV:START ...        ... NAV:END -->
     <!-- FOOTER:START ...     ... FOOTER:END -->
+    <!-- CONSENT:START ...    ... CONSENT:END -->
+
+NAV and FOOTER markers must already exist in every page; their absence stops
+the run, because both are structural furniture every page has carried since
+it was written; a page missing either has a real problem worth surfacing
+loudly rather than a guess worth making quietly.
+
+CONSENT is different, once. Added 19 August 2026, to a page set that has
+never carried it. The first time this script finds a page with no CONSENT
+markers at all, it inserts the fragment fresh, immediately before </body>,
+writing the marker pair as it does. Every run after that finds the markers
+this run just wrote and takes the same replace path nav and footer already
+do. A page carrying one marker but not the other, or more than one of
+either, is not bootstrapped: that shape means the page is already damaged
+rather than simply new, and the run stops rather than guessing.
 
 WHY THIS RUNS HERE AND NOT IN THE BROWSER
 -----------------------------------------
@@ -94,10 +111,16 @@ NAV_ACTIVE = {
 
 NAV_FRAGMENT = "_nav_canonical.html"
 FOOTER_FRAGMENT = "_footer_canonical.html"
+CONSENT_FRAGMENT = "_consent_canonical.html"
 
+# The fifth field is where a block may be bootstrapped from if its markers
+# are wholly absent. None means the markers must already exist, and their
+# absence stops the run. A string names the text to insert immediately
+# before, the first time only.
 BLOCKS = [
-    ("nav", NAV_FRAGMENT, "<!-- NAV:START", "<!-- NAV:END -->"),
-    ("footer", FOOTER_FRAGMENT, "<!-- FOOTER:START", "<!-- FOOTER:END -->"),
+    ("nav", NAV_FRAGMENT, "<!-- NAV:START", "<!-- NAV:END -->", None),
+    ("footer", FOOTER_FRAGMENT, "<!-- FOOTER:START", "<!-- FOOTER:END -->", None),
+    ("consent", CONSENT_FRAGMENT, "<!-- CONSENT:START", "<!-- CONSENT:END -->", "</body>"),
 ]
 
 
@@ -135,21 +158,47 @@ def digest(text):
     return hashlib.sha256(normalise(text).encode("utf-8")).hexdigest()[:12]
 
 
-def locate(text, start_marker, end_marker, filename, label):
+def locate(text, start_marker, end_marker, filename, label, bootstrap_before=None):
     """Return (start_index, end_index) of one block, or raise.
 
     Both markers must appear exactly once. Two pairs in one file would make
     the replacement ambiguous and is far more likely to be damage than intent.
+
+    The one exception: if neither marker appears at all, and bootstrap_before
+    is given, this returns a zero-length span immediately before the first
+    occurrence of bootstrap_before, rather than raising. The caller then
+    inserts the block there instead of replacing anything, which is the path
+    a block takes the one time it is new to a page. bootstrap_before must
+    itself appear exactly once; if it does not, there is no safe place to
+    insert and the run stops rather than guessing one.
+
+    A count of one for one marker and zero for the other, or more than one of
+    either, is never bootstrapped regardless of bootstrap_before. That shape
+    means the page is already damaged rather than simply new.
     """
-    if text.count(start_marker) != 1:
+    start_count = text.count(start_marker)
+    end_count = text.count(end_marker)
+
+    if start_count == 0 and end_count == 0 and bootstrap_before is not None:
+        anchor_count = text.count(bootstrap_before)
+        if anchor_count != 1:
+            raise Stop(
+                f"{filename}: {label} has no markers to bootstrap from, and "
+                f"'{bootstrap_before}' appears {anchor_count} times in the "
+                f"file, expected exactly 1. No safe place to insert it."
+            )
+        anchor = text.index(bootstrap_before)
+        return anchor, anchor
+
+    if start_count != 1:
         raise Stop(
             f"{filename}: expected exactly one '{start_marker}', "
-            f"found {text.count(start_marker)}"
+            f"found {start_count}"
         )
-    if text.count(end_marker) != 1:
+    if end_count != 1:
         raise Stop(
             f"{filename}: expected exactly one '{end_marker}', "
-            f"found {text.count(end_marker)}"
+            f"found {end_count}"
         )
     start = text.index(start_marker)
     end = text.index(end_marker) + len(end_marker)
@@ -216,6 +265,7 @@ def verify(folder):
     problems = []
     nav_hashes = {}
     footer_hashes = {}
+    consent_hashes = {}
     active_found = {}
 
     known_files = {p for p in PAGES}
@@ -233,12 +283,16 @@ def verify(folder):
             footer = extract(
                 text, "<!-- FOOTER:START", "<!-- FOOTER:END -->", page, "footer"
             )
+            consent = extract(
+                text, "<!-- CONSENT:START", "<!-- CONSENT:END -->", page, "consent"
+            )
         except Stop as exc:
             problems.append(str(exc))
             continue
 
         nav_hashes[page] = digest(strip_active(nav))
         footer_hashes[page] = digest(footer)
+        consent_hashes[page] = digest(consent)
 
         # Which entry, if any, is marked active in this page's nav.
         marks = re.findall(r'<a href="([^"]+)" class="active">([^<]+)</a>', nav)
@@ -252,14 +306,24 @@ def verify(folder):
                 f"{page}: active entry is {active_found[page]!r}, expected {expected!r}"
             )
 
-        # Every internal link inside the two blocks must resolve to a real file.
-        for href in re.findall(r'href="([^"]+)"', nav + footer):
+        # Every internal link inside the three blocks must resolve to a real file.
+        for href in re.findall(r'href="([^"]+)"', nav + footer + consent):
             if href.startswith(("http", "mailto:", "#")):
                 continue
             if href not in known_files:
                 problems.append(f"{page}: link target {href!r} does not exist")
 
-    # One nav shape and one footer shape across the whole site.
+        # The consent script must be present exactly once per page: it wires
+        # itself up by element id, and a second copy would attach a second
+        # set of listeners and record a choice twice per click.
+        script_count = consent.count("(function () {")
+        if script_count != 1:
+            problems.append(
+                f"{page}: consent block contains {script_count} copies of "
+                f"its own script, expected exactly 1"
+            )
+
+    # One nav shape, one footer shape, one consent shape across the whole site.
     if len(set(nav_hashes.values())) != 1:
         problems.append(
             "nav differs between pages: "
@@ -270,8 +334,13 @@ def verify(folder):
             "footer differs between pages: "
             + ", ".join(f"{p}={h}" for p, h in sorted(footer_hashes.items()))
         )
+    if len(set(consent_hashes.values())) != 1:
+        problems.append(
+            "consent differs between pages: "
+            + ", ".join(f"{p}={h}" for p, h in sorted(consent_hashes.items()))
+        )
 
-    return problems, nav_hashes, footer_hashes, active_found
+    return problems, nav_hashes, footer_hashes, consent_hashes, active_found
 
 
 # --------------------------------------------------------------------------
@@ -291,7 +360,7 @@ def main():
         # Read both fragments before touching anything, so a missing or
         # malformed fragment stops the run before any file is modified.
         sources = {}
-        for label, fragment, start_marker, end_marker in BLOCKS:
+        for label, fragment, start_marker, end_marker, bootstrap_before in BLOCKS:
             path = os.path.join(folder, fragment)
             if not os.path.exists(path):
                 raise Stop(f"fragment not found: {fragment}")
@@ -321,12 +390,18 @@ def main():
             shutil.copy2(path, os.path.join(backup, page))
 
             text = original
-            for label, fragment, start_marker, end_marker in BLOCKS:
+            for label, fragment, start_marker, end_marker, bootstrap_before in BLOCKS:
                 block = sources[label]
                 if label == "nav":
                     block = render_nav(block, page)
-                start, end = locate(text, start_marker, end_marker, page, label)
-                text = text[:start] + block + text[end:]
+                start, end = locate(
+                    text, start_marker, end_marker, page, label, bootstrap_before
+                )
+                # A zero-length span is the bootstrap case: nothing is being
+                # replaced, so the block needs its own trailing newline to
+                # land as a clean line rather than run into whatever follows.
+                piece = block if start != end else block + "\n"
+                text = text[:start] + piece + text[end:]
 
             if text != original:
                 write(path, text)
@@ -342,7 +417,7 @@ def main():
             print(f"Unchanged: {len(unchanged)} page(s) already matched the fragments")
         print()
 
-    problems, nav_hashes, footer_hashes, active_found = verify(folder)
+    problems, nav_hashes, footer_hashes, consent_hashes, active_found = verify(folder)
 
     print("VERIFICATION")
     print(f"  Pages checked:        {len(nav_hashes)} of {len(PAGES)}")
@@ -352,6 +427,9 @@ def main():
     if footer_hashes:
         print(f"  Footer shapes found:  {len(set(footer_hashes.values()))} "
               f"(expected 1) -> {sorted(set(footer_hashes.values()))}")
+    if consent_hashes:
+        print(f"  Consent shapes found: {len(set(consent_hashes.values()))} "
+              f"(expected 1) -> {sorted(set(consent_hashes.values()))}")
     marked = {p: a for p, a in active_found.items() if a}
     print(f"  Active nav entries:   {len(marked)} (expected {len(NAV_ACTIVE)})")
     for p, a in sorted(marked.items()):
@@ -367,8 +445,9 @@ def main():
             print("The backup folder holds every file as it was before this run.")
         return 1
 
-    print("PASSED. Every page carries the same nav and the same footer,")
-    print("and every active entry is the one its filename calls for.")
+    print("PASSED. Every page carries the same nav, the same footer, and the")
+    print("same consent banner, and every active entry is the one its")
+    print("filename calls for.")
     return 0
 
 

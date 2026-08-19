@@ -635,6 +635,50 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
 @media (max-width: 700px) { .ai-embed { height: 520px; } }
 
 /* ---------------------------------------------------------------------------
+   CONSENT BANNER
+   Added 19 August 2026. Gates the analytics tag only: nothing else on the
+   site needs a visitor's answer to work, so this is deliberately not a
+   modal. A bar at the foot of the viewport, on the same dark ground as the
+   nav, present until answered and never again after that. Commit tier: the
+   shadow on hover is what marks a control as a door rather than a panel,
+   and this one commits the visitor to a choice either way.
+   Accept and Decline share one class, .consent-btn, and therefore one
+   weight. That is the whole of what "exactly as easy as accept" means in
+   CSS: not two different treatments brought to the same size, but the same
+   treatment with a different label.
+   --------------------------------------------------------------------------- */
+.consent-banner {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 100;
+  background: rgba(30,58,74,0.97); border-top: 2px solid var(--teal);
+  display: none;
+}
+.consent-banner[data-state="visible"] { display: block; }
+.consent-inner {
+  max-width: 1100px; margin: 0 auto; padding: 20px 40px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+}
+.consent-text { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.75); max-width: 640px; }
+/* Text link exemption, per the movement tiers: colour only, no travel. */
+.consent-text a { color: var(--teal-bright); text-decoration: none; transition: color 0.2s; }
+.consent-text a:hover { color: var(--white); }
+.consent-actions { display: flex; gap: 12px; flex-shrink: 0; }
+.consent-btn {
+  font-family: var(--font-display); font-weight: 700; font-size: 13px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  background: transparent; color: var(--white); padding: 12px 24px;
+  border-radius: 4px; border: 2px solid rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: border-color 0.2s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+.consent-btn:hover { border-color: var(--white); transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,0.30); }
+.consent-btn:active { transform: translateY(0); box-shadow: 0 2px 6px rgba(0,0,0,0.32); transition-duration: 0.1s; }
+@media (max-width: 700px) {
+  .consent-inner { flex-direction: column; align-items: stretch; }
+  .consent-actions { justify-content: stretch; }
+  .consent-btn { flex: 1; text-align: center; }
+}
+
+/* ---------------------------------------------------------------------------
    REDUCED MOTION
    Anyone who has asked for less motion keeps every state change and loses
    only the travel. Colour, border, shadow and the nav indicator rule all
@@ -652,6 +696,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
   .proof-box, .proof-box:hover, .proof-box:active,
   .named-engagement, .named-engagement:hover, .named-engagement:active,
   .symptom, .symptom:hover, .symptom:active,
+  .consent-btn, .consent-btn:hover, .consent-btn:active,
   a.highlight-box, a.highlight-box:hover, a.highlight-box:active {
     transform: none;
   }
