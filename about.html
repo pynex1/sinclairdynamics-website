@@ -130,8 +130,11 @@
    A box that contains a link is itself the link, so the whole panel is the
    anchor and sits on the navigable tier: 4px of travel and the tight shadow.
    The arrow is retained inside as the visual signal.
-   Width is held below the column on purpose. A single item stretched full
-   width reads as a row with its siblings missing.
+   Width is held below the column on purpose. It was originally held there
+   because a single item stretched full width reads as a row with its siblings
+   missing. A second panel arrived on 22 August 2026 so that reason has gone,
+   but the width stays: 640px is the line length the rest of this page reads
+   at, and a panel wider than the body copy above it would be the odd one.
    --------------------------------------------------------------------------- */
     .writing-panel {
       display: block;
@@ -142,6 +145,13 @@
       border-radius: 4px;
       padding: 26px 30px;
       transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    }
+
+    /* Added 22 August 2026 with the second panel. Adjacent-sibling rather than
+       a margin on the class itself, so a lone panel on any future page still
+       closes its section without a trailing gap. */
+    .writing-panel + .writing-panel {
+      margin-top: 20px;
     }
 
     .writing-panel:hover {
@@ -805,6 +815,18 @@
         and in business are not new ones. The constraints move. The failure modes tend not to. I write occasionally
         about settled ideas that turn out to explain something current, usually because I have just run into one.
         Occasional is meant literally.</p>
+      <!-- Two panels as of 22 August 2026, most recent first. If a third
+           arrives, keep that order rather than the order they were written:
+           a reader scanning an occasional series wants the newest thing at
+           the top, and "occasional" means the list will never be long enough
+           to need dates. -->
+      <a class="writing-panel" href="machine-was-never-the-ceiling.html">
+        <div class="writing-panel-label">On Working With AI</div>
+        <div class="writing-panel-title">The Machine Was Never The Ceiling</div>
+        <p>A machine does exactly what it is given, and nothing more. Why judging what one produced always means
+          judging what it was asked to do, and what Ada Lovelace already argued about it in 1843.</p>
+        <span class="go">Read it</span>
+      </a>
       <a class="writing-panel" href="spotting-ai-writing.html">
         <div class="writing-panel-label">On Working With AI</div>
         <div class="writing-panel-title">The Content You Did Not Notice</div>

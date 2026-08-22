@@ -189,6 +189,83 @@
    what a node on a route drawing is. */
 .ct-fig .altpad { opacity: 0.26; }
 .ct-fig .pad    { opacity: 0.46; }
+/* ---------------------------------------------------------------------------
+   THE DARK FIELD: THE HERO AND THE CONVERSATION AS ONE GROUND
+   Added 22 August 2026, Session 27.
+
+   WHAT CHANGED AND WHY. The assistant used to sit in an --off-white section at
+   the foot of this page. It now sits directly under the hero headline, inside
+   the same unbroken dark field, and the traditional routes follow below it on
+   light ground. The reason is not layout. This site argues throughout that a
+   conventional website is a report written once that cannot be asked anything.
+   Every other page makes that argument in prose. This page stops arguing it. A
+   reader arrives at a headline reading "Start a conversation" and the thing
+   directly beneath it answers back.
+
+   WHY A WRAPPER RATHER THAN A TALLER HERO. .page-hero paints its own 135deg
+   gradient, and .ct-fig is positioned against it with inset:0. Growing the hero
+   to contain the widget would have dragged the figure down with it, because the
+   svg uses preserveAspectRatio="xMaxYMax meet" and is therefore anchored to the
+   bottom of whatever box it is given. Maintenance warning 3 above ties the
+   per-run gradient fade points to the hero headline at its current width, so
+   moving the figure would have quietly broken a relationship that already has
+   three warnings written against it. The wrapper carries the ground across both
+   blocks instead, .page-hero's own gradient is suppressed, and the figure keeps
+   exactly the box it was tuned in.
+
+   THE GRADIENT MUST STAY ON .ct-dark AND NOWHERE ELSE. Two stacked boxes each
+   painting the same 135deg ramp do not join. The angle means the colour along
+   the bottom edge varies across the width, so a second box restarting the ramp
+   shows a seam. One box, one ramp.
+
+   STAGE ONE OF TWO. The widget inside the iframe still paints its own pale
+   background, so it currently reads as a bright slab on dark. That is expected
+   rather than finished. The widget application already forces html, body and
+   #root to transparent in its own index.css, so the only thing painting is the
+   widget root, and stage two removes it and reframes the edges.
+   --------------------------------------------------------------------- */
+.ct-dark { background: linear-gradient(135deg, var(--slate) 0%, #0D2433 100%); }
+
+/* Suppressed rather than overridden with a second gradient. The hero must
+   contribute nothing to the ground, or the seam described above returns. */
+.ct-dark .page-hero { background: none; }
+
+/* The conversation block is transparent so the wrapper's ramp runs through it.
+   Top padding is deliberately small: .page-hero-content already closes with
+   70px, and the widget has to read as the answer to the headline rather than
+   as the next section down. */
+.ct-convo .section-inner { padding: 16px 40px 100px; }
+
+/* WHY 1.7fr AND NOT TWO EQUAL COLUMNS. The left column holds a 640px tall
+   conversation and the right holds one card. Equal columns would give the card
+   more room than it has content for and squeeze the thing the page is about.
+   align-items:start keeps the card at the top of its column rather than
+   floating it against the middle of 640px of widget. */
+.ct-convo-grid { display: grid; grid-template-columns: 1.7fr 1fr; gap: 48px; align-items: start; }
+
+/* Dark-ground body copy. Matches .page-hero-sub's treatment rather than
+   .body-text, which is written for light sections. */
+.ct-convo-lead { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.7); margin: 0 0 24px; }
+
+/* Two breakpoints rather than one. The column collapse happens at 900px,
+   which is where the 612px widget stops having room beside a card. The side
+   padding follows shared.css's own 700px breakpoint for .section-inner
+   instead, so this section does not narrow its gutters ahead of every other
+   section on the page. */
+/* Air between the new section title and the grid beneath it. Everywhere else
+   on the site a .section-lead sits in this position and contributes its own
+   60px, so content starts 80px below the title. This section has no lead, and
+   .section-title's own 20px alone puts the grid hard up against it. 28px more
+   lands at 48px, which is proportionate for a title with nothing between it
+   and the content rather than a copy of a gap that a paragraph was filling. */
+.ct-routes .contact-grid { margin-top: 28px; }
+
+@media (max-width: 900px) {
+  .ct-convo-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 700px) {
+  .ct-convo .section-inner { padding: 16px 24px 70px; }
+}
 </style>
 </head>
 
@@ -216,6 +293,9 @@
   </nav>
   <!-- NAV:END -->
 
+  <!-- The dark field opens here and closes below the conversation block.
+       See THE DARK FIELD in the style block above before moving either edge. -->
+  <div class="ct-dark">
   <section class="page-hero">
     <!-- Hero figure: routes drawn and not yet taken. Full reasoning and the
          three maintenance warnings are in the .ct-fig block in the page style
@@ -235,11 +315,103 @@
     </div>
   </section>
 
-  <section>
+  <!-- ===== THE CONVERSATION ==========================================
+       Moved here from the foot of the page on 22 August 2026, Session 27.
+
+       THE COMMENT THIS REPLACES SAID NOT TO DO THIS, so the reason it was
+       overruled is recorded rather than the instruction simply deleted.
+       That comment held the assistant at the foot of the page until it
+       could take a name, an address and a need conversationally and send
+       the email itself, on the grounds that a visitor who talked it all
+       the way through arrived at the same form the page already offered
+       higher up, and so the conversation had no payoff the form did not
+       already give.
+
+       WHY THAT NO LONGER HOLDS. It was accurate when it was written. The
+       assistant could answer a few questions about the site's headings
+       and then offer a form, so the form genuinely was the entire payoff
+       and waiting for the assistant to replace it was a reasonable way to
+       describe waiting for it to be worth reaching. It now answers from
+       the whole knowledge base, across the work, the engagement, the
+       written pieces and its own naming, and a visitor who asks it
+       something and gets a real answer has had a payoff the form cannot
+       give, whether or not they use the form afterwards. The exit
+       condition was scoped to the wrong thing. Conversational lead
+       capture is still wanted and still on the roadmap; it was never what
+       justified the promotion.
+
+       WHAT IS STILL TRUE FROM THAT COMMENT. "Every route on this page
+       reaches a person" is true today because every route ends in a form
+       or a number. When the assistant initiates contact on a visitor's
+       behalf, the sentence will start to undersell it and should be
+       revisited then.
+       ================================================================= -->
+  <section class="ct-convo">
     <div class="section-inner">
+      <div class="ct-convo-grid">
+        <div>
+          <!-- loading="lazy" was removed when this moved up the page. It was
+               correct at the foot of the page and is wrong here: this is now
+               the first thing below the headline and deferring it would leave
+               a hole where the page's main claim is. -->
+          <iframe class="ai-embed"
+            src="https://sinclair-dynamics-chatbot-660519490844.europe-west2.run.app"
+            title="Sinclair Dynamics AI assistant"></iframe>
+        </div>
+        <div>
+          <p class="ct-convo-lead">The assistant answers from the same material I would, and it will tell you
+            when a question needs me rather than it. Every route on this page reaches a person.</p>
+          <!-- NEW COPY, 22 August 2026. The label follows the series name
+               rather than the homepage card's "Written Down", because on this
+               page the series is the useful frame. The body is drawn from the
+               article's own meta description rather than written fresh. -->
+          <a class="proof-box" href="machine-was-never-the-ceiling.html"><strong>On Working With AI</strong>A
+            machine does exactly what it is given, and nothing more. Why the ceiling on what it produces was
+            never the tool's to set.<span class="go">Read it</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+  <!-- ===== the dark field closes here ===== -->
+
+  <!-- ===== THE DIRECT ROUTES =========================================
+       Given its own eyebrow and section title on 22 August 2026, Session 27,
+       when the assistant moved above it.
+
+       WHY THIS SECTION NEEDS A HEADING AND THE ASSISTANT DOES NOT. Every
+       section on this site introduces itself with an eyebrow and a two-colour
+       title. This one never did, because it followed straight on from the hero
+       and the hero introduced it. It no longer follows the hero. The assistant
+       does: the hero says "Start a conversation" and the conversation is
+       directly beneath it, so giving that block its own heading would restate
+       the headline eight lines below itself. One block inherits its
+       introduction from the hero and the other cannot, which is why only one
+       of the two carries a title.
+
+       WHY THIS WORDING. It mirrors the heading it replaces, "Or Ask The
+       Assistant" over "Prefer To Ask First?", which sat above the assistant
+       when the assistant was at the foot of the page. The page now reads as
+       one continuous offer: start a conversation, and if you would rather not
+       have it with a machine, here is the other way. It also sits correctly
+       with "every route on this page reaches a person", which now lives in the
+       assistant column. Every route reaches one. These reach one sooner.
+
+       THE h3 THAT WAS HERE. "Direct Contact", 22px, in the left column only.
+       It was a placeholder that predated this section having any introduction
+       of its own, and it became redundant against a section title six lines
+       above it. Removed rather than restyled. Both columns are now unlabelled
+       under one shared title, which is how every other two-column section on
+       this site is built. Its paragraph was kept: it tells a reader the form
+       is the fastest route and what the two options at the top of it do, which
+       is real guidance rather than a label.
+       ================================================================= -->
+  <section class="ct-routes">
+    <div class="section-inner">
+      <div class="section-eyebrow">Or Reach Me Directly</div>
+      <h2 class="section-title">Prefer A Person<br><span>From The Start?</span></h2>
       <div class="contact-grid">
         <div class="contact-info">
-          <h3>Direct Contact</h3>
           <p>Use the form, or any of the details below. The form reaches me fastest, and the two options at the
             top of it tell me where to begin.</p>
 
@@ -385,37 +557,15 @@
     </div>
   </section>
 
-  <!-- ===== THE ASSISTANT =============================================
-       Placed at the foot of the page deliberately, not by accident, and
-       it should not be promoted until the reason for the placement has
-       gone away.
-       As it stands, a visitor who talks the assistant all the way through
-       arrives at the same contact form this page already offers higher up,
-       so the conversation has no payoff the form does not already give.
-       The intended version replaces the form entirely: the assistant takes
-       a name, an address and a need conversationally, then sends an email
-       that puts two people in contact, with the raw transcript and summary
-       going separately to Ainsley.
-       When that exists, this page becomes two paths of equal weight, the
-       traditional routes and the assistant, with the assistant the more
-       prominent of the two. Until then it sits here.
-       Note also that "every route on this page reaches a person" is true
-       today because every route ends in a form or a number. In the intended
-       version the assistant reaches a person by initiating contact on the
-       visitor's behalf, and the sentence will start to undersell it.
-       ================================================================= -->
-  <section style="background:var(--off-white);">
-    <div class="section-inner" style="padding-top:70px;padding-bottom:70px;">
-      <div class="section-eyebrow">Or Ask The Assistant</div>
-      <h2 class="section-title">Prefer To <span>Ask First?</span></h2>
-      <p class="body-text" style="max-width:680px;margin-bottom:32px;">The assistant answers from
-        the same material I would, and it will tell you when a question needs me rather than it.
-        Every route on this page reaches a person.</p>
-      <iframe class="ai-embed"
-        src="https://sinclair-dynamics-chatbot-660519490844.europe-west2.run.app"
-        title="Sinclair Dynamics AI assistant" loading="lazy"></iframe>
-    </div>
-  </section>
+  <!-- The assistant used to sit here, at the foot of the page. It moved to
+       directly below the hero on 22 August 2026. The full reasoning, and the
+       argument it overruled, are recorded at THE CONVERSATION above rather
+       than repeated here. The eyebrow and heading that framed it ("Or Ask The
+       Assistant" / "Prefer To Ask First?") were not carried up with it: the
+       hero headline already says "Start a conversation", and a second heading
+       introducing the same thing eight lines below the first would undo the
+       effect the move exists to create. Its lead paragraph did survive, and is
+       now the copy in the right-hand column. -->
 
   <!-- FOOTER:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE
        FILE. It is written from _footer_canonical.html by apply-chrome.py, and
