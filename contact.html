@@ -42,7 +42,17 @@
 /* ---------------------------------------------------------------------------
    PAGE LOCAL STYLES
    Kept on the page rather than in shared.css, consistent with how the homepage
-   and the about page were handled. Nothing here overrides a shared class.
+   and the about page were handled.
+
+   TWO RULES HERE DO OVERRIDE SHARED CLASSES, which this note used to say did
+   not happen. Both were added on 22 August 2026 when the assistant moved into
+   the hero, both are scoped behind .ct-dark so they cannot reach another page,
+   and both exist because .page-hero is shared by every hero on the site while
+   only this one contains a conversation. They are `.ct-dark .page-hero`, which
+   suppresses the hero's own gradient so the wrapper can carry it, and
+   `.ct-dark .page-hero-content`, which closes the gap to the widget. If a
+   third is ever wanted, the question to ask first is whether the shared class
+   is wrong for everybody rather than just for this page.
 
    HERO FIGURE: ROUTES, DRAWN AND NOT YET TAKEN
    Rebuilt 9 August 2026. This replaces the continuity test built on 8 August.
@@ -247,11 +257,31 @@
    .body-text, which is written for light sections. */
 .ct-convo-lead { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.7); margin: 0 0 24px; }
 
-/* Two breakpoints rather than one. The column collapse happens at 900px,
-   which is where the 612px widget stops having room beside a card. The side
-   padding follows shared.css's own 700px breakpoint for .section-inner
-   instead, so this section does not narrow its gutters ahead of every other
-   section on the page. */
+/* THE GAP BETWEEN THE HERO LEAD AND THE WIDGET. Closed 22 August 2026.
+
+   It was 86px: .page-hero-content's shared 70px bottom padding plus this
+   section's own 16px top. That was correct while the hero was the end of a
+   block and the next section was a separate thing. It is not correct now that
+   the sentence above and the conversation below are one continuous offer, and
+   at 86px the widget read as the next section down rather than as the answer
+   to the headline.
+
+   28px here takes the total to 44px, roughly half. The hero's own padding is
+   the number that had to move, because this section's 16px could not have
+   closed it alone.
+
+   Scoped to .ct-dark rather than changed in shared.css. .page-hero-content is
+   used by every hero on the site and only this one has a conversation directly
+   beneath it. */
+.ct-dark .page-hero-content { padding-bottom: 28px; }
+
+/* One breakpoint. This was briefly split into two on the stated grounds that
+   shared.css changes .section-inner's gutters at 700px. It does not: that rule
+   is in the 900px block. The split therefore produced the exact fault it was
+   meant to avoid, holding this section at 40px gutters between 700 and 900
+   while every other section on the page had already dropped to 24px. Both
+   changes belong at 900px, which is also where the 612px widget stops having
+   room beside a card. */
 /* Air between the new section title and the grid beneath it. Everywhere else
    on the site a .section-lead sits in this position and contributes its own
    60px, so content starts 80px below the title. This section has no lead, and
@@ -262,8 +292,6 @@
 
 @media (max-width: 900px) {
   .ct-convo-grid { grid-template-columns: 1fr; gap: 32px; }
-}
-@media (max-width: 700px) {
   .ct-convo .section-inner { padding: 16px 24px 70px; }
 }
 </style>
