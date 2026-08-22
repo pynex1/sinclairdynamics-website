@@ -631,8 +631,16 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
    not a floating launcher and deliberately not on every page: the assistant is
    an alternative to the form, never a gate in front of a person.
    loading="lazy" keeps it off the critical path for visitors who never scroll. */
-.ai-embed { width: 100%; height: 640px; border: none; border-radius: 8px; display: block; }
-@media (max-width: 700px) { .ai-embed { height: 520px; } }
+/* Height raised from 640px / 520px on 22 August 2026, Session 27. The widget
+   inside now insets its content 30px on every edge to clear the construction
+   marks drawn at its corners, which costs about 36px of vertical room. The
+   extra 60px covers that and returns the rest to the conversation, which was
+   only showing two messages at the old height. The border-radius is now inert:
+   the widget is transparent, so there is no longer a painted corner to clip. It
+   is left in place because it costs nothing and would matter again if anything
+   inside ever painted a background. */
+.ai-embed { width: 100%; height: 700px; border: none; border-radius: 8px; display: block; }
+@media (max-width: 700px) { .ai-embed { height: 580px; } }
 
 /* ---------------------------------------------------------------------------
    CONSENT BANNER
