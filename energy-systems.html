@@ -374,7 +374,408 @@
         </div>
       </div>
       <div class="footer-bottom"><span class="footer-copy">&copy; 2026 Sinclair Dynamics. All rights
-          reserved.</span><a class="footer-legal" href="privacy.html">Privacy Notice</a></div>
+          reserved.</span>
+      <!-- VIEWPORT REPORTER:START
+           DIAGNOSTIC. NOT A DESIGN ELEMENT. NOT PART OF THE SITE.
+
+           Added 23 August 2026, Session 29, for the narrow-width observation
+           pass. The site had never been looked at below desktop width and no
+           reliable way existed to know what width a device was actually
+           reporting to the stylesheet, which made every observation about
+           narrow behaviour a guess.
+
+           Hidden by default on every page. It reveals only when the address
+           ends in #vp, and once revealed it stays revealed while moving
+           around the site in the same browser tab, because the nav and
+           footer links do not carry the hash. The close control ends that.
+
+           It renders fixed to a corner of the viewport rather than in the
+           footer's flow, deliberately: .footer-bottom is a flex row and an
+           extra child would change how that row lays out at exactly the
+           widths this instrument exists to observe. Out of flow, it cannot
+           disturb any layout on any page.
+
+           It is styled to look nothing like this site. Black ground,
+           monospace, amber. Anyone who meets it by accident should be able
+           to tell at a glance that it is not part of the page.
+
+           REMOVAL: delete everything between these markers from
+           _footer_canonical.html and run apply-chrome.py. Nothing else on
+           the site references it. No rule in shared.css belongs to it, no
+           id or class it uses appears anywhere else, and it adds no link.
+
+           DISPOSAL CONDITION: it comes out when the narrow-width work is
+           finished and the site record's item 1 is closed, unless a reason
+           to keep it has been written down by then.
+           -->
+      <style>
+        /* Everything here is prefixed sd-vp so it cannot collide with the
+           site's own classes. Display is controlled by the .on class rather
+           than by the hidden attribute, because a later display rule would
+           silently win over hidden and the block would appear on every page. */
+        #sd-vp { display: none; }
+        #sd-vp.on {
+          display: block;
+          position: fixed;
+          z-index: 2147483000;
+          background: #000;
+          color: #FFB020;
+          border: 1px solid #FFB020;
+          border-radius: 3px;
+          padding: 6px 8px;
+          max-width: 320px;
+          font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+          font-size: 11px;
+          line-height: 1.45;
+          text-align: left;
+          letter-spacing: 0;
+          text-transform: none;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+          -webkit-user-select: text;
+          user-select: text;
+        }
+        /* Four corners, cycled by tapping the readout. The top pair clears the
+           68px nav plus its 2px border, since the nav is the first thing this
+           pass has to look at and the instrument must not cover it. */
+        #sd-vp.sd-vp-br { bottom: 8px; right: 8px; }
+        #sd-vp.sd-vp-bl { bottom: 8px; left: 8px; }
+        #sd-vp.sd-vp-tl { top: 78px; left: 8px; }
+        #sd-vp.sd-vp-tr { top: 78px; right: 8px; }
+        #sd-vp pre {
+          margin: 0;
+          font: inherit;
+          color: inherit;
+          white-space: pre;
+          cursor: pointer;
+        }
+        #sd-vp .sd-vp-bar {
+          display: flex;
+          gap: 6px;
+          margin-top: 6px;
+          border-top: 1px solid rgba(255, 176, 32, 0.35);
+          padding-top: 5px;
+        }
+        #sd-vp button {
+          flex: 1;
+          font-family: inherit;
+          font-size: 10px;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          background: transparent;
+          color: #FFB020;
+          border: 1px solid rgba(255, 176, 32, 0.5);
+          border-radius: 2px;
+          padding: 5px 4px;
+          cursor: pointer;
+          min-height: 30px;
+        }
+        #sd-vp button:active { background: rgba(255, 176, 32, 0.2); }
+        #sd-vp .sd-vp-warn { color: #FF5A4A; }
+      </style>
+      <div id="sd-vp" class="sd-vp-br"><pre data-sd-vp-out>reading</pre>
+        <div class="sd-vp-bar"><button type="button" data-sd-vp-scan>scan</button><button type="button"
+            data-sd-vp-copy>copy</button><button type="button" data-sd-vp-close>close</button></div>
+      </div>
+      <script>
+        (function () {
+          'use strict';
+
+          var KEY = 'sd-vp-visible';
+          var box = document.getElementById('sd-vp');
+          if (!box) { return; }
+
+          var out = box.querySelector('[data-sd-vp-out]');
+          var CORNERS = ['sd-vp-br', 'sd-vp-bl', 'sd-vp-tl', 'sd-vp-tr'];
+          var corner = 0;
+          var scanned = null;
+          var pending = false;
+
+          /* ---- collection -------------------------------------------------
+             Three width measures are reported rather than one, because they
+             disagree in informative ways. innerWidth includes a classic
+             scrollbar, clientWidth does not, and visualViewport reports what
+             is actually on screen after pinch zoom or a soft keyboard. A
+             difference between the first two on the laptop is a scrollbar. A
+             difference involving the third on the phone means the page is
+             zoomed and no width reading can be trusted until it is not. */
+
+          function media(query) {
+            return window.matchMedia ? window.matchMedia(query).matches : null;
+          }
+
+          function viewportMeta() {
+            var tag = document.querySelector('meta[name="viewport"]');
+            if (!tag) { return null; }
+            return tag.getAttribute('content') || '(empty)';
+          }
+
+          /* A short, honest guess at the browser. It exists for one reason:
+             a file opened from a messaging app may render in that app's own
+             WebView rather than in Chrome, and a WebView can report a
+             different viewport from the browser a visitor would use. The
+             full user agent string travels in the copy payload, so nothing
+             is lost by this being a guess. */
+          function browser() {
+            var ua = navigator.userAgent || '';
+            var name = 'unidentified';
+            if (/\bEdgA?\//.test(ua)) { name = 'Edge'; }
+            else if (/\bOPR\//.test(ua)) { name = 'Opera'; }
+            else if (/SamsungBrowser\//.test(ua)) { name = 'Samsung Internet'; }
+            else if (/FBAN|FBAV|Instagram|\bLine\//.test(ua)) { name = 'social app'; }
+            else if (/Firefox\/|FxiOS\//.test(ua)) { name = 'Firefox'; }
+            else if (/CriOS\//.test(ua)) { name = 'Chrome iOS'; }
+            else if (/Chrome\//.test(ua)) { name = 'Chrome'; }
+            else if (/Safari\//.test(ua)) { name = 'Safari'; }
+            if (/;\s?wv\)/.test(ua) || /\bwv\b/.test(ua)) { name += ' WebView'; }
+            return name;
+          }
+
+          function describe(el) {
+            var label = el.tagName.toLowerCase();
+            if (el.id) { return label + '#' + el.id; }
+            var cls = el.getAttribute && el.getAttribute('class');
+            if (cls) {
+              var first = String(cls).trim().split(/\s+/)[0];
+              if (first) { label += '.' + first; }
+            }
+            return label;
+          }
+
+          /* Finds the element reaching furthest past the right edge of the
+             document. Horizontal overflow is the commonest narrow-width fault
+             and a few pixels of it is invisible by eye.
+
+             Two honest limits, so a result is read for what it is. Position
+             fixed elements do not move with horizontal scroll, so their
+             numbers are only correct while the page is unscrolled sideways.
+             And an element can legitimately sit outside the viewport, so this
+             names a candidate rather than declaring a defect. */
+          function findWorst() {
+            var limit = document.documentElement.clientWidth;
+            var offset = window.pageXOffset || 0;
+            var all = document.body ? document.body.querySelectorAll('*') : [];
+            var worst = null;
+            var worstRight = limit + 1;
+            for (var i = 0; i < all.length; i++) {
+              var el = all[i];
+              if (el === box || box.contains(el)) { continue; }
+              var rect = el.getBoundingClientRect();
+              if (rect.width === 0 && rect.height === 0) { continue; }
+              var right = rect.right + offset;
+              if (right > worstRight) {
+                worstRight = right;
+                worst = el;
+              }
+            }
+            if (!worst) { return 'no element past ' + limit + 'px'; }
+            return describe(worst) + ' to ' + Math.round(worstRight) + 'px';
+          }
+
+          function collect() {
+            var doc = document.documentElement;
+            var vv = window.visualViewport;
+            var meta = viewportMeta();
+            return {
+              innerW: window.innerWidth,
+              innerH: window.innerHeight,
+              clientW: doc.clientWidth,
+              visualW: vv ? Math.round(vv.width) : null,
+              dpr: window.devicePixelRatio || 1,
+              screenW: window.screen ? window.screen.width : null,
+              screenH: window.screen ? window.screen.height : null,
+              portrait: media('(orientation: portrait)'),
+              at900: media('(max-width: 900px)'),
+              at700: media('(max-width: 700px)'),
+              reduced: media('(prefers-reduced-motion: reduce)'),
+              meta: meta,
+              metaOk: meta !== null && meta.indexOf('width=device-width') !== -1,
+              overflow: doc.scrollWidth - doc.clientWidth,
+              browser: browser(),
+              page: location.pathname.split('/').pop() || 'index.html'
+            };
+          }
+
+          /* ---- rendering ------------------------------------------------ */
+
+          /* The label column is padded to 9 rather than 8 because 'overflow'
+             is itself 8 characters long and would otherwise render with no
+             gap between its label and its value. Caught in a DOM test rather
+             than by reading it. */
+          function pad(text) {
+            var s = String(text);
+            while (s.length < 9) { s += ' '; }
+            return s;
+          }
+
+          function render() {
+            var d = collect();
+            var lines = [];
+
+            lines.push(pad('page') + d.page);
+            lines.push(pad('css') + d.innerW + ' x ' + d.innerH +
+              '   dpr ' + (Math.round(d.dpr * 100) / 100));
+            lines.push(pad('client') + d.clientW +
+              (d.visualW !== null ? '   visual ' + d.visualW : ''));
+            lines.push(pad('screen') + d.screenW + ' x ' + d.screenH +
+              '   ' + (d.portrait ? 'portrait' : 'landscape'));
+            lines.push(pad('breaks') +
+              '900 ' + (d.at900 ? 'ON ' : 'off') +
+              '   700 ' + (d.at700 ? 'ON' : 'off'));
+
+            if (d.meta === null) {
+              lines.push(pad('meta') + 'ABSENT, page will scale');
+            } else if (!d.metaOk) {
+              lines.push(pad('meta') + 'no width=device-width');
+            } else {
+              lines.push(pad('meta') + 'ok');
+            }
+
+            lines.push(pad('overflow') +
+              (d.overflow > 0 ? d.overflow + 'px past edge' : 'none'));
+
+            if (scanned) { lines.push(pad('widest') + scanned); }
+            if (d.reduced) { lines.push(pad('motion') + 'reduced'); }
+            lines.push(pad('browser') + d.browser);
+
+            out.textContent = lines.join('\n');
+
+            /* The two conditions that make every other number on the panel
+               unreliable are the two that get the alarm colour. */
+            var bad = (d.meta === null) || !d.metaOk || d.overflow > 0;
+            out.className = bad ? 'sd-vp-warn' : '';
+          }
+
+          function schedule() {
+            if (pending) { return; }
+            pending = true;
+            window.requestAnimationFrame(function () {
+              pending = false;
+              scanned = null;
+              render();
+            });
+          }
+
+          /* ---- copy ------------------------------------------------------
+             One line, so it pastes into a message without reflowing. The full
+             user agent and the URL travel with it, because a reading with no
+             provenance is not worth having later. */
+
+          function payload() {
+            var d = collect();
+            return [
+              d.page,
+              'css=' + d.innerW + 'x' + d.innerH,
+              'client=' + d.clientW,
+              'visual=' + (d.visualW === null ? 'n/a' : d.visualW),
+              'dpr=' + d.dpr,
+              'screen=' + d.screenW + 'x' + d.screenH,
+              (d.portrait ? 'portrait' : 'landscape'),
+              'mq900=' + (d.at900 ? 'on' : 'off'),
+              'mq700=' + (d.at700 ? 'on' : 'off'),
+              'meta=' + (d.meta === null ? 'ABSENT' : d.meta),
+              'overflow=' + d.overflow,
+              'widest=' + (scanned || 'not scanned'),
+              'reducedMotion=' + (d.reduced ? 'yes' : 'no'),
+              'browser=' + d.browser,
+              'url=' + location.href,
+              'ua=' + (navigator.userAgent || '')
+            ].join(' | ');
+          }
+
+          function flash(button, word) {
+            var original = button.textContent;
+            button.textContent = word;
+            window.setTimeout(function () { button.textContent = original; }, 1200);
+          }
+
+          function copy(button) {
+            var text = payload();
+            /* The async clipboard API is unavailable over file:// and in some
+               WebViews, which are exactly the conditions this may be opened
+               under, so the old path is kept as a fallback rather than
+               assumed unnecessary. */
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(function () {
+                flash(button, 'copied');
+              }, function () {
+                fallbackCopy(text, button);
+              });
+              return;
+            }
+            fallbackCopy(text, button);
+          }
+
+          function fallbackCopy(text, button) {
+            var field = document.createElement('textarea');
+            field.value = text;
+            field.setAttribute('readonly', 'readonly');
+            field.style.position = 'fixed';
+            field.style.top = '-1000px';
+            document.body.appendChild(field);
+            field.select();
+            var ok = false;
+            try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+            document.body.removeChild(field);
+            flash(button, ok ? 'copied' : 'select it');
+          }
+
+          /* ---- visibility ------------------------------------------------ */
+
+          function remember(state) {
+            try {
+              if (state) { window.sessionStorage.setItem(KEY, '1'); }
+              else { window.sessionStorage.removeItem(KEY); }
+            } catch (err) { /* private mode or file://; the hash still works */ }
+          }
+
+          function remembered() {
+            try { return window.sessionStorage.getItem(KEY) === '1'; }
+            catch (err) { return false; }
+          }
+
+          function show() {
+            if (box.classList.contains('on')) { return; }
+            box.classList.add('on');
+            remember(true);
+            render();
+            window.addEventListener('resize', schedule);
+            window.addEventListener('orientationchange', schedule);
+            if (window.visualViewport) {
+              window.visualViewport.addEventListener('resize', schedule);
+            }
+          }
+
+          function hide() {
+            box.classList.remove('on');
+            remember(false);
+          }
+
+          out.addEventListener('click', function () {
+            box.classList.remove(CORNERS[corner]);
+            corner = (corner + 1) % CORNERS.length;
+            box.classList.add(CORNERS[corner]);
+          });
+
+          box.querySelector('[data-sd-vp-scan]').addEventListener('click', function () {
+            scanned = findWorst();
+            render();
+          });
+
+          box.querySelector('[data-sd-vp-copy]').addEventListener('click', function (event) {
+            copy(event.currentTarget);
+          });
+
+          box.querySelector('[data-sd-vp-close]').addEventListener('click', hide);
+
+          window.addEventListener('hashchange', function () {
+            if (location.hash === '#vp') { show(); }
+          });
+
+          if (location.hash === '#vp' || remembered()) { show(); }
+        })();
+      </script>
+      <!-- VIEWPORT REPORTER:END -->
+        <a class="footer-legal" href="privacy.html">Privacy Notice</a></div>
     </div>
   </footer>
   <!-- FOOTER:END -->
