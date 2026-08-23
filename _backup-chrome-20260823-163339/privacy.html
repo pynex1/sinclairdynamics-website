@@ -4,112 +4,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Title and filename settled 22 August 2026, Session 27. The working
-       title was "What Lovelace Already Knew" and the working filename was
-       lovelace.html. Both were changed for the same reason: the piece is not
-       about Lovelace. She is the historical confirmation of a position the
-       argument reaches on its own, and naming the page for her would put the
-       weight on the person rather than on the claim. Every other content page
-       on this site is named for its subject or its idea, so a proper noun
-       would also have been the first exception to that. The title tag, the
-       Open Graph title and the Twitter title now all match the h1. -->
-  <title>The Machine Was Never The Ceiling | Sinclair Dynamics</title>
+  <title>Privacy Notice | Ainsley Williams, Sinclair Dynamics, Johannesburg</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="shared.css">
-  <style>
-    /* Reveal figure: matches the pattern of .filter-figure and .plane-figure
-       in spotting-ai-writing.html. Sits in the right-hand column, teal-pale
-       card, same padding. First attempt, not yet reviewed against the rest
-       of the site's figure language. */
-    .reveal-figure {
-      background: var(--teal-pale);
-      border-radius: 6px;
-      padding: 24px 20px 20px;
-      margin-bottom: 24px;
-    }
-
-    .reveal-figure svg {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .reveal-caption {
-      font-size: 13px;
-      line-height: 1.6;
-      color: #2A4A44;
-      margin-top: 14px;
-    }
-
-    /* Verse block: copied from spotting-ai-writing.html's own style block,
-       used there for the "I really hate this damn machine" poem. Reused
-       here for the Lovelace quote so it gets the same full-width, teal
-       accent-line treatment instead of a boxed pull-quote on dark. The
-       divider line (margin-top/padding-top/border-top) is dropped for this
-       use, since the quote is continuous with the argument rather than a
-       separate aside the way the poem is. */
-    .verse-block {
-      margin-top: 40px;
-    }
-
-    .verse {
-      margin: 8px 0 0;
-      max-width: 720px;
-      padding: 0 0 0 20px;
-      border-left: 2px solid var(--teal-bright);
-      font-family: var(--font-body);
-      font-style: italic;
-      font-size: 17px;
-      line-height: 1.9;
-      color: rgba(255, 255, 255, 0.92);
-    }
-
-    .verse-attr {
-      display: block;
-      margin-top: 12px;
-      font-family: var(--font-display);
-      font-style: normal;
-      font-size: 12px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--teal-bright);
-      opacity: 0.8;
-    }
-  </style>
   <!-- Google Analytics -->
-  <!-- Matches spotting-ai-writing.html: removed pending the consent gate and
-     privacy notice, and single sourced with the nav and footer rather than
-     duplicated per page. -->
+  <!-- Analytics removed 9 August 2026, pending the consent gate and privacy
+     notice. Non-essential tracking must not fire before consent, and the
+     gate belongs with the nav and footer single sourcing rather than
+     duplicated per page. Property G-W94Z1196CH.
+     THIS PAGE IS ONE HALF OF THAT GATE. The notice existing does not by
+     itself license analytics; the consent mechanism is the other half and
+     is still to be built. Do not reinstate the tag here first. -->
   <meta name="description"
-    content="A machine does exactly what it is given, and nothing more. Why the ceiling on what AI can achieve was never the tool's to set, and what Ada Lovelace already argued about it in 1843.">
+    content="What personal information sinclairdynamics.co and its AI assistant collect, why, who else sees it, where it is stored, how long it is kept, and how to ask about it.">
   <meta name="keywords"
-    content="AI professional responsibility, Ada Lovelace, machine ceiling, AI hallucination, working with AI, Sinclair Dynamics, Ainsley Williams, AI accountability, prompt specification, Voyager 1">
+    content="Sinclair Dynamics privacy notice, POPIA, Ainsley Williams, data protection South Africa, personal information, Information Officer">
   <meta name="author" content="Ainsley Williams, Sinclair Dynamics">
   <meta name="robots" content="index, follow">
   <!-- Open Graph -->
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://www.sinclairdynamics.co/machine-was-never-the-ceiling.html">
-  <meta property="og:title" content="The Machine Was Never The Ceiling | Sinclair Dynamics">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sinclairdynamics.co/privacy.html">
+  <meta property="og:title" content="Privacy Notice | Sinclair Dynamics">
   <meta property="og:description"
-    content="A machine does exactly what it is given, and nothing more. What Ada Lovelace already argued about its ceiling in 1843.">
+    content="What personal information this site and its AI assistant collect, who else sees it, how long it is kept, and how to ask about it.">
   <meta property="og:image" content="https://www.sinclairdynamics.co/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="Sinclair Dynamics">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Machine Was Never The Ceiling | Sinclair Dynamics">
+  <meta name="twitter:title" content="Privacy Notice | Sinclair Dynamics">
   <meta name="twitter:description"
-    content="A machine does exactly what it is given, and nothing more. What Ada Lovelace already argued about its ceiling in 1843.">
+    content="What personal information this site and its AI assistant collect, who else sees it, how long it is kept, and how to ask about it.">
   <meta name="twitter:image" content="https://www.sinclairdynamics.co/og-image.png">
   <!-- Canonical -->
-  <link rel="canonical" href="https://www.sinclairdynamics.co/machine-was-never-the-ceiling.html">
+  <link rel="canonical" href="https://www.sinclairdynamics.co/privacy.html">
+
+  <!-- ---------------------------------------------------------------------------
+   NO PAGE LOCAL STYLES, DELIBERATELY.
+
+   Every component on this page is a shared class taken unchanged from
+   shared.css. Nothing here overrides a shared class and nothing new was
+   invented for it. That is a decision rather than an accident: a compliance
+   page is the surface most likely to be edited by somebody in a hurry, and
+   the fewer places it can disagree with the rest of the site, the better.
+
+   NO HERO FIGURE, ALSO DELIBERATELY.
+   Every page on this site carrying a designed hero figure is a nav
+   destination. The two article pages carry none. This page has less claim
+   than either, and a figure here would compete with the one thing the page
+   is for, which is being read and understood. See the visual language on a
+   figure's ambition being set by what else the page asks of the reader.
+
+   NO .page-hero-bg DIV.
+   That element has no rule anywhere in shared.css. It is a survivor of the
+   45 degree hatch removed site-wide on 8 August 2026 and is on the
+   outstanding list as dead markup on at least two pages. It is not
+   reproduced here.
+
+   GROUND DEPENDENCE.
+   Nothing on this page sits on dark ground below the hero, so no component
+   whose colour is supplied by its section is used anywhere. That closes
+   fault 11 in the visual language by construction rather than by checking.
+   --------------------------------------------------------------------------- -->
 </head>
 
 <body>
+
   <!-- NAV:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE FILE.
        It is written from _nav_canonical.html by apply-chrome.py, and any hand
        edit made here will be silently overwritten the next time that script
@@ -133,264 +97,231 @@
   </nav>
   <!-- NAV:END -->
 
-  <!-- Eyebrow reused from spotting-ai-writing.html: both pieces sit in the
-       same occasional-writing line, so the same series label is a
-       deliberate choice, not an oversight. Headline settled 22 August 2026
-       and the page is named after it. The empty .page-hero-bg div that sat
-       here was removed the same day: no rule in shared.css or in this page
-       matched it and no other page on the site carries one. -->
+  <!-- ===== 1. HERO =====================================================
+       Plain by design. Every other hero on this site opens on a claim,
+       because every other page is arguing something. This page is not
+       arguing anything, and a reader who has come looking for the privacy
+       notice needs to see the words "Privacy Notice" at full size rather
+       than a headline they have to decode first.
+       ================================================================== -->
   <section class="page-hero">
     <div class="page-hero-content">
-      <div class="hero-eyebrow">On Working With AI</div>
-      <h1>The Machine Was<br><span>Never The Ceiling.</span></h1>
-      <p class="page-hero-sub">Why judging what a machine produced always means judging what it was asked to do.</p>
+      <div class="hero-eyebrow">Data protection</div>
+      <h1>Privacy<br><span>Notice.</span></h1>
+      <p class="page-hero-sub">This notice explains what personal information is collected when you use
+        sinclairdynamics.co and its AI assistant, why it is collected, who else may see it, where it is stored, and what
+        rights you have over it.</p>
     </div>
   </section>
 
+  <!-- ===== 2. RESPONSIBLE PARTY ========================================
+       The identification POPIA requires, given first because a notice that
+       does not say who is answerable for it is not a notice.
+       ================================================================== -->
   <section>
     <div class="section-inner">
-      <div class="two-col-wide">
-        <div>
-          <div class="section-eyebrow">The Feeling</div>
-          <h2 class="section-title">A Familiar Kind<br><span>Of Argument</span></h2>
-          <!-- New opening line, matching the reference page's own opening
-               quote: short, stands alone, and is the thing a reader has
-               probably said or heard said. Worth a look against the Short
-               Version box below, since both now carry a close paraphrase
-               of the same idea, on purpose per your note, but flagging in
-               case it reads as one repetition too many once you see it. -->
-          <p class="body-text">"You end up arguing about the tool. It was never really the tool."</p>
-          <p class="body-text">If you do skilled work, you have probably had some version of this happen already.
-            Someone hands you a result that looks finished, generated in minutes, and expects the hard part of your
-            job to already be done. Or the opposite: someone who has watched AI fail somewhere they genuinely
-            understand assumes it will fail in your domain too, which they probably know a lot less about. Either
-            way, you end up arguing about the tool, when the actual problem was never really the tool at all.</p>
-          <p class="body-text">I find myself increasingly caught up in this question: whether AI actually deserves a
-            place in serious professional work, or whether the people arguing about it are really arguing about
-            something else entirely. Some of that, I think, is simply how we talk about it. We say it thinks, it
-            decided, it is getting smarter, the same language we would use for a colleague, not a tool. Underneath
-            that language is a word most people would not actually say out loud: we talk about it, and treat it, as
-            though it were sentient. I do this myself. I have felt the pull of outputs that feel lifelike enough to
-            credit with intentions of their own.</p>
-        </div>
-        <div>
-          <!-- Figure now sits above the Short Version box, matching the
-               reference page's own stacking order in this same right-hand
-               column position. -->
-          <div class="reveal-figure">
-            <svg viewBox="0 0 400 210" xmlns="http://www.w3.org/2000/svg" role="img"
-              aria-label="Three phrases describing the machine as sentient are struck through beneath the question of what any of it actually wanted, revealing a plain three-step mechanism underneath: instruction, execution, output.">
-              <text x="20" y="22" font-family="'Barlow Condensed',sans-serif" font-size="13" letter-spacing="1.6"
-                fill="#2A4A44">HOW IT GETS TALKED ABOUT</text>
-              <rect x="20" y="36" width="110" height="30" rx="4" fill="#B9D6D1" />
-              <text x="75" y="55" text-anchor="middle" font-family="'Barlow',sans-serif" font-size="11"
-                fill="#1A7A6E">it thinks</text>
-              <line x1="25" y1="41" x2="125" y2="61" stroke="#E8392A" stroke-width="1.5" />
-              <rect x="145" y="36" width="110" height="30" rx="4" fill="#B9D6D1" />
-              <text x="200" y="55" text-anchor="middle" font-family="'Barlow',sans-serif" font-size="11"
-                fill="#1A7A6E">it decided</text>
-              <line x1="150" y1="41" x2="250" y2="61" stroke="#E8392A" stroke-width="1.5" />
-              <rect x="270" y="36" width="110" height="30" rx="4" fill="#B9D6D1" />
-              <text x="325" y="55" text-anchor="middle" font-family="'Barlow',sans-serif" font-size="11"
-                fill="#1A7A6E">it wants</text>
-              <line x1="275" y1="41" x2="375" y2="61" stroke="#E8392A" stroke-width="1.5" />
-              <path d="M20 90H380" stroke="#1A7A6E" stroke-width="1" stroke-dasharray="3 3" opacity="0.5" />
-              <text x="20" y="108" font-family="'Barlow',sans-serif" font-size="12" fill="#2A4A44" opacity="0.85">what
-                did any of it actually want?</text>
-              <text x="20" y="136" font-family="'Barlow Condensed',sans-serif" font-size="13" letter-spacing="1.6"
-                fill="#2A4A44">WHAT WAS ACTUALLY THERE</text>
-              <rect x="20" y="150" width="110" height="34" rx="4" fill="#D2EAE6" stroke="#2AADA0"
-                stroke-width="1.5" />
-              <text x="75" y="171" text-anchor="middle" font-family="'Barlow',sans-serif" font-size="11"
-                fill="#1A7A6E">instruction</text>
-              <text x="137" y="171" text-anchor="middle" font-family="'Barlow',sans-serif" font-size="13"
-                fill="#8A9BA3">&gt;</text>
-              <rect x="145" y="150" width="110" height="34" rx="4" fill="#D2EAE6" stroke="#2AADA0"
-                stroke-width="1.5" />
-              <text x="200" y="171" text-anchor="middle" font-family="'Barlow',sans-serif" font-size="11"
-                fill="#1A7A6E">execution</text>
-              <text x="262" y="171" text-anchor="middle" font-family="'Barlow',sans-serif" font-size="13"
-                fill="#8A9BA3">&gt;</text>
-              <rect x="270" y="150" width="110" height="34" rx="4" fill="#D2EAE6" stroke="#2AADA0"
-                stroke-width="1.5" />
-              <text x="325" y="171" text-anchor="middle" font-family="'Barlow',sans-serif" font-size="11"
-                fill="#1A7A6E">output</text>
-            </svg>
-            <p class="reveal-caption">The talk gets struck through. What was actually there does not change.</p>
-          </div>
-          <div class="highlight-box" style="margin-top:24px;"><strong>The Short Version</strong>Someone hands you
-            confident output, or writes off what you can do based on a domain they do not understand. Either way, the
-            argument ends up being about the tool, when the tool was never really the problem at all.</div>
-        </div>
-      </div>
-      <div class="two-col-wide" style="margin-top:28px;">
-        <div>
-          <p class="body-text">But intentions are exactly what these systems do not have. Whatever it produced, it
-            produced because of what it was given, not because it wanted anything. Taking the sentience out of the
-            conversation is not about being cold toward the technology. It is the engineer's move: strip away the
-            language that treats the machine as though it has a mind of its own, get back to what the machine
-            actually is and what it was actually asked to do, and only then can the argument people are actually
-            having be had properly. That is where I want to put this instead.</p>
-        </div>
-        <div>
-          <!-- Now paired with the paragraph it is actually answering back
-               to, rather than sitting alone as a self-contained aside.
-               Worth seeing whether proximity alone resolves the "too
-               vague" note, or whether the heading still wants sharpening
-               once it is sitting next to the right text. -->
-          <div class="highlight-box"><strong>Aside</strong>Or so they tell us.</div>
-        </div>
-      </div>
+      <div class="section-eyebrow">Responsible party</div>
+      <h2 class="section-title">Who this notice<br><span>comes from.</span></h2>
+      <p class="section-lead">Sinclair Dynamics is the trading name of Ainsley Williams, a sole proprietor based in
+        Johannesburg, South Africa. Ainsley Williams is the responsible party for personal information collected
+        through this website and its AI assistant, and is the Information Officer under the Protection of Personal
+        Information Act, 2013 (POPIA).</p>
     </div>
   </section>
 
-  <section style="background:var(--off-white);">
+  <!-- ===== 3. WHAT IS COLLECTED ========================================
+       Three items, each a .story-section so the divider rule does the
+       separating rather than a run of bold text inside a paragraph. This is
+       the same construction the four accounts on platform.html use, and it
+       is what stops a compliance page reading as a wall.
+       ================================================================== -->
+  <section style="background: var(--off-white);">
     <div class="section-inner">
-      <div class="section-eyebrow">What Changed</div>
-      <h2 class="section-title">Not Really A Matter<br><span>Of Opinion Anymore</span></h2>
-      <p class="body-text" style="max-width:760px;">Some of this is not really a matter of opinion anymore. A few
-        years ago there was no AI search category to speak of, nothing to extrapolate a trend from. Now it shows up
-        everywhere you would care to look for it: in how people search, in the briefs you are handed, in the output
-        of the suppliers and service providers you rely on, even in the correspondence that lands on your desk in the
-        middle of a dispute. Whether you personally use these tools or not, the people and processes around you
-        increasingly do, and there is no selective way to exclude that. You end up somewhere between not knowing it
-        is there and not getting what you actually wanted. The divide over adoption is real. Whether the divide
-        changes anything is a separate question, and probably a smaller one than it looks.</p>
-      <!-- New: first link anywhere on the site from inside an argument to
-           the assistant, rather than from a nav item or a closing CTA.
-           Placed at the section making the most assertive, most arguable
-           claim in the piece, on purpose. -->
-      <p class="body-text" style="max-width:760px;"><a href="contact.html" class="service-link"
-          style="margin-top:8px;">Debate it with my assistant</a></p>
+      <div class="section-eyebrow">Collection</div>
+      <h2 class="section-title">What this site and assistant<br><span>collect.</span></h2>
+
+      <div style="max-width:760px;">
+        <div class="story-section">
+          <h3>Conversations with the AI assistant</h3>
+          <p class="body-text">When you use the chat assistant, everything you type is sent to Google's Gemini API to
+            generate a response, and the full conversation, your messages and the assistant's replies, is stored. Each
+            stored conversation also includes the date and time of each message, the total number of messages, your IP
+            address, and your browser's user agent string, collected for security and abuse monitoring.</p>
+        </div>
+
+        <div class="story-section">
+          <h3>Information you provide through the contact form</h3>
+          <p class="body-text">If you complete the contact form, whether reached directly or through the assistant,
+            this site collects your name and email address, which are required, and your phone number and organisation,
+            which are optional, along with the message you write. If the form is reached through the assistant, the
+            full chat transcript is included with your submission automatically.</p>
+        </div>
+
+        <div class="story-section">
+          <h3>Information stored in your browser</h3>
+          <p class="body-text">The assistant keeps a record of your current conversation and a session identifier in
+            your browser's local storage, so that a conversation can continue if you leave the page and come back
+            within 24 hours. Whether you've agreed to analytics tracking is stored the same way, so you're not asked
+            again on every page. This information stays on your device and is not automatically visible to Sinclair
+            Dynamics beyond what has already been sent and stored as described above.</p>
+        </div>
+
+        <div class="story-section">
+          <h3>Site usage, if you agree to it</h3>
+          <p class="body-text">If you accept when asked, using the banner shown on your first visit, Google Analytics
+            records which pages you view, roughly how long you spend on the site, and general technical details such
+            as your browser and device type. It doesn't run at all if you decline, and what it collects isn't linked
+            to your name or to anything else you've told the site.</p>
+        </div>
+
+        <div class="story-section">
+          <h3>The typefaces this site uses</h3>
+          <p class="body-text">The site's headings and body text load from Google Fonts on every visit, which means
+            your browser makes a request to Google's servers to fetch them, and that request carries your IP address
+            the way any request to any server does. This isn't optional in the way analytics is, and it isn't linked
+            to anything else about you, it's the same thing that happens loading a font from any site that uses
+            one.</p>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- ===== 4. THIRD PARTIES ============================================
+       Named plainly. The reasoning for naming Formspree as a fact rather
+       than smoothing over it is in sd-reference-privacy-v0_1.md and is not
+       restated on the page.
+       ================================================================== -->
   <section>
     <div class="section-inner">
-      <div class="two-col-wide">
-        <div>
-          <div class="section-eyebrow">The Actual Question</div>
-          <h2 class="section-title">Judging What Came Out<br><span>Without Judging What Went In</span></h2>
-          <p class="body-text">The question that actually matters is not whether the tool is good enough. It is what
-            the tool was asked to do, and by whom. A result you can point at and dismiss did not arrive from nowhere.
-            It traces back to an instruction, and the instruction traces back to a person. You cannot fairly judge
-            what came out without judging what went in.</p>
-          <p class="body-text">That is not, on reflection, a new problem, though it takes a slightly different shape
-            now than it once did. Put plainly, in engineering terms rather than in the language everyone reaches for
-            when the subject is AI: the machine can extrapolate a long way past the literal words of an instruction,
-            further than a simpler, more deterministic tool ever could, and that reach is exactly what makes it
-            useful. Ask it something precise, demanding and well understood, and the reach becomes a genuine asset:
-            it goes somewhere you did not explicitly point it, and gets there because you gave it enough to work
-            from. Ask it something vague, and the same reach works against you. It does not come back flat or
-            obviously incomplete the way an under specified instruction to a simpler tool would. It comes back
-            confident, fully formed, and wrong, filling the gap you left with something that sounds like an answer.
-            That is the thing people mean when they talk about a tool hallucinating, and it is the reason nearly every
-            one of these systems now carries some version of a warning to check what it gives you. The tool did not
-            change between the two cases. What you gave it to work with did.</p>
+      <div class="section-eyebrow">Third parties</div>
+      <h2 class="section-title">Who else sees<br><span>this information.</span></h2>
+
+      <div style="max-width:760px;">
+        <div class="story-section">
+          <h3>Google</h3>
+          <p class="body-text">Everything you type to the assistant is sent to Google's Gemini API to generate a
+            response. If you submit the contact form, Google's Gemini API also generates a short internal summary of
+            your enquiry from the details you provide. Conversations and lead records are stored using Google Cloud
+            Firestore, hosted in the United Kingdom. Google is subject to United Kingdom data protection law and to
+            data processing terms with Sinclair Dynamics that provide a level of protection substantially similar to
+            POPIA.</p>
         </div>
-        <div>
-          <div class="highlight-box" style="margin-bottom:24px;"><strong>The Short Version</strong>Ask it something
-            vague, and it comes back confident and wrong, filling the gap with something that sounds like an answer.
-            Ask it something precise, and the same reach becomes an asset instead of a risk.</div>
-          <!-- New. Distils the ships/cars/aircraft point without a history
-               of the convention, per your note that the history itself
-               isn't the point. -->
-          <div class="highlight-box"><strong>An Old Habit</strong>Ships, cars and aircraft have been called "she" for
-            as long as anyone can date the habit, long before any of them did anything resembling thinking. Giving a
-            machine a gendered, almost living identity is not new. AI just arrived capable enough that the habit
-            finally felt earned.</div>
+
+        <div class="story-section">
+          <h3>Formspree</h3>
+          <p class="body-text">If you submit the contact form, your details and message, including the chat transcript
+            where the form was reached through the assistant, are sent to Formspree, a form delivery service based in
+            the United States, to deliver your enquiry to Ainsley by email. This transfer is necessary to take the
+            steps you have requested in getting in touch.</p>
+        </div>
+
+        <div class="story-section">
+          <h3>Google Analytics</h3>
+          <p class="body-text">If you agree to it, the information described above is sent to Google Analytics, a
+            Google product, to help understand how the site is used. This is the one thing on this site that runs
+            only with your agreement rather than because it's necessary to what you're doing here. You can accept or
+            decline it using the banner shown on your first visit, and change your mind at any time by clearing your
+            browser's storage for this site.</p>
+        </div>
+
+        <div class="story-section">
+          <h3>Google Fonts</h3>
+          <p class="body-text">Loading the site's typefaces sends your IP address to Google's servers, the same way
+            it would for any site using them. This runs on every visit regardless of the choice you make about
+            analytics, because it's part of how the page is built rather than something separate being tracked.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="dark-section">
+  <!-- ===== 5. RETENTION ================================================
+       The three year period is a stated policy and not yet an enforced
+       mechanism. Publishing this page creates the obligation to actually
+       delete at three years. Carried item 1 in the privacy reference.
+       ================================================================== -->
+  <section style="background: var(--off-white);">
     <div class="section-inner">
-      <div class="two-col-wide">
-        <div>
-          <div class="section-eyebrow">The Turn</div>
-          <h2 class="section-title">The Ceiling Was<br><span>Never The Machine's</span></h2>
-          <p class="body-text">That is usually read as a warning: do not trust a machine past what you gave it. I
-            think it is closer to the opposite. If the result is bounded only by the ambition behind the instruction,
-            the ceiling on what is achievable was never really the machine's to set. A more exact, more demanding
-            instruction does not just avoid a poor result. It reaches somewhere the tool would not have gone by
-            default. Responsibility and opportunity turn out to be the same fact, looked at from two directions.</p>
-          <p class="body-text">You can watch this argument proved in hardware rather than in prose. NASA's Voyager 1
-            launched on the 5th of September 1977. Later this year, on the 18th of November, it will become the
-            first human made object to reach one light day from Earth: a distance of just over 25.9 billion
-            kilometres, so far that a radio signal leaving Earth now would take a full day to arrive. Voyager has no
-            initiative of its own either. It has spent nearly fifty years doing exactly, and only, what it was built
-            and instructed to do. What is remarkable is not that it exceeded those instructions. It is that the
-            instructions were so precise, and the build so exact, that fifty years later the spacecraft is still
-            faithfully carrying them out, from further away than anything humans have ever sent. The ceiling was
-            never the machine's. It was set entirely by what its builders were willing to ask of it in 1977, and it
-            turned out to be an extraordinarily high one.</p>
+      <div class="section-eyebrow">Retention</div>
+      <h2 class="section-title">How long<br><span>this is kept.</span></h2>
+
+      <div style="max-width:760px;">
+        <div class="story-section">
+          <h3>Conversations and lead records</h3>
+          <p class="body-text">Conversations and contact form submissions are kept for three years from your last
+            contact with Sinclair Dynamics. This period reflects the time within which a claim relating to a service
+            enquiry or engagement could ordinarily be brought under South African law, and the record is kept for that
+            purpose: to have an accurate account of what was discussed and agreed, should it ever be needed by either
+            party.</p>
         </div>
-        <div>
-          <div class="dark-highlight" style="margin-bottom:24px;"><strong>Voyager 1</strong>Launched 5 September
-            1977 to study Jupiter and Saturn, on a mission expected to last a few years. Reaches one light day from
-            Earth, just over 25.9 billion kilometres, on 18 November 2026. Already the most distant human made
-            object in existence, and still carrying out exactly what it was built to do.</div>
-          <!-- New second card, checked this session against several sources
-               on Babbage's own design history before writing. -->
-          <div class="dark-highlight"><strong>The Analytical Engine</strong>Designed by Charles Babbage from 1837, a
-            general purpose mechanical computer with its own memory and processing unit, programmed by punched cards
-            borrowed from the textile industry. Funding and manufacturing limits meant it was never built in his
-            lifetime. Lovelace's 1843 notes on it are widely credited as containing the first published computer
-            program.</div>
+
+        <div class="story-section">
+          <h3>Information stored in your browser</h3>
+          <p class="body-text">Your current conversation and session identifier are held in your browser for 24 hours
+            of inactivity, after which a new conversation begins. This does not delete the corresponding record
+            described above; it only starts a new one.</p>
         </div>
       </div>
-      <!-- Full width now, matching the poem's own treatment lower on the
-           reference page, rather than a boxed pull-quote on dark, which
-           was drawing more attention than the surrounding argument. No
-           divider line above it: see the style block note. -->
-      <div class="verse-block">
-        <p class="body-text" style="max-width:720px;">None of this is new, in other words. It was described, in its
-          essentials, in 1843, by Ada Lovelace, writing about Charles Babbage's Analytical Engine, a machine that
-          never once ran a calculation in her lifetime. Her observation is usually quoted as a limitation.</p>
-        <blockquote class="verse">"The Analytical Engine has no pretensions whatever to originate anything. It can do
-          whatever we know how to order it to perform."<span class="verse-attr">Ada Lovelace, 1843</span></blockquote>
-      </div>
-      <p class="body-text" style="max-width:760px;margin-top:32px;">I did not arrive at this argument by reading
-        her. I arrived at it from the work in front of me, the tools available, and what I could see they were and
-        were not capable of. It was only afterwards that I found she had already said it, close to two centuries
-        before a machine existed that could prove her right.</p>
     </div>
   </section>
 
-  <section style="background:var(--off-white);">
-    <div class="section-inner">
-      <div class="section-eyebrow">The Same Principle</div>
-      <h2 class="section-title">Turned Back<br><span>On The Doubt</span></h2>
-      <p class="body-text" style="max-width:760px;">That ordering matters, because the same principle applies to the
-        doubt itself, not only to the tool. A person who has not genuinely spent time with these tools, who has not
-        tried to specify something demanding and watched what comes back, is not yet in a position to say with
-        confidence what they are or are not capable of. I do not think that makes anyone foolish. I think it means
-        the opinion, whatever it turns out to be, is not fully informed yet. That is not a reason to feel behind. It
-        is an invitation, the same one engineers have always had in front of them when a new set of tools arrives:
-        find out what you can actually ask for, and then ask for more than you assumed you could.</p>
-      <p class="body-text" style="max-width:760px;">The machine was never going to set its own ceiling. It never has,
-        and Lovelace understood that before the first one was ever built. The only real question left is what you are
-        willing to ask of it.</p>
-    </div>
-  </section>
-
+  <!-- ===== 6. RIGHTS AND CONTACT =======================================
+       The register here was set deliberately and should govern any future
+       edit: an offer rather than a recitation of entitlements. It reads as
+       a collaborative, contractually minded engineer rather than a lawyer
+       stating terms. Do not convert these sentences back into "you have the
+       right to" constructions.
+       This section stays on light ground so the mailto link can carry the
+       site's own teal, which is the treatment contact.html already uses.
+       ================================================================== -->
   <section>
-    <div class="section-inner" style="text-align:center;">
-      <div class="section-eyebrow" style="justify-content:center;">The Disclosure</div>
-      <h2 class="section-title">This Page Was Written <span>With AI</span></h2>
-      <p class="section-lead" style="margin:0 auto 40px;">This page took two sessions rather than one: a first
-        attempt at the concept that was set aside rather than pushed through on an uncertain read, then rebuilt from
-        the actual reasoning behind it. None of that saved time. Writing this alone, facts half checked, would have
-        taken a fraction of it. What went into it instead bought something a solo draft would not have: the Voyager
-        and Lovelace details checked against primary sources, wording pushed back on until it actually sounded like
-        me rather than a competent guess at me, an argument rebuilt rather than patched when it stopped convincing
-        its own author. The piece above closes by asking what you are willing to ask of a tool once you know the
-        ceiling was never really its own to set. This page is one answer to that, tested on itself rather than only
-        argued for: not a faster version of something I could have written alone, but a version neither of us would
-        have reached alone in the same time. If it reads as though it arrived fully formed, that was not the
-        process, and you are welcome to ask about the parts that did not.</p>
-      <a href="contact.html" class="btn-primary">Start a Conversation</a>
+    <div class="section-inner">
+      <div class="section-eyebrow">Your options</div>
+      <h2 class="section-title">If you'd like to know more<br><span>or change something.</span></h2>
+      <p class="section-lead">You're welcome to get in touch at any point to ask what personal information Sinclair
+        Dynamics holds about you, request a copy of it, ask for something to be corrected, or ask for it to be deleted.
+        If there's a particular use of your information you're not comfortable with, including its use to improve how
+        the assistant responds, let us know and we'll take that into account.</p>
+
+      <div style="max-width:760px;">
+        <div class="highlight-box">
+          <strong>Reach Ainsley Williams directly</strong>
+          <a href="mailto:ainsley@sinclairdynamics.co"
+            style="color:var(--teal);text-decoration:none;">ainsley@sinclairdynamics.co</a>
+        </div>
+
+        <div style="margin-top:32px;">
+          <p class="body-text">Where a request for deletion touches information still within the retention period
+            described above, there may be a reason to hold onto it a little longer, and that will be explained rather
+            than simply declined.</p>
+          <p class="body-text">If you feel a request hasn't been handled well, you also have the right to raise it with
+            the Information Regulator of South Africa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 7. CHANGES AND EFFECTIVE DATE ===============================
+       Effective date is 1 August 2026, matching the appointment date on the
+       Information Officer registration certificate rather than the
+       publication date, so the notice, the appointment and the
+       registration all state the same start. Set and confirmed, not a
+       placeholder. If this section is ever copied as a template for
+       another notice, the date is the one thing that must change with it.
+       ================================================================== -->
+  <section style="background: var(--off-white);">
+    <div class="section-inner">
+      <div class="section-eyebrow">Changes</div>
+      <h2 class="section-title">When this<br><span>notice changes.</span></h2>
+      <p class="section-lead">This notice reflects how Sinclair Dynamics and its assistant handle personal information
+        as at the date below. If that changes, for example as the assistant's role in gathering information develops,
+        this notice will be updated to match, and the date will be revised accordingly.</p>
+
+      <div style="max-width:760px;">
+        <div class="highlight-box">
+          <strong>Effective</strong>
+          1 August 2026
+        </div>
+      </div>
     </div>
   </section>
 
@@ -845,6 +776,7 @@
     </div>
   </footer>
   <!-- FOOTER:END -->
+
   <!-- CONSENT:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE
        FILE. It is written from _consent_canonical.html by apply-chrome.py.
        The first time this runs against a page that has never carried this

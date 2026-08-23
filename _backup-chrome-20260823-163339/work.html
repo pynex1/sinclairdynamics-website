@@ -1,0 +1,1800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Work | Ainsley Williams, Sinclair Dynamics, Johannesburg</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <!-- Google Analytics -->
+  <!-- Analytics removed 9 August 2026, pending the consent gate and privacy
+     notice. Non-essential tracking must not fire before consent, and the
+     gate belongs with the nav and footer single sourcing rather than
+     duplicated per page. Property G-W94Z1196CH. -->
+  <meta name="description"
+    content="Nine pieces of engineering work, from a mine to a broadcast trailer to a monitoring platform. What each person arrived saying, and what the problem turned out to be.">
+  <meta name="keywords"
+    content="Ainsley Williams, Sinclair Dynamics, engineering case studies South Africa, mechatronics engineer Johannesburg, instrumentation calibration, measurement discipline, technical consulting South Africa">
+  <meta name="author" content="Ainsley Williams, Sinclair Dynamics">
+  <meta name="robots" content="index, follow">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sinclairdynamics.co/work.html">
+  <meta property="og:title" content="What happens when someone brings me something | Sinclair Dynamics">
+  <meta property="og:description"
+    content="Nine pieces of engineering work, from a mine to a broadcast trailer to a monitoring platform. What each person arrived saying, and what the problem turned out to be.">
+  <meta property="og:image" content="https://www.sinclairdynamics.co/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Sinclair Dynamics">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What happens when someone brings me something | Sinclair Dynamics">
+  <meta name="twitter:description"
+    content="Nine pieces of engineering work, from a mine to a broadcast trailer to a monitoring platform. What each person arrived saying, and what the problem turned out to be.">
+  <meta name="twitter:image" content="https://www.sinclairdynamics.co/og-image.png">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.sinclairdynamics.co/work.html">
+
+  <style>
+    /* ---------------------------------------------------------------------------
+   PAGE LOCAL STYLES
+   Kept on the page rather than in shared.css, consistent with the homepage and
+   the about page. One construction only, and it does not override any shared
+   class beyond the heading rule it is named for.
+   --------------------------------------------------------------------------- */
+
+    /* ---------------------------------------------------------------------------
+   WORK ITEM
+   The container is .story-section, unchanged, taken from shared.css: 48px of
+   vertical padding, a hairline between siblings, none after the last. Nine
+   items sit in one unbroken run on purpose. Any visual break between them
+   would read as a grouping, and grouping by domain is the exact failure this
+   page exists to correct.
+
+   THE ONE OVERRIDE, AND WHY IT EXISTS
+   .story-section h3 is uppercase at 28px, which is correct for the about page
+   where the headings are two and three words. Here every heading is a full
+   sentence naming a fault, and a full sentence in uppercase at that size reads
+   as shouting rather than as a title. So the display face is kept, the weight
+   is kept, and the transform is dropped. Non-uppercase display type already
+   has precedent on the site at .plate-value and .form-branch-label, though not
+   previously at heading scale. Judge it on screen: if it reads as a different
+   voice from the rest of the site rather than as the same voice at sentence
+   length, this is the rule to change.
+
+   No .story-era label. On the about page that slot carries an era. The
+   equivalent here would carry an industry, and naming the industry is what
+   sorts the reader into a discipline before the account has done its work.
+   --------------------------------------------------------------------------- */
+    .story-section.work-item h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 26px;
+      line-height: 1.25;
+      letter-spacing: 0.01em;
+      text-transform: none;
+      color: var(--slate);
+      max-width: 780px;
+      margin-bottom: 20px;
+    }
+
+    .story-section.work-item .body-text {
+      max-width: 780px;
+    }
+
+    /* The lead sits above the cards and is the only place the page explains
+       itself. Second paragraph is the instruction to the reader and carries
+       the shorter gap so the two read as one thought. */
+    .work-lead .section-lead {
+      margin-bottom: 20px;
+    }
+
+    .work-lead .section-lead:last-of-type {
+      margin-bottom: 0;
+    }
+
+    /* ---------------------------------------------------------------------------
+   THE EARLY EXIT
+   Added 14 August 2026. The shortest honest route through this page is the
+   hero, one paragraph, and out. A reader who already knows their own problem
+   should not have to read nine of somebody else's to find the door.
+
+   THE RULE IT IS BUILT TO, WHICH GOVERNS EVERY OTHER EXIT ON THIS PAGE.
+   How loud the invitation is scales with how much the reader has read. Here
+   it is a text affordance and nothing more, because a reader who has read one
+   paragraph has given no signal of intent, and a prominent call at this point
+   would read as discouraging them from the nine. The close of the page is a
+   full call to action, which is correct there for the opposite reason. Any
+   exit added between the two sits somewhere on that ramp. They are therefore
+   deliberately not one repeated component.
+
+   .service-link is used rather than a box or a button. It is the site's quiet
+   door: colour only, no travel, no panel. A .highlight-box anchor above nine
+   white cards would read as the first and best option rather than as an
+   alternative route.
+
+   NOTE FOR ANYONE ADDING A LINK IN PROSE HERE. There is no inline prose link
+   anywhere on this site and shared.css has no rule for one. Every link is a
+   button, a card, a box, or a nav or footer entry. Introducing one would be a
+   new site-wide convention and should be decided as one, not on this page.
+   --------------------------------------------------------------------------- */
+    .work-lead-out {
+      margin: 14px 0 56px;
+    }
+
+    .work-lead-out .service-link {
+      margin-top: 0;
+    }
+
+
+    /* ---------------------------------------------------------------------------
+   THE NINE CARDS
+   Replaces the contents strip that stood here from 13 August 2026. That strip
+   listed the nine headings as jump links, which solved getting a reader in and
+   did nothing for the reader who was never going to read five thousand words.
+   The cards carry a written layer that did not exist before: each one states
+   the condition as it stood before anybody was called, in the present tense,
+   with Ainsley absent from it. A reader who reads only this block has had the
+   whole argument in about three minutes. A reader who recognises one clicks
+   into that account. Nobody is asked at the top to declare which they are.
+
+   WHY THIS IS NOT A MENU, WHICH IS THE RISK THE GEOMETRY CARRIES
+   Nine equal tiles in a grid is the visual grammar of a set of alternatives,
+   and the nine are explicitly not that. Three things argue the other way and
+   they have to survive any future edit to this block.
+     1. The 2px gap. Same value as .services-grid. White cards on off-white
+        ground separated by a hairline read as one slab with nine cells cut in
+        it, not as nine objects that happen to be near each other.
+     2. The numerals, 01 to 09, in the order the accounts appear. A position in
+        a sequence is not a category. This is the same reasoning that put the
+        numeral on each item rather than an industry label.
+     3. The rule under each numeral bleeds to the card edge, so across a row
+        the three rules sit 2px apart and read as one line crossing the block.
+        Three rows, three lines, and the block reads as a run that wraps rather
+        than as tiles that could have been in any order.
+
+   Order is the argument here exactly as it is in the run of accounts below.
+   Do not reorder these to balance the card heights.
+
+   Commit tier under visual language 3.1: the whole card is the anchor per 3.6,
+   and it takes the reader somewhere. Reduced motion strips the travel only and
+   is handled at the foot of this stylesheet, since these classes are local to
+   this page and the block in shared.css does not reach them.
+   --------------------------------------------------------------------------- */
+    .work-cards-label {
+      font-family: var(--font-display); font-weight: 600; font-size: 12px;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-mid);
+      display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+    }
+    .work-cards-label::before {
+      content: ''; display: block; width: 24px; height: 2px; background: var(--gray-mid);
+    }
+
+    .work-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .work-card {
+      display: block;
+      background: var(--white);
+      padding: 30px 26px 32px;
+      border-radius: 4px;
+      border-top: 3px solid transparent;
+      text-decoration: none;
+      color: inherit;
+      transition: border-top-color 0.3s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    }
+    .work-card:hover {
+      border-top-color: var(--teal);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(30,58,74,0.10);
+    }
+    .work-card:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(30,58,74,0.14);
+      transition-duration: 0.1s;
+    }
+
+    /* Negative margins cancel the card padding so the rule reaches both edges.
+       That is what lets the three rules in a row read as one line. */
+    .work-card-head {
+      margin: 0 -26px 18px;
+      padding: 0 26px 12px;
+      border-bottom: 1px solid var(--gray-light);
+    }
+    .work-card-n {
+      font-family: var(--font-display); font-weight: 800; font-size: 26px;
+      line-height: 1; letter-spacing: 0.04em; color: var(--teal);
+      transition: color 0.2s ease-out;
+    }
+
+    .work-card p {
+      font-size: 15px; line-height: 1.7; color: #4A6572;
+    }
+
+    .work-card .go {
+      display: block; margin-top: 18px;
+      font-family: var(--font-display); font-weight: 700; font-size: 12px;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal);
+    }
+    .work-card .go::after {
+      content: '\2192'; display: inline-block; margin-left: 7px;
+      transition: transform 0.2s ease-out;
+    }
+    .work-card:hover .go::after { transform: translateX(4px); }
+
+    /* ---------------------------------------------------------------------------
+   ITEM NUMERAL AND LEAD PARAGRAPH
+   The numeral sits in the slot the about page gives to .story-era. That slot
+   was left empty here because the equivalent label would be an industry, and
+   naming the industry sorts the reader before the account has done its work.
+   A position in a sequence is not an industry and does not group: it is the
+   same mark on all nine and it states that the run is unbroken. It also gives
+   a reader five thousand words in some idea of how far there is to go.
+   The first paragraph of each item is set slightly larger and darker. Every
+   item opens on the arrival, so this gives each one a visible way in without
+   a break between items and without a summary line that would function as a
+   label.
+   --------------------------------------------------------------------------- */
+    .work-item-index {
+      font-family: var(--font-display); font-weight: 700; font-size: 12px;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray-mid);
+      margin-bottom: 10px;
+    }
+    .story-section.work-item .body-text:first-of-type {
+      font-size: 17px;
+      line-height: 1.75;
+      color: #3E5762;
+    }
+    /* Fixed nav is 68px. Without this a jump link lands with the heading
+       underneath it. */
+    .story-section.work-item { scroll-margin-top: 92px; }
+
+    /* Three across needs roughly 1000px to hold a readable measure inside each
+       card. Below that it steps to two and then to one, rather than letting the
+       column narrow until the text sets badly. */
+    @media (max-width: 1000px) {
+      .work-cards { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 900px) {
+      .story-section.work-item h3 { font-size: 23px; }
+      .story-section.work-item .body-text:first-of-type { font-size: 16px; }
+    }
+
+    @media (max-width: 680px) {
+      .work-cards { grid-template-columns: 1fr; }
+    }
+
+
+    /* ---------------------------------------------------------------------------
+   THE RAIL
+   Added 14 August 2026, and it answers a problem the card block created. A
+   reader who jumps in from a card has skipped eight accounts and, once inside
+   one, has no route to any of the others except back to the top. The contents
+   strip that used to sit above the run was a poor entry device and is a good
+   lateral one, so it returns here in the place it actually belonged.
+
+   WHY IT SITS BESIDE THE RUN AND NOT INSIDE IT
+   The accounts are one unbroken run on purpose: any visual break between two
+   of them reads as a grouping, and grouping is the failure this page exists to
+   correct. So an exit at the end of an account has nowhere legitimate to sit.
+   The gutter does. The accounts were already capped well short of the column
+   width, so this occupies space that was empty rather than taking any from the
+   prose.
+
+   IT IS ALSO WHERE THE EXIT BELONGS, FOR A REASON WORTH KEEPING
+   The reader most at risk of leaving does not finish an item and then decide.
+   They lose interest three paragraphs in. An exit at the end of an account
+   never reaches that person. One that is in view throughout does.
+
+   THE RAMP
+   How loud the invitation is scales with how far the reader has come. The lead
+   carries a bare affordance. This carries one sentence and an affordance,
+   because a reader down here has spent real time. The close is a full call to
+   action. Three rungs, deliberately not one repeated component.
+
+   WHY THIS AFFORDANCE IS NOT THE ONE AT THE TOP, WHICH IS NOT AN OVERSIGHT
+   The lead says "Tell me yours" and gets away with it because the sentence
+   directly above hands it a noun: describe your own situation. Nothing near
+   the rail supplies one, so the same words here leave a reader asking yours
+   what. This affordance names what is being offered instead of what the reader
+   is bringing, and "instead" reaches back to "optional" so the two lines read
+   as one thought. Do not unify the two exits. They differ because they sit in
+   different places and a repeat would flatten the ramp.
+
+   ON THE PRONOUN. Singular, and it stays singular when the assistant is doing
+   part of this work. The assistant is something Ainsley built, not a second
+   person, so a plural would claim headcount that does not exist. Positioning
+   9.3 is the governing rule. The choice between a person and the assistant is
+   named on the contact page, which is the surface that offers both.
+
+   BUILT COMPLETE WITHOUT SCRIPT, WHICH IS A CONSTRAINT RATHER THAN A STAGE
+   There is no position marker and nothing here is waiting to be lit later.
+   Two things were considered and rejected on the same grounds. A dimmed
+   current-item state would be a placeholder that looks broken until something
+   fills it. A :target rule would mark the item correctly when a reader arrives
+   by clicking and then silently keep marking it once they have scrolled past,
+   which is the fault category this site keeps meeting: renders perfectly,
+   behaves wrongly. If a marker is added later it needs to follow the scroll,
+   and until then the rail is honest about knowing nothing.
+
+   The names are objects rather than industries or disciplines. Naming the
+   industry is what sorts a reader before the account has done its work, and
+   the hero sub-line already establishes that naming the object is fine.
+
+   This is a navigation landmark and is marked as one. The card block is not:
+   nine cards of substantive prose inside a nav landmark misrepresents them.
+
+   DO NOT BUILD THIS AS A NAV ELEMENT. IT WAS, AND IT FAILED.
+   shared.css styles `nav` as a bare element selector: fixed positioning, top
+   zero, display flex, 68px high, dark background, z-index 100. That rule does
+   not say "the site nav", it says every nav element on every page. Built that
+   way this rail inherited all of it and produced one fault with five faces: it
+   sat above its own section, slid under the header, laid its three parts out
+   side by side, clipped to 68px, and rendered item 05 invisible against a dark
+   fill until hovered. The class selectors that were set did win; everything
+   not set came straight through. It is a div with role="navigation", which is
+   the same landmark to a screen reader and inherits nothing.
+
+   THE GENERAL POINT, WHICH IS WIDER THAN THIS PAGE. No page on this site can
+   use a second nav, header or footer element until those bare selectors are
+   scoped. Any new structural element should be checked against shared.css
+   before it is used, not after it renders wrongly.
+   --------------------------------------------------------------------------- */
+    .work-run {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .work-accounts { grid-column: 1; grid-row: 1; min-width: 0; }
+
+    /* margin rather than padding, deliberately. .story-section opens with 48px
+       of padding, so in flow this puts the rail label level with the first
+       item's numeral instead of 48px above it. Margin sits outside the sticky
+       box, so once the rail is stuck it still sits at 92px with no dead space
+       at the top. Padding would have carried the 48px along with it. */
+    .work-rail {
+      grid-column: 2;
+      grid-row: 1;
+      position: sticky;
+      top: 92px;
+      margin-top: 48px;
+    }
+
+    .work-rail-label {
+      font-family: var(--font-display); font-weight: 600; font-size: 12px;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-mid);
+      display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+    }
+    .work-rail-label::before {
+      content: ''; display: block; width: 18px; height: 2px; background: var(--gray-mid);
+    }
+
+    .work-rail-list { list-style: none; margin: 0; padding: 0; }
+
+    /* Colour only, no travel. Same reasoning as the nav bar: a row that shifts
+       under the cursor inside a fixed column reads as a glitch. The left rule
+       runs continuously down the list because every row carries one. */
+    .work-rail-list a {
+      display: grid; grid-template-columns: 26px 1fr; align-items: baseline;
+      gap: 6px;
+      padding: 9px 0 9px 12px;
+      border-left: 2px solid var(--gray-light);
+      text-decoration: none;
+      transition: border-left-color 0.2s ease-out;
+    }
+    .work-rail-list a:hover { border-left-color: var(--teal); }
+    .wr-n {
+      font-family: var(--font-display); font-weight: 700; font-size: 12px;
+      letter-spacing: 0.1em; color: var(--gray-mid);
+      transition: color 0.2s ease-out;
+    }
+    .wr-t {
+      font-size: 14px; line-height: 1.35; color: var(--slate);
+      transition: color 0.2s ease-out;
+    }
+    .work-rail-list a:hover .wr-n,
+    .work-rail-list a:hover .wr-t { color: var(--teal); }
+
+    .work-rail-out {
+      margin-top: 26px; padding-top: 22px;
+      border-top: 1px solid var(--gray-light);
+    }
+    /* Both lines fit on one line at this width, and the column reads as a set
+       of neat single lines, which is most of why it looks calm. text-wrap
+       balance does nothing while that holds and splits into two even lines
+       rather than stranding one word if a future edit or a different font
+       render pushes it over. Insurance, not a fix. */
+    .work-rail-out p {
+      font-size: 14px; line-height: 1.6; color: #4A6572; margin-bottom: 12px;
+      text-wrap: balance;
+    }
+    .work-rail-out .service-link { margin-top: 0; font-size: 12px; }
+
+    /* Below this the two columns cannot both hold a readable measure, so the
+       rail stops being a rail. It goes static above the accounts and the list
+       wraps into rows. It keeps every function it had; it simply stops
+       following the reader, which is the only thing the width was buying. */
+    @media (max-width: 1000px) {
+      .work-run { grid-template-columns: 1fr; gap: 0; }
+      .work-accounts { grid-column: 1; grid-row: 2; }
+      .work-rail {
+        grid-column: 1; grid-row: 1;
+        position: static;
+        margin-top: 0;
+        margin-bottom: 40px;
+      }
+      .work-rail-list {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 16px;
+      }
+      .work-rail-out { max-width: 520px; }
+    }
+
+    @media (max-width: 680px) {
+      .work-rail-list { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ---------------------------------------------------------------------------
+   REDUCED MOTION
+   These classes live on this page, so the block in shared.css does not reach
+   them. Travel goes, every other state change stays: the border colour, the
+   shadow and the arrow all still fire, so no feedback is lost.
+   --------------------------------------------------------------------------- */
+    @media (prefers-reduced-motion: reduce) {
+      .work-card, .work-card:hover, .work-card:active { transform: none; }
+      .work-card:hover .go::after { transform: none; }
+      /* Rotation is travel, so under reduced motion the object still indexes
+         but does so as a jump. The state change survives; only the movement
+         goes, which is what the site's rule requires. That behaviour is in the
+         script rather than here, because CSS cannot see it. */
+    }
+
+    /* ---------------------------------------------------------------------------
+   HERO FIGURE: THE ELEVEN FACED SOLID
+   Built 15 August 2026. Specified at visual language 7.6 and derived from the
+   work document section 2.8. Nine faces are the nine engagements on this page.
+   Two are apertures, and they are permanent: the shape does not close, because
+   a shape that fitted perfectly would belong to somebody with no problem.
+
+   Two faces meet at an edge when their engagements share a shape of situation.
+   That gives thirteen adjacencies and nothing between the nine is invented. The
+   nine alone cannot be closed into a solid, because three of them have fewer
+   than three neighbours in the record, so two further faces close it.
+
+   HOW IT WAS BUILT, because it must never be adjusted by hand
+   The adjacency graph is planar and 3-connected, so by Steinitz a convex solid
+   with exactly these combinatorics exists. It was constructed, not searched
+   for: Tutte embedding, Maxwell-Cremona lift, then canonicalised to the unique
+   realisation with every edge tangent to a common sphere. The vertices in the
+   script below are that solid. Regenerate them; do not edit them.
+
+   WHY THERE IS A WASH AND NOT A FILL
+   Line work alone cannot separate three things: the ground, the inside of the
+   object seen through an aperture, and a sight line that enters one aperture
+   and leaves through the other. Filling the faces would have separated them,
+   at the cost of making this the one figure on the site that is a tinted body
+   rather than line work on plain ground. So the background moves instead. A
+   soft wash sits behind, in the register of .hero-accent on the index page,
+   and the object holds it back. The object itself is untouched.
+   That also removes a value nobody could have chosen honestly. With a fill,
+   looking straight through the object needed a tone, and no tone is truthful,
+   because what you are looking at is the background. Here the object simply
+   stops occluding and the background shows.
+
+   THE WASH MUST NOT BE CONCENTRIC WITH THE OBJECT
+   This is the whole of it, and it is easy to undo by tidying. A wash centred
+   on the object has its entire falloff inside the silhouette, so every view
+   through an aperture shows an even glow with no edge, and it reads as a light
+   source inside the object rather than as a background behind it. What proves
+   a background is behind is seeing one falloff edge on both sides of the
+   outline at once. So the wash is offset and its radius is set so the band
+   crosses the silhouette. If the object, the placement or the scale ever
+   change, that condition must be re-established and not assumed.
+
+   FOUR THINGS A LATER SESSION NEEDS TO KNOW
+   1. The mounting was verified in the frame the figure is drawn in, not in the
+      object's own frame. An earlier pass validated the stops in one frame and
+      drew them through another, which rendered perfectly and was wrong.
+   2. No face is square to the reader at any stop. The flattest is 28.7 degrees
+      off square. A face square on is the object posing.
+   3. No painted coordinate leaves the viewBox at any stop. The fit is computed
+      across all six, not the one that happens to be showing.
+   4. The straight-through region is a hairline at every stop and reaches a
+      fifth of the silhouette at 38 degrees, which is between stops. It exists
+      only while the object is turning. Anything tested at the stops alone will
+      miss it entirely.
+      --------------------------------------------------------------------- */
+    .work-solid {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .work-solid svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .work-solid .hit {
+      fill: #fff;
+      fill-opacity: 0;
+      pointer-events: all;
+    }
+
+    .work-solid .fig {
+      pointer-events: none;
+    }
+
+    /* Object lines are edges where material stops. Interior lines are seen
+       through an aperture, so they sit one weight lighter and one step back.
+       Fixed steps rather than a gradient by depth: a continuous response is
+       the pointer tracking effect wearing a different mechanism. */
+    .work-solid .body {
+      stroke: var(--teal-bright);
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .work-solid .inner {
+      stroke: var(--teal-bright);
+      stroke-width: 0.7;
+      stroke-linecap: butt;
+      opacity: 0.45;
+      fill: none;
+    }
+
+    /* An edge of an opening is where material stops. An edge between two faces
+       is where it folds and carries on, and which folds fall on the outline is
+       a fact about where the reader is standing rather than about the object.
+       So boundaries carry one fixed increment of weight over folds, and the
+       same increment in both tiers, per 3.3. The increment is 0.5, and it was
+       reached by taking the folds DOWN rather than the boundaries up, so that
+       the heaviest line on the figure did not get heavier and the object did
+       not gain weight overall to make one distinction visible.
+       That puts the far folds at 0.7, below the roughly 0.9 floor section 3.3
+       sets. It was checked rather than assumed: at the stop with the most
+       interior line work the far folds still read clearly, because the far
+       tier has contrast to spare against this ground. If the ground or the
+       opacity ever change, check it again rather than trusting the number.
+       This puts a second meaning on stroke weight, which already carries near
+       against far. The two do not collide here because the far tier is also
+       held back in opacity, but a third distinction could not be added this
+       way and would need its own carrier. */
+    .work-solid .rim {
+      stroke: var(--teal-bright);
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .work-solid .inner-rim {
+      stroke: var(--teal-bright);
+      stroke-width: 1.2;
+      stroke-linecap: butt;
+      opacity: 0.45;
+      fill: none;
+    }
+
+    /* The inside of the object, one faint step darker than the ground it is
+       cut into. Not shading: one flat value for every interior surface. */
+    .work-solid .cavity {
+      fill: #000;
+      fill-opacity: 0.14;
+      stroke: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE FILE.
+       It is written from _nav_canonical.html by apply-chrome.py, and any hand
+       edit made here will be silently overwritten the next time that script
+       runs. Change the fragment, then run the script.
+       Identical on every page except the active entry, which the script sets
+       from the page's own filename. Five entries as of 14 August 2026: The
+       Engagement sits between The Work and Contact. The four discipline pages
+       and every other page outside the nav carry no active entry at all,
+       which is correct rather than an omission. -->
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="sinclair-nav-icon.png" alt="Sinclair Dynamics"
+        style="height:52px;width:auto;"></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="work.html" class="active">The Work</a>
+      <a href="engagement.html">The Engagement</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="contact.html" class="nav-cta">Get In Touch</a>
+  </nav>
+  <!-- NAV:END -->
+
+  <!-- ===== 1. HERO =====================================================
+       The hero figure was designed in its own pass, as every figure on this
+       site has been, and built on 15 August 2026. It is an eleven faced solid
+       derived from which of the nine pieces of work below share the same
+       underlying situation. Two of its faces are permanent openings.
+       ================================================================== -->
+  <section class="page-hero">
+  <!-- The eleven faced solid, built 15 August 2026. Full reasoning and the four
+       maintenance warnings are in the .work-solid block in the page style
+       above. Read that before editing this.
+       The rest state below is real drawn geometry, so the figure exists with
+       no script at all. The script replaces it on load and indexes it. -->
+    <div class="work-solid">
+      <svg viewBox="0 0 1200 480" preserveAspectRatio="xMaxYMax meet" xmlns="http://www.w3.org/2000/svg" role="img"
+        aria-label="A solid of eleven faces turning about a single axis. Nine faces are the nine pieces of work below, meeting along an edge wherever two of them share the same underlying situation. Two are permanent openings through which the inside is visible.">
+        <defs>
+          <!-- The horizontal fade. Every figure behind text carries one. The
+               floor is high because this figure has a silhouette, and a low
+               floor makes one side of it dissolve. -->
+          <linearGradient id="wsg" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#fff" stop-opacity="0.30" />
+            <stop offset="46%" stop-color="#fff" stop-opacity="0.48" />
+            <stop offset="68%" stop-color="#fff" stop-opacity="0.82" />
+            <stop offset="88%" stop-color="#fff" stop-opacity="1" />
+          </linearGradient>
+          <!-- The wash that the object holds back. It is deliberately NOT
+               concentric with the object: 200 units right and 155 down from
+               the object's own centre, with a radius large enough that its
+               falloff band crosses the silhouette. That is what makes it read
+               as behind. Centred, its whole falloff sits inside the outline,
+               so looking through an aperture shows an even glow with no edge
+               in it, which is what a lamp inside an object looks like.
+               The stops are a smoothstep rather than a linear ramp, so the
+               band is soft and has no corner in it. -->
+          <radialGradient id="wsw" gradientUnits="userSpaceOnUse" cx="1080" cy="400" r="300">
+            <stop offset="0%" stop-color="#1A7A6E" stop-opacity="0.18" />
+            <stop offset="20%" stop-color="#1A7A6E" stop-opacity="0.1613" />
+            <stop offset="35%" stop-color="#1A7A6E" stop-opacity="0.1293" />
+            <stop offset="50%" stop-color="#1A7A6E" stop-opacity="0.09" />
+            <stop offset="65%" stop-color="#1A7A6E" stop-opacity="0.0507" />
+            <stop offset="80%" stop-color="#1A7A6E" stop-opacity="0.0187" />
+            <stop offset="90%" stop-color="#1A7A6E" stop-opacity="0.005" />
+            <stop offset="100%" stop-color="#1A7A6E" stop-opacity="0.0" />
+          </radialGradient>
+          <mask id="wsm">
+            <rect width="1200" height="480" fill="url(#wsg)" />
+          </mask>
+          <!-- The wash is faded like everything else, and then the object is
+               painted black into the mask so the wash stops at its silhouette.
+               The occluder path is regenerated every frame by the script. -->
+          <mask id="wswm">
+            <rect width="1200" height="480" fill="url(#wsg)" />
+            <path class="occl" fill="#000" fill-rule="evenodd" d="M762.49,427.22L711.16,239.09L785.11,96.07L905.92,127.99L944.35,159.77L1099.5,338.08ZM827.92,230.44L1099.5,338.08L866.62,360.86L827.17,232.71Z" />
+          </mask>
+        </defs>
+        <rect class="wash" x="0" y="0" width="1200" height="480" fill="url(#wsw)" mask="url(#wswm)" />
+        <rect class="hit" data-stop="0" x="680.0" y="40.0" width="86.7" height="440.0" />
+        <rect class="hit" data-stop="1" x="766.7" y="40.0" width="86.7" height="440.0" />
+        <rect class="hit" data-stop="2" x="853.3" y="40.0" width="86.7" height="440.0" />
+        <rect class="hit" data-stop="3" x="940.0" y="40.0" width="86.7" height="440.0" />
+        <rect class="hit" data-stop="4" x="1026.7" y="40.0" width="86.7" height="440.0" />
+        <rect class="hit" data-stop="5" x="1113.3" y="40.0" width="86.7" height="440.0" />
+        <g class="fig" mask="url(#wsm)">
+          <path class="cavity" fill-rule="evenodd" d="M1099.5,338.08L866.62,360.86L785.11,96.07ZM827.92,230.44L1099.5,338.08L866.62,360.86L827.17,232.71Z" />
+          <path class="inner" d="M882.93,171.37L827.92,230.44M827.92,230.44L826.5,230.54M826.5,230.54L827.92,230.44M827.92,230.44L882.93,171.37" />
+          <path class="inner-rim" d="M827.92,230.44L827.17,232.71M1099.5,338.08L827.92,230.44" />
+          <path class="body" d="M762.49,427.22L794.6,339.93M794.6,339.93L785.11,96.07M785.11,96.07L711.16,239.09M711.16,239.09L762.49,427.22M866.62,360.86L794.6,339.93M762.49,427.22L866.62,360.86M905.92,127.99L785.11,96.07M1099.5,338.08L944.35,159.77M944.35,159.77L905.92,127.99" />
+          <path class="rim" d="M1099.5,338.08L866.62,360.86M762.49,427.22L1099.5,338.08M785.11,96.07L1099.5,338.08M785.11,96.07L866.62,360.86" />
+        </g>
+      </svg>
+    </div>
+    <div class="page-hero-content">
+      <div class="hero-eyebrow">The Work</div>
+      <h1>What happens<br>when someone<br><span>brings me something.</span></h1>
+      <p class="page-hero-sub">Nine pieces of work. A plant, a house, a trailer, a fitness device, a promotional stand, a fleet of motorcycles, a beacon network, a portfolio of solar installations, and a domestic electrical study.</p>
+    </div>
+  </section>
+
+  <!-- ===== 2. THE NINE CARDS ============================================
+       The short version of this page, and it stands on its own. Each card
+       states the condition as it stood before anybody was called: present
+       tense, concrete, and with Ainsley absent from it. A reader who stops
+       here has had the argument. Nobody is asked at the top to choose
+       between the short page and the long one.
+       The cards are written to be read against each other rather than each
+       on its own. Nine conditions with the variables changed is what makes
+       the common thread felt without any card stating it, which is why no
+       card is built to a template and why their lengths differ.
+       Off-white ground so the block reads as its own object against the
+       white the accounts sit on.
+       ================================================================== -->
+  <section style="background: var(--off-white);">
+    <div class="section-inner">
+      <div class="work-lead">
+      <p class="section-lead">They have no industry in common and they are deliberately not sorted into any. What they have in common is the shape of what was actually wrong, which in almost every case was not what anyone said when they arrived.</p>
+      <p class="section-lead">Read until one of them sounds like something you have. Or leave them unread, and describe your own situation instead.</p>
+      <div class="work-lead-out"><a href="contact.html" class="service-link">Tell me yours</a></div>
+      </div>
+
+      <div class="work-cards-label">The nine</div>
+      <div class="work-cards">
+
+        <a class="work-card" href="#w1">
+          <div class="work-card-head"><span class="work-card-n">01</span></div>
+          <p>A plant weighs ore for its neighbours, so the conveyor scales are what the work gets billed on. Calibrating one means stopping the belt and laying chains of known mass across it, three or four rounds before the figure settles. Those chains are the reference for every instrument on the site, and nobody has weighed them. Replacing the scales is not affordable. Nothing on record states what accuracy they are meant to reach.</p>
+          <span class="go">Read the account</span>
+        </a>
+
+        <a class="work-card" href="#w2">
+          <div class="work-card-head"><span class="work-card-n">02</span></div>
+          <p>An advertising business is buying a beacon estate for its venues and its vehicle fleet, and selling advertisers proof that a spend reached somebody. A beacon transmits an identifier a few times a second. It detects nobody, knows nobody is there, and sends nothing. The capability that would have made the proposition true did exist, and the platform owner withdrew it deliberately. Everything remaining depends on an app being installed, running, and permitted to listen.</p>
+          <span class="go">Read the account</span>
+        </a>
+
+        <a class="work-card" href="#w3">
+          <div class="work-card-head"><span class="work-card-n">03</span></div>
+          <p>A resistance band trainer works as a prototype and now has to go inside a handle that is already designed. The shape cannot change, because it sits in a hand. The display cannot move. The firmware belongs to another party and stays with them. What exists is a development board, jumper leads, three switches soldered at the legs, and two resistors suspended in tape. The only complete record of the circuit is the assembly itself.</p>
+          <span class="go">Read the account</span>
+        </a>
+
+        <a class="work-card" href="#w4">
+          <div class="work-card-head"><span class="work-card-n">04</span></div>
+          <p>A household is about to commit serious capital to solar, inverter and battery. The only number anyone has brought to the decision is a monthly account total. A total states how much energy was used and nothing about when any of it happened, and when is what a system is sized against. Every quote in front of them is defensible by the person who wrote it.</p>
+          <span class="go">Read the account</span>
+        </a>
+
+        <a class="work-card" href="#w5">
+          <div class="work-card-head"><span class="work-card-n">05</span></div>
+          <p>A promotional stand needs a game in it, and the job is already late. Nine illuminated buttons, one lights at random, strike it before the time runs out. The brief runs to three sentences. The lights are unspecified, the enclosure is unspecified, the scoring and the difficulty are unspecified, and questions about any of it come back empty. Somebody else will wire the buttons and lights. Whoever builds this will never stand in front of the finished machine.</p>
+          <span class="go">Read the account</span>
+        </a>
+
+        <a class="work-card" href="#w6">
+          <div class="work-card-head"><span class="work-card-n">06</span></div>
+          <p>Across a portfolio, the person using a solar system is not the person who owns it, financed it, or maintains it, and the three do not hold the same idea of a working system. Establishing what has actually been happening at one site takes real attention. What a portfolio can afford is a few minutes per system per month, whoever is doing the looking. So nobody looks properly, and none of that is negligence.</p>
+          <span class="go">Read the account</span>
+        </a>
+
+        <a class="work-card" href="#w7">
+          <div class="work-card-head"><span class="work-card-n">07</span></div>
+          <p>Delivery motorcycles carry illuminated advertising screens, sold to the riders as income earned on trips they already make. The batteries are going flat and the riders are paying for the replacements. The reading offered on arrival is that the riders leave the ignition on. They do. The phone is where the work arrives and it charges off the bike, and the screens are on the ignition as well. Switch off and the work stops coming.</p>
+          <span class="go">Read the account</span>
+        </a>
+
+        <a class="work-card" href="#w8">
+          <div class="work-card-head"><span class="work-card-n">08</span></div>
+          <p>A house runs its solar, lighting, appliances, cameras, alarm and a tenant's cottage on separate platforms that know nothing about each other. A wife, guests and a tenant all depend on it. None of them asked for it, can be sent on a course about it, or has any interest in how it decides anything. Export to the grid is not available here. It has to keep working, because the person who built it lives in it.</p>
+          <span class="go">Read the account</span>
+        </a>
+
+        <a class="work-card" href="#w9">
+          <div class="work-card-head"><span class="work-card-n">09</span></div>
+          <p>A production trailer has been bought and has to become a working broadcast unit. Some of the equipment is bought, some is identified, some is not known yet, so nobody can state the eventual electrical load. There is no written specification and there will not be one, though the requirement is held precisely and stated verbally by somebody with decades in the industry. The brake and indicator lights failed shortly after collection, and the manufacturer is several provinces away. It travels, so anything mounted has to survive sustained vibration. It must look uninteresting from the outside, because of what it carries. The budget is personal money.</p>
+          <span class="go">Read the account</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. THE NINE ACCOUNTS =========================================
+       Order is the argument. No two consecutive items sit in the same
+       domain, so a reader cannot file the work under one industry. Do not
+       reorder to group them, do not add subheadings between them, and do
+       not label any of them with a discipline.
+       Each item is an arrival followed by a finding. No dates, no outcomes
+       after the fact, no named people, companies, sites, brands or
+       products anywhere on this page.
+
+       Each account has to give a reader something its card did not. Not a
+       longer version of the same thing: a second fault underneath the
+       first, or a measurement nobody had taken. That was checked across all
+       nine when the cards were written. If an account is ever shortened,
+       check that what remains still repays the reader who came down here.
+       ================================================================== -->
+  <section>
+    <div class="section-inner">
+      <div class="work-run">
+
+      <div class="work-rail" role="navigation" aria-label="The nine">
+        <div class="work-rail-label">The nine</div>
+        <ol class="work-rail-list">
+          <li><a href="#w1"><span class="wr-n">01</span><span class="wr-t">The plant</span></a></li>
+          <li><a href="#w2"><span class="wr-n">02</span><span class="wr-t">The beacons</span></a></li>
+          <li><a href="#w3"><span class="wr-n">03</span><span class="wr-t">The handle</span></a></li>
+          <li><a href="#w4"><span class="wr-n">04</span><span class="wr-t">The utility bill</span></a></li>
+          <li><a href="#w5"><span class="wr-n">05</span><span class="wr-t">The button game</span></a></li>
+          <li><a href="#w6"><span class="wr-n">06</span><span class="wr-t">The portfolio</span></a></li>
+          <li><a href="#w7"><span class="wr-n">07</span><span class="wr-t">The motorcycles</span></a></li>
+          <li><a href="#w8"><span class="wr-n">08</span><span class="wr-t">The house</span></a></li>
+          <li><a href="#w9"><span class="wr-n">09</span><span class="wr-t">The trailer</span></a></li>
+        </ol>
+        <div class="work-rail-out">
+          <p>Reading to the end is optional.</p>
+          <a href="contact.html" class="service-link">Talk to me instead</a>
+        </div>
+      </div><!-- /.work-rail -->
+
+        <div class="work-accounts">
+
+        <div class="story-section work-item" id="w1">
+          <div class="work-item-index">01 / 09</div>
+          <h3>Every instrument on the plant was being measured against a mass nobody had checked</h3>
+          <p class="body-text">The conveyor scales were not producing reliable figures. The manufacturer and the installer both maintained that the equipment was working correctly, and on their own terms they were right. The calibration procedure was slow enough that people avoided it, and everyone involved had run out of ideas. The question put to me was whether to live with the instruments, abandon them, or spend money replacing them. It mattered because the plant was processing ore on behalf of its neighbours, so those scales were the basis on which the work was billed.</p>
+          <p class="body-text">The calibration that was being performed went like this. Stop the belt. Bring up an elevating platform. Lay chains of known mass across the belt, take a reading, lay more chains, take another. Do the arithmetic, enter a revised coefficient, reset the chains, and run the whole thing again. It took three or four rounds to settle, every time, on every belt.</p>
+          <p class="body-text">The arithmetic in use converged, and that is why nothing looked wrong. It agreed with the alternative whenever the error was small, and separated from it as the error grew. So each pass genuinely did produce a better reading than the one before, and repeated enough times it would have arrived at the same place. The cost sat in how many times enough was. Three or four rounds had become the accepted price of a calibration rather than a signal about the method, and every round was a stopped belt on a plant that earns while the belt runs.</p>
+          <p class="body-text">Underneath that sat something simpler. The chains themselves were the reference for every measurement on the plant, and nobody had ever weighed them or measured their length. When we did, the target figure moved. Everything referenced back to it moved with it.</p>
+          <p class="body-text">The screening on the instrumentation cabling was also earthed nowhere, and I had it terminated properly. I believed it helped. I did not establish that, and I record it as necessary work rather than as the finding.</p>
+          <p class="body-text">With the arithmetic corrected and the reference verified, four of the belts requiring revision were each brought inside tolerance in a single adjustment. The before and after states sit as numbers on the same sheet. I left the site with a small tool that takes three readings and returns the corrected coefficient, and a benchmark weight for each belt so that a rough check could be made in future without stopping anything or handling a chain.</p>
+          <p class="body-text">I did not present this as a correction, because it was not one. I set out the ways the instrument can be calibrated, and named the one I would use and what it saves.</p>
+        </div>
+
+        <div class="story-section work-item" id="w2">
+          <div class="work-item-index">02 / 09</div>
+          <h3>A beacon does not track anybody, which is not what anyone thought they were buying</h3>
+          <p class="body-text">An advertising business wanted a network of proximity beacons across venues and across its own vehicle fleet, so that people near a screen could be identified and sent something relevant, and so that advertisers could be shown that their spend had actually reached somebody. The whole commercial proposition rested on the word tracking.</p>
+          <p class="body-text">A beacon transmits an identifier a few times a second. That is the entirety of what it does. It does not detect anyone, does not know who is nearby, and cannot send anything to anybody. Every part of the thing being sold happens inside an application on a member of the public's phone, which means it depends on a partner having integrated with the estate, and on that partner's app being installed, running, and permitted to listen. There was a period when a beacon could reach a phone with no app involved at all, and that capability was withdrawn deliberately by the platform owner because of how it could be used. So the version everybody remembers did exist, and it was closed on purpose. A beacon is a lighthouse. It does not know how many ships are out there and it does not need to. It broadcasts, and the vessels that want the benefit take it.</p>
+          <p class="body-text">That correction is worth recording as a finding about communication rather than about technology. It was understood inside a conversation and gone by the next one, more than once, because the incorrect version is simpler and matches what everyone assumes. A correction that has to be made again every time is not a correction. It has to live in something that outlasts the meeting.</p>
+          <p class="body-text">The instruction I was given was to programme the beacons. What I built instead was a naming and identification scheme, because a device found on a wall two years later should say whose it is and which one it is without anybody consulting a list, and because if the estate ever grew, managing it was going to land on me. One identifier for the organisation, location encoded in one field, vendor and purpose in another, and the namespace derived from a hash of the client's own domain, so the estate's identity comes from something they own rather than from a number somebody typed once. Readable by eye off a scan.</p>
+          <p class="body-text">The finding that mattered most came from insisting on testing twice. Every position was measured in an empty stadium and again with a full house during a major fixture. One mounting position had been chosen specifically because it was reachable from ground level, which avoids working at height, permits, and everything that comes with them. It performed perfectly in the empty building and did not work at all with a crowd in it, because the signal path ran across the bowl at the height of the people standing in it. That converts high mounting from a preference into a requirement, and every venue added to the estate inherits the access and permit cost that follows. Tested once, in the condition that is convenient to test in, the estate would have been signed off and would have failed on precisely the nights it exists for.</p>
+        </div>
+
+        <div class="story-section work-item" id="w3">
+          <div class="work-item-index">03 / 09</div>
+          <h3>The only complete copy of the design was the object itself</h3>
+          <p class="body-text">A resistance band fitness device had reached working prototype, and the electronics needed to go inside a handle that was already designed. The shape could not change, because it has to sit in a hand, and the display could not move. The firmware belonged to somebody else and stayed with them. What I was asked for was the physical realisation of intelligence that already existed.</p>
+          <p class="body-text">What existed was a development board with jumper leads pushed onto both pin rails, a display module, an amplifier breakout, three switches with wires soldered directly to their legs, and two bridge resistors suspended in free air and wrapped in tape. It worked. It would not have survived being carried across a table. The only documentation was the firmware source, and source code structurally cannot state what is wired to what, so the build instruction for the circuit existed in exactly one place, which was the assembly in front of me. Unwrapping the tape was the point at which part of the design became knowable. I drew a connection schematic off the object, recording every wire by function, by pin, by colour at both ends and by destination, and it showed printed terminal labels that disagreed with the wires landing on them. Anyone rebuilding that circuit from what it said would have built something else.</p>
+          <p class="body-text">Before the production board I built a bench version, because two parties were blocked on each other and the blockage belonged to neither of them. The firmware could not be judged, since a person working three loose switches on wires cannot tell a software fault from a mis-press. Once there was something that could be set down and operated, the software could be evaluated on its own terms. The production version went in as a milled carrier board cut to the housing rather than to the circuit, with a notch and a stepped tab, and with the charging socket brought out to a point on the handle where it does not interfere with use.</p>
+          <p class="body-text">The same client came back a year later, and what was missing that time had nothing electronic in it. Development had been self funded over more than a decade, and the step in front of the business was manufacture, which nobody had costed. I built a five year monthly model of the business, where stock orders and loan drawdowns are taken by rule inside the model rather than scheduled by hand, so that the plan could be tested and argued with rather than presented. It was handed over with the input cells unlocked and the rest protected, because the point was that the client could run their own scenarios against it.</p>
+          <p class="body-text">Neither half of that work stands on its own. The costings that drive the model come out of the physical thing, so a financial mind arriving cold has no way to know which inputs matter or what a change to one of them does downstream. The reverse is equally true. Knowing the device intimately tells you nothing about what a funder needs to see, or how a manufacturing ramp consumes cash before it produces any. The two jobs ran into each other because one person held both ends, and I brought in a specialist for the statutory financial statements rather than take them to a standard I would have been guessing at.</p>
+        </div>
+
+        <div class="story-section work-item" id="w4">
+          <div class="work-item-index">04 / 09</div>
+          <h3>Everybody was sizing a system against a utility bill nobody had opened</h3>
+          <p class="body-text">People kept asking me the same question, which was some version of whether the quote in front of them was right. What sat underneath it was always the same thing. They were about to commit serious capital to a solar, inverter and battery installation, and the only number anyone had brought to the decision was a monthly account total. A monthly total tells you how much energy a household used. It says nothing about when any of it happened, and when is the entire question, because a system is sized against the shape of a day and not against a sum.</p>
+          <p class="body-text">So the service put an instrument in the distribution board first. A week of logging on the incomer and on the circuits that matter, geysers and ovens and pools, at minute resolution, and then that measured profile driven through a simulation of a proposed system to see what it would actually have done across that week. Not a rule of thumb and not a supplier's sizing sheet. The household's own behaviour, run against the equipment being considered.</p>
+          <p class="body-text">What it found was rarely the system. One client was quoted an amount that alarmed them, and the quote was correct: the installer had been told that the client never wanted to hear from the utility again, which specifies a full off grid system, and the price was that instruction faithfully executed. Another had a single occupant, a two bedroom house and no significant routine load beyond water heating. A fraction of what a system would have cost went on solar water heating instead, which dropped the account by around sixty percent and moved the household into a lower tariff band, and that compounds the saving past the units avoided. The third deliberated one decision at length, which was whether to carry an electric geyser on a larger inverter and battery and manage it by schedule, or take the geyser off the system entirely. Two reports were issued rather than one, modelling the same household and the same measured week against two configurations, because the answer needed was not a recommendation but an understanding of what was being taken on.</p>
+          <p class="body-text">The measurement also settles arguments that would otherwise run for months. A system that was not saving anything turned out to be carrying a lighting load nobody had replaced, which had forced the installer to hold the battery high to survive an evening outage, which in turn prevented the battery from cycling and suppressed the very return the owner was using to judge the system. Four things, one cause, and none of it visible without the week of data.</p>
+        </div>
+
+        <div class="story-section work-item" id="w5">
+          <div class="work-item-index">05 / 09</div>
+          <h3>Nothing that a design normally starts from was available, and none of it arrived later</h3>
+          <p class="body-text">A promotional stand needed a game inside it. Nine large illuminated buttons in a grid, one lights at random, the player has to strike it before the time runs out, it gets faster as they go, and it ends on a wrong press or a late one. The brief was about three sentences long, describing a vision that had been discussed somewhere upstream of me. It must be a game, people must push buttons, it must work. The job arrived already late.</p>
+          <p class="body-text">The lights were unspecified. LED strip was going to be cut off a roll in whatever quantity each button took, and nobody could state the type, the voltage, the current or the count. The enclosure was unspecified, so I could not be told what the electronics would be mounted to or inside. The gameplay was unspecified, and questions about scoring and difficulty came back empty. And the person who would finally wire the buttons and lights to my board was not going to be me. I established early that I would never stand in front of the finished machine.</p>
+          <p class="body-text">So each unknown was turned into something that did not need to be known. The output stage became an off the shelf relay board, because a relay does not care what is on the other side of it within its contact rating, and it terminates in screw terminals that the person actually doing the wiring can use. The channel count was held as a single value rather than as a constant, so the same system was an up to nine button game that happened to be set to nine. The electronics went onto a self supporting frame built as small as it could be, so that it could later be bolted into whatever got built around it, and a removable test panel of nine buttons sat above it on standoffs so the whole thing could be proved on a desk and then unbolted.</p>
+          <p class="body-text">The rules, the scoring, the difficulty ramp and the failure conditions are mine. They had to be, because nobody was going to supply them. Difficulty is chosen by which button you start with, so it needs no menu and no extra hardware, since nine buttons already exist. The high score decays a little each game, because otherwise one strong player early in the day makes the display meaningless for everyone after them. The score is reported on the nine lights, on a machine with no screen.</p>
+          <p class="body-text">The last piece is the one I would build again first. Every power on runs a routine that steps through each button, flashes its light, waits for the press and confirms that channel before moving on. At my bench I had a serial terminal. On site there would be no terminal, no laptop and nobody technical, so the routine reports through the only outputs the machine has, in a sequence an untrained person can be walked through by telephone and can describe back accurately without understanding any of it. When the call came that the machine was not working, that is what separated a button fault from a lighting fault on hardware I had never touched.</p>
+        </div>
+
+        <div class="story-section work-item" id="w6">
+          <div class="work-item-index">06 / 09</div>
+          <h3>A few minutes a month, per system, is what a portfolio actually affords</h3>
+          <p class="body-text">At portfolio scale the person using a solar system is not the person who owns it, financed it or maintains it, and those parties do not hold the same idea of what a working system means. When something goes wrong, the question is not whether there was power. It is what has been happening for the past month, what changed, and which of the weather, the settings, the equipment or the way the site is being used is responsible. Answering that for one system takes real attention. Across several hundred, at the staffing any such business can justify, the honest answer is a few minutes per system per month. So nobody looks, not through negligence but because looking has never been affordable.</p>
+          <p class="body-text">I built the thing that closes that gap, and I built it on my own system first because it was the only one I had. It polls each site's own interface and a weather feed continuously, and hands what it collects to an AI observer that assesses behaviour rather than plotting it. The output of that is the real problem. An observation every hour is useful once and unusable in bulk, and reading the entire history back on every question is straightforward to write and impossible to pay for. So observations compress upward through tiers, each folding into the one above at a boundary, in the way a report carries a body and a summary and an executive summary, where every level is readable on its own terms rather than being an encoding of the one beneath it. The boundaries are astronomical rather than calendar, sunrise and sunset, so they move through the year without anyone correcting them seasonally.</p>
+          <p class="body-text">The part that changed what it is for came later. A weekly graph oscillates seven times and asks you to spot which oscillation has the wrong shape, which requires attention and prior knowledge of the right shape. A written summary can state the pattern, which the graph cannot. But you can zoom into a graph and you cannot zoom into a paragraph. So the conversation is with something that has already done the analysis. It is not a search over the reports, and there is no question you have to phrase correctly. Ask what concerns you and the answer comes back reasoned against everything the system knows about that installation, at whatever depth you follow it to.</p>
+          <p class="body-text">It runs live across six sites belonging to several owners, on five manufacturers' equipment, which is where most of the engineering actually went. An audit across those sites found one site reporting half its generation because of a parsing fault that had been there since commissioning, and values sitting in the database that had never reached the observer at all. Nobody reported either. They were found by going looking.</p>
+          <p class="body-text">Both faults are the same kind of fault, and it is a common one. Nothing here originates its own data. Every value is fetched from equipment built by somebody else, published through an interface built by somebody else again, and then landed in a field on my side that carries a name and a meaning I assigned to it. That last step is where these things go wrong. Two channels arrive and only the last one is kept. A unit is assumed rather than stated. A field is added upstream and nobody downstream is told, or one is renamed and everything continues to read perfectly. The number on the screen does not flinch in any of those cases, which is precisely the difficulty: there is nothing to notice.</p>
+          <p class="body-text">So the mapping between what an installation publishes and what the system is told it means now sits in the database, where it is visible and can be inspected, rather than inside the code that does the fetching. Anything not deliberately connected is never recorded and never reasoned from. The observer never works from a number that nobody put there on purpose.</p>
+        </div>
+
+        <div class="story-section work-item" id="w7">
+          <div class="work-item-index">07 / 09</div>
+          <h3>Every component was doing exactly what it was designed to do</h3>
+          <p class="body-text">Delivery motorcycles were carrying illuminated advertising screens, and the batteries were going flat. Riders were paying for replacements, which was a problem, because the screens had been sold to them as extra income earned while doing the deliveries they already do. The reading I was given on arrival was that this was a rider behaviour problem. They were leaving the ignition on.</p>
+          <p class="body-text">They were, and there was a reason. The phone is the job, because that is where the delivery work arrives, and the phone charges off the bike. The screens are wired to the ignition too. So a rider waiting for the next trip either keeps the ignition on and runs three screens on a stationary bike, or switches off and stops receiving work. Both parties on that bike are behaving correctly and they are competing for the same switch.</p>
+          <p class="body-text">The first pass was a protection board that cut the load before the battery was damaged, which was the right proportionate fix for the complaint as it stood. It surfaced the real question. Any threshold that protected the battery properly left the screens dark for too long to be worth selling, and any threshold that kept the screens up damaged the battery. The client's description of that was a duty cycle with no acceptable setting, and that was accurate. No setting existed.</p>
+          <p class="body-text">What was missing was a measurement nobody had taken. Nobody knew what these screens actually drew, under what content, at what brightness, or how bright they need to be to be readable in the conditions they operate in. So it got measured, on a bench, against the client's own artwork in live use and against artwork built specifically for benchmarking. Several things fell out at once. The single largest lever on power was the content itself, because a white frame drives every element of every pixel at full power, which put the biggest saving in the creative department rather than in the hardware. The controller's brightness sensor was effectively on or off and went to full output whenever it decided to, which is correct behaviour for a screen that has been specified for its application, and these had not been. And the controller rebooted every time protection fired, taking well over a minute to come back, so the protection was costing more display time than the threshold suggested.</p>
+          <p class="body-text">None of that is a fault in anything. The panels were doing what panels do. The controller was doing what controllers do. The specification step, where you choose peak brightness against the conditions and the energy available, had simply never been taken, and every consequence downstream inherited that. The fixes followed from it: the brightness ceiling set in the sensing circuit rather than left to the controller, the controller given its own small permanent supply so that protection sheds the screens without restarting the system, and switching moved onto the supplies' own control inputs instead of interrupting the main power path.</p>
+        </div>
+
+        <div class="story-section work-item" id="w8">
+          <div class="work-item-index">08 / 09</div>
+          <h3>The people using it did not choose it, cannot be trained on it, and cannot see it</h3>
+          <p class="body-text">This one is mine. I built it in my own house, at my own cost, and it has to keep working because I live in it. A wife, guests and a tenant in a cottage all depend on it, and not one of them asked for it, can be sent on a course about it, or has any interest in how it decides anything. That constraint is the whole engineering problem, and it is the same constraint that applies in any plant or building where the person operating something is not the person who designed it.</p>
+          <p class="body-text">What it does is coordinate rather than schedule. A solar installation, lighting, appliances, cameras, an alarm and a tenant's cottage all sat on separate platforms with no knowledge of each other, which meant the electric geyser ran to a timer set for when the inverter ought to be able to carry it rather than for when it actually could. So the geyser stopped being a load that is on or off and became a store, holding a quantity of energy the way a battery does. It charges against a target for the end of the day, hot water and a full battery arriving together, and the target is what the household needs rather than what the vessel can reach. Export to the grid is not available here, so when generation is being curtailed with nowhere to go, the geyser is deliberately run past that target, because the alternative is that the energy is not harvested at all.</p>
+          <p class="body-text">Because nobody can be trained, everything is ranked by what a person notices. The geyser sheds first, since it can be off for several minutes and no one perceives it. Then things running that nobody deliberately started. Never the kettle or the microwave, because somebody is standing at it having just chosen to use it. The tenant is told before anything of theirs is interrupted. Every override is temporary by construction and falls back to a defined state, because an override that waits to be cancelled is a trap: whoever set it has forgotten it by the time it matters, and the failure is silent.</p>
+          <p class="body-text">The part I would point at, though, is smaller than any of that. Almost nothing in this system trusts a rated figure. The usable depth of the battery comes from how that battery behaves now, aged, rather than from its specification. The energy in the geyser is calibrated from watching how fast that vessel with that probe in that position actually moves, so the calibration absorbs the fact that the probe is in the worst place on the cylinder. What the array can currently produce is read from what it does at the moments it is being asked for everything, so the reference corrects itself downward through cloud, season and the time of day with nothing modelled and nothing predicted. Five instances of an observed number replacing a declared one, in one building, arrived at separately and before I had a name for what I was doing.</p>
+        </div>
+
+        <div class="story-section work-item" id="w9">
+          <div class="work-item-index">09 / 09</div>
+          <h3>One person to make all of it go away, on a specification that could not be written</h3>
+          <p class="body-text">A production trailer had been bought and needed to become a working broadcast unit. What arrived with it was a list of ideas held in somebody's head, a quantity of equipment already purchased, more that was known to be still coming, and a fault: the brake and indicator lights had failed shortly after collection, with the manufacturer several provinces away and no practical route back to them. What was wanted was one person who would take all of it and make it work.</p>
+          <p class="body-text">There was no documented specification and there was never going to be one, but that is not the same as not knowing what was wanted. Decades in the industry meant the requirement was held precisely and stated verbally, in terms of what the unit had to be able to do on a job. What did not exist was the translation of that into equipment, loads and positions, which is the part that has to be produced before anything can be mounted. The equipment set was partly bought, partly identified and partly unknown, so the eventual electrical load could not be stated by anybody. Where several things belonged could not be decided until the space had been worked in. The budget was personal money. And two constraints were stated at the outset that shaped nearly every decision: it travels, so anything mounted has to survive sustained vibration over whatever the route presents, and it must look uninteresting from the outside, because of what it carries.</p>
+          <p class="body-text">Those two turn up together in one detail. Five monitors had to go on the walls, and the intention was to rivet the brackets on. The panel is a sandwich with an inner skin around two millimetres thick, and rivets landing only in that skin are not the structure. So the fixings go right through the panel, with large washers spreading the load on both faces, a rounded cap head outside finished in the same white as the trailer, and a locking nut arrangement inside. That single detail answers vibration, answers the theft posture, since a rectangular pattern of visible fasteners announces exactly what is on the other side of the wall, and answers tampering, because removal now needs a person on each side.</p>
+          <p class="body-text">The same pattern runs through the rest. Aluminium is continuous on both faces of that box, so the mobile routers inside it could not reach anything until both antenna pairs were moved onto the roof. The air conditioner was discharging condensate inside the trailer, over the electronics, because its drain only falls correctly when the trailer sits level, and a trailer parked where it stopped is not level. Three purchases were scoped for that, a drain pump, a relocated drain, a bottle jack. None was bought. What it needed was a bubble level fixed to the chassis and a sequence using the jockey wheel and corner legs the trailer already has, worked round the corners until it reads level in both directions. The inverter had to be permanent but removable, so when it comes out the two plugs left behind mate to each other and the trailer simply runs on incoming supply. A changeover switch was considered and rejected, because a changeover switch is a thing somebody has to understand and operate correctly under pressure, and two plugs joining together is not.</p>
+          <p class="body-text">Then everything that could be bonded was bonded, and an earth spike made up to land on the chassis under a wing nut, so it goes on and comes off without tools and cannot be left connected when the trailer moves. That was raised by me rather than asked for. It is a compliance matter when the unit runs off a generator with no site earth, and separately it is why the crews working in there now remark that the trailer is unusually quiet.</p>
+          <p class="body-text">What decided this job was that all of it had to be one person. On any larger budget it is an engineer to specify the systems, a draughtsman to document them, an artisan to build it, and somebody else again to commission and test. That sequence is correct and it is also several times the cost, and the money here was personal. So the same person who configured the routers and the network also riveted the cable tray, drilled the countertops and bolted the monitors through the wall. And that has consequences a divided team has to hold meetings about. The tray has to clear the knees of people sitting at the desk all day and still be reachable when somebody needs to run a temporary cable mid-broadcast. The person deciding where the tray goes is the person who has watched the room being worked in. There is no handover in the middle for that to be lost across.</p>
+        </div>
+
+        </div><!-- /.work-accounts -->
+      </div><!-- /.work-run -->
+    </div>
+  </section>
+
+  <!-- ===== 4. CLOSE: one route out =====================================
+       One route, not a fork. The page has already worked on the reader by
+       this point, and offering a choice at the moment of recognition is a
+       way of losing them to a decision. Monitoring Calibration stays
+       reachable from the nav and from the argument page.
+       ================================================================== -->
+  <section style="background: var(--off-white);">
+    <div class="section-inner" style="text-align:center;">
+      <div class="section-eyebrow" style="justify-content:center;">Contact</div>
+      <h2 class="section-title">If one of them<br><span>sounded familiar</span></h2>
+        <p class="section-lead" style="margin:0 auto 24px;">The common thread is not the industry. It is that something was working, nobody was complaining, and it was quietly costing more than anyone had established.</p>
+        <p class="section-lead" style="margin:0 auto 24px;">If you recognised your own situation in any of the above, that is usually enough to start a conversation with. You do not need to be able to describe the problem properly. Being able to describe it properly is generally the last thing that happens, not the first.</p>
+      <a href="contact.html" class="btn-primary" style="margin-top:16px;">Get In Touch</a>
+    </div>
+  </section>
+
+  <!-- FOOTER:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE
+       FILE. It is written from _footer_canonical.html by apply-chrome.py, and
+       any hand edit made here will be silently overwritten the next time that
+       script runs. Change the fragment, then run the script.
+       Byte-identical on every page, with no per-page variation of any kind.
+       The four column headings are singular by design and name a mode rather
+       than a count. That is a different job from the section heading on
+       engagement.html, which is singular because there is one defined
+       engagement and goes plural when a second is written. Do not "correct"
+       Discipline to Disciplines on the strength of that rule. -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <svg width="56" height="56" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:16px;"
+            aria-hidden="true">
+            <rect width="48" height="48" rx="10" fill="#E8392A" />
+            <rect x="27" y="27" width="20" height="20" rx="4" fill="#C0281A" opacity="0.5" />
+            <path
+              d="M24 14.5a1.5 1.5 0 0 1 1.5 1.5v1.2a7.5 7.5 0 0 1 2.6 1.08l.85-.85a1.5 1.5 0 0 1 2.12 2.12l-.85.85A7.5 7.5 0 0 1 31.3 23H32.5a1.5 1.5 0 0 1 0 3h-1.2a7.5 7.5 0 0 1-1.08 2.6l.85.85a1.5 1.5 0 0 1-2.12 2.12l-.85-.85A7.5 7.5 0 0 1 25.5 31.8V33a1.5 1.5 0 0 1-3 0v-1.2a7.5 7.5 0 0 1-2.6-1.08l-.85.85a1.5 1.5 0 0 1-2.12-2.12l.85-.85A7.5 7.5 0 0 1 16.7 26H15.5a1.5 1.5 0 0 1 0-3h1.2a7.5 7.5 0 0 1 1.08-2.6l-.85-.85a1.5 1.5 0 0 1 2.12-2.12l.85.85a7.5 7.5 0 0 1 2.6-1.08V16a1.5 1.5 0 0 1 1.5-1.5zm0 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"
+              fill="white" />
+          </svg>
+          <div class="footer-tagline">Engineering Intelligence. Delivered.</div>
+          <p>Technical consulting and engineering from Johannesburg, South Africa. Working with clients across the
+            continent.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Engagement</h4><a href="monitoring-calibration.html">Monitoring Calibration</a>
+          <h4>Discipline</h4><a href="project-management.html">Project Management</a><a
+            href="technical-consulting.html">Technical Consulting</a><a href="ai-digital.html">AI &amp; Digital</a><a
+            href="energy-systems.html">Energy &amp; Power Systems</a>
+        </div>
+        <div class="footer-col">
+          <h4>Intelligence</h4><a href="platform.html">The Monitoring Platform</a>
+          <h4>Connection</h4><a href="about.html">About Ainsley</a><a href="work.html">The Work</a><a
+            href="engagement.html">The Engagement</a><a href="contact.html">Contact</a><a
+            href="https://www.linkedin.com/in/ainsley-williams-18107015/" target="_blank" rel="noopener" class="footer-linkedin"><svg
+              width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+              style="vertical-align:middle;margin-right:6px;" aria-hidden="true">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>LinkedIn Profile</a>
+          <p style="font-size:13px;margin-top:8px;line-height:1.5;">Profile and work history on LinkedIn.</p>
+        </div>
+      </div>
+      <div class="footer-bottom"><span class="footer-copy">&copy; 2026 Sinclair Dynamics. All rights
+          reserved.</span>
+      <!-- VIEWPORT REPORTER:START
+           DIAGNOSTIC. NOT A DESIGN ELEMENT. NOT PART OF THE SITE.
+
+           Added 23 August 2026, Session 29, for the narrow-width observation
+           pass. The site had never been looked at below desktop width and no
+           reliable way existed to know what width a device was actually
+           reporting to the stylesheet, which made every observation about
+           narrow behaviour a guess.
+
+           Hidden by default on every page. It reveals only when the address
+           ends in #vp, and once revealed it stays revealed while moving
+           around the site in the same browser tab, because the nav and
+           footer links do not carry the hash. The close control ends that.
+
+           It renders fixed to a corner of the viewport rather than in the
+           footer's flow, deliberately: .footer-bottom is a flex row and an
+           extra child would change how that row lays out at exactly the
+           widths this instrument exists to observe. Out of flow, it cannot
+           disturb any layout on any page.
+
+           It is styled to look nothing like this site. Black ground,
+           monospace, amber. Anyone who meets it by accident should be able
+           to tell at a glance that it is not part of the page.
+
+           REMOVAL: delete everything between these markers from
+           _footer_canonical.html and run apply-chrome.py. Nothing else on
+           the site references it. No rule in shared.css belongs to it, no
+           id or class it uses appears anywhere else, and it adds no link.
+
+           DISPOSAL CONDITION: it comes out when the narrow-width work is
+           finished and the site record's item 1 is closed, unless a reason
+           to keep it has been written down by then.
+           -->
+      <style>
+        /* Everything here is prefixed sd-vp so it cannot collide with the
+           site's own classes. Display is controlled by the .on class rather
+           than by the hidden attribute, because a later display rule would
+           silently win over hidden and the block would appear on every page. */
+        #sd-vp { display: none; }
+        #sd-vp.on {
+          display: block;
+          position: fixed;
+          z-index: 2147483000;
+          background: #000;
+          color: #FFB020;
+          border: 1px solid #FFB020;
+          border-radius: 3px;
+          padding: 6px 8px;
+          max-width: 320px;
+          font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+          font-size: 11px;
+          line-height: 1.45;
+          text-align: left;
+          letter-spacing: 0;
+          text-transform: none;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+          -webkit-user-select: text;
+          user-select: text;
+        }
+        /* Four corners, cycled by tapping the readout. The top pair clears the
+           68px nav plus its 2px border, since the nav is the first thing this
+           pass has to look at and the instrument must not cover it. */
+        #sd-vp.sd-vp-br { bottom: 8px; right: 8px; }
+        #sd-vp.sd-vp-bl { bottom: 8px; left: 8px; }
+        #sd-vp.sd-vp-tl { top: 78px; left: 8px; }
+        #sd-vp.sd-vp-tr { top: 78px; right: 8px; }
+        #sd-vp pre {
+          margin: 0;
+          font: inherit;
+          color: inherit;
+          white-space: pre;
+          cursor: pointer;
+        }
+        #sd-vp .sd-vp-bar {
+          display: flex;
+          gap: 6px;
+          margin-top: 6px;
+          border-top: 1px solid rgba(255, 176, 32, 0.35);
+          padding-top: 5px;
+        }
+        #sd-vp button {
+          flex: 1;
+          font-family: inherit;
+          font-size: 10px;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          background: transparent;
+          color: #FFB020;
+          border: 1px solid rgba(255, 176, 32, 0.5);
+          border-radius: 2px;
+          padding: 5px 4px;
+          cursor: pointer;
+          min-height: 30px;
+        }
+        #sd-vp button:active { background: rgba(255, 176, 32, 0.2); }
+        #sd-vp .sd-vp-warn { color: #FF5A4A; }
+      </style>
+      <div id="sd-vp" class="sd-vp-br"><pre data-sd-vp-out>reading</pre>
+        <div class="sd-vp-bar"><button type="button" data-sd-vp-scan>scan</button><button type="button"
+            data-sd-vp-copy>copy</button><button type="button" data-sd-vp-close>close</button></div>
+      </div>
+      <script>
+        (function () {
+          'use strict';
+
+          var KEY = 'sd-vp-visible';
+          var box = document.getElementById('sd-vp');
+          if (!box) { return; }
+
+          var out = box.querySelector('[data-sd-vp-out]');
+          var CORNERS = ['sd-vp-br', 'sd-vp-bl', 'sd-vp-tl', 'sd-vp-tr'];
+          var corner = 0;
+          var scanned = null;
+          var pending = false;
+
+          /* ---- collection -------------------------------------------------
+             Three width measures are reported rather than one, because they
+             disagree in informative ways. innerWidth includes a classic
+             scrollbar, clientWidth does not, and visualViewport reports what
+             is actually on screen after pinch zoom or a soft keyboard. A
+             difference between the first two on the laptop is a scrollbar. A
+             difference involving the third on the phone means the page is
+             zoomed and no width reading can be trusted until it is not. */
+
+          function media(query) {
+            return window.matchMedia ? window.matchMedia(query).matches : null;
+          }
+
+          function viewportMeta() {
+            var tag = document.querySelector('meta[name="viewport"]');
+            if (!tag) { return null; }
+            return tag.getAttribute('content') || '(empty)';
+          }
+
+          /* A short, honest guess at the browser. It exists for one reason:
+             a file opened from a messaging app may render in that app's own
+             WebView rather than in Chrome, and a WebView can report a
+             different viewport from the browser a visitor would use. The
+             full user agent string travels in the copy payload, so nothing
+             is lost by this being a guess. */
+          function browser() {
+            var ua = navigator.userAgent || '';
+            var name = 'unidentified';
+            if (/\bEdgA?\//.test(ua)) { name = 'Edge'; }
+            else if (/\bOPR\//.test(ua)) { name = 'Opera'; }
+            else if (/SamsungBrowser\//.test(ua)) { name = 'Samsung Internet'; }
+            else if (/FBAN|FBAV|Instagram|\bLine\//.test(ua)) { name = 'social app'; }
+            else if (/Firefox\/|FxiOS\//.test(ua)) { name = 'Firefox'; }
+            else if (/CriOS\//.test(ua)) { name = 'Chrome iOS'; }
+            else if (/Chrome\//.test(ua)) { name = 'Chrome'; }
+            else if (/Safari\//.test(ua)) { name = 'Safari'; }
+            if (/;\s?wv\)/.test(ua) || /\bwv\b/.test(ua)) { name += ' WebView'; }
+            return name;
+          }
+
+          function describe(el) {
+            var label = el.tagName.toLowerCase();
+            if (el.id) { return label + '#' + el.id; }
+            var cls = el.getAttribute && el.getAttribute('class');
+            if (cls) {
+              var first = String(cls).trim().split(/\s+/)[0];
+              if (first) { label += '.' + first; }
+            }
+            return label;
+          }
+
+          /* Finds the element reaching furthest past the right edge of the
+             document. Horizontal overflow is the commonest narrow-width fault
+             and a few pixels of it is invisible by eye.
+
+             Two honest limits, so a result is read for what it is. Position
+             fixed elements do not move with horizontal scroll, so their
+             numbers are only correct while the page is unscrolled sideways.
+             And an element can legitimately sit outside the viewport, so this
+             names a candidate rather than declaring a defect. */
+          function findWorst() {
+            var limit = document.documentElement.clientWidth;
+            var offset = window.pageXOffset || 0;
+            var all = document.body ? document.body.querySelectorAll('*') : [];
+            var worst = null;
+            var worstRight = limit + 1;
+            for (var i = 0; i < all.length; i++) {
+              var el = all[i];
+              if (el === box || box.contains(el)) { continue; }
+              var rect = el.getBoundingClientRect();
+              if (rect.width === 0 && rect.height === 0) { continue; }
+              var right = rect.right + offset;
+              if (right > worstRight) {
+                worstRight = right;
+                worst = el;
+              }
+            }
+            if (!worst) { return 'no element past ' + limit + 'px'; }
+            return describe(worst) + ' to ' + Math.round(worstRight) + 'px';
+          }
+
+          function collect() {
+            var doc = document.documentElement;
+            var vv = window.visualViewport;
+            var meta = viewportMeta();
+            return {
+              innerW: window.innerWidth,
+              innerH: window.innerHeight,
+              clientW: doc.clientWidth,
+              visualW: vv ? Math.round(vv.width) : null,
+              dpr: window.devicePixelRatio || 1,
+              screenW: window.screen ? window.screen.width : null,
+              screenH: window.screen ? window.screen.height : null,
+              portrait: media('(orientation: portrait)'),
+              at900: media('(max-width: 900px)'),
+              at700: media('(max-width: 700px)'),
+              reduced: media('(prefers-reduced-motion: reduce)'),
+              meta: meta,
+              metaOk: meta !== null && meta.indexOf('width=device-width') !== -1,
+              overflow: doc.scrollWidth - doc.clientWidth,
+              browser: browser(),
+              page: location.pathname.split('/').pop() || 'index.html'
+            };
+          }
+
+          /* ---- rendering ------------------------------------------------ */
+
+          /* The label column is padded to 9 rather than 8 because 'overflow'
+             is itself 8 characters long and would otherwise render with no
+             gap between its label and its value. Caught in a DOM test rather
+             than by reading it. */
+          function pad(text) {
+            var s = String(text);
+            while (s.length < 9) { s += ' '; }
+            return s;
+          }
+
+          function render() {
+            var d = collect();
+            var lines = [];
+
+            lines.push(pad('page') + d.page);
+            lines.push(pad('css') + d.innerW + ' x ' + d.innerH +
+              '   dpr ' + (Math.round(d.dpr * 100) / 100));
+            lines.push(pad('client') + d.clientW +
+              (d.visualW !== null ? '   visual ' + d.visualW : ''));
+            lines.push(pad('screen') + d.screenW + ' x ' + d.screenH +
+              '   ' + (d.portrait ? 'portrait' : 'landscape'));
+            lines.push(pad('breaks') +
+              '900 ' + (d.at900 ? 'ON ' : 'off') +
+              '   700 ' + (d.at700 ? 'ON' : 'off'));
+
+            if (d.meta === null) {
+              lines.push(pad('meta') + 'ABSENT, page will scale');
+            } else if (!d.metaOk) {
+              lines.push(pad('meta') + 'no width=device-width');
+            } else {
+              lines.push(pad('meta') + 'ok');
+            }
+
+            lines.push(pad('overflow') +
+              (d.overflow > 0 ? d.overflow + 'px past edge' : 'none'));
+
+            if (scanned) { lines.push(pad('widest') + scanned); }
+            if (d.reduced) { lines.push(pad('motion') + 'reduced'); }
+            lines.push(pad('browser') + d.browser);
+
+            out.textContent = lines.join('\n');
+
+            /* The two conditions that make every other number on the panel
+               unreliable are the two that get the alarm colour. */
+            var bad = (d.meta === null) || !d.metaOk || d.overflow > 0;
+            out.className = bad ? 'sd-vp-warn' : '';
+          }
+
+          function schedule() {
+            if (pending) { return; }
+            pending = true;
+            window.requestAnimationFrame(function () {
+              pending = false;
+              scanned = null;
+              render();
+            });
+          }
+
+          /* ---- copy ------------------------------------------------------
+             One line, so it pastes into a message without reflowing. The full
+             user agent and the URL travel with it, because a reading with no
+             provenance is not worth having later. */
+
+          function payload() {
+            var d = collect();
+            return [
+              d.page,
+              'css=' + d.innerW + 'x' + d.innerH,
+              'client=' + d.clientW,
+              'visual=' + (d.visualW === null ? 'n/a' : d.visualW),
+              'dpr=' + d.dpr,
+              'screen=' + d.screenW + 'x' + d.screenH,
+              (d.portrait ? 'portrait' : 'landscape'),
+              'mq900=' + (d.at900 ? 'on' : 'off'),
+              'mq700=' + (d.at700 ? 'on' : 'off'),
+              'meta=' + (d.meta === null ? 'ABSENT' : d.meta),
+              'overflow=' + d.overflow,
+              'widest=' + (scanned || 'not scanned'),
+              'reducedMotion=' + (d.reduced ? 'yes' : 'no'),
+              'browser=' + d.browser,
+              'url=' + location.href,
+              'ua=' + (navigator.userAgent || '')
+            ].join(' | ');
+          }
+
+          function flash(button, word) {
+            var original = button.textContent;
+            button.textContent = word;
+            window.setTimeout(function () { button.textContent = original; }, 1200);
+          }
+
+          function copy(button) {
+            var text = payload();
+            /* The async clipboard API is unavailable over file:// and in some
+               WebViews, which are exactly the conditions this may be opened
+               under, so the old path is kept as a fallback rather than
+               assumed unnecessary. */
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(function () {
+                flash(button, 'copied');
+              }, function () {
+                fallbackCopy(text, button);
+              });
+              return;
+            }
+            fallbackCopy(text, button);
+          }
+
+          function fallbackCopy(text, button) {
+            var field = document.createElement('textarea');
+            field.value = text;
+            field.setAttribute('readonly', 'readonly');
+            field.style.position = 'fixed';
+            field.style.top = '-1000px';
+            document.body.appendChild(field);
+            field.select();
+            var ok = false;
+            try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+            document.body.removeChild(field);
+            flash(button, ok ? 'copied' : 'select it');
+          }
+
+          /* ---- visibility ------------------------------------------------ */
+
+          function remember(state) {
+            try {
+              if (state) { window.sessionStorage.setItem(KEY, '1'); }
+              else { window.sessionStorage.removeItem(KEY); }
+            } catch (err) { /* private mode or file://; the hash still works */ }
+          }
+
+          function remembered() {
+            try { return window.sessionStorage.getItem(KEY) === '1'; }
+            catch (err) { return false; }
+          }
+
+          function show() {
+            if (box.classList.contains('on')) { return; }
+            box.classList.add('on');
+            remember(true);
+            render();
+            window.addEventListener('resize', schedule);
+            window.addEventListener('orientationchange', schedule);
+            if (window.visualViewport) {
+              window.visualViewport.addEventListener('resize', schedule);
+            }
+          }
+
+          function hide() {
+            box.classList.remove('on');
+            remember(false);
+          }
+
+          out.addEventListener('click', function () {
+            box.classList.remove(CORNERS[corner]);
+            corner = (corner + 1) % CORNERS.length;
+            box.classList.add(CORNERS[corner]);
+          });
+
+          box.querySelector('[data-sd-vp-scan]').addEventListener('click', function () {
+            scanned = findWorst();
+            render();
+          });
+
+          box.querySelector('[data-sd-vp-copy]').addEventListener('click', function (event) {
+            copy(event.currentTarget);
+          });
+
+          box.querySelector('[data-sd-vp-close]').addEventListener('click', hide);
+
+          window.addEventListener('hashchange', function () {
+            if (location.hash === '#vp') { show(); }
+          });
+
+          if (location.hash === '#vp' || remembered()) { show(); }
+        })();
+      </script>
+      <!-- VIEWPORT REPORTER:END -->
+        <a class="footer-legal" href="privacy.html">Privacy Notice</a></div>
+    </div>
+  </footer>
+  <!-- FOOTER:END -->
+  <!-- The eleven faced solid. Projection, hidden line removal, the wash
+       occluder and indexing. The solid itself is data: change the engagements
+       and regenerate, never edit the numbers. Reasoning is in the .work-solid
+       style block. -->
+  <script>
+    (function () {
+      'use strict';
+
+      // Ten vertices, with the mounting already applied, centred on the axis
+      // of rotation. Eleven faces as cycles of vertex indices. Two of them are
+      // apertures. Generated, not drawn.
+      var V = [[-0.65745,-0.05842,-0.88766],[0.60841,-0.19429,-1.1587],[-0.56161,-1.33059,-0.32265],[0.76307,0.54669,-0.04195],[1.35538,-0.58825,1.08628],[0.65803,0.54979,-0.39911],[0.47006,0.79461,-0.12799],[-1.25583,1.3917,0.66483],[-0.51378,-0.61007,0.79041],[-0.86627,-0.50117,0.39654]];
+      var F = [[7,6,5,1,0],[2,0,1],[2,9,7,0],[4,2,1],[5,3,4,1],[8,9,2],[4,8,2],[6,7,4,3],[5,6,3],[7,8,4],[9,8,7]];
+      var AP = [3, 9];
+      var AXLE = [0.341551,0.938405,0.052336];
+      var STOPS = [0.698132,1.745329,2.792527,3.839724,4.886922,5.934119];
+      var OX = 860.0, OY = 247.0, SC = 140.0;
+
+      var root = document.querySelector('.work-solid');
+      if (!root) { console.warn('work-solid: wrapper not found, figure left as drawn'); return; }
+      var body = root.querySelector('path.body');
+      var rim = root.querySelector('path.rim');
+      var inner = root.querySelector('path.inner');
+      var innerRim = root.querySelector('path.inner-rim');
+      var cavity = root.querySelector('path.cavity');
+      var occl = root.querySelector('path.occl');
+      var hits = root.querySelectorAll('rect.hit');
+      if (!body || !rim || !inner || !innerRim || !cavity || !occl) {
+        console.warn('work-solid: a path element is missing, figure left as drawn');
+        return;
+      }
+      if (hits.length !== STOPS.length) {
+        console.warn('work-solid: ' + hits.length + ' hit strips for ' + STOPS.length +
+                     ' stops, indexing disabled');
+        return;
+      }
+
+      function sub(a, b) { return [a[0]-b[0], a[1]-b[1], a[2]-b[2]]; }
+      function cross(a, b) {
+        return [a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0]];
+      }
+      function dot(a, b) { return a[0]*b[0] + a[1]*b[1] + a[2]*b[2]; }
+
+      var NRM = F.map(function (cy) {
+        var p0 = V[cy[0]], n = cross(sub(V[cy[1]], p0), sub(V[cy[2]], p0));
+        var c = [0,0,0];
+        cy.forEach(function (i) { c[0]+=V[i][0]; c[1]+=V[i][1]; c[2]+=V[i][2]; });
+        if (dot(n, c) < 0) n = [-n[0], -n[1], -n[2]];
+        var m = Math.sqrt(dot(n, n));
+        return [n[0]/m, n[1]/m, n[2]/m];
+      });
+
+      // Which edges bound an opening. Material stops at a boundary and carries
+      // on across a fold. Computed once, because it is a property of the solid
+      // and not of the viewpoint.
+      var RIM = {};
+      AP.forEach(function (f) {
+        var cy = F[f], i, a, b;
+        for (i = 0; i < cy.length; i++) {
+          a = cy[i]; b = cy[(i+1) % cy.length];
+          RIM[Math.min(a,b) + '_' + Math.max(a,b)] = 1;
+        }
+      });
+      function isRim(a, b) { return RIM[Math.min(a,b) + '_' + Math.max(a,b)] === 1; }
+
+      // Rotation about the axle. Rodrigues, so no matrix library is needed.
+      function turn(p, t) {
+        var c = Math.cos(t), s = Math.sin(t), k = AXLE;
+        var kx = cross(k, p), kd = dot(k, p) * (1 - c);
+        return [p[0]*c + kx[0]*s + k[0]*kd,
+                p[1]*c + kx[1]*s + k[1]*kd,
+                p[2]*c + kx[2]*s + k[2]*kd];
+      }
+
+      function area2(poly) {
+        var a = 0, i, j;
+        for (i = 0; i < poly.length; i++) {
+          j = (i+1) % poly.length;
+          a += poly[i][0]*poly[j][1] - poly[j][0]*poly[i][1];
+        }
+        return a;
+      }
+      function ccw(poly) { return area2(poly) > 0 ? poly : poly.slice().reverse(); }
+
+      // Clipping against a nearly tangent edge produces repeated vertices.
+      // They are harmless to look at and not harmless in an even-odd path.
+      function dedupe(poly) {
+        var out = [], i;
+        for (i = 0; i < poly.length; i++) {
+          if (!out.length ||
+              Math.hypot(poly[i][0]-out[out.length-1][0],
+                         poly[i][1]-out[out.length-1][1]) > 1e-6) out.push(poly[i]);
+        }
+        while (out.length > 1 &&
+               Math.hypot(out[0][0]-out[out.length-1][0],
+                          out[0][1]-out[out.length-1][1]) <= 1e-6) out.pop();
+        return out;
+      }
+
+      // Silhouette of a convex body: the hull of its projected vertices.
+      // Monotone chain, then wound the same way as everything else.
+      function hull(pts) {
+        var p = pts.slice().sort(function (a, b) {
+          return a[0] === b[0] ? a[1] - b[1] : a[0] - b[0];
+        });
+        function half(src) {
+          var out = [], i, o;
+          for (i = 0; i < src.length; i++) {
+            while (out.length >= 2) {
+              o = out.length;
+              var cr = (out[o-1][0]-out[o-2][0])*(src[i][1]-out[o-2][1]) -
+                       (out[o-1][1]-out[o-2][1])*(src[i][0]-out[o-2][0]);
+              if (cr <= 0) out.pop(); else break;
+            }
+            out.push(src[i]);
+          }
+          out.pop();
+          return out;
+        }
+        return ccw(half(p).concat(half(p.slice().reverse())));
+      }
+
+      // Sutherland-Hodgman. Both polygons convex, so the result is convex.
+      function clipPoly(subject, window) {
+        var out = subject.slice(), i, k, a, b, ex, ey, src, prev, cur, pin, cin, den, d;
+        for (i = 0; i < window.length; i++) {
+          a = window[i]; b = window[(i+1) % window.length];
+          ex = b[0]-a[0]; ey = b[1]-a[1];
+          src = out; out = [];
+          if (!src.length) return [];
+          prev = src[src.length-1];
+          pin = (-ey*(prev[0]-a[0]) + ex*(prev[1]-a[1])) >= 0;
+          for (k = 0; k < src.length; k++) {
+            cur = src[k];
+            cin = (-ey*(cur[0]-a[0]) + ex*(cur[1]-a[1])) >= 0;
+            if (cin !== pin) {
+              d = [cur[0]-prev[0], cur[1]-prev[1]];
+              den = -ey*d[0] + ex*d[1];
+              if (Math.abs(den) > 1e-12) {
+                var u = (-ey*(a[0]-prev[0]) + ex*(a[1]-prev[1])) / den;
+                out.push([prev[0]+d[0]*u, prev[1]+d[1]*u]);
+              }
+            }
+            if (cin) out.push(cur);
+            prev = cur; pin = cin;
+          }
+        }
+        return out;
+      }
+
+      // Cut a segment down to the part inside a convex window.
+      function clip(p, q, poly) {
+        var dx = q[0]-p[0], dy = q[1]-p[1], t0 = 0, t1 = 1, i, a, b, ex, ey, den, nu, t;
+        for (i = 0; i < poly.length; i++) {
+          a = poly[i]; b = poly[(i+1) % poly.length];
+          ex = b[0]-a[0]; ey = b[1]-a[1];
+          den = -ey*dx + ex*dy;
+          nu = -ey*(a[0]-p[0]) + ex*(a[1]-p[1]);
+          if (Math.abs(den) < 1e-9) { if (nu < 0) return null; continue; }
+          t = nu/den;
+          if (den > 0) { if (t > t0) t0 = t; } else { if (t < t1) t1 = t; }
+          if (t0 > t1) return null;
+        }
+        return [[p[0]+t0*dx, p[1]+t0*dy], [p[0]+t1*dx, p[1]+t1*dy]];
+      }
+
+      function n2(x) { return Math.round(x * 100) / 100; }
+      function ring(poly) {
+        var d = '', i;
+        for (i = 0; i < poly.length; i++) {
+          d += (i ? 'L' : 'M') + n2(poly[i][0]) + ',' + n2(poly[i][1]);
+        }
+        return d + 'Z';
+      }
+
+      function render(t) {
+        var i, f, g, a, b, seg, k;
+        var scr = V.map(function (v) {
+          var p = turn(v, t);
+          return [OX + p[0]*SC, OY - p[1]*SC];
+        });
+        var vis = NRM.map(function (n) { return turn(n, t)[2] > 0; });
+
+        var seen = {}, bodyD = [], rimD = [], innerD = [], innerRimD = [];
+        for (f = 0; f < F.length; f++) {
+          if (!vis[f]) continue;
+          var cy = F[f];
+          for (i = 0; i < cy.length; i++) {
+            a = cy[i]; b = cy[(i+1) % cy.length];
+            var key = Math.min(a,b) + '_' + Math.max(a,b);
+            if (seen[key]) continue;
+            seen[key] = 1;
+            (isRim(a, b) ? rimD : bodyD).push(
+              'M' + n2(scr[a][0]) + ',' + n2(scr[a][1]) +
+              'L' + n2(scr[b][0]) + ',' + n2(scr[b][1]));
+          }
+        }
+
+        // Where the sight line enters one aperture and leaves through the
+        // other. There it meets no surface, so the wash must show through and
+        // the cavity must not be painted.
+        var through = [];
+        for (k = 0; k < AP.length; k++) {
+          f = AP[k];
+          if (!vis[f]) continue;
+          var winF = ccw(F[f].map(function (i) { return scr[i]; }));
+          for (var m = 0; m < AP.length; m++) {
+            g = AP[m];
+            if (g === f || vis[g]) continue;
+            var cut = clipPoly(winF.slice(), ccw(F[g].map(function (i) { return scr[i]; })));
+            // A hairline is not a region. Below this the sight line does not
+            // meaningfully pass through, and a zero area ring in an even-odd
+            // path is a fault waiting to happen.
+            var cd = dedupe(cut);
+            if (cd.length >= 3 && Math.abs(area2(cd)) / 2 >= 2.0) through.push(ccw(cd));
+          }
+        }
+        var throughD = through.map(ring).join('');
+
+        var occlD = ring(hull(scr)) + throughD;
+        var cavityD = '';
+        for (k = 0; k < AP.length; k++) {
+          f = AP[k];
+          if (!vis[f]) continue;
+          cavityD += ring(ccw(F[f].map(function (i) { return scr[i]; })));
+        }
+        if (cavityD) cavityD += throughD;
+
+        for (k = 0; k < AP.length; k++) {
+          f = AP[k];
+          if (!vis[f]) continue;
+          var win = ccw(F[f].map(function (i) { return scr[i]; }));
+          for (g = 0; g < F.length; g++) {
+            if (vis[g] || AP.indexOf(g) !== -1) continue;
+            var cg = F[g];
+            for (i = 0; i < cg.length; i++) {
+              a = cg[i]; b = cg[(i+1) % cg.length];
+              seg = clip(scr[a], scr[b], win);
+              if (!seg) continue;
+              if (Math.hypot(seg[1][0]-seg[0][0], seg[1][1]-seg[0][1]) < 0.5) continue;
+              (isRim(a, b) ? innerRimD : innerD).push(
+                'M' + n2(seg[0][0]) + ',' + n2(seg[0][1]) +
+                'L' + n2(seg[1][0]) + ',' + n2(seg[1][1]));
+            }
+          }
+        }
+
+        body.setAttribute('d', bodyD.join(''));
+        rim.setAttribute('d', rimD.join(''));
+        inner.setAttribute('d', innerD.join(''));
+        innerRim.setAttribute('d', innerRimD.join(''));
+        cavity.setAttribute('d', cavityD);
+        occl.setAttribute('d', occlD);
+      }
+
+      // Indexing. The object steps to a stop and holds. It does not track the
+      // pointer, does not turn continuously, and does not reset when the
+      // pointer leaves: the reader joins it where it is and leaves it where
+      // they left it.
+      var TWO_PI = Math.PI * 2;
+      var current = STOPS[0], target = STOPS[0], raf = null, t0 = 0, from = 0;
+      var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+      var DURATION = 340;
+
+      function step(now) {
+        var u = Math.min(1, (now - t0) / DURATION);
+        var e = 1 - Math.pow(1 - u, 3);            // ease out, no overshoot
+        current = from + (target - from) * e;
+        render(current);
+        if (u < 1) raf = window.requestAnimationFrame(step);
+        else { raf = null; current = target; }
+      }
+
+      function goTo(index) {
+        var want = STOPS[index];
+        // Shortest way round, so a step is always a step and never a lap.
+        var d = ((want - current) % TWO_PI + TWO_PI + Math.PI) % TWO_PI - Math.PI;
+        if (Math.abs(d) < 1e-6) return;
+        if (still && still.matches) {        // reduced motion removes travel only
+          current = current + d; target = current; render(current); return;
+        }
+        from = current; target = current + d; t0 = performance.now();
+        if (raf === null) raf = window.requestAnimationFrame(step);
+      }
+
+      Array.prototype.forEach.call(hits, function (rect) {
+        var index = parseInt(rect.getAttribute('data-stop'), 10);
+        if (isNaN(index) || index < 0 || index >= STOPS.length) {
+          console.warn('work-solid: hit strip has no valid data-stop, ignored');
+          return;
+        }
+        rect.addEventListener('pointerenter', function () { goTo(index); });
+      });
+
+      render(current);
+    }());
+  </script>
+
+  <!-- CONSENT:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE
+       FILE. It is written from _consent_canonical.html by apply-chrome.py.
+       The first time this runs against a page that has never carried this
+       block, the script inserts it fresh, immediately before </body>. Every
+       run after that finds the markers this run wrote and keeps it in sync
+       the same way nav and footer already are.
+       Byte-identical on every page: nothing here varies by filename, unlike
+       the nav's active entry.
+       Gates the analytics tag only. Nothing else on the site needs a
+       visitor's answer to work, so this is a bar at the foot of the
+       viewport rather than a modal, and the page underneath stays fully
+       usable while it's up. It shows once, on any page, for as long as
+       sinclair_analytics_consent is unset in the visitor's browser.
+       Whichever button is pressed answers it everywhere, for good, until
+       the visitor clears their own browser storage. See
+       sd-reference-privacy-v0_2.md for the reasoning behind the shape of
+       this control, and sd-copy-privacy-notice-v0_1.md for what it's
+       disclosing. -->
+  <div class="consent-banner" id="consent-banner" role="region" aria-label="Cookie and analytics consent"
+    data-state="hidden">
+    <div class="consent-inner">
+      <p class="consent-text">This site uses Google Analytics to understand how it's used. It only runs if you agree
+        to it, and everything else on the site works exactly the same either way. See the <a
+          href="privacy.html">privacy notice</a> for what's collected and why.</p>
+      <div class="consent-actions">
+        <button type="button" class="consent-btn" id="consent-decline">Decline</button>
+        <button type="button" class="consent-btn" id="consent-accept">Accept</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Consent banner. Self-contained, warns to console rather than failing
+    // silently, and does nothing at all if its own markup is missing.
+    //
+    // Two keys in localStorage, matching the site's existing sinclair_chat_*
+    // convention rather than a JSON blob: sinclair_analytics_consent holds
+    // "accepted" or "declined", sinclair_analytics_consent_at holds when.
+    // Persists indefinitely. There is no re-ask timer: nothing on this site
+    // currently expires anything on a schedule, and building one for this
+    // control alone would be scope the retention item next to it hasn't
+    // earned either. See the working document if that changes.
+    (function () {
+      var KEY = 'sinclair_analytics_consent';
+      var KEY_AT = 'sinclair_analytics_consent_at';
+      var GA_ID = 'G-W94Z1196CH';
+
+      var banner = document.getElementById('consent-banner');
+      if (!banner) {
+        console.warn('[consent] banner markup not found, nothing to wire up');
+        return;
+      }
+
+      function loadAnalytics() {
+        if (window.__sinclairAnalyticsLoaded) return;
+        window.__sinclairAnalyticsLoaded = true;
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', GA_ID);
+        var tag = document.createElement('script');
+        tag.async = true;
+        tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        document.head.appendChild(tag);
+      }
+
+      function recordChoice(choice) {
+        try {
+          localStorage.setItem(KEY, choice);
+          localStorage.setItem(KEY_AT, new Date().toISOString());
+        } catch (e) {
+          console.warn('[consent] could not write the choice to localStorage', e);
+        }
+      }
+
+      var stored = null;
+      try {
+        stored = localStorage.getItem(KEY);
+      } catch (e) {
+        console.warn('[consent] could not read localStorage, treating as unanswered', e);
+      }
+
+      if (stored === 'accepted') {
+        loadAnalytics();
+      } else if (stored !== 'declined') {
+        // Unanswered. Neither key is trusted on its own: only an explicit
+        // "declined" suppresses the banner without also loading the tag.
+        banner.setAttribute('data-state', 'visible');
+      }
+
+      var acceptBtn = document.getElementById('consent-accept');
+      var declineBtn = document.getElementById('consent-decline');
+
+      if (acceptBtn) {
+        acceptBtn.addEventListener('click', function () {
+          recordChoice('accepted');
+          banner.setAttribute('data-state', 'hidden');
+          loadAnalytics();
+        });
+      }
+      if (declineBtn) {
+        declineBtn.addEventListener('click', function () {
+          recordChoice('declined');
+          banner.setAttribute('data-state', 'hidden');
+        });
+      }
+    })();
+  </script>
+  <!-- CONSENT:END -->
+</body>
+
+</html>

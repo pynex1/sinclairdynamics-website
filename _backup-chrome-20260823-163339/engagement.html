@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Engagement | Defined Engagements and Disciplines | Sinclair Dynamics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <!-- Every component on this page is shared except the hero figure, which
+       carries the page's only local styles in the block below. That block was
+       added on 16 August 2026 and matches how about.html, contact.html and
+       work.html each carry their own figure. `.named-engagement` and
+       `.services-grid-2x2` were promoted to shared.css on 14 August 2026 when
+       this page became their second consumer, on the same basis `.proof-box`
+       was promoted on 13 August. -->
+  <!-- Google Analytics -->
+  <!-- Analytics removed 9 August 2026, pending the consent gate and privacy
+     notice. Non-essential tracking must not fire before consent, and the
+     gate belongs with the nav and footer single sourcing rather than
+     duplicated per page. Property G-W94Z1196CH. -->
+  <meta name="description"
+    content="One defined engagement, and the wider work behind it. Monitoring Calibration is the way in. The work it points at crosses project management, technical consulting, AI and digital, and energy and power systems. Sinclair Dynamics, Johannesburg.">
+  <meta name="keywords"
+    content="engineering consulting Johannesburg, monitoring calibration, technical consulting South Africa, systems integration, multi-disciplinary engineering, fixed fee engineering review, Sinclair Dynamics, Ainsley Williams">
+  <meta name="author" content="Ainsley Williams, Sinclair Dynamics">
+  <meta name="robots" content="index, follow">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sinclairdynamics.co/engagement.html">
+  <meta property="og:title" content="The Engagement | Sinclair Dynamics">
+  <meta property="og:description"
+    content="One defined engagement, and the wider work behind it. A specialist stops at the edge of their own discipline. The problems worth bringing here sit across two or three at once.">
+  <meta property="og:image" content="https://www.sinclairdynamics.co/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Sinclair Dynamics">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Engagement | Sinclair Dynamics">
+  <meta name="twitter:description"
+    content="One defined engagement, and the wider work behind it. A specialist stops at the edge of their own discipline. The problems worth bringing here sit across two or three at once.">
+  <meta name="twitter:image" content="https://www.sinclairdynamics.co/og-image.png">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.sinclairdynamics.co/engagement.html">
+
+  <!-- ===================================================================
+       THE HERO FIGURE. This page's first local styles. Every other
+       component on it is shared, which is why this block is the only one.
+
+       WHAT IS DRAWN: two stations, on the same side, a measured distance
+       apart, each sighting the same third thing. Neither sight is a line.
+       Each carries an angular tolerance, so each is a narrow wedge. The
+       wedges overlap in a bounded region, and the thing is somewhere inside
+       it. Nobody yet knows where. The region is the answer.
+
+       SIX THINGS A LATER SESSION MUST NOT UNDO
+       1. The region is not drawn. It is computed from where the stations
+          are, where the target is, and how wide each tolerance is. If it
+          ever looks wrong, change a parameter in the generator and
+          regenerate. Never redraw the quadrilateral by hand.
+       2. The lead fraction is a PROPORTION of each wedge's own run to the
+          region, not a distance. The two stations stand at very different
+          distances from the region, so an absolute lead-in that suits the
+          far one consumes the near one entirely and that edge stops
+          retracting at all. This was found by watching it.
+       3. The distance fade is a static gradient on a static line, in the
+          same family as the homepage wave and the contact figure runs. It
+          is NOT the rejected depth grading, which is a response varying
+          continuously with the pointer. The distinction is the mechanism,
+          not the appearance.
+       4. The two tolerances are deliberately unequal. The stations are not
+          equivalent and the drawing must not say they are.
+       5. TWO HOVER ZONES, and they must not be merged. Hovering where the
+          sights converge and hovering where they start are an earlier point
+          and a later point, not two sides of one thing. The region zone
+          runs an irreversible ladder. The baseline zone is reversible,
+          because attending to how the parties are linked is looking at
+          something rather than sitting down. The zones are computed so they
+          never touch: in an overlap a reader would get an answer decided by
+          sibling order rather than by what they pointed at.
+       6. NOTHING IS EVER BRIGHTER THAN IT WAS AT AN EARLIER POINT IN THE
+          READER'S PROGRESSION. That is why the baseline lift has three
+          values rather than one, and why the wedge ladder only descends.
+
+       THE THREE POSITIONS
+       Survey, before anyone has been near it: everything drawn, complete
+       and true with nobody pointing at anything. Close, under the pointer:
+       the wedges trimmed back to their last stretch before the region and
+       dimmed, so the region is the only thing at full strength. Middle,
+       after the pointer leaves: the wedges regrow about half of what was
+       cut and go dimmer still, so the region gains contrast twice over.
+       THE SURVEY IS REACHED ONCE AND IS NEVER RETURNED TO. A first meeting
+       cannot be un-had, and a figure that went back would be claiming
+       nothing had happened.
+       =================================================================== -->
+  <style>
+    /* Sits over the hero, above the type, matching .work-solid on work.html
+       and .datum-frame on about.html. pointer-events are off on the wrapper
+       so the figure never takes a click; only the two hit shapes accept one. */
+    .eng-fig {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+
+      /* Wedge brightness. Descends only. */
+      --w-survey: 1.0;
+      --w-close: 0.45;
+      --w-mid: 0.28;
+
+      /* Station marks. */
+      --m-survey: 1.0;
+      --m-close: 0.22;
+      --m-mid: 0.35;
+
+      /* The baseline dimension at rest. It drops hard under the region
+         hover, because once the parties are at the table the conversation
+         over the table is the thing, and returns part way in the middle
+         position. */
+      --b-survey: 0.85;
+      --b-close: 0.1;
+      --b-mid: 0.2;
+
+      /* The baseline dimension when a reader attends to it directly. Three
+         values, not one: see note 6 above. */
+      --b-lift-survey: 1.0;
+      --b-lift-close: 0.5;
+      --b-lift-mid: 0.62;
+    }
+
+    .eng-fig svg { display: block; width: 100%; height: 100%; }
+
+    /* Both hit shapes are DIRECT SIBLINGS of the groups they resolve and
+       they PRECEDE them. Visual language section 8, fault 1: wrapping hit
+       shapes in a group of their own breaks the sibling relationship and
+       every rule silently matches nothing while the page renders perfectly.
+       They are also computed so they never overlap each other. */
+    .eng-fig .hit { fill: #fff; fill-opacity: 0; pointer-events: all; }
+
+    .eng-fig .sight {
+      stroke-width: 1.2; stroke-linecap: round; fill: none;
+      opacity: 0;
+      transition: opacity 0.2s ease-out;
+    }
+
+    .eng-fig .sta {
+      stroke: var(--teal-bright); stroke-width: 1.3;
+      stroke-linecap: round; stroke-linejoin: round; fill: none;
+      opacity: var(--m-survey);
+      transition: opacity 0.2s ease-out;
+    }
+
+    .eng-fig .base {
+      stroke: var(--teal-bright); stroke-width: 1.1;
+      stroke-linecap: butt; stroke-linejoin: miter; fill: none;
+      opacity: var(--b-survey);
+      transition: opacity 0.2s ease-out;
+    }
+    /* The arrow terminators are the one filled shape in the figure. 5.1
+       admits a fill that names a condition and bars one that describes
+       light. A dimension terminator is the first kind. */
+    .eng-fig .base .arrow { fill: var(--teal-bright); stroke: none; }
+
+    /* State sits on two independent axes. The markup carries the rest
+       values, so the figure is complete and correct with no script at all. */
+    .eng-fig svg[data-state="survey"] .s-survey { opacity: var(--w-survey); }
+    .eng-fig svg[data-state="close"]  .s-close  { opacity: var(--w-close); }
+    .eng-fig svg[data-state="mid"]    .s-mid    { opacity: var(--w-mid); }
+
+    .eng-fig svg[data-state="close"] .sta  { opacity: var(--m-close); }
+    .eng-fig svg[data-state="mid"]   .sta  { opacity: var(--m-mid); }
+
+    .eng-fig svg[data-state="close"] .base { opacity: var(--b-close); }
+    .eng-fig svg[data-state="mid"]   .base { opacity: var(--b-mid); }
+
+    /* Two attributes, so these outrank the single attribute rules above on
+       specificity as well as on source order. Only the survey and middle
+       rows are reachable in use: the two zones are mutually exclusive, so
+       the close state exists only while the pointer is inside the region
+       zone and the baseline cannot be hovered at the same time. */
+    .eng-fig svg[data-state="survey"][data-base="lifted"] .base { opacity: var(--b-lift-survey); }
+    .eng-fig svg[data-state="close"][data-base="lifted"]  .base { opacity: var(--b-lift-close); }
+    .eng-fig svg[data-state="mid"][data-base="lifted"]    .base { opacity: var(--b-lift-mid); }
+
+    /* The region holds full strength in every state. It is what the two
+       sights made between them, and nothing the reader does takes it away
+       or improves it. It is never collapsed to a point: collapsing it would
+       claim somebody had done exactly this before. */
+    .eng-fig .region {
+      stroke: var(--teal-bright); stroke-width: 2;
+      stroke-linejoin: round; fill: none;
+    }
+
+    /* Reduced motion, per visual language 3.8, strips travel only. Nothing
+       in this figure travels. Opacity is not travel, so every state change
+       survives intact and there is nothing to strip. */
+  </style>
+</head>
+
+<body>
+  <!-- NAV:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE FILE.
+       It is written from _nav_canonical.html by apply-chrome.py, and any hand
+       edit made here will be silently overwritten the next time that script
+       runs. Change the fragment, then run the script.
+       Identical on every page except the active entry, which the script sets
+       from the page's own filename. Five entries as of 14 August 2026: The
+       Engagement sits between The Work and Contact. The four discipline pages
+       and every other page outside the nav carry no active entry at all,
+       which is correct rather than an omission. -->
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="sinclair-nav-icon.png" alt="Sinclair Dynamics"
+        style="height:52px;width:auto;"></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="work.html">The Work</a>
+      <a href="engagement.html" class="active">The Engagement</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="contact.html" class="nav-cta">Get In Touch</a>
+  </nav>
+  <!-- NAV:END -->
+
+  <!-- ===== HERO =====
+       Layers one and two are inherited from the homepage and are not restated
+       here, per positioning 8.1. This page opens at depth on layer two: what
+       is done about the problem, and what it can be bought as. -->
+  <section class="page-hero">
+    <!-- The figure. Read the .eng-fig block in the page style above
+         before editing anything here. Every coordinate is generated;
+         none of it is drawn by hand. The rest state is real geometry,
+         so the figure exists in full with scripts blocked. -->
+    <div class="eng-fig">
+      <svg viewBox="0 0 1200 480" preserveAspectRatio="xMaxYMax meet"
+        xmlns="http://www.w3.org/2000/svg" role="img"
+        data-state="survey" data-base="rest"
+        aria-label="Two stations a measured distance apart, each sighting the same unknown third thing. The distance between them is dimensioned and is the only measured quantity in the drawing. Neither sight is exact, so each is drawn as a narrow wedge that fades with distance. The two wedges overlap in a small bounded region. The thing is somewhere inside that region and nobody yet knows where.">
+        <defs>
+          <!-- The horizontal fade every figure behind text carries. It is
+               a safety net rather than the placement strategy: the figure
+               sits clear of the headline on its own. -->
+          <linearGradient id="egf" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#fff" stop-opacity="0.18" />
+            <stop offset="44%" stop-color="#fff" stop-opacity="0.42" />
+            <stop offset="70%" stop-color="#fff" stop-opacity="0.86" />
+            <stop offset="88%" stop-color="#fff" stop-opacity="1" />
+          </linearGradient>
+          <mask id="egm">
+            <rect x="0" y="0" width="1200" height="480" fill="url(#egf)" />
+          </mask>
+          <!-- One gradient per wedge edge, running from its own station to
+               its own far end. A bearing bounds direction and not distance,
+               so confidence per unit area genuinely falls the further out
+               the sight goes. All three trim states share a gradient, so a
+               trimmed stretch keeps exactly the values it had. -->
+          <linearGradient id="ega1" gradientUnits="userSpaceOnUse" x1="629" y1="422" x2="1200" y2="93.9">
+            <stop offset="0%" stop-color="#2AADA0" stop-opacity="0.9" />
+            <stop offset="45%" stop-color="#2AADA0" stop-opacity="0.5" />
+            <stop offset="100%" stop-color="#2AADA0" stop-opacity="0.1" />
+          </linearGradient>
+          <linearGradient id="ega2" gradientUnits="userSpaceOnUse" x1="629" y1="422" x2="1200" y2="183.4">
+            <stop offset="0%" stop-color="#2AADA0" stop-opacity="0.9" />
+            <stop offset="45%" stop-color="#2AADA0" stop-opacity="0.5" />
+            <stop offset="100%" stop-color="#2AADA0" stop-opacity="0.1" />
+          </linearGradient>
+          <linearGradient id="egb1" gradientUnits="userSpaceOnUse" x1="874" y1="436" x2="1019.4" y2="0">
+            <stop offset="0%" stop-color="#2AADA0" stop-opacity="0.9" />
+            <stop offset="45%" stop-color="#2AADA0" stop-opacity="0.5" />
+            <stop offset="100%" stop-color="#2AADA0" stop-opacity="0.1" />
+          </linearGradient>
+          <linearGradient id="egb2" gradientUnits="userSpaceOnUse" x1="874" y1="436" x2="1121.1" y2="0">
+            <stop offset="0%" stop-color="#2AADA0" stop-opacity="0.9" />
+            <stop offset="45%" stop-color="#2AADA0" stop-opacity="0.5" />
+            <stop offset="100%" stop-color="#2AADA0" stop-opacity="0.1" />
+          </linearGradient>
+          <!-- The ground wash. It exists because this hero was reading as
+               one flat rectangle beside the other three, all of which have
+               something behind the subject for it to push against.
+
+               ITS CENTRE IS DERIVED, NOT CHOSEN. It sits 0.55 of the way
+               along the line from the baseline midpoint to the region
+               centroid, which is the ground the two sights actually sweep,
+               so it moves when the figure moves.
+
+               DO NOT make it concentric with the region. That would make
+               the answer appear to glow, which is the lamp-inside failure
+               the work page wash is written against, arriving by a
+               different route. Equally, DO NOT reinstate that page's
+               non-concentric offset rule here. It exists so a falloff band
+               crosses a closed silhouette, and this figure has no closed
+               silhouette to cross. The rule does not apply rather than
+               being relaxed.
+
+               Eight stops on a smoothstep, so the band has no corner in
+               it. Same construction as work.html at a lower peak. -->
+          <radialGradient id="egw" gradientUnits="userSpaceOnUse" cx="863.6" cy="335.4" r="320">
+            <stop offset="0%" stop-color="#1A7A6E" stop-opacity="0.12" />
+            <stop offset="20%" stop-color="#1A7A6E" stop-opacity="0.1075" />
+            <stop offset="35%" stop-color="#1A7A6E" stop-opacity="0.0862" />
+            <stop offset="50%" stop-color="#1A7A6E" stop-opacity="0.06" />
+            <stop offset="65%" stop-color="#1A7A6E" stop-opacity="0.0338" />
+            <stop offset="80%" stop-color="#1A7A6E" stop-opacity="0.0125" />
+            <stop offset="90%" stop-color="#1A7A6E" stop-opacity="0.0034" />
+            <stop offset="100%" stop-color="#1A7A6E" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+
+        <!-- The wash sits first so everything is drawn over it, and it
+             carries the same horizontal fade as the drawing so it never
+             creeps behind the headline. -->
+        <rect class="wash" x="0" y="0" width="1200" height="480" fill="url(#egw)" mask="url(#egm)" />
+
+        <!-- Both hit shapes are direct siblings of every group
+             below them and precede all of them. The baseline band follows
+             the baseline rather
+             than boxing it, in the same spirit as the contact figure
+             hit areas: the target matches the geometry, so a reader
+             pointing at the thing hits the thing. -->
+        <polygon class="hit hit-base" points="600.5,394.3 905.4,411.8 902.5,463.7 597.6,446.2" />
+        <polygon class="hit hit-reg" points="824.1,111.5 1099.1,111.5 1099.1,388.3 824.1,388.3" />
+
+        <!-- the full survey -->
+        <g class="sight s-survey" mask="url(#egm)">
+          <path d="M 629 422 L 1200 93.9" stroke="url(#ega1)" />
+          <path d="M 629 422 L 1200 183.4" stroke="url(#ega2)" />
+          <path d="M 874 436 L 1019.4 0" stroke="url(#egb1)" />
+          <path d="M 874 436 L 1121.1 0" stroke="url(#egb2)" />
+        </g>
+
+        <!-- trimmed back to the last stretch before the region -->
+        <g class="sight s-close" mask="url(#egm)">
+          <path d="M 805 320.9 L 1200 93.9" stroke="url(#ega1)" />
+          <path d="M 794.4 352.9 L 1200 183.4" stroke="url(#ega2)" />
+          <path d="M 899.7 358.9 L 1019.4 0" stroke="url(#egb1)" />
+          <path d="M 923.3 349.1 L 1121.1 0" stroke="url(#egb2)" />
+        </g>
+
+        <!-- regrown about half of what the close view cut -->
+        <g class="sight s-mid" mask="url(#egm)">
+          <path d="M 718.8 370.4 L 1200 93.9" stroke="url(#ega1)" />
+          <path d="M 713.3 386.8 L 1200 183.4" stroke="url(#ega2)" />
+          <path d="M 887.1 396.7 L 1019.4 0" stroke="url(#egb1)" />
+          <path d="M 899.1 391.7 L 1121.1 0" stroke="url(#egb2)" />
+        </g>
+
+        <!-- The baseline, drawn as a dimension. It is the one measured
+             quantity in a drawing that is otherwise entirely about not
+             knowing. No text and no number: 7.3 bars explanatory labels
+             from every hero, and a number would have to be invented
+             because the figure has no scale. To a general reader it is
+             a fine line with ticks. To anybody who reads drawings it is
+             unmistakably a dimension. -->
+        <g class="base" mask="url(#egm)">
+          <path d="M 629 422 L 874 436" />
+          <path d="M 629.4 415 L 627.8 443 M 874.4 429 L 872.8 457" />
+          <path class="arrow" d="M 629 422 L 641.8 426.1 L 642.2 419.3 Z" />
+          <path class="arrow" d="M 874 436 L 861.2 431.9 L 860.8 438.7 Z" />
+        </g>
+
+        <!-- The station marks. Each triangle apex points along that
+             station's own centre bearing, so each mark is an instrument
+             shown sighting rather than a dot at a coordinate. Move the
+             target and both marks turn with it. -->
+        <g class="sta" mask="url(#egm)">
+          <path d="M 640.6 416.3 L 625.5 434.5 L 617 417.2 Z" />
+          <path d="M 879.3 424.2 L 879.3 447.8 L 861.7 440 Z" />
+        </g>
+
+        <!-- The region. Computed, never drawn. -->
+        <g mask="url(#egm)">
+          <path class="region" d="M 937.8 244.6 L 1004.1 206.5 L 960.4 283.5 L 919.1 300.8 Z" />
+        </g>
+      </svg>
+    </div>
+    <div class="page-hero-content">
+      <div class="hero-eyebrow">How The Work Is Bought</div>
+      <h1>A Defined Piece Of Work.<br><span>And What Comes After It.</span></h1>
+      <p class="page-hero-sub">There is one engagement with a scope, a price and an end date. The work it usually leads
+        to is shaped by the problem instead, and it is the same person doing both.</p>
+    </div>
+  </section>
+
+  <!-- ===== 1. THE DEFINED ENGAGEMENT =====
+       Singular heading, deliberately. The site already uses "A Defined
+       Engagement" as a label on the homepage card and in the Monitoring
+       Calibration hero, and there is exactly one. It becomes plural when a
+       second exists, which is a change somebody makes while writing that
+       page rather than at a review nobody schedules. -->
+  <section>
+    <div class="section-inner">
+      <div class="section-eyebrow">A Defined Engagement</div>
+      <h2 class="section-title">A Scope, A Price,<br><span>And A Date It Ends.</span></h2>
+      <p class="body-text" style="max-width:660px;">You can read the whole of it before committing to any of it. You
+        know what arrives, roughly when, and what it costs. That is the entire meaning of the word defined here, and it
+        is deliberately the narrowest description of the work rather than the fullest.</p>
+      <p class="body-text" style="max-width:660px;">There is one at present.</p>
+
+      <a href="monitoring-calibration.html" class="named-engagement">
+        <div>
+          <!-- Sampled waveform: the subject of the engagement, drawn literally.
+               Same figure as the homepage card and the Monitoring Calibration
+               page hero, so the reader recognises it as one thing. -->
+          <svg width="64" height="64" viewBox="0 0 48 48" fill="none" stroke="#1A7A6E" stroke-width="1.8"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2 28h44" opacity="0.35" />
+            <path d="M4 28Q11 10 18 28Q25 46 32 28Q39 10 46 28" />
+            <path d="M11 28V19M25 28v9M39 28V19" opacity="0.5" />
+            <circle cx="11" cy="19" r="2.4" fill="#1A7A6E" stroke="none" />
+            <circle cx="25" cy="37" r="2.4" fill="#1A7A6E" stroke="none" />
+            <circle cx="39" cy="19" r="2.4" fill="#1A7A6E" stroke="none" />
+          </svg>
+        </div>
+        <div>
+          <div class="named-engagement-label">Two Weeks &middot; Fixed Fee</div>
+          <h3>Monitoring Calibration</h3>
+          <p>Your figures are almost certainly accurate. This asks a different question: whether the interval between
+            one look and the next is short enough to catch the things that move fastest. It ends in a document rather
+            than a proposal. A ranked list of detection gaps, a derived review interval for each measure, and a clear
+            separation between what can be corrected using the systems you already have and what would need building.
+            It is written to be forwarded to whoever authorises the spend.</p>
+          <span class="service-link">Explore</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== 2. THE WORK BEHIND IT =====
+       The bridge. It converts section 1 into section 3 and carries the
+       intersection claim from positioning 4.1 and 4.1.1. The homepage states
+       the same argument in its own sentences and keeps them, per 8.2. This
+       is written fresh. -->
+  <section style="background: var(--off-white);">
+    <div class="section-inner">
+      <div class="section-eyebrow">The Work That Follows</div>
+      <h2 class="section-title">A Diagnosis Is Not<br><span>A Repair.</span></h2>
+      <p class="body-text" style="max-width:680px;">Some people arrive already knowing where the gap is. What they want
+        is something designed, rebuilt, instrumented, integrated, or simply examined by somebody who has not already
+        decided what the answer will be. There is no fixed scope for that and no price list, because the shape of it
+        comes from the problem rather than from a catalogue.</p>
+      <p class="body-text" style="max-width:680px;">Four disciplines sit underneath all of it. A specialist in any one
+        of them stops at the edge of it. A generalist covers all four and is the right choice, and the cheaper one, when
+        only one is actually needed. What is difficult to buy is the work that requires two or three at once, where the
+        problem sits in the space between specialists and nobody owns the join. That space is where undefined problems
+        collect, and it is usually why they are still there.</p>
+    </div>
+  </section>
+
+  <!-- ===== 3. DISCIPLINES =====
+       Positioning 4.1.1. Two conditions govern this section. It sits below a
+       defined engagement, and it is not framed as selectable alternatives:
+       the bridge above does that work. Its job is to establish the edges the
+       seam is claimed to cross, and that job is complete the moment a reader
+       can see the four exist. That is also its ceiling. The taglines used on
+       the homepage cards are deliberately absent, because a tagline is what
+       turns a list into a menu. -->
+  <section>
+    <div class="section-inner">
+      <div class="section-eyebrow">What The Work Crosses</div>
+      <h2 class="section-title">Four Disciplines.<br><span>Not Four Choices.</span></h2>
+
+      <div class="services-grid-2x2">
+
+        <!-- PROJECT MANAGEMENT -->
+        <a href="project-management.html" class="service-card">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="6" y="10" width="36" height="30" rx="3" />
+            <path d="M6 18h36" />
+            <path d="M14 6v8M34 6v8" />
+            <path d="M13 28l5 5 13-11" />
+          </svg>
+          <h3>Project Management</h3>
+          <p>Large infrastructure and technology programmes, run by somebody who can read the drawings as well as the
+            schedule.</p>
+          <span class="service-link">Explore</span>
+        </a>
+
+        <!-- TECHNICAL CONSULTING -->
+        <a href="technical-consulting.html" class="service-card">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="24" cy="24" r="7" />
+            <path
+              d="M24 6v4M24 38v4M6 24h4M38 24h4M10.1 10.1l2.8 2.8M35.1 35.1l2.8 2.8M10.1 37.9l2.8-2.8M35.1 12.9l2.8-2.8" />
+          </svg>
+          <h3>Technical Consulting</h3>
+          <p>Design, integration, hardware and automation work, taken from a rough brief through to something that
+            runs.</p>
+          <span class="service-link">Explore</span>
+        </a>
+
+        <!-- AI & DIGITAL -->
+        <a href="ai-digital.html" class="service-card">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="6" y="10" width="36" height="24" rx="3" />
+            <path d="M16 34v6M32 34v6M10 40h28" />
+            <circle cx="17" cy="22" r="2.5" />
+            <circle cx="31" cy="22" r="2.5" />
+            <path d="M17 22h14M17 19.5l-4-4M31 19.5l4-4M17 24.5l-3 4M31 24.5l3 4" />
+          </svg>
+          <h3>AI &amp; Digital</h3>
+          <p>Workflow automation and digital tooling built with AI in the loop, and a named person answerable for what
+            comes out of it.</p>
+          <span class="service-link">Explore</span>
+        </a>
+
+        <!-- ENERGY & POWER -->
+        <a href="energy-systems.html" class="service-card">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M26 6L12 26h10l-2 16 16-22H26L28 6z" />
+          </svg>
+          <h3>Energy &amp; Power Systems</h3>
+          <p>Renewable generation, backup power and optimisation, assessed on modelling and measurement rather than on
+            what a supplier is incentivised to sell.</p>
+          <span class="service-link">Explore</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. CLOSING: the page's own close, not the homepage's ===== -->
+  <section style="background: var(--off-white);">
+    <div class="section-inner" style="text-align:center;">
+      <div class="section-eyebrow" style="justify-content:center;">Where This Goes</div>
+      <h2 class="section-title">Start With The Problem,<br><span>Not With The Menu.</span></h2>
+      <p class="section-lead" style="margin:0 auto 40px;">Whether it becomes a defined engagement or something built,
+        the first step is the same conversation about what is actually happening. Nothing on this page has to be chosen
+        in advance.</p>
+      <a href="contact.html" class="btn-primary">Start a Conversation</a>
+    </div>
+  </section>
+
+  <!-- FOOTER:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE
+       FILE. It is written from _footer_canonical.html by apply-chrome.py, and
+       any hand edit made here will be silently overwritten the next time that
+       script runs. Change the fragment, then run the script.
+       Byte-identical on every page, with no per-page variation of any kind.
+       The four column headings are singular by design and name a mode rather
+       than a count. That is a different job from the section heading on
+       engagement.html, which is singular because there is one defined
+       engagement and goes plural when a second is written. Do not "correct"
+       Discipline to Disciplines on the strength of that rule. -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <svg width="56" height="56" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:16px;"
+            aria-hidden="true">
+            <rect width="48" height="48" rx="10" fill="#E8392A" />
+            <rect x="27" y="27" width="20" height="20" rx="4" fill="#C0281A" opacity="0.5" />
+            <path
+              d="M24 14.5a1.5 1.5 0 0 1 1.5 1.5v1.2a7.5 7.5 0 0 1 2.6 1.08l.85-.85a1.5 1.5 0 0 1 2.12 2.12l-.85.85A7.5 7.5 0 0 1 31.3 23H32.5a1.5 1.5 0 0 1 0 3h-1.2a7.5 7.5 0 0 1-1.08 2.6l.85.85a1.5 1.5 0 0 1-2.12 2.12l-.85-.85A7.5 7.5 0 0 1 25.5 31.8V33a1.5 1.5 0 0 1-3 0v-1.2a7.5 7.5 0 0 1-2.6-1.08l-.85.85a1.5 1.5 0 0 1-2.12-2.12l.85-.85A7.5 7.5 0 0 1 16.7 26H15.5a1.5 1.5 0 0 1 0-3h1.2a7.5 7.5 0 0 1 1.08-2.6l-.85-.85a1.5 1.5 0 0 1 2.12-2.12l.85.85a7.5 7.5 0 0 1 2.6-1.08V16a1.5 1.5 0 0 1 1.5-1.5zm0 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"
+              fill="white" />
+          </svg>
+          <div class="footer-tagline">Engineering Intelligence. Delivered.</div>
+          <p>Technical consulting and engineering from Johannesburg, South Africa. Working with clients across the
+            continent.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Engagement</h4><a href="monitoring-calibration.html">Monitoring Calibration</a>
+          <h4>Discipline</h4><a href="project-management.html">Project Management</a><a
+            href="technical-consulting.html">Technical Consulting</a><a href="ai-digital.html">AI &amp; Digital</a><a
+            href="energy-systems.html">Energy &amp; Power Systems</a>
+        </div>
+        <div class="footer-col">
+          <h4>Intelligence</h4><a href="platform.html">The Monitoring Platform</a>
+          <h4>Connection</h4><a href="about.html">About Ainsley</a><a href="work.html">The Work</a><a
+            href="engagement.html">The Engagement</a><a href="contact.html">Contact</a><a
+            href="https://www.linkedin.com/in/ainsley-williams-18107015/" target="_blank" rel="noopener" class="footer-linkedin"><svg
+              width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+              style="vertical-align:middle;margin-right:6px;" aria-hidden="true">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>LinkedIn Profile</a>
+          <p style="font-size:13px;margin-top:8px;line-height:1.5;">Profile and work history on LinkedIn.</p>
+        </div>
+      </div>
+      <div class="footer-bottom"><span class="footer-copy">&copy; 2026 Sinclair Dynamics. All rights
+          reserved.</span>
+      <!-- VIEWPORT REPORTER:START
+           DIAGNOSTIC. NOT A DESIGN ELEMENT. NOT PART OF THE SITE.
+
+           Added 23 August 2026, Session 29, for the narrow-width observation
+           pass. The site had never been looked at below desktop width and no
+           reliable way existed to know what width a device was actually
+           reporting to the stylesheet, which made every observation about
+           narrow behaviour a guess.
+
+           Hidden by default on every page. It reveals only when the address
+           ends in #vp, and once revealed it stays revealed while moving
+           around the site in the same browser tab, because the nav and
+           footer links do not carry the hash. The close control ends that.
+
+           It renders fixed to a corner of the viewport rather than in the
+           footer's flow, deliberately: .footer-bottom is a flex row and an
+           extra child would change how that row lays out at exactly the
+           widths this instrument exists to observe. Out of flow, it cannot
+           disturb any layout on any page.
+
+           It is styled to look nothing like this site. Black ground,
+           monospace, amber. Anyone who meets it by accident should be able
+           to tell at a glance that it is not part of the page.
+
+           REMOVAL: delete everything between these markers from
+           _footer_canonical.html and run apply-chrome.py. Nothing else on
+           the site references it. No rule in shared.css belongs to it, no
+           id or class it uses appears anywhere else, and it adds no link.
+
+           DISPOSAL CONDITION: it comes out when the narrow-width work is
+           finished and the site record's item 1 is closed, unless a reason
+           to keep it has been written down by then.
+           -->
+      <style>
+        /* Everything here is prefixed sd-vp so it cannot collide with the
+           site's own classes. Display is controlled by the .on class rather
+           than by the hidden attribute, because a later display rule would
+           silently win over hidden and the block would appear on every page. */
+        #sd-vp { display: none; }
+        #sd-vp.on {
+          display: block;
+          position: fixed;
+          z-index: 2147483000;
+          background: #000;
+          color: #FFB020;
+          border: 1px solid #FFB020;
+          border-radius: 3px;
+          padding: 6px 8px;
+          max-width: 320px;
+          font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+          font-size: 11px;
+          line-height: 1.45;
+          text-align: left;
+          letter-spacing: 0;
+          text-transform: none;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+          -webkit-user-select: text;
+          user-select: text;
+        }
+        /* Four corners, cycled by tapping the readout. The top pair clears the
+           68px nav plus its 2px border, since the nav is the first thing this
+           pass has to look at and the instrument must not cover it. */
+        #sd-vp.sd-vp-br { bottom: 8px; right: 8px; }
+        #sd-vp.sd-vp-bl { bottom: 8px; left: 8px; }
+        #sd-vp.sd-vp-tl { top: 78px; left: 8px; }
+        #sd-vp.sd-vp-tr { top: 78px; right: 8px; }
+        #sd-vp pre {
+          margin: 0;
+          font: inherit;
+          color: inherit;
+          white-space: pre;
+          cursor: pointer;
+        }
+        #sd-vp .sd-vp-bar {
+          display: flex;
+          gap: 6px;
+          margin-top: 6px;
+          border-top: 1px solid rgba(255, 176, 32, 0.35);
+          padding-top: 5px;
+        }
+        #sd-vp button {
+          flex: 1;
+          font-family: inherit;
+          font-size: 10px;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          background: transparent;
+          color: #FFB020;
+          border: 1px solid rgba(255, 176, 32, 0.5);
+          border-radius: 2px;
+          padding: 5px 4px;
+          cursor: pointer;
+          min-height: 30px;
+        }
+        #sd-vp button:active { background: rgba(255, 176, 32, 0.2); }
+        #sd-vp .sd-vp-warn { color: #FF5A4A; }
+      </style>
+      <div id="sd-vp" class="sd-vp-br"><pre data-sd-vp-out>reading</pre>
+        <div class="sd-vp-bar"><button type="button" data-sd-vp-scan>scan</button><button type="button"
+            data-sd-vp-copy>copy</button><button type="button" data-sd-vp-close>close</button></div>
+      </div>
+      <script>
+        (function () {
+          'use strict';
+
+          var KEY = 'sd-vp-visible';
+          var box = document.getElementById('sd-vp');
+          if (!box) { return; }
+
+          var out = box.querySelector('[data-sd-vp-out]');
+          var CORNERS = ['sd-vp-br', 'sd-vp-bl', 'sd-vp-tl', 'sd-vp-tr'];
+          var corner = 0;
+          var scanned = null;
+          var pending = false;
+
+          /* ---- collection -------------------------------------------------
+             Three width measures are reported rather than one, because they
+             disagree in informative ways. innerWidth includes a classic
+             scrollbar, clientWidth does not, and visualViewport reports what
+             is actually on screen after pinch zoom or a soft keyboard. A
+             difference between the first two on the laptop is a scrollbar. A
+             difference involving the third on the phone means the page is
+             zoomed and no width reading can be trusted until it is not. */
+
+          function media(query) {
+            return window.matchMedia ? window.matchMedia(query).matches : null;
+          }
+
+          function viewportMeta() {
+            var tag = document.querySelector('meta[name="viewport"]');
+            if (!tag) { return null; }
+            return tag.getAttribute('content') || '(empty)';
+          }
+
+          /* A short, honest guess at the browser. It exists for one reason:
+             a file opened from a messaging app may render in that app's own
+             WebView rather than in Chrome, and a WebView can report a
+             different viewport from the browser a visitor would use. The
+             full user agent string travels in the copy payload, so nothing
+             is lost by this being a guess. */
+          function browser() {
+            var ua = navigator.userAgent || '';
+            var name = 'unidentified';
+            if (/\bEdgA?\//.test(ua)) { name = 'Edge'; }
+            else if (/\bOPR\//.test(ua)) { name = 'Opera'; }
+            else if (/SamsungBrowser\//.test(ua)) { name = 'Samsung Internet'; }
+            else if (/FBAN|FBAV|Instagram|\bLine\//.test(ua)) { name = 'social app'; }
+            else if (/Firefox\/|FxiOS\//.test(ua)) { name = 'Firefox'; }
+            else if (/CriOS\//.test(ua)) { name = 'Chrome iOS'; }
+            else if (/Chrome\//.test(ua)) { name = 'Chrome'; }
+            else if (/Safari\//.test(ua)) { name = 'Safari'; }
+            if (/;\s?wv\)/.test(ua) || /\bwv\b/.test(ua)) { name += ' WebView'; }
+            return name;
+          }
+
+          function describe(el) {
+            var label = el.tagName.toLowerCase();
+            if (el.id) { return label + '#' + el.id; }
+            var cls = el.getAttribute && el.getAttribute('class');
+            if (cls) {
+              var first = String(cls).trim().split(/\s+/)[0];
+              if (first) { label += '.' + first; }
+            }
+            return label;
+          }
+
+          /* Finds the element reaching furthest past the right edge of the
+             document. Horizontal overflow is the commonest narrow-width fault
+             and a few pixels of it is invisible by eye.
+
+             Two honest limits, so a result is read for what it is. Position
+             fixed elements do not move with horizontal scroll, so their
+             numbers are only correct while the page is unscrolled sideways.
+             And an element can legitimately sit outside the viewport, so this
+             names a candidate rather than declaring a defect. */
+          function findWorst() {
+            var limit = document.documentElement.clientWidth;
+            var offset = window.pageXOffset || 0;
+            var all = document.body ? document.body.querySelectorAll('*') : [];
+            var worst = null;
+            var worstRight = limit + 1;
+            for (var i = 0; i < all.length; i++) {
+              var el = all[i];
+              if (el === box || box.contains(el)) { continue; }
+              var rect = el.getBoundingClientRect();
+              if (rect.width === 0 && rect.height === 0) { continue; }
+              var right = rect.right + offset;
+              if (right > worstRight) {
+                worstRight = right;
+                worst = el;
+              }
+            }
+            if (!worst) { return 'no element past ' + limit + 'px'; }
+            return describe(worst) + ' to ' + Math.round(worstRight) + 'px';
+          }
+
+          function collect() {
+            var doc = document.documentElement;
+            var vv = window.visualViewport;
+            var meta = viewportMeta();
+            return {
+              innerW: window.innerWidth,
+              innerH: window.innerHeight,
+              clientW: doc.clientWidth,
+              visualW: vv ? Math.round(vv.width) : null,
+              dpr: window.devicePixelRatio || 1,
+              screenW: window.screen ? window.screen.width : null,
+              screenH: window.screen ? window.screen.height : null,
+              portrait: media('(orientation: portrait)'),
+              at900: media('(max-width: 900px)'),
+              at700: media('(max-width: 700px)'),
+              reduced: media('(prefers-reduced-motion: reduce)'),
+              meta: meta,
+              metaOk: meta !== null && meta.indexOf('width=device-width') !== -1,
+              overflow: doc.scrollWidth - doc.clientWidth,
+              browser: browser(),
+              page: location.pathname.split('/').pop() || 'index.html'
+            };
+          }
+
+          /* ---- rendering ------------------------------------------------ */
+
+          /* The label column is padded to 9 rather than 8 because 'overflow'
+             is itself 8 characters long and would otherwise render with no
+             gap between its label and its value. Caught in a DOM test rather
+             than by reading it. */
+          function pad(text) {
+            var s = String(text);
+            while (s.length < 9) { s += ' '; }
+            return s;
+          }
+
+          function render() {
+            var d = collect();
+            var lines = [];
+
+            lines.push(pad('page') + d.page);
+            lines.push(pad('css') + d.innerW + ' x ' + d.innerH +
+              '   dpr ' + (Math.round(d.dpr * 100) / 100));
+            lines.push(pad('client') + d.clientW +
+              (d.visualW !== null ? '   visual ' + d.visualW : ''));
+            lines.push(pad('screen') + d.screenW + ' x ' + d.screenH +
+              '   ' + (d.portrait ? 'portrait' : 'landscape'));
+            lines.push(pad('breaks') +
+              '900 ' + (d.at900 ? 'ON ' : 'off') +
+              '   700 ' + (d.at700 ? 'ON' : 'off'));
+
+            if (d.meta === null) {
+              lines.push(pad('meta') + 'ABSENT, page will scale');
+            } else if (!d.metaOk) {
+              lines.push(pad('meta') + 'no width=device-width');
+            } else {
+              lines.push(pad('meta') + 'ok');
+            }
+
+            lines.push(pad('overflow') +
+              (d.overflow > 0 ? d.overflow + 'px past edge' : 'none'));
+
+            if (scanned) { lines.push(pad('widest') + scanned); }
+            if (d.reduced) { lines.push(pad('motion') + 'reduced'); }
+            lines.push(pad('browser') + d.browser);
+
+            out.textContent = lines.join('\n');
+
+            /* The two conditions that make every other number on the panel
+               unreliable are the two that get the alarm colour. */
+            var bad = (d.meta === null) || !d.metaOk || d.overflow > 0;
+            out.className = bad ? 'sd-vp-warn' : '';
+          }
+
+          function schedule() {
+            if (pending) { return; }
+            pending = true;
+            window.requestAnimationFrame(function () {
+              pending = false;
+              scanned = null;
+              render();
+            });
+          }
+
+          /* ---- copy ------------------------------------------------------
+             One line, so it pastes into a message without reflowing. The full
+             user agent and the URL travel with it, because a reading with no
+             provenance is not worth having later. */
+
+          function payload() {
+            var d = collect();
+            return [
+              d.page,
+              'css=' + d.innerW + 'x' + d.innerH,
+              'client=' + d.clientW,
+              'visual=' + (d.visualW === null ? 'n/a' : d.visualW),
+              'dpr=' + d.dpr,
+              'screen=' + d.screenW + 'x' + d.screenH,
+              (d.portrait ? 'portrait' : 'landscape'),
+              'mq900=' + (d.at900 ? 'on' : 'off'),
+              'mq700=' + (d.at700 ? 'on' : 'off'),
+              'meta=' + (d.meta === null ? 'ABSENT' : d.meta),
+              'overflow=' + d.overflow,
+              'widest=' + (scanned || 'not scanned'),
+              'reducedMotion=' + (d.reduced ? 'yes' : 'no'),
+              'browser=' + d.browser,
+              'url=' + location.href,
+              'ua=' + (navigator.userAgent || '')
+            ].join(' | ');
+          }
+
+          function flash(button, word) {
+            var original = button.textContent;
+            button.textContent = word;
+            window.setTimeout(function () { button.textContent = original; }, 1200);
+          }
+
+          function copy(button) {
+            var text = payload();
+            /* The async clipboard API is unavailable over file:// and in some
+               WebViews, which are exactly the conditions this may be opened
+               under, so the old path is kept as a fallback rather than
+               assumed unnecessary. */
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(function () {
+                flash(button, 'copied');
+              }, function () {
+                fallbackCopy(text, button);
+              });
+              return;
+            }
+            fallbackCopy(text, button);
+          }
+
+          function fallbackCopy(text, button) {
+            var field = document.createElement('textarea');
+            field.value = text;
+            field.setAttribute('readonly', 'readonly');
+            field.style.position = 'fixed';
+            field.style.top = '-1000px';
+            document.body.appendChild(field);
+            field.select();
+            var ok = false;
+            try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+            document.body.removeChild(field);
+            flash(button, ok ? 'copied' : 'select it');
+          }
+
+          /* ---- visibility ------------------------------------------------ */
+
+          function remember(state) {
+            try {
+              if (state) { window.sessionStorage.setItem(KEY, '1'); }
+              else { window.sessionStorage.removeItem(KEY); }
+            } catch (err) { /* private mode or file://; the hash still works */ }
+          }
+
+          function remembered() {
+            try { return window.sessionStorage.getItem(KEY) === '1'; }
+            catch (err) { return false; }
+          }
+
+          function show() {
+            if (box.classList.contains('on')) { return; }
+            box.classList.add('on');
+            remember(true);
+            render();
+            window.addEventListener('resize', schedule);
+            window.addEventListener('orientationchange', schedule);
+            if (window.visualViewport) {
+              window.visualViewport.addEventListener('resize', schedule);
+            }
+          }
+
+          function hide() {
+            box.classList.remove('on');
+            remember(false);
+          }
+
+          out.addEventListener('click', function () {
+            box.classList.remove(CORNERS[corner]);
+            corner = (corner + 1) % CORNERS.length;
+            box.classList.add(CORNERS[corner]);
+          });
+
+          box.querySelector('[data-sd-vp-scan]').addEventListener('click', function () {
+            scanned = findWorst();
+            render();
+          });
+
+          box.querySelector('[data-sd-vp-copy]').addEventListener('click', function (event) {
+            copy(event.currentTarget);
+          });
+
+          box.querySelector('[data-sd-vp-close]').addEventListener('click', hide);
+
+          window.addEventListener('hashchange', function () {
+            if (location.hash === '#vp') { show(); }
+          });
+
+          if (location.hash === '#vp' || remembered()) { show(); }
+        })();
+      </script>
+      <!-- VIEWPORT REPORTER:END -->
+        <a class="footer-legal" href="privacy.html">Privacy Notice</a></div>
+    </div>
+  </footer>
+  <!-- FOOTER:END -->
+
+  <!-- The site's third script, and the smallest. It does only what a script
+       is needed for: hold state across pointer events. CSS has no memory of
+       hover, so the middle position cannot exist without one. Everything the
+       figure draws is already in the markup above.
+
+       It warns to console rather than failing silently, which is the whole
+       reason the other two figures use scripts as well. -->
+  <script>
+  (function () {
+    'use strict';
+
+    var svg = document.querySelector('.eng-fig svg');
+    var hitRegion = document.querySelector('.eng-fig .hit-reg');
+    var hitBase = document.querySelector('.eng-fig .hit-base');
+
+    if (!svg || !hitRegion || !hitBase) {
+      console.warn('Engagement hero figure: expected an svg and two hit shapes, '
+        + 'found svg=' + !!svg + ' region=' + !!hitRegion + ' baseline=' + !!hitBase
+        + '. The figure will render its survey state and will not respond.');
+      return;
+    }
+
+    /* THE REGION ZONE, IRREVERSIBLE.
+         survey -> close   pointer enters
+         close  -> mid     pointer leaves
+         mid    -> close   pointer enters again
+         mid    -> survey  NEVER. A first meeting cannot be un-had. */
+    var leftSurvey = false;
+
+    hitRegion.addEventListener('pointerenter', function () {
+      leftSurvey = true;
+      svg.setAttribute('data-state', 'close');
+    });
+    hitRegion.addEventListener('pointerleave', function () {
+      svg.setAttribute('data-state', leftSurvey ? 'mid' : 'survey');
+    });
+
+    /* THE BASELINE ZONE, REVERSIBLE. Attending to how the two parties are
+       linked is looking at something, not sitting down, so it carries no
+       ratchet. How far it lifts still depends on the region ladder, which
+       is handled in CSS rather than here. */
+    hitBase.addEventListener('pointerenter', function () {
+      svg.setAttribute('data-base', 'lifted');
+    });
+    hitBase.addEventListener('pointerleave', function () {
+      svg.setAttribute('data-base', 'rest');
+    });
+  })();
+  </script>
+  <!-- CONSENT:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE
+       FILE. It is written from _consent_canonical.html by apply-chrome.py.
+       The first time this runs against a page that has never carried this
+       block, the script inserts it fresh, immediately before </body>. Every
+       run after that finds the markers this run wrote and keeps it in sync
+       the same way nav and footer already are.
+       Byte-identical on every page: nothing here varies by filename, unlike
+       the nav's active entry.
+       Gates the analytics tag only. Nothing else on the site needs a
+       visitor's answer to work, so this is a bar at the foot of the
+       viewport rather than a modal, and the page underneath stays fully
+       usable while it's up. It shows once, on any page, for as long as
+       sinclair_analytics_consent is unset in the visitor's browser.
+       Whichever button is pressed answers it everywhere, for good, until
+       the visitor clears their own browser storage. See
+       sd-reference-privacy-v0_2.md for the reasoning behind the shape of
+       this control, and sd-copy-privacy-notice-v0_1.md for what it's
+       disclosing. -->
+  <div class="consent-banner" id="consent-banner" role="region" aria-label="Cookie and analytics consent"
+    data-state="hidden">
+    <div class="consent-inner">
+      <p class="consent-text">This site uses Google Analytics to understand how it's used. It only runs if you agree
+        to it, and everything else on the site works exactly the same either way. See the <a
+          href="privacy.html">privacy notice</a> for what's collected and why.</p>
+      <div class="consent-actions">
+        <button type="button" class="consent-btn" id="consent-decline">Decline</button>
+        <button type="button" class="consent-btn" id="consent-accept">Accept</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Consent banner. Self-contained, warns to console rather than failing
+    // silently, and does nothing at all if its own markup is missing.
+    //
+    // Two keys in localStorage, matching the site's existing sinclair_chat_*
+    // convention rather than a JSON blob: sinclair_analytics_consent holds
+    // "accepted" or "declined", sinclair_analytics_consent_at holds when.
+    // Persists indefinitely. There is no re-ask timer: nothing on this site
+    // currently expires anything on a schedule, and building one for this
+    // control alone would be scope the retention item next to it hasn't
+    // earned either. See the working document if that changes.
+    (function () {
+      var KEY = 'sinclair_analytics_consent';
+      var KEY_AT = 'sinclair_analytics_consent_at';
+      var GA_ID = 'G-W94Z1196CH';
+
+      var banner = document.getElementById('consent-banner');
+      if (!banner) {
+        console.warn('[consent] banner markup not found, nothing to wire up');
+        return;
+      }
+
+      function loadAnalytics() {
+        if (window.__sinclairAnalyticsLoaded) return;
+        window.__sinclairAnalyticsLoaded = true;
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', GA_ID);
+        var tag = document.createElement('script');
+        tag.async = true;
+        tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        document.head.appendChild(tag);
+      }
+
+      function recordChoice(choice) {
+        try {
+          localStorage.setItem(KEY, choice);
+          localStorage.setItem(KEY_AT, new Date().toISOString());
+        } catch (e) {
+          console.warn('[consent] could not write the choice to localStorage', e);
+        }
+      }
+
+      var stored = null;
+      try {
+        stored = localStorage.getItem(KEY);
+      } catch (e) {
+        console.warn('[consent] could not read localStorage, treating as unanswered', e);
+      }
+
+      if (stored === 'accepted') {
+        loadAnalytics();
+      } else if (stored !== 'declined') {
+        // Unanswered. Neither key is trusted on its own: only an explicit
+        // "declined" suppresses the banner without also loading the tag.
+        banner.setAttribute('data-state', 'visible');
+      }
+
+      var acceptBtn = document.getElementById('consent-accept');
+      var declineBtn = document.getElementById('consent-decline');
+
+      if (acceptBtn) {
+        acceptBtn.addEventListener('click', function () {
+          recordChoice('accepted');
+          banner.setAttribute('data-state', 'hidden');
+          loadAnalytics();
+        });
+      }
+      if (declineBtn) {
+        declineBtn.addEventListener('click', function () {
+          recordChoice('declined');
+          banner.setAttribute('data-state', 'hidden');
+        });
+      }
+    })();
+  </script>
+  <!-- CONSENT:END -->
+</body>
+
+</html>

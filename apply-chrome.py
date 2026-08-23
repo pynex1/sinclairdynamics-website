@@ -81,6 +81,22 @@ from datetime import datetime
 # The page set. Adding a page to the site means adding it here, and that is
 # deliberate: an explicit list fails loudly when a file is missing, where a
 # directory glob would silently skip a page nobody noticed had been renamed.
+#
+# What that reasoning missed, found 23 August 2026. The list fails loudly for
+# a name that is in it and has no file. It cannot fail at all for a page that
+# exists on the site and is not in it, because such a page is invisible to
+# every check below: it is never opened, never hashed and never compared.
+# machine-was-never-the-ceiling.html shipped on 22 August, was added to
+# sitemap.xml and to the site record, and was not added here. It therefore
+# received no single-sourced chrome for a day, and nothing could have said so.
+# Its markup happened to be correct, having been copied by hand from
+# spotting-ai-writing.html, which is the part that makes this hard to see: a
+# copy that is documented as single-sourced is indistinguishable from a page
+# that actually is one. Only this list decides which it is.
+#
+# The reconciliation against sitemap.xml in verify() is the fix. The sitemap
+# is the register that was complete, it is maintained for its own reasons, and
+# a page missing from either list is now reported rather than remembered.
 # --------------------------------------------------------------------------
 PAGES = [
     "index.html",
@@ -92,6 +108,7 @@ PAGES = [
     "monitoring-calibration.html",
     "interval-question.html",
     "spotting-ai-writing.html",
+    "machine-was-never-the-ceiling.html",
     "project-management.html",
     "technical-consulting.html",
     "ai-digital.html",
@@ -256,13 +273,64 @@ def strip_active(nav_text):
     return nav_text.replace(' class="active"', "")
 
 
+SITEMAP = "sitemap.xml"
+
+
+def reconcile_with_sitemap(folder):
+    """Compare PAGES against sitemap.xml and report either list being short.
+
+    This exists because of the failure recorded above PAGES: nothing in this
+    script could see a page that had shipped and not been enrolled. The
+    sitemap is the register that was complete on the day that happened, it is
+    maintained for search reasons rather than for this one, and two lists
+    maintained for different reasons are unlikely to be forgotten in the same
+    sitting.
+
+    What it would look like if it failed: a page present on the site and in
+    the sitemap, absent from PAGES, is named here. So is the reverse, a page
+    in PAGES with no sitemap entry, which is a page search engines are not
+    being told about.
+
+    The homepage is the one mapping that is not literal: the sitemap declares
+    the site root, which is served by index.html.
+    """
+    path = os.path.join(folder, SITEMAP)
+    if not os.path.exists(path):
+        return [f"{SITEMAP} not found, so the page list could not be reconciled"]
+
+    text = read(path)
+    locs = re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", text)
+    if not locs:
+        return [f"{SITEMAP}: no <loc> entries found, expected one per page"]
+
+    listed = set()
+    for loc in locs:
+        tail = re.sub(r"^https?://[^/]+", "", loc)
+        tail = tail.lstrip("/")
+        listed.add(tail if tail else "index.html")
+
+    known = set(PAGES)
+    problems = []
+    for page in sorted(listed - known):
+        problems.append(
+            f"{page}: in {SITEMAP} but not in PAGES, so it receives no "
+            f"single-sourced chrome and no check in this script can see it"
+        )
+    for page in sorted(known - listed):
+        problems.append(
+            f"{page}: in PAGES but not in {SITEMAP}, so search engines are "
+            f"not being told it exists"
+        )
+    return problems
+
+
 # --------------------------------------------------------------------------
 # Verification. Every check below states what it would look like if the thing
 # it watches had failed, because a check incapable of failing confirms nothing.
 # --------------------------------------------------------------------------
 
 def verify(folder):
-    problems = []
+    problems = reconcile_with_sitemap(folder)
     nav_hashes = {}
     footer_hashes = {}
     consent_hashes = {}
