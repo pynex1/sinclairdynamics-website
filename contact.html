@@ -38,8 +38,8 @@
   <meta name="twitter:image" content="https://www.sinclairdynamics.co/og-image.png">
   <!-- Canonical -->
   <link rel="canonical" href="https://www.sinclairdynamics.co/contact.html">
-<style>
-/* ---------------------------------------------------------------------------
+  <style>
+    /* ---------------------------------------------------------------------------
    PAGE LOCAL STYLES
    Kept on the page rather than in shared.css, consistent with how the homepage
    and the about page were handled.
@@ -129,10 +129,21 @@
    prefers-reduced-motion: the feedback survives and only movement would go,
    and there is no movement.
    --------------------------------------------------------------------- */
-.ct-fig { position: absolute; inset: 0; z-index: 3; pointer-events: none; display: block; }
-.ct-fig svg { display: block; width: 100%; height: 100%; }
+    .ct-fig {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      display: block;
+    }
 
-/* Hit shapes. Stroked paths rather than rectangles, so the target follows the
+    .ct-fig svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Hit shapes. Stroked paths rather than rectangles, so the target follows the
    run through its riser instead of approximating it with a box. Hovering
    anywhere along a run resolves it, not just over the unbuilt section, because
    a reader who has to find the dashed part to discover the figure answers will
@@ -149,25 +160,62 @@
    The width is a flicker control as well as a target. A dwell timer was the
    alternative and was rejected: a detent responds when the hand reaches it,
    not after the hand has waited. Narrow bands are the geometric answer. */
-.ct-fig .ct-hit { fill: none; stroke: #fff; stroke-opacity: 0; stroke-width: 26; pointer-events: stroke; }
+    .ct-fig .ct-hit {
+      fill: none;
+      stroke: #fff;
+      stroke-opacity: 0;
+      stroke-width: 26;
+      pointer-events: stroke;
+    }
 
-/* Per-run opacity. These are the values the runs already carried, unchanged. */
-.ct-fig .r-a3 { opacity: 0.11; }
-.ct-fig .r-a2 { opacity: 0.16; }
-.ct-fig .r-a1 { opacity: 0.24; }
-.ct-fig .r-c  { opacity: 0.55; }
-.ct-fig .r-b1 { opacity: 0.21; }
-.ct-fig .r-b2 { opacity: 0.13; }
+    /* Per-run opacity. These are the values the runs already carried, unchanged. */
+    .ct-fig .r-a3 {
+      opacity: 0.11;
+    }
 
-/* The unbuilt section, and the built one drawn over it. Two paths on the same
+    .ct-fig .r-a2 {
+      opacity: 0.16;
+    }
+
+    .ct-fig .r-a1 {
+      opacity: 0.24;
+    }
+
+    .ct-fig .r-c {
+      opacity: 0.55;
+    }
+
+    .ct-fig .r-b1 {
+      opacity: 0.21;
+    }
+
+    .ct-fig .r-b2 {
+      opacity: 0.13;
+    }
+
+    /* The unbuilt section, and the built one drawn over it. Two paths on the same
    geometry, cross-fading. */
-.ct-fig .run path { transition: opacity 0.28s ease-out, stroke-width 0.28s ease-out; }
-.ct-fig .gap  { opacity: 0.45; }
-.ct-fig .link { opacity: 0; }
-.ct-fig .run.is-linked .gap  { opacity: 0; }
-.ct-fig .run.is-linked .link { opacity: 1; }
+    .ct-fig .run path {
+      transition: opacity 0.28s ease-out, stroke-width 0.28s ease-out;
+    }
 
-/* A resolved run also gains half a unit of stroke weight across its whole
+    .ct-fig .gap {
+      opacity: 0.45;
+    }
+
+    .ct-fig .link {
+      opacity: 0;
+    }
+
+    .ct-fig .run.is-linked .gap {
+      opacity: 0;
+    }
+
+    .ct-fig .run.is-linked .link {
+      opacity: 1;
+    }
+
+    /* A resolved run also gains half a unit of stroke weight across its whole
    length, not only across the section that resolved.
 
    WHY WEIGHT AND NOT BRIGHTNESS. The faint runs sit at 0.11 and 0.13, where a
@@ -186,20 +234,43 @@
    NOTE FOR THE VISUAL LANGUAGE. The inspect tier is specified as opacity only.
    Stroke weight is neither opacity nor travel, so this is a genuine extension
    of the tier rather than an application of it, and 3.3 should record it. */
-.ct-fig .run.is-linked.r-a3 path { stroke-width: 1.9; }
-.ct-fig .run.is-linked.r-a2 path { stroke-width: 2.2; }
-.ct-fig .run.is-linked.r-a1 path { stroke-width: 2.4; }
-.ct-fig .run.is-linked.r-c  path { stroke-width: 2.9; }
-.ct-fig .run.is-linked.r-b1 path { stroke-width: 2.4; }
-.ct-fig .run.is-linked.r-b2 path { stroke-width: 2.1; }
+    .ct-fig .run.is-linked.r-a3 path {
+      stroke-width: 1.9;
+    }
 
-/* Nodes. Absolute opacities, held outside the run groups so they read at the
+    .ct-fig .run.is-linked.r-a2 path {
+      stroke-width: 2.2;
+    }
+
+    .ct-fig .run.is-linked.r-a1 path {
+      stroke-width: 2.4;
+    }
+
+    .ct-fig .run.is-linked.r-c path {
+      stroke-width: 2.9;
+    }
+
+    .ct-fig .run.is-linked.r-b1 path {
+      stroke-width: 2.4;
+    }
+
+    .ct-fig .run.is-linked.r-b2 path {
+      stroke-width: 2.1;
+    }
+
+    /* Nodes. Absolute opacities, held outside the run groups so they read at the
    same weight regardless of which run they sit on. Unchanged from the previous
    figure: these were test points and they are now connection points, which is
    what a node on a route drawing is. */
-.ct-fig .altpad { opacity: 0.26; }
-.ct-fig .pad    { opacity: 0.46; }
-/* ---------------------------------------------------------------------------
+    .ct-fig .altpad {
+      opacity: 0.26;
+    }
+
+    .ct-fig .pad {
+      opacity: 0.46;
+    }
+
+    /* ---------------------------------------------------------------------------
    THE DARK FIELD: THE HERO AND THE CONVERSATION AS ONE GROUND
    Added 22 August 2026, Session 27.
 
@@ -234,30 +305,46 @@
    #root to transparent in its own index.css, so the only thing painting is the
    widget root, and stage two removes it and reframes the edges.
    --------------------------------------------------------------------- */
-.ct-dark { background: linear-gradient(135deg, var(--slate) 0%, #0D2433 100%); }
+    .ct-dark {
+      background: linear-gradient(135deg, var(--slate) 0%, #0D2433 100%);
+    }
 
-/* Suppressed rather than overridden with a second gradient. The hero must
+    /* Suppressed rather than overridden with a second gradient. The hero must
    contribute nothing to the ground, or the seam described above returns. */
-.ct-dark .page-hero { background: none; }
+    .ct-dark .page-hero {
+      background: none;
+    }
 
-/* The conversation block is transparent so the wrapper's ramp runs through it.
+    /* The conversation block is transparent so the wrapper's ramp runs through it.
    Top padding is deliberately small: .page-hero-content already closes with
    70px, and the widget has to read as the answer to the headline rather than
    as the next section down. */
-.ct-convo .section-inner { padding: 16px 40px 100px; }
+    .ct-convo .section-inner {
+      padding: 16px 40px 100px;
+    }
 
-/* WHY 1.7fr AND NOT TWO EQUAL COLUMNS. The left column holds a 640px tall
+    /* WHY 1.7fr AND NOT TWO EQUAL COLUMNS. The left column holds a 640px tall
    conversation and the right holds one card. Equal columns would give the card
    more room than it has content for and squeeze the thing the page is about.
    align-items:start keeps the card at the top of its column rather than
    floating it against the middle of 640px of widget. */
-.ct-convo-grid { display: grid; grid-template-columns: 1.7fr 1fr; gap: 48px; align-items: start; }
+    .ct-convo-grid {
+      display: grid;
+      grid-template-columns: 1.7fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
 
-/* Dark-ground body copy. Matches .page-hero-sub's treatment rather than
+    /* Dark-ground body copy. Matches .page-hero-sub's treatment rather than
    .body-text, which is written for light sections. */
-.ct-convo-lead { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.7); margin: 0 0 24px; }
+    .ct-convo-lead {
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.7);
+      margin: 0 0 24px;
+    }
 
-/* THE GAP BETWEEN THE HERO LEAD AND THE WIDGET. Closed 22 August 2026.
+    /* THE GAP BETWEEN THE HERO LEAD AND THE WIDGET. Closed 22 August 2026.
 
    It was 86px: .page-hero-content's shared 70px bottom padding plus this
    section's own 16px top. That was correct while the hero was the end of a
@@ -273,28 +360,38 @@
    Scoped to .ct-dark rather than changed in shared.css. .page-hero-content is
    used by every hero on the site and only this one has a conversation directly
    beneath it. */
-.ct-dark .page-hero-content { padding-bottom: 28px; }
+    .ct-dark .page-hero-content {
+      padding-bottom: 28px;
+    }
 
-/* One breakpoint. This was briefly split into two on the stated grounds that
+    /* One breakpoint. This was briefly split into two on the stated grounds that
    shared.css changes .section-inner's gutters at 700px. It does not: that rule
    is in the 900px block. The split therefore produced the exact fault it was
    meant to avoid, holding this section at 40px gutters between 700 and 900
    while every other section on the page had already dropped to 24px. Both
    changes belong at 900px, which is also where the 612px widget stops having
    room beside a card. */
-/* Air between the new section title and the grid beneath it. Everywhere else
+    /* Air between the new section title and the grid beneath it. Everywhere else
    on the site a .section-lead sits in this position and contributes its own
    60px, so content starts 80px below the title. This section has no lead, and
    .section-title's own 20px alone puts the grid hard up against it. 28px more
    lands at 48px, which is proportionate for a title with nothing between it
    and the content rather than a copy of a gap that a paragraph was filling. */
-.ct-routes .contact-grid { margin-top: 28px; }
+    .ct-routes .contact-grid {
+      margin-top: 28px;
+    }
 
-@media (max-width: 900px) {
-  .ct-convo-grid { grid-template-columns: 1fr; gap: 32px; }
-  .ct-convo .section-inner { padding: 16px 24px 70px; }
-}
-</style>
+    @media (max-width: 900px) {
+      .ct-convo-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .ct-convo .section-inner {
+        padding: 16px 24px 70px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -324,8 +421,8 @@
   <!-- The dark field opens here and closes below the conversation block.
        See THE DARK FIELD in the style block above before moving either edge. -->
   <div class="ct-dark">
-  <section class="page-hero">
-    <!-- Hero figure: routes drawn and not yet taken. Full reasoning and the
+    <section class="page-hero">
+      <!-- Hero figure: routes drawn and not yet taken. Full reasoning and the
          three maintenance warnings are in the .ct-fig block in the page style
          above. Read that before editing this.
          There is no keyboard control. The previous figure carried a checkbox
@@ -334,16 +431,110 @@
          argument, and a tab stop leading to a purely visual reward would be
          noise in the tab order rather than access. The aria-label describes
          the rest state, which is the complete claim. -->
-    <div class="ct-fig"><svg viewBox="0 0 1200 480" preserveAspectRatio="xMaxYMax meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Six routes drawn across the frame. Each has one section drawn as a dashed line, marking a connection that is specified but not yet made."><defs><linearGradient id="ctMask" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#fff" stop-opacity="0.3"/><stop offset="25%" stop-color="#fff" stop-opacity="0.5"/><stop offset="55%" stop-color="#fff" stop-opacity="0.82"/><stop offset="80%" stop-color="#fff" stop-opacity="1"/></linearGradient><mask id="ctm"><rect width="1200" height="480" fill="url(#ctMask)"/></mask><linearGradient id="gA1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="20%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="40%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient><linearGradient id="gA2" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="10%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="32%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient><linearGradient id="gA3" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="27%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="48%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient><linearGradient id="gB1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="30%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="50%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient><linearGradient id="gB2" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="24%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="46%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient><linearGradient id="gC" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="34%" stop-color="#2AADA0" stop-opacity="0"/><stop offset="54%" stop-color="#2AADA0" stop-opacity="1"/></linearGradient></defs><path class="ct-hit" data-target="a3" d="M620,112 H640 L692,80 H1058"/><path class="ct-hit" data-target="a2" d="M620,150 H820 L872,118 H1160"/><path class="ct-hit" data-target="a1" d="M620,190 H700 L760,154 H1160"/><path class="ct-hit" data-target="c" d="M620,222 H820 L875,186 H1160"/><path class="ct-hit" data-target="b1" d="M620,272 H780 L836,238 H1160"/><path class="ct-hit" data-target="b2" d="M620,312 H660 L714,280 H1104"/><g mask="url(#ctm)" fill="none" stroke="#2AADA0" stroke-linecap="round" stroke-linejoin="round" pointer-events="none" class="fig"><g class="run r-a3" data-run="a3"><path d="M0,112 H640 L692,80 H960" stroke="url(#gA3)" stroke-width="1.4"/><path d="M1030,80 H1058" stroke-width="1.4"/><path class="gap" d="M960,80 H1030" stroke-width="1.4" stroke-dasharray="4 8"/><path class="link" d="M960,80 H1030" stroke-width="1.4"/></g><g class="run r-a2" data-run="a2"><path d="M0,150 H820 L872,118 H1040" stroke="url(#gA2)" stroke-width="1.7"/><path d="M1120,118 H1160" stroke-width="1.7"/><path class="gap" d="M1040,118 H1120" stroke-width="1.7" stroke-dasharray="4 8"/><path class="link" d="M1040,118 H1120" stroke-width="1.7"/></g><g class="run r-a1" data-run="a1"><path d="M0,190 H700 L760,154 H900" stroke="url(#gA1)" stroke-width="1.9"/><path d="M990,154 H1160" stroke-width="1.9"/><path class="gap" d="M900,154 H990" stroke-width="1.9" stroke-dasharray="4 8"/><path class="link" d="M900,154 H990" stroke-width="1.9"/></g><g class="run r-c" data-run="c"><path d="M0,222 H820 L875,186 H900" stroke="url(#gC)" stroke-width="2.4"/><path d="M1050,186 H1160" stroke-width="2.4"/><path class="gap" d="M900,186 H1050" stroke-width="2.4" stroke-dasharray="4 8"/><path class="link" d="M900,186 H1050" stroke-width="2.4"/></g><g class="run r-b1" data-run="b1"><path d="M0,272 H780 L836,238 H1010" stroke="url(#gB1)" stroke-width="1.9"/><path d="M1100,238 H1160" stroke-width="1.9"/><path class="gap" d="M1010,238 H1100" stroke-width="1.9" stroke-dasharray="4 8"/><path class="link" d="M1010,238 H1100" stroke-width="1.9"/></g><g class="run r-b2" data-run="b2"><path d="M0,312 H660 L714,280 H860" stroke="url(#gB2)" stroke-width="1.6"/><path d="M950,280 H1104" stroke-width="1.6"/><path class="gap" d="M860,280 H950" stroke-width="1.6" stroke-dasharray="4 8"/><path class="link" d="M860,280 H950" stroke-width="1.6"/></g><g class="altpad"><circle cx="930" cy="80" r="6.5" stroke-width="1.1" opacity="0.6"/><circle cx="1010" cy="118" r="6.5" stroke-width="1.1"/><circle cx="980" cy="238" r="6.5" stroke-width="1.1" opacity="0.8"/></g><g class="pad"><circle cx="790" cy="222" r="7.5" stroke-width="1.1"/><circle cx="790" cy="222" r="3.2" fill="#2AADA0" stroke="none"/><circle cx="1090" cy="186" r="7.5" stroke-width="1.1"/><circle cx="1090" cy="186" r="3.2" fill="#2AADA0" stroke="none"/></g></g></svg></div>
-    <div class="page-hero-content">
-      <div class="hero-eyebrow">Contact</div>
-      <h1>Start a<br><span>conversation.</span></h1>
-      <p class="page-hero-sub">You do not need a brief, a budget, or a diagnosis. A description of what is
-        happening is enough to start.</p>
-    </div>
-  </section>
+      <div class="ct-fig"><svg viewBox="0 0 1200 480" preserveAspectRatio="xMaxYMax meet"
+          xmlns="http://www.w3.org/2000/svg" role="img"
+          aria-label="Six routes drawn across the frame. Each has one section drawn as a dashed line, marking a connection that is specified but not yet made.">
+          <defs>
+            <linearGradient id="ctMask" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#fff" stop-opacity="0.3" />
+              <stop offset="25%" stop-color="#fff" stop-opacity="0.5" />
+              <stop offset="55%" stop-color="#fff" stop-opacity="0.82" />
+              <stop offset="80%" stop-color="#fff" stop-opacity="1" />
+            </linearGradient>
+            <mask id="ctm">
+              <rect width="1200" height="480" fill="url(#ctMask)" />
+            </mask>
+            <linearGradient id="gA1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0">
+              <stop offset="20%" stop-color="#2AADA0" stop-opacity="0" />
+              <stop offset="40%" stop-color="#2AADA0" stop-opacity="1" />
+            </linearGradient>
+            <linearGradient id="gA2" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0">
+              <stop offset="10%" stop-color="#2AADA0" stop-opacity="0" />
+              <stop offset="32%" stop-color="#2AADA0" stop-opacity="1" />
+            </linearGradient>
+            <linearGradient id="gA3" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0">
+              <stop offset="27%" stop-color="#2AADA0" stop-opacity="0" />
+              <stop offset="48%" stop-color="#2AADA0" stop-opacity="1" />
+            </linearGradient>
+            <linearGradient id="gB1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0">
+              <stop offset="30%" stop-color="#2AADA0" stop-opacity="0" />
+              <stop offset="50%" stop-color="#2AADA0" stop-opacity="1" />
+            </linearGradient>
+            <linearGradient id="gB2" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0">
+              <stop offset="24%" stop-color="#2AADA0" stop-opacity="0" />
+              <stop offset="46%" stop-color="#2AADA0" stop-opacity="1" />
+            </linearGradient>
+            <linearGradient id="gC" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0">
+              <stop offset="34%" stop-color="#2AADA0" stop-opacity="0" />
+              <stop offset="54%" stop-color="#2AADA0" stop-opacity="1" />
+            </linearGradient>
+          </defs>
+          <path class="ct-hit" data-target="a3" d="M620,112 H640 L692,80 H1058" />
+          <path class="ct-hit" data-target="a2" d="M620,150 H820 L872,118 H1160" />
+          <path class="ct-hit" data-target="a1" d="M620,190 H700 L760,154 H1160" />
+          <path class="ct-hit" data-target="c" d="M620,222 H820 L875,186 H1160" />
+          <path class="ct-hit" data-target="b1" d="M620,272 H780 L836,238 H1160" />
+          <path class="ct-hit" data-target="b2" d="M620,312 H660 L714,280 H1104" />
+          <g mask="url(#ctm)" fill="none" stroke="#2AADA0" stroke-linecap="round" stroke-linejoin="round"
+            pointer-events="none" class="fig">
+            <g class="run r-a3" data-run="a3">
+              <path d="M0,112 H640 L692,80 H960" stroke="url(#gA3)" stroke-width="1.4" />
+              <path d="M1030,80 H1058" stroke-width="1.4" />
+              <path class="gap" d="M960,80 H1030" stroke-width="1.4" stroke-dasharray="4 8" />
+              <path class="link" d="M960,80 H1030" stroke-width="1.4" />
+            </g>
+            <g class="run r-a2" data-run="a2">
+              <path d="M0,150 H820 L872,118 H1040" stroke="url(#gA2)" stroke-width="1.7" />
+              <path d="M1120,118 H1160" stroke-width="1.7" />
+              <path class="gap" d="M1040,118 H1120" stroke-width="1.7" stroke-dasharray="4 8" />
+              <path class="link" d="M1040,118 H1120" stroke-width="1.7" />
+            </g>
+            <g class="run r-a1" data-run="a1">
+              <path d="M0,190 H700 L760,154 H900" stroke="url(#gA1)" stroke-width="1.9" />
+              <path d="M990,154 H1160" stroke-width="1.9" />
+              <path class="gap" d="M900,154 H990" stroke-width="1.9" stroke-dasharray="4 8" />
+              <path class="link" d="M900,154 H990" stroke-width="1.9" />
+            </g>
+            <g class="run r-c" data-run="c">
+              <path d="M0,222 H820 L875,186 H900" stroke="url(#gC)" stroke-width="2.4" />
+              <path d="M1050,186 H1160" stroke-width="2.4" />
+              <path class="gap" d="M900,186 H1050" stroke-width="2.4" stroke-dasharray="4 8" />
+              <path class="link" d="M900,186 H1050" stroke-width="2.4" />
+            </g>
+            <g class="run r-b1" data-run="b1">
+              <path d="M0,272 H780 L836,238 H1010" stroke="url(#gB1)" stroke-width="1.9" />
+              <path d="M1100,238 H1160" stroke-width="1.9" />
+              <path class="gap" d="M1010,238 H1100" stroke-width="1.9" stroke-dasharray="4 8" />
+              <path class="link" d="M1010,238 H1100" stroke-width="1.9" />
+            </g>
+            <g class="run r-b2" data-run="b2">
+              <path d="M0,312 H660 L714,280 H860" stroke="url(#gB2)" stroke-width="1.6" />
+              <path d="M950,280 H1104" stroke-width="1.6" />
+              <path class="gap" d="M860,280 H950" stroke-width="1.6" stroke-dasharray="4 8" />
+              <path class="link" d="M860,280 H950" stroke-width="1.6" />
+            </g>
+            <g class="altpad">
+              <circle cx="930" cy="80" r="6.5" stroke-width="1.1" opacity="0.6" />
+              <circle cx="1010" cy="118" r="6.5" stroke-width="1.1" />
+              <circle cx="980" cy="238" r="6.5" stroke-width="1.1" opacity="0.8" />
+            </g>
+            <g class="pad">
+              <circle cx="790" cy="222" r="7.5" stroke-width="1.1" />
+              <circle cx="790" cy="222" r="3.2" fill="#2AADA0" stroke="none" />
+              <circle cx="1090" cy="186" r="7.5" stroke-width="1.1" />
+              <circle cx="1090" cy="186" r="3.2" fill="#2AADA0" stroke="none" />
+            </g>
+          </g>
+        </svg></div>
+      <div class="page-hero-content">
+        <div class="hero-eyebrow">Contact</div>
+        <h1>Start a<br><span>conversation.</span></h1>
+        <p class="page-hero-sub">You do not need a brief, a budget, or a diagnosis. A description of what is
+          happening is enough to start.</p>
+      </div>
+    </section>
 
-  <!-- ===== THE CONVERSATION ==========================================
+    <!-- ===== THE CONVERSATION ==========================================
        Moved here from the foot of the page on 22 August 2026, Session 27.
 
        THE COMMENT THIS REPLACES SAID NOT TO DO THIS, so the reason it was
@@ -374,32 +565,31 @@
        behalf, the sentence will start to undersell it and should be
        revisited then.
        ================================================================= -->
-  <section class="ct-convo">
-    <div class="section-inner">
-      <div class="ct-convo-grid">
-        <div>
-          <!-- loading="lazy" was removed when this moved up the page. It was
+    <section class="ct-convo">
+      <div class="section-inner">
+        <div class="ct-convo-grid">
+          <div>
+            <!-- loading="lazy" was removed when this moved up the page. It was
                correct at the foot of the page and is wrong here: this is now
                the first thing below the headline and deferring it would leave
                a hole where the page's main claim is. -->
-          <iframe class="ai-embed"
-            src="https://sinclair-dynamics-chatbot-660519490844.europe-west2.run.app"
-            title="Sinclair Dynamics AI assistant"></iframe>
-        </div>
-        <div>
-          <p class="ct-convo-lead">The assistant answers from the same material I would, and it will tell you
-            when a question needs me rather than it. Every route on this page reaches a person.</p>
-          <!-- NEW COPY, 22 August 2026. The label follows the series name
+            <iframe class="ai-embed" src="https://sinclair-dynamics-chatbot-660519490844.europe-west2.run.app"
+              title="Sinclair Dynamics AI assistant"></iframe>
+          </div>
+          <div>
+            <p class="ct-convo-lead">My assistant answers from the same material I would, and will tell you
+              when a question needs me rather than it. Every route on this page reaches a person.</p>
+            <!-- NEW COPY, 22 August 2026. The label follows the series name
                rather than the homepage card's "Written Down", because on this
                page the series is the useful frame. The body is drawn from the
                article's own meta description rather than written fresh. -->
-          <a class="proof-box" href="machine-was-never-the-ceiling.html"><strong>On Working With AI</strong>A
-            machine does exactly what it is given, and nothing more. Why the ceiling on what it produces was
-            never the tool's to set.<span class="go">Read it</span></a>
+            <a class="proof-box" href="machine-was-never-the-ceiling.html"><strong>On Working With AI</strong>A
+              machine does exactly what it is given, and nothing more. Why the ceiling on what it produces was
+              never the tool's to set.<span class="go">Read it</span></a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
   </div>
   <!-- ===== the dark field closes here ===== -->
 
@@ -473,12 +663,12 @@
 
           <!-- The whole block is the anchor. The visitor should not have to
                find the small text. -->
-          <a class="linkedin-block" href="https://www.linkedin.com/in/ainsley-williams-18107015/"
-            target="_blank" rel="noopener">
+          <a class="linkedin-block" href="https://www.linkedin.com/in/ainsley-williams-18107015/" target="_blank"
+            rel="noopener">
             <p>Profile and work history on LinkedIn.</p>
             <span class="go">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"
-                style="vertical-align:middle;" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;"
+                aria-hidden="true">
                 <path
                   d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
               </svg>
@@ -631,8 +821,8 @@
           <h4>Intelligence</h4><a href="platform.html">The Monitoring Platform</a>
           <h4>Connection</h4><a href="about.html">About Ainsley</a><a href="work.html">The Work</a><a
             href="engagement.html">The Engagement</a><a href="contact.html">Contact</a><a
-            href="https://www.linkedin.com/in/ainsley-williams-18107015/" target="_blank" rel="noopener" class="footer-linkedin"><svg
-              width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+            href="https://www.linkedin.com/in/ainsley-williams-18107015/" target="_blank" rel="noopener"
+            class="footer-linkedin"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
               style="vertical-align:middle;margin-right:6px;" aria-hidden="true">
               <path
                 d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -642,7 +832,7 @@
       </div>
       <div class="footer-bottom"><span class="footer-copy">&copy; 2026 Sinclair Dynamics. All rights
           reserved.</span>
-      <!-- VIEWPORT REPORTER:START
+        <!-- VIEWPORT REPORTER:START
            DIAGNOSTIC. NOT A DESIGN ELEMENT. NOT PART OF THE SITE.
 
            Added 23 August 2026, Session 29, for the narrow-width observation
@@ -675,374 +865,404 @@
            finished and the site record's item 1 is closed, unless a reason
            to keep it has been written down by then.
            -->
-      <style>
-        /* Everything here is prefixed sd-vp so it cannot collide with the
+        <style>
+          /* Everything here is prefixed sd-vp so it cannot collide with the
            site's own classes. Display is controlled by the .on class rather
            than by the hidden attribute, because a later display rule would
            silently win over hidden and the block would appear on every page. */
-        #sd-vp { display: none; }
-        #sd-vp.on {
-          display: block;
-          position: fixed;
-          z-index: 2147483000;
-          background: #000;
-          color: #FFB020;
-          border: 1px solid #FFB020;
-          border-radius: 3px;
-          padding: 6px 8px;
-          max-width: 320px;
-          font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-          font-size: 11px;
-          line-height: 1.45;
-          text-align: left;
-          letter-spacing: 0;
-          text-transform: none;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-          -webkit-user-select: text;
-          user-select: text;
-        }
-        /* Four corners, cycled by tapping the readout. The top pair clears the
+          #sd-vp {
+            display: none;
+          }
+
+          #sd-vp.on {
+            display: block;
+            position: fixed;
+            z-index: 2147483000;
+            background: #000;
+            color: #FFB020;
+            border: 1px solid #FFB020;
+            border-radius: 3px;
+            padding: 6px 8px;
+            max-width: 320px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 11px;
+            line-height: 1.45;
+            text-align: left;
+            letter-spacing: 0;
+            text-transform: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            -webkit-user-select: text;
+            user-select: text;
+          }
+
+          /* Four corners, cycled by tapping the readout. The top pair clears the
            68px nav plus its 2px border, since the nav is the first thing this
            pass has to look at and the instrument must not cover it. */
-        #sd-vp.sd-vp-br { bottom: 8px; right: 8px; }
-        #sd-vp.sd-vp-bl { bottom: 8px; left: 8px; }
-        #sd-vp.sd-vp-tl { top: 78px; left: 8px; }
-        #sd-vp.sd-vp-tr { top: 78px; right: 8px; }
-        #sd-vp pre {
-          margin: 0;
-          font: inherit;
-          color: inherit;
-          white-space: pre;
-          cursor: pointer;
-        }
-        #sd-vp .sd-vp-bar {
-          display: flex;
-          gap: 6px;
-          margin-top: 6px;
-          border-top: 1px solid rgba(255, 176, 32, 0.35);
-          padding-top: 5px;
-        }
-        #sd-vp button {
-          flex: 1;
-          font-family: inherit;
-          font-size: 10px;
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          background: transparent;
-          color: #FFB020;
-          border: 1px solid rgba(255, 176, 32, 0.5);
-          border-radius: 2px;
-          padding: 5px 4px;
-          cursor: pointer;
-          min-height: 30px;
-        }
-        #sd-vp button:active { background: rgba(255, 176, 32, 0.2); }
-        #sd-vp .sd-vp-warn { color: #FF5A4A; }
-      </style>
-      <div id="sd-vp" class="sd-vp-br"><pre data-sd-vp-out>reading</pre>
-        <div class="sd-vp-bar"><button type="button" data-sd-vp-scan>scan</button><button type="button"
-            data-sd-vp-copy>copy</button><button type="button" data-sd-vp-close>close</button></div>
-      </div>
-      <script>
-        (function () {
-          'use strict';
-
-          var KEY = 'sd-vp-visible';
-          var box = document.getElementById('sd-vp');
-          if (!box) { return; }
-
-          var out = box.querySelector('[data-sd-vp-out]');
-          var CORNERS = ['sd-vp-br', 'sd-vp-bl', 'sd-vp-tl', 'sd-vp-tr'];
-          var corner = 0;
-          var scanned = null;
-          var pending = false;
-
-          /* ---- collection -------------------------------------------------
-             Three width measures are reported rather than one, because they
-             disagree in informative ways. innerWidth includes a classic
-             scrollbar, clientWidth does not, and visualViewport reports what
-             is actually on screen after pinch zoom or a soft keyboard. A
-             difference between the first two on the laptop is a scrollbar. A
-             difference involving the third on the phone means the page is
-             zoomed and no width reading can be trusted until it is not. */
-
-          function media(query) {
-            return window.matchMedia ? window.matchMedia(query).matches : null;
+          #sd-vp.sd-vp-br {
+            bottom: 8px;
+            right: 8px;
           }
 
-          function viewportMeta() {
-            var tag = document.querySelector('meta[name="viewport"]');
-            if (!tag) { return null; }
-            return tag.getAttribute('content') || '(empty)';
+          #sd-vp.sd-vp-bl {
+            bottom: 8px;
+            left: 8px;
           }
 
-          /* A short, honest guess at the browser. It exists for one reason:
-             a file opened from a messaging app may render in that app's own
-             WebView rather than in Chrome, and a WebView can report a
-             different viewport from the browser a visitor would use. The
-             full user agent string travels in the copy payload, so nothing
-             is lost by this being a guess. */
-          function browser() {
-            var ua = navigator.userAgent || '';
-            var name = 'unidentified';
-            if (/\bEdgA?\//.test(ua)) { name = 'Edge'; }
-            else if (/\bOPR\//.test(ua)) { name = 'Opera'; }
-            else if (/SamsungBrowser\//.test(ua)) { name = 'Samsung Internet'; }
-            else if (/FBAN|FBAV|Instagram|\bLine\//.test(ua)) { name = 'social app'; }
-            else if (/Firefox\/|FxiOS\//.test(ua)) { name = 'Firefox'; }
-            else if (/CriOS\//.test(ua)) { name = 'Chrome iOS'; }
-            else if (/Chrome\//.test(ua)) { name = 'Chrome'; }
-            else if (/Safari\//.test(ua)) { name = 'Safari'; }
-            if (/;\s?wv\)/.test(ua) || /\bwv\b/.test(ua)) { name += ' WebView'; }
-            return name;
+          #sd-vp.sd-vp-tl {
+            top: 78px;
+            left: 8px;
           }
 
-          function describe(el) {
-            var label = el.tagName.toLowerCase();
-            if (el.id) { return label + '#' + el.id; }
-            var cls = el.getAttribute && el.getAttribute('class');
-            if (cls) {
-              var first = String(cls).trim().split(/\s+/)[0];
-              if (first) { label += '.' + first; }
+          #sd-vp.sd-vp-tr {
+            top: 78px;
+            right: 8px;
+          }
+
+          #sd-vp pre {
+            margin: 0;
+            font: inherit;
+            color: inherit;
+            white-space: pre;
+            cursor: pointer;
+          }
+
+          #sd-vp .sd-vp-bar {
+            display: flex;
+            gap: 6px;
+            margin-top: 6px;
+            border-top: 1px solid rgba(255, 176, 32, 0.35);
+            padding-top: 5px;
+          }
+
+          #sd-vp button {
+            flex: 1;
+            font-family: inherit;
+            font-size: 10px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            background: transparent;
+            color: #FFB020;
+            border: 1px solid rgba(255, 176, 32, 0.5);
+            border-radius: 2px;
+            padding: 5px 4px;
+            cursor: pointer;
+            min-height: 30px;
+          }
+
+          #sd-vp button:active {
+            background: rgba(255, 176, 32, 0.2);
+          }
+
+          #sd-vp .sd-vp-warn {
+            color: #FF5A4A;
+          }
+        </style>
+        <div id="sd-vp" class="sd-vp-br">
+          <pre data-sd-vp-out>reading</pre>
+          <div class="sd-vp-bar"><button type="button" data-sd-vp-scan>scan</button><button type="button"
+              data-sd-vp-copy>copy</button><button type="button" data-sd-vp-close>close</button></div>
+        </div>
+        <script>
+          (function () {
+            'use strict';
+
+            var KEY = 'sd-vp-visible';
+            var box = document.getElementById('sd-vp');
+            if (!box) { return; }
+
+            var out = box.querySelector('[data-sd-vp-out]');
+            var CORNERS = ['sd-vp-br', 'sd-vp-bl', 'sd-vp-tl', 'sd-vp-tr'];
+            var corner = 0;
+            var scanned = null;
+            var pending = false;
+
+            /* ---- collection -------------------------------------------------
+               Three width measures are reported rather than one, because they
+               disagree in informative ways. innerWidth includes a classic
+               scrollbar, clientWidth does not, and visualViewport reports what
+               is actually on screen after pinch zoom or a soft keyboard. A
+               difference between the first two on the laptop is a scrollbar. A
+               difference involving the third on the phone means the page is
+               zoomed and no width reading can be trusted until it is not. */
+
+            function media(query) {
+              return window.matchMedia ? window.matchMedia(query).matches : null;
             }
-            return label;
-          }
 
-          /* Finds the element reaching furthest past the right edge of the
-             document. Horizontal overflow is the commonest narrow-width fault
-             and a few pixels of it is invisible by eye.
+            function viewportMeta() {
+              var tag = document.querySelector('meta[name="viewport"]');
+              if (!tag) { return null; }
+              return tag.getAttribute('content') || '(empty)';
+            }
 
-             Two honest limits, so a result is read for what it is. Position
-             fixed elements do not move with horizontal scroll, so their
-             numbers are only correct while the page is unscrolled sideways.
-             And an element can legitimately sit outside the viewport, so this
-             names a candidate rather than declaring a defect. */
-          function findWorst() {
-            var limit = document.documentElement.clientWidth;
-            var offset = window.pageXOffset || 0;
-            var all = document.body ? document.body.querySelectorAll('*') : [];
-            var worst = null;
-            var worstRight = limit + 1;
-            for (var i = 0; i < all.length; i++) {
-              var el = all[i];
-              if (el === box || box.contains(el)) { continue; }
-              var rect = el.getBoundingClientRect();
-              if (rect.width === 0 && rect.height === 0) { continue; }
-              var right = rect.right + offset;
-              if (right > worstRight) {
-                worstRight = right;
-                worst = el;
+            /* A short, honest guess at the browser. It exists for one reason:
+               a file opened from a messaging app may render in that app's own
+               WebView rather than in Chrome, and a WebView can report a
+               different viewport from the browser a visitor would use. The
+               full user agent string travels in the copy payload, so nothing
+               is lost by this being a guess. */
+            function browser() {
+              var ua = navigator.userAgent || '';
+              var name = 'unidentified';
+              if (/\bEdgA?\//.test(ua)) { name = 'Edge'; }
+              else if (/\bOPR\//.test(ua)) { name = 'Opera'; }
+              else if (/SamsungBrowser\//.test(ua)) { name = 'Samsung Internet'; }
+              else if (/FBAN|FBAV|Instagram|\bLine\//.test(ua)) { name = 'social app'; }
+              else if (/Firefox\/|FxiOS\//.test(ua)) { name = 'Firefox'; }
+              else if (/CriOS\//.test(ua)) { name = 'Chrome iOS'; }
+              else if (/Chrome\//.test(ua)) { name = 'Chrome'; }
+              else if (/Safari\//.test(ua)) { name = 'Safari'; }
+              if (/;\s?wv\)/.test(ua) || /\bwv\b/.test(ua)) { name += ' WebView'; }
+              return name;
+            }
+
+            function describe(el) {
+              var label = el.tagName.toLowerCase();
+              if (el.id) { return label + '#' + el.id; }
+              var cls = el.getAttribute && el.getAttribute('class');
+              if (cls) {
+                var first = String(cls).trim().split(/\s+/)[0];
+                if (first) { label += '.' + first; }
+              }
+              return label;
+            }
+
+            /* Finds the element reaching furthest past the right edge of the
+               document. Horizontal overflow is the commonest narrow-width fault
+               and a few pixels of it is invisible by eye.
+  
+               Two honest limits, so a result is read for what it is. Position
+               fixed elements do not move with horizontal scroll, so their
+               numbers are only correct while the page is unscrolled sideways.
+               And an element can legitimately sit outside the viewport, so this
+               names a candidate rather than declaring a defect. */
+            function findWorst() {
+              var limit = document.documentElement.clientWidth;
+              var offset = window.pageXOffset || 0;
+              var all = document.body ? document.body.querySelectorAll('*') : [];
+              var worst = null;
+              var worstRight = limit + 1;
+              for (var i = 0; i < all.length; i++) {
+                var el = all[i];
+                if (el === box || box.contains(el)) { continue; }
+                var rect = el.getBoundingClientRect();
+                if (rect.width === 0 && rect.height === 0) { continue; }
+                var right = rect.right + offset;
+                if (right > worstRight) {
+                  worstRight = right;
+                  worst = el;
+                }
+              }
+              if (!worst) { return 'no element past ' + limit + 'px'; }
+              return describe(worst) + ' to ' + Math.round(worstRight) + 'px';
+            }
+
+            function collect() {
+              var doc = document.documentElement;
+              var vv = window.visualViewport;
+              var meta = viewportMeta();
+              return {
+                innerW: window.innerWidth,
+                innerH: window.innerHeight,
+                clientW: doc.clientWidth,
+                visualW: vv ? Math.round(vv.width) : null,
+                dpr: window.devicePixelRatio || 1,
+                screenW: window.screen ? window.screen.width : null,
+                screenH: window.screen ? window.screen.height : null,
+                portrait: media('(orientation: portrait)'),
+                at900: media('(max-width: 900px)'),
+                at700: media('(max-width: 700px)'),
+                reduced: media('(prefers-reduced-motion: reduce)'),
+                meta: meta,
+                metaOk: meta !== null && meta.indexOf('width=device-width') !== -1,
+                overflow: doc.scrollWidth - doc.clientWidth,
+                browser: browser(),
+                page: location.pathname.split('/').pop() || 'index.html'
+              };
+            }
+
+            /* ---- rendering ------------------------------------------------ */
+
+            /* The label column is padded to 9 rather than 8 because 'overflow'
+               is itself 8 characters long and would otherwise render with no
+               gap between its label and its value. Caught in a DOM test rather
+               than by reading it. */
+            function pad(text) {
+              var s = String(text);
+              while (s.length < 9) { s += ' '; }
+              return s;
+            }
+
+            function render() {
+              var d = collect();
+              var lines = [];
+
+              lines.push(pad('page') + d.page);
+              lines.push(pad('css') + d.innerW + ' x ' + d.innerH +
+                '   dpr ' + (Math.round(d.dpr * 100) / 100));
+              lines.push(pad('client') + d.clientW +
+                (d.visualW !== null ? '   visual ' + d.visualW : ''));
+              lines.push(pad('screen') + d.screenW + ' x ' + d.screenH +
+                '   ' + (d.portrait ? 'portrait' : 'landscape'));
+              lines.push(pad('breaks') +
+                '900 ' + (d.at900 ? 'ON ' : 'off') +
+                '   700 ' + (d.at700 ? 'ON' : 'off'));
+
+              if (d.meta === null) {
+                lines.push(pad('meta') + 'ABSENT, page will scale');
+              } else if (!d.metaOk) {
+                lines.push(pad('meta') + 'no width=device-width');
+              } else {
+                lines.push(pad('meta') + 'ok');
+              }
+
+              lines.push(pad('overflow') +
+                (d.overflow > 0 ? d.overflow + 'px past edge' : 'none'));
+
+              if (scanned) { lines.push(pad('widest') + scanned); }
+              if (d.reduced) { lines.push(pad('motion') + 'reduced'); }
+              lines.push(pad('browser') + d.browser);
+
+              out.textContent = lines.join('\n');
+
+              /* The two conditions that make every other number on the panel
+                 unreliable are the two that get the alarm colour. */
+              var bad = (d.meta === null) || !d.metaOk || d.overflow > 0;
+              out.className = bad ? 'sd-vp-warn' : '';
+            }
+
+            function schedule() {
+              if (pending) { return; }
+              pending = true;
+              window.requestAnimationFrame(function () {
+                pending = false;
+                scanned = null;
+                render();
+              });
+            }
+
+            /* ---- copy ------------------------------------------------------
+               One line, so it pastes into a message without reflowing. The full
+               user agent and the URL travel with it, because a reading with no
+               provenance is not worth having later. */
+
+            function payload() {
+              var d = collect();
+              return [
+                d.page,
+                'css=' + d.innerW + 'x' + d.innerH,
+                'client=' + d.clientW,
+                'visual=' + (d.visualW === null ? 'n/a' : d.visualW),
+                'dpr=' + d.dpr,
+                'screen=' + d.screenW + 'x' + d.screenH,
+                (d.portrait ? 'portrait' : 'landscape'),
+                'mq900=' + (d.at900 ? 'on' : 'off'),
+                'mq700=' + (d.at700 ? 'on' : 'off'),
+                'meta=' + (d.meta === null ? 'ABSENT' : d.meta),
+                'overflow=' + d.overflow,
+                'widest=' + (scanned || 'not scanned'),
+                'reducedMotion=' + (d.reduced ? 'yes' : 'no'),
+                'browser=' + d.browser,
+                'url=' + location.href,
+                'ua=' + (navigator.userAgent || '')
+              ].join(' | ');
+            }
+
+            function flash(button, word) {
+              var original = button.textContent;
+              button.textContent = word;
+              window.setTimeout(function () { button.textContent = original; }, 1200);
+            }
+
+            function copy(button) {
+              var text = payload();
+              /* The async clipboard API is unavailable over file:// and in some
+                 WebViews, which are exactly the conditions this may be opened
+                 under, so the old path is kept as a fallback rather than
+                 assumed unnecessary. */
+              if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(function () {
+                  flash(button, 'copied');
+                }, function () {
+                  fallbackCopy(text, button);
+                });
+                return;
+              }
+              fallbackCopy(text, button);
+            }
+
+            function fallbackCopy(text, button) {
+              var field = document.createElement('textarea');
+              field.value = text;
+              field.setAttribute('readonly', 'readonly');
+              field.style.position = 'fixed';
+              field.style.top = '-1000px';
+              document.body.appendChild(field);
+              field.select();
+              var ok = false;
+              try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+              document.body.removeChild(field);
+              flash(button, ok ? 'copied' : 'select it');
+            }
+
+            /* ---- visibility ------------------------------------------------ */
+
+            function remember(state) {
+              try {
+                if (state) { window.sessionStorage.setItem(KEY, '1'); }
+                else { window.sessionStorage.removeItem(KEY); }
+              } catch (err) { /* private mode or file://; the hash still works */ }
+            }
+
+            function remembered() {
+              try { return window.sessionStorage.getItem(KEY) === '1'; }
+              catch (err) { return false; }
+            }
+
+            function show() {
+              if (box.classList.contains('on')) { return; }
+              box.classList.add('on');
+              remember(true);
+              render();
+              window.addEventListener('resize', schedule);
+              window.addEventListener('orientationchange', schedule);
+              if (window.visualViewport) {
+                window.visualViewport.addEventListener('resize', schedule);
               }
             }
-            if (!worst) { return 'no element past ' + limit + 'px'; }
-            return describe(worst) + ' to ' + Math.round(worstRight) + 'px';
-          }
 
-          function collect() {
-            var doc = document.documentElement;
-            var vv = window.visualViewport;
-            var meta = viewportMeta();
-            return {
-              innerW: window.innerWidth,
-              innerH: window.innerHeight,
-              clientW: doc.clientWidth,
-              visualW: vv ? Math.round(vv.width) : null,
-              dpr: window.devicePixelRatio || 1,
-              screenW: window.screen ? window.screen.width : null,
-              screenH: window.screen ? window.screen.height : null,
-              portrait: media('(orientation: portrait)'),
-              at900: media('(max-width: 900px)'),
-              at700: media('(max-width: 700px)'),
-              reduced: media('(prefers-reduced-motion: reduce)'),
-              meta: meta,
-              metaOk: meta !== null && meta.indexOf('width=device-width') !== -1,
-              overflow: doc.scrollWidth - doc.clientWidth,
-              browser: browser(),
-              page: location.pathname.split('/').pop() || 'index.html'
-            };
-          }
-
-          /* ---- rendering ------------------------------------------------ */
-
-          /* The label column is padded to 9 rather than 8 because 'overflow'
-             is itself 8 characters long and would otherwise render with no
-             gap between its label and its value. Caught in a DOM test rather
-             than by reading it. */
-          function pad(text) {
-            var s = String(text);
-            while (s.length < 9) { s += ' '; }
-            return s;
-          }
-
-          function render() {
-            var d = collect();
-            var lines = [];
-
-            lines.push(pad('page') + d.page);
-            lines.push(pad('css') + d.innerW + ' x ' + d.innerH +
-              '   dpr ' + (Math.round(d.dpr * 100) / 100));
-            lines.push(pad('client') + d.clientW +
-              (d.visualW !== null ? '   visual ' + d.visualW : ''));
-            lines.push(pad('screen') + d.screenW + ' x ' + d.screenH +
-              '   ' + (d.portrait ? 'portrait' : 'landscape'));
-            lines.push(pad('breaks') +
-              '900 ' + (d.at900 ? 'ON ' : 'off') +
-              '   700 ' + (d.at700 ? 'ON' : 'off'));
-
-            if (d.meta === null) {
-              lines.push(pad('meta') + 'ABSENT, page will scale');
-            } else if (!d.metaOk) {
-              lines.push(pad('meta') + 'no width=device-width');
-            } else {
-              lines.push(pad('meta') + 'ok');
+            function hide() {
+              box.classList.remove('on');
+              remember(false);
             }
 
-            lines.push(pad('overflow') +
-              (d.overflow > 0 ? d.overflow + 'px past edge' : 'none'));
+            out.addEventListener('click', function () {
+              box.classList.remove(CORNERS[corner]);
+              corner = (corner + 1) % CORNERS.length;
+              box.classList.add(CORNERS[corner]);
+            });
 
-            if (scanned) { lines.push(pad('widest') + scanned); }
-            if (d.reduced) { lines.push(pad('motion') + 'reduced'); }
-            lines.push(pad('browser') + d.browser);
-
-            out.textContent = lines.join('\n');
-
-            /* The two conditions that make every other number on the panel
-               unreliable are the two that get the alarm colour. */
-            var bad = (d.meta === null) || !d.metaOk || d.overflow > 0;
-            out.className = bad ? 'sd-vp-warn' : '';
-          }
-
-          function schedule() {
-            if (pending) { return; }
-            pending = true;
-            window.requestAnimationFrame(function () {
-              pending = false;
-              scanned = null;
+            box.querySelector('[data-sd-vp-scan]').addEventListener('click', function () {
+              scanned = findWorst();
               render();
             });
-          }
 
-          /* ---- copy ------------------------------------------------------
-             One line, so it pastes into a message without reflowing. The full
-             user agent and the URL travel with it, because a reading with no
-             provenance is not worth having later. */
+            box.querySelector('[data-sd-vp-copy]').addEventListener('click', function (event) {
+              copy(event.currentTarget);
+            });
 
-          function payload() {
-            var d = collect();
-            return [
-              d.page,
-              'css=' + d.innerW + 'x' + d.innerH,
-              'client=' + d.clientW,
-              'visual=' + (d.visualW === null ? 'n/a' : d.visualW),
-              'dpr=' + d.dpr,
-              'screen=' + d.screenW + 'x' + d.screenH,
-              (d.portrait ? 'portrait' : 'landscape'),
-              'mq900=' + (d.at900 ? 'on' : 'off'),
-              'mq700=' + (d.at700 ? 'on' : 'off'),
-              'meta=' + (d.meta === null ? 'ABSENT' : d.meta),
-              'overflow=' + d.overflow,
-              'widest=' + (scanned || 'not scanned'),
-              'reducedMotion=' + (d.reduced ? 'yes' : 'no'),
-              'browser=' + d.browser,
-              'url=' + location.href,
-              'ua=' + (navigator.userAgent || '')
-            ].join(' | ');
-          }
+            box.querySelector('[data-sd-vp-close]').addEventListener('click', hide);
 
-          function flash(button, word) {
-            var original = button.textContent;
-            button.textContent = word;
-            window.setTimeout(function () { button.textContent = original; }, 1200);
-          }
+            window.addEventListener('hashchange', function () {
+              if (location.hash === '#vp') { show(); }
+            });
 
-          function copy(button) {
-            var text = payload();
-            /* The async clipboard API is unavailable over file:// and in some
-               WebViews, which are exactly the conditions this may be opened
-               under, so the old path is kept as a fallback rather than
-               assumed unnecessary. */
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-              navigator.clipboard.writeText(text).then(function () {
-                flash(button, 'copied');
-              }, function () {
-                fallbackCopy(text, button);
-              });
-              return;
-            }
-            fallbackCopy(text, button);
-          }
-
-          function fallbackCopy(text, button) {
-            var field = document.createElement('textarea');
-            field.value = text;
-            field.setAttribute('readonly', 'readonly');
-            field.style.position = 'fixed';
-            field.style.top = '-1000px';
-            document.body.appendChild(field);
-            field.select();
-            var ok = false;
-            try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
-            document.body.removeChild(field);
-            flash(button, ok ? 'copied' : 'select it');
-          }
-
-          /* ---- visibility ------------------------------------------------ */
-
-          function remember(state) {
-            try {
-              if (state) { window.sessionStorage.setItem(KEY, '1'); }
-              else { window.sessionStorage.removeItem(KEY); }
-            } catch (err) { /* private mode or file://; the hash still works */ }
-          }
-
-          function remembered() {
-            try { return window.sessionStorage.getItem(KEY) === '1'; }
-            catch (err) { return false; }
-          }
-
-          function show() {
-            if (box.classList.contains('on')) { return; }
-            box.classList.add('on');
-            remember(true);
-            render();
-            window.addEventListener('resize', schedule);
-            window.addEventListener('orientationchange', schedule);
-            if (window.visualViewport) {
-              window.visualViewport.addEventListener('resize', schedule);
-            }
-          }
-
-          function hide() {
-            box.classList.remove('on');
-            remember(false);
-          }
-
-          out.addEventListener('click', function () {
-            box.classList.remove(CORNERS[corner]);
-            corner = (corner + 1) % CORNERS.length;
-            box.classList.add(CORNERS[corner]);
-          });
-
-          box.querySelector('[data-sd-vp-scan]').addEventListener('click', function () {
-            scanned = findWorst();
-            render();
-          });
-
-          box.querySelector('[data-sd-vp-copy]').addEventListener('click', function (event) {
-            copy(event.currentTarget);
-          });
-
-          box.querySelector('[data-sd-vp-close]').addEventListener('click', hide);
-
-          window.addEventListener('hashchange', function () {
-            if (location.hash === '#vp') { show(); }
-          });
-
-          if (location.hash === '#vp' || remembered()) { show(); }
-        })();
-      </script>
-      <!-- VIEWPORT REPORTER:END -->
-        <a class="footer-legal" href="privacy.html">Privacy Notice</a></div>
+            if (location.hash === '#vp' || remembered()) { show(); }
+          })();
+        </script>
+        <!-- VIEWPORT REPORTER:END -->
+        <a class="footer-legal" href="privacy.html">Privacy Notice</a>
+      </div>
     </div>
   </footer>
   <!-- FOOTER:END -->
@@ -1155,8 +1375,8 @@
     data-state="hidden">
     <div class="consent-inner">
       <p class="consent-text">This site uses Google Analytics to understand how it's used. It only runs if you agree
-        to it, and everything else on the site works exactly the same either way. See the <a
-          href="privacy.html">privacy notice</a> for what's collected and why.</p>
+        to it, and everything else on the site works exactly the same either way. See the <a href="privacy.html">privacy
+          notice</a> for what's collected and why.</p>
       <div class="consent-actions">
         <button type="button" class="consent-btn" id="consent-decline">Decline</button>
         <button type="button" class="consent-btn" id="consent-accept">Accept</button>
