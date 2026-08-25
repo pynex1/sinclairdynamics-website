@@ -4,9 +4,9 @@
 
    REVISIONS (most recent first, three kept)
    Session 33  25 Aug 2026  .ai-embed height decided by vertical space, not
-                            by viewport width. Slack sized to one wheel notch
-                            so the widget can be landed on without snapping;
-                            snap retained only below 588px. F1, F3, F4.
+                            by viewport width. Slack sized to one wheel notch,
+                            relaxed again for touch; snap kept only below
+                            588px. F1, F3, F4.
    Session 27  22 Aug 2026  .ai-embed raised to 700px to pay for the widget's
                             30px construction-mark insets.
    Session 19  19 Aug 2026  Consent banner classes added. .footer-eng-intel
@@ -712,11 +712,13 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
    17 inch laptop, and nothing at all above 868px of viewport where the base
    700px height binds instead.
 
-   A CARVE-OUT NOT TAKEN. The 100px exists because a notched wheel cannot stop
-   between notches. Touch scrolling is continuous, so on a phone this band buys
-   nothing and the 76px is spent on a problem that device does not have. A
-   pointer: coarse carve-out would recover it. Left for its own change rather
-   than bundled here.
+   THE COST IS NOT PAID ON TOUCH, AND IS CARVED OUT BELOW. The 100px exists
+   because a notched wheel cannot stop between notches. A touch screen scrolls
+   continuously and has no notches, so the band buys a phone nothing while
+   costing it more widget than it costs anything else. The carve-out
+   immediately below restores the 92px slack for coarse pointers. It was
+   deployed as its own change, after the 168px had been tested, so that the
+   two could be judged separately.
 
    WHERE 420px COMES FROM, AND WHAT IT IS FOR. It is not a target height. It is
    a floor that exists so the constraint above cannot invert. The widget's own
@@ -743,6 +745,33 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
   border: none;
   border-radius: 8px;
   display: block;
+}
+
+/* ---------------------------------------------------------------------------
+   TOUCH GETS THE HEIGHT BACK. Added 25 August 2026, Session 33.
+
+   The 168px slack above buys a landing band one mouse wheel notch wide, so
+   that a wheel always has a position showing the whole widget. A touch screen
+   scrolls continuously: there are no notches to land between, the band is
+   worth nothing, and the 76px it costs lands on the device with the least
+   vertical room of any measured. This returns the earlier 92px slack, which is
+   the nav plus visual clearance and nothing more, wherever the pointer is
+   coarse. A 702px phone goes from 534px of widget to 610px, which is 30px more
+   than it carried before today rather than 46px less.
+
+   WHY hover: none IS IN THE QUERY AND NOT JUST pointer: coarse. A touchscreen
+   laptop reports a coarse primary pointer under some readings and genuinely
+   does have a wheel attached. Requiring both narrows this to devices with no
+   hover capability at all, which is the population the argument is about.
+
+   IT DOES NOT TOUCH THE SNAP. The snap query below keys on height alone and is
+   unaffected: a phone in landscape still snaps, a phone in portrait at 702px
+   is above the breakpoint either way, and this rule sets no snap property.
+   Nor do the two queries fight over height, because this is the only one of
+   them that sets any.
+   --------------------------------------------------------------------------- */
+@media (hover: none) and (pointer: coarse) {
+  .ai-embed { max-height: calc(100svh - 92px); }
 }
 
 /* ---------------------------------------------------------------------------
