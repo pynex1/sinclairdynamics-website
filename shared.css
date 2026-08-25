@@ -4,7 +4,8 @@
 
    REVISIONS (most recent first, three kept)
    Session 33  25 Aug 2026  .ai-embed height decided by vertical space, not
-                            by viewport width. Site record F1 and F3.
+                            by viewport width, and scroll-snapped so it can be
+                            landed on with a wheel. Site record F1 and F3.
    Session 27  22 Aug 2026  .ai-embed raised to 700px to pay for the widget's
                             30px construction-mark insets.
    Session 19  19 Aug 2026  Consent banner classes added. .footer-eng-intel
@@ -28,7 +29,42 @@
   --font-body:    'Barlow', sans-serif;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+/* ---------------------------------------------------------------------------
+   SCROLL SNAP. Added 25 August 2026, Session 33.
+
+   WHY THIS EXISTS. The assistant embed was sized to fit the viewport earlier
+   the same day. It fits, and it could not be stopped on: Chrome on Windows
+   scrolls 100px per wheel notch and the band of scroll positions showing the
+   whole widget is 24px, so about three notches in four clipped it at the top
+   or the bottom, and landing it took dragging the scrollbar thumb by hand. A
+   thing that fits the screen and cannot be brought onto it has not been fixed.
+
+   WHY IT IS DECLARED SITE-WIDE AND ONLY ACTS ON ONE PAGE. Snapping requires a
+   snap target, and the only element carrying scroll-snap-align is .ai-embed,
+   which appears on contact.html alone. Declaring the container property on
+   html therefore does nothing on the other fourteen pages. That is a claim
+   about how snapping works rather than an observation, so it is worth
+   confirming rather than trusting: every other page should scroll exactly as
+   it did before.
+
+   PROXIMITY AND NOT MANDATORY, WHICH IS THE LOAD-BEARING CHOICE. Mandatory
+   means the browser must always come to rest on a snap point. With a single
+   snap point on a long page that makes the direct contact routes below the
+   widget hard to stop at, and in some browsers it traps scrolling outright.
+   Proximity pulls only when the scroll comes to rest nearby and releases when
+   the reader scrolls past. The cost is that "nearby" is defined by the browser
+   rather than here, so this is less deterministic than it looks.
+
+   THE ALTERNATIVE NOT TAKEN. Scoping the container to the contact page with
+   html:has(.ct-dark) would also work. It was rejected because scroll-margin on
+   the element achieves the same alignment with a smaller blast radius, and
+   because it would couple this shared stylesheet to a class name defined
+   inside one page file.
+   --------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
 body { font-family: var(--font-body); background: var(--white); color: var(--dark); overflow-x: hidden; }
 
 /* NAV */
@@ -683,11 +719,17 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
    to the 700px height, which is the behaviour that shipped before this change.
 
    WHERE 92px COMES FROM. 68px of nav, which is fixed and always over the top
-   of the page, plus 24px of slack. The slack does two jobs: it keeps the
-   widget from reading as welded to the nav, and it is the width of the band of
-   scroll positions at which the whole widget is on screen at once. It is a
-   judgement rather than a measurement and it is the first value to move if
-   that band feels too tight to land on.
+   of the page, plus 24px of slack.
+
+   The slack originally did two jobs: visual clearance from the nav, and the
+   width of the band of scroll positions at which the whole widget is on screen
+   at once. It turned out to be far too small for the second job and that was
+   found within the hour, on the deployed page, by scrolling with a wheel.
+   Scroll snap now does the landing, so the slack is back to doing only the
+   first job, and 24px is enough for that. The note is corrected here rather
+   than deleted because the reasoning that produced too small a number is the
+   part worth keeping: a value can be right for the job you named and wrong for
+   the job it is actually doing.
 
    WHERE 420px COMES FROM, AND WHAT IT IS FOR. It is not a target height. It is
    a floor that exists so the constraint above cannot invert. The widget's own
@@ -714,6 +756,23 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
   border: none;
   border-radius: 8px;
   display: block;
+
+  /* THE SNAP TARGET. Added 25 August 2026, Session 33.
+
+     scroll-margin-top is not cosmetic and the snap is wrong without it. The
+     nav is fixed and covers the top 68px of the viewport, but the scrollport
+     is the whole viewport, so centring the widget in it would put its top at
+     46px on a 551px screen, which is underneath the nav. scroll-margin-top
+     extends the snap area 68px upward, so the centring happens in the space a
+     visitor can actually see. At 1280x551 that leaves 12px of clearance below
+     the nav and 12px beneath the widget.
+
+     Where the widget plus its scroll margin is taller than the viewport, which
+     is the phone in landscape, the specification says alignment is ignored and
+     the reader scrolls freely through it. That is the correct behaviour for a
+     case where nothing could fit anyway, and it means this needs no guard. */
+  scroll-snap-align: center;
+  scroll-margin-top: 68px;
 }
 
 /* ---------------------------------------------------------------------------
@@ -767,6 +826,20 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
    still fire, so no feedback is lost: only the movement is.
    --------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
+  /* Added 25 August 2026, Session 33. scroll-behavior: smooth has been on html
+     since the site was built and was never in this block, so a reader who had
+     asked for less motion still got animated page jumps from every in-page
+     link. That gap is pre-existing. It is closed here because the scroll snap
+     added the same day animates through this same property, and adding a new
+     source of motion in front of somebody who has asked for none is a
+     different thing from leaving an old one standing.
+
+     This obeys 3.8 rather than departing from it. The rule is that reduced
+     motion removes travel and keeps every other feedback: the page still goes
+     exactly where it is asked to go, including snapping, and stops animating
+     the journey there. Nothing is lost except the movement. */
+  html { scroll-behavior: auto; }
+
   .btn-primary, .btn-primary:hover, .btn-primary:active,
   .btn-outline, .btn-outline:hover, .btn-outline:active,
   .service-card, .service-card:hover, .service-card:active,
