@@ -4,8 +4,9 @@
 
    REVISIONS (most recent first, three kept)
    Session 33  25 Aug 2026  .ai-embed height decided by vertical space, not
-                            by viewport width, and scroll-snapped so it can be
-                            landed on with a wheel. Site record F1 and F3.
+                            by viewport width. Slack sized to one wheel notch
+                            so the widget can be landed on without snapping;
+                            snap retained only below 588px. F1, F3, F4.
    Session 27  22 Aug 2026  .ai-embed raised to 700px to pay for the widget's
                             30px construction-mark insets.
    Session 19  19 Aug 2026  Consent banner classes added. .footer-eng-intel
@@ -29,42 +30,10 @@
   --font-body:    'Barlow', sans-serif;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-/* ---------------------------------------------------------------------------
-   SCROLL SNAP. Added 25 August 2026, Session 33.
-
-   WHY THIS EXISTS. The assistant embed was sized to fit the viewport earlier
-   the same day. It fits, and it could not be stopped on: Chrome on Windows
-   scrolls 100px per wheel notch and the band of scroll positions showing the
-   whole widget is 24px, so about three notches in four clipped it at the top
-   or the bottom, and landing it took dragging the scrollbar thumb by hand. A
-   thing that fits the screen and cannot be brought onto it has not been fixed.
-
-   WHY IT IS DECLARED SITE-WIDE AND ONLY ACTS ON ONE PAGE. Snapping requires a
-   snap target, and the only element carrying scroll-snap-align is .ai-embed,
-   which appears on contact.html alone. Declaring the container property on
-   html therefore does nothing on the other fourteen pages. That is a claim
-   about how snapping works rather than an observation, so it is worth
-   confirming rather than trusting: every other page should scroll exactly as
-   it did before.
-
-   PROXIMITY AND NOT MANDATORY, WHICH IS THE LOAD-BEARING CHOICE. Mandatory
-   means the browser must always come to rest on a snap point. With a single
-   snap point on a long page that makes the direct contact routes below the
-   widget hard to stop at, and in some browsers it traps scrolling outright.
-   Proximity pulls only when the scroll comes to rest nearby and releases when
-   the reader scrolls past. The cost is that "nearby" is defined by the browser
-   rather than here, so this is less deterministic than it looks.
-
-   THE ALTERNATIVE NOT TAKEN. Scoping the container to the contact page with
-   html:has(.ct-dark) would also work. It was rejected because scroll-margin on
-   the element achieves the same alignment with a smaller blast radius, and
-   because it would couple this shared stylesheet to a class name defined
-   inside one page file.
-   --------------------------------------------------------------------------- */
-html {
-  scroll-behavior: smooth;
-  scroll-snap-type: y proximity;
-}
+html { scroll-behavior: smooth; }
+/* The scroll snap container property is NOT here. It is declared inside a
+   max-height media query beside .ai-embed, because it applies only to short
+   viewports and only ever acts on that one element. See SCROLL SNAP below. */
 body { font-family: var(--font-body); background: var(--white); color: var(--dark); overflow-x: hidden; }
 
 /* NAV */
@@ -718,18 +687,36 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
    A browser that does not know the unit drops the declaration and falls back
    to the 700px height, which is the behaviour that shipped before this change.
 
-   WHERE 92px COMES FROM. 68px of nav, which is fixed and always over the top
-   of the page, plus 24px of slack.
+   WHERE 168px COMES FROM, AND WHY IT IS DERIVED RATHER THAN CHOSEN. 68px of
+   nav, plus 100px, which is one mouse wheel notch in Chrome on Windows.
 
-   The slack originally did two jobs: visual clearance from the nav, and the
-   width of the band of scroll positions at which the whole widget is on screen
-   at once. It turned out to be far too small for the second job and that was
-   found within the hour, on the deployed page, by scrolling with a wheel.
-   Scroll snap now does the landing, so the slack is back to doing only the
-   first job, and 24px is enough for that. The note is corrected here rather
-   than deleted because the reasoning that produced too small a number is the
-   part worth keeping: a value can be right for the job you named and wrong for
-   the job it is actually doing.
+   The arithmetic is worth following because it is short and it is what makes
+   this a computed value. Wherever the max-height above is what binds, the
+   widget is (viewport - slack) and the room below the nav is (viewport - 68),
+   so the band of scroll positions at which the whole widget is on screen is
+   (slack - 68), at every viewport height. It does not vary with the screen. It
+   is a dial set directly by this one number.
+
+   At 92 the band was 24px against a 100px notch, so about three notches in
+   four clipped the widget top or bottom and it had to be landed by dragging
+   the scrollbar thumb. At 168 the band is exactly one notch, which means some
+   notch position always falls inside it, whatever the scroll started from.
+
+   THE HISTORY IS KEPT DELIBERATELY. The value was 92 for a few hours on 25
+   August and the reasoning that produced it named only one of the two jobs the
+   slack does: clearance from the nav. It was sized for that and was wrong for
+   the other. A value can be right for the job you named and wrong for the job
+   it is actually doing, and that is the part worth remembering.
+
+   WHAT IT COSTS. 76px of widget on a 702px phone, 39px on the Yoga, 29px on a
+   17 inch laptop, and nothing at all above 868px of viewport where the base
+   700px height binds instead.
+
+   A CARVE-OUT NOT TAKEN. The 100px exists because a notched wheel cannot stop
+   between notches. Touch scrolling is continuous, so on a phone this band buys
+   nothing and the 76px is spent on a problem that device does not have. A
+   pointer: coarse carve-out would recover it. Left for its own change rather
+   than bundled here.
 
    WHERE 420px COMES FROM, AND WHAT IT IS FOR. It is not a target height. It is
    a floor that exists so the constraint above cannot invert. The widget's own
@@ -751,28 +738,61 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
 .ai-embed {
   width: 100%;
   height: 700px;
-  max-height: calc(100svh - 92px);
+  max-height: calc(100svh - 168px);
   min-height: 420px;
   border: none;
   border-radius: 8px;
   display: block;
+}
 
-  /* THE SNAP TARGET. Added 25 August 2026, Session 33.
+/* ---------------------------------------------------------------------------
+   SCROLL SNAP, FOR SHORT VIEWPORTS ONLY. Added 25 August 2026, Session 33,
+   and scoped to a height the same day.
 
-     scroll-margin-top is not cosmetic and the snap is wrong without it. The
-     nav is fixed and covers the top 68px of the viewport, but the scrollport
-     is the whole viewport, so centring the widget in it would put its top at
-     46px on a 551px screen, which is underneath the nav. scroll-margin-top
-     extends the snap area 68px upward, so the centring happens in the space a
-     visitor can actually see. At 1280x551 that leaves 12px of clearance below
-     the nav and 12px beneath the widget.
+   WHY IT IS CONDITIONAL, WHICH IS THE WHOLE POINT OF THIS BLOCK. The slack
+   above makes the landing band exactly one wheel notch wherever the max-height
+   binds, so on any viewport tall enough for that a wheel lands the widget
+   unaided and a snap has nothing to do. Left unconditional it still fires
+   there, and what it produces is a long unrequested jump on the first notch
+   from the top of the page. That was reported on a 17 inch laptop as feeling
+   forced, and it was: the snap was intervening where nothing needed
+   intervening, and paying for it with the largest travel of any screen.
 
-     Where the widget plus its scroll margin is taller than the viewport, which
-     is the phone in landscape, the specification says alignment is ignored and
-     the reader scrolls freely through it. That is the correct behaviour for a
-     case where nothing could fit anyway, and it means this needs no guard. */
-  scroll-snap-align: center;
-  scroll-margin-top: 68px;
+   WHERE 588 COMES FROM. It is not a device and it is not a round number. It is
+   the viewport height at which the 420px floor takes over from the max-height.
+   Below it the widget stops shrinking with the screen, so the band starts
+   closing: 63px at 551, 40px at 528, nothing at all by 488. That is exactly
+   the region where the screen is too short to hold the widget comfortably and
+   where a snap earns its keep. Above it the band is a full notch and it does
+   not. The query reads 587 because 588 is the first height that clears.
+
+   A KNOWN IMPRECISION, STATED RATHER THAN GLOSSED. This query tests the
+   viewport height and the rule above sizes against svh, and on a mobile
+   browser those are not always the same number while the URL bar is moving.
+   Neither instrument this was measured on sits near the boundary, so it has
+   not been observed. A device that did sit near it could snap or not snap
+   depending on the bar.
+
+   PROXIMITY AND NOT MANDATORY. Mandatory means the browser must always come to
+   rest on a snap point. With a single snap point on a long page that makes the
+   contact routes below the widget hard to stop at, and in some browsers it
+   traps scrolling outright. Proximity pulls only when the scroll comes to rest
+   nearby and releases when the reader scrolls past.
+
+   WHY scroll-margin-top IS NOT COSMETIC. The nav is fixed and covers the top
+   68px of the viewport, but the scrollport is the whole viewport, so centring
+   the widget in it would put its top underneath the nav. The margin extends
+   the snap area upward by the nav's height so the centring happens in the
+   space a visitor can actually see.
+
+   Where the widget plus its margin is taller than the viewport, which is the
+   phone in landscape, the specification says alignment is ignored and the
+   reader scrolls freely through it. That is correct for a case where nothing
+   could fit anyway, and it is why this needs no further guard.
+   --------------------------------------------------------------------------- */
+@media (max-height: 587px) {
+  html { scroll-snap-type: y proximity; }
+  .ai-embed { scroll-snap-align: center; scroll-margin-top: 68px; }
 }
 
 /* ---------------------------------------------------------------------------
