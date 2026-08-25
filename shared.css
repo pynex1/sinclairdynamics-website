@@ -759,10 +759,36 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
    coarse. A 702px phone goes from 534px of widget to 610px, which is 30px more
    than it carried before today rather than 46px less.
 
-   WHY hover: none IS IN THE QUERY AND NOT JUST pointer: coarse. A touchscreen
-   laptop reports a coarse primary pointer under some readings and genuinely
-   does have a wheel attached. Requiring both narrows this to devices with no
-   hover capability at all, which is the population the argument is about.
+   WHY THERE IS A WIDTH CONDITION ON A RULE ABOUT POINTERS. Corrected 25 August
+   2026, hours after the first version, and the correction is the useful part.
+
+   This query originally tested pointer capability alone, on the reasoning that
+   hover: none plus pointer: coarse would exclude a touchscreen laptop with a
+   wheel. It does not. Measured on a HP Spectre x360 15: folded into tablet
+   mode with a mouse and external monitors attached, both (hover: none) and
+   (any-hover: none) return true. Windows reports no hovering pointer when the
+   hinge is folded, whatever is plugged in. So a 1707px desktop setup with a
+   notched wheel was taking the phone's rule and losing the landing band this
+   whole arrangement exists to provide, silently, because a 71px band lands
+   often enough not to announce itself.
+
+   No pointer query separates that machine from a phone. Both were tried and
+   both track the hinge rather than the available input. Width does separate
+   them, and 700px is the site's own existing breakpoint rather than a new
+   number.
+
+   THE OBJECTION TO IT, RECORDED BECAUSE IT IS FAIR. This stacks a width proxy
+   on a capability query, and a width standing in for something it is not
+   measuring is precisely the fault at F3 that started this whole change. The
+   defence is that width is not deciding a vertical size here. It is excluding
+   large touch devices that also have a wheel, which is something width
+   genuinely does distinguish, and the pointer half still carries the argument:
+   a narrow window on a desktop is not a phone and correctly keeps its band.
+
+   THE SIMPLER ALTERNATIVE, HELD IN RESERVE. Deleting this block entirely and
+   letting every device take the 168px slack costs a phone 76px and removes all
+   of this. It is one deletion and it stays available if the complexity ever
+   stops earning its place.
 
    IT DOES NOT TOUCH THE SNAP. The snap query below keys on height alone and is
    unaffected: a phone in landscape still snaps, a phone in portrait at 702px
@@ -770,7 +796,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
    Nor do the two queries fight over height, because this is the only one of
    them that sets any.
    --------------------------------------------------------------------------- */
-@media (hover: none) and (pointer: coarse) {
+@media (hover: none) and (pointer: coarse) and (max-width: 700px) {
   .ai-embed { max-height: calc(100svh - 92px); }
 }
 
