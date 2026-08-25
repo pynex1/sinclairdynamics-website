@@ -1,3 +1,16 @@
+/* ---------------------------------------------------------------------------
+   shared.css
+   Repository: sinclairdynamics-website
+
+   REVISIONS (most recent first, three kept)
+   Session 33  25 Aug 2026  .ai-embed height decided by vertical space, not
+                            by viewport width. Site record F1 and F3.
+   Session 27  22 Aug 2026  .ai-embed raised to 700px to pay for the widget's
+                            30px construction-mark insets.
+   Session 19  19 Aug 2026  Consent banner classes added. .footer-eng-intel
+                            removed with its markup; .footer-legal added.
+   --------------------------------------------------------------------------- */
+
 :root {
   --slate:       #1E3A4A;
   --slate-light: #2A4F63;
@@ -627,20 +640,81 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
 }
 
 /* AI ASSISTANT EMBED
-   Sits below the human contact routes on the contact page only. Deliberately
-   not a floating launcher and deliberately not on every page: the assistant is
-   an alternative to the form, never a gate in front of a person.
-   loading="lazy" keeps it off the critical path for visitors who never scroll. */
-/* Height raised from 640px / 520px on 22 August 2026, Session 27. The widget
-   inside now insets its content 30px on every edge to clear the construction
-   marks drawn at its corners, which costs about 36px of vertical room. The
-   extra 60px covers that and returns the rest to the conversation, which was
-   only showing two messages at the old height. The border-radius is now inert:
-   the widget is transparent, so there is no longer a painted corner to clip. It
-   is left in place because it costs nothing and would matter again if anything
-   inside ever painted a background. */
-.ai-embed { width: 100%; height: 700px; border: none; border-radius: 8px; display: block; }
-@media (max-width: 700px) { .ai-embed { height: 580px; } }
+   Sits inside the hero's dark field on the contact page, directly beneath the
+   headline and above the human contact routes. Deliberately not a floating
+   launcher and deliberately not on every page: the assistant is an alternative
+   to the form, never a gate in front of a person.
+   loading="lazy" keeps it off the critical path for visitors who never scroll.
+
+   (The line above read "sits below the human contact routes" until 25 August
+   2026. That stopped being true on 22 August, when the page was restructured
+   and the assistant moved above them. Corrected while this rule was open.)
+
+   Height raised from 640px / 520px on 22 August 2026, Session 27. The widget
+   inside insets its content 30px on every edge to clear the construction marks
+   drawn at its corners, which costs about 36px of vertical room. The
+   border-radius is inert: the widget is transparent, so there is no longer a
+   painted corner to clip. It is left in place because it costs nothing and
+   would matter again if anything inside ever painted a background.
+
+   ---------------------------------------------------------------------------
+   HEIGHT IS DECIDED BY VERTICAL SPACE. Changed 25 August 2026, Session 33.
+   Site record faults F1, F3 and F4.
+
+   WHAT WAS WRONG. This rule dropped the embed from 700px to 580px below a
+   700px viewport WIDTH. The thing it was actually trying to serve is vertical:
+   whether the widget fits the screen. Width was standing in for height, and
+   the two only travel together on a phone held upright, which is the one case
+   it was written against. Everywhere else it inverts. A 14 inch laptop reports
+   1280 wide and 551 tall, so the rule does not fire and the widget renders at
+   its tallest in a viewport with less than half the vertical room of the
+   machine this site was designed on. At that size a visitor cannot see Ada's
+   message and the box they type into at the same time from any scroll
+   position. A phone in landscape reports 779 by 260 and is worse.
+
+   WHY svh AND NOT vh OR dvh. On Chrome for Android, vh resolves against the
+   viewport with the URL bar retracted, so a vh-sized element is taller than
+   what is actually on screen whenever the bar is showing. That would
+   reintroduce the same fault by a different route. dvh tracks the viewport as
+   it changes and would resize the widget while the visitor scrolls. svh is the
+   smallest viewport: never taller than what is on screen, and it does not
+   reflow. On a desktop all three are identical, so this costs nothing there.
+   A browser that does not know the unit drops the declaration and falls back
+   to the 700px height, which is the behaviour that shipped before this change.
+
+   WHERE 92px COMES FROM. 68px of nav, which is fixed and always over the top
+   of the page, plus 24px of slack. The slack does two jobs: it keeps the
+   widget from reading as welded to the nav, and it is the width of the band of
+   scroll positions at which the whole widget is on screen at once. It is a
+   judgement rather than a measurement and it is the first value to move if
+   that band feels too tight to land on.
+
+   WHERE 420px COMES FROM, AND WHAT IT IS FOR. It is not a target height. It is
+   a floor that exists so the constraint above cannot invert. The widget's own
+   fixed chrome, its header row and its input row, is roughly 175px, and the
+   conversation column between them is flex-1 and absorbs whatever is left. On
+   a phone in landscape the max-height above computes to 168px, which is less
+   than the chrome, and the conversation column would be driven to zero. That
+   is visual language fault 10: when a constraint is enforced by a min or a
+   max, ask what happens when the bound crosses the value it is bounding. The
+   175px figure is computed from the widget's source and has not been measured,
+   so this floor is deliberately set well clear of it rather than close to it.
+   At 420px it holds even if that figure is out by a third.
+
+   WHAT THIS DOES NOT FIX. F4, the phone in landscape at 260px tall, is
+   improved and not solved: no widget of any height is usable in 192px of room
+   below the nav. It is left for its own decision rather than papered over
+   here.
+   --------------------------------------------------------------------------- */
+.ai-embed {
+  width: 100%;
+  height: 700px;
+  max-height: calc(100svh - 92px);
+  min-height: 420px;
+  border: none;
+  border-radius: 8px;
+  display: block;
+}
 
 /* ---------------------------------------------------------------------------
    CONSENT BANNER
