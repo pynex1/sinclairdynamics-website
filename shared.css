@@ -3,14 +3,17 @@
    Repository: sinclairdynamics-website
 
    REVISIONS (most recent first, three kept)
+   Session 36  26 Aug 2026  The nav works on a phone. Below 900px the five
+                            links stop being hidden and become a panel under
+                            the bar, opened by a new .nav-toggle button. The
+                            bar itself is unchanged and still 68px, which the
+                            .ai-embed arithmetic below depends on.
    Session 33  25 Aug 2026  .ai-embed height decided by vertical space, not
                             by viewport width. Slack sized to one wheel notch,
                             relaxed again for touch; snap kept only below
                             588px. F1, F3, F4.
    Session 27  22 Aug 2026  .ai-embed raised to 700px to pay for the widget's
                             30px construction-mark insets.
-   Session 19  19 Aug 2026  Consent banner classes added. .footer-eng-intel
-                            removed with its markup; .footer-legal added.
    --------------------------------------------------------------------------- */
 
 :root {
@@ -97,6 +100,48 @@ nav {
   background: var(--teal-bright);
   color: var(--dark);
 }
+
+/* MENU BUTTON, FOR THE PHONE NAV
+   Added 26 August 2026, Session 36. Site record item 18.
+
+   WHAT THIS IS FOR. Below 900px .nav-links was set to display: none and
+   nothing replaced it, so a visitor on a phone had the logo and Get In Touch
+   and no other route out of the page they landed on. No phone orientation
+   clears that breakpoint: 360px upright, 779px on its side. The footer was
+   the only way between pages.
+
+   THE BUTTON IS DECLARED HERE AND SHOWN IN THE 900px BLOCK. It is display:
+   none at every width above that, so nothing about the wide layout changes.
+
+   NOTHING IN IT TRAVELS, WHICH IS THE BAR'S OWN RULE. Visual language 3.5
+   says the nav is furniture: state changes are carried by colour rather than
+   by movement, because a lift inside a fixed 68px bar reads as a glitch. The
+   open state is therefore a colour change on the three bars, and the panel
+   being on screen is itself the clearer indicator. The rotate-into-a-cross
+   treatment is travel and is deliberately not used.
+
+   .nav-right EXISTS SO THE BUTTON AND THE CALL TO ACTION SIT TOGETHER on the
+   right of the bar. nav is a flex row with space-between and three children,
+   and it still has three: logo, links, and this pair. Above 900px the button
+   is display: none and contributes no width, so this group is exactly as wide
+   as the call to action inside it and the bar lays out as it always did. The
+   markup has changed and the rendered wide layout has not, which are two
+   different claims and only the second one is being made here. */
+.nav-right { display: flex; align-items: center; gap: 8px; }
+.nav-toggle {
+  display: none;
+  flex-direction: column; align-items: center; justify-content: center;
+  gap: 5px; width: 40px; height: 40px; padding: 0;
+  background: transparent; border: none; border-radius: 4px;
+  cursor: pointer;
+}
+.nav-toggle-bar {
+  display: block; width: 22px; height: 2px;
+  background: rgba(255,255,255,0.75);
+  transition: background 0.2s ease-out;
+}
+.nav-toggle:hover .nav-toggle-bar { background: var(--white); }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar { background: var(--teal-bright); }
 
 /* PAGE HERO */
 .page-hero {
@@ -588,7 +633,61 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
 /* RESPONSIVE */
 @media (max-width: 900px) {
   nav { padding: 0 20px; }
-  .nav-links { display: none; }
+
+  /* THE FIVE LINKS BECOME A PANEL RATHER THAN DISAPPEARING.
+     Added 26 August 2026, Session 36. This block read
+     `.nav-links { display: none; }` until today.
+
+     These are the same five anchors the wide layout uses, not a second copy.
+     apply-chrome.py sets the active entry by matching each anchor's exact
+     full tag and asserting it found precisely one, so a duplicated set would
+     halt the run on every page. Reusing them is therefore not only tidier,
+     it is what the deploy script requires.
+
+     THE PANEL FLOATS OVER THE PAGE AND DOES NOT PUSH IT DOWN. nav is fixed,
+     so an absolutely positioned child resolves against it. Displacing content
+     under somebody who is already reading is the more disorienting of the two
+     behaviours, and overlaying is what the bar above it already does.
+
+     WHY top IS calc(100% + 2px) AND NOT 100%. An absolutely positioned child
+     resolves against its ancestor's padding box, which stops inside the nav's
+     2px bottom border. At a flat 100% the panel would be painted over that
+     teal rule and the bar would appear to lose its edge the moment the menu
+     opened. The 2px is the border's own width and nothing else.
+
+     THE HEIGHT IS BOUNDED BY VERTICAL SPACE, per visual language fault 12:
+     anything sized against vertical space is decided by vertical space. Five
+     entries stack to roughly 250px, which fits a phone upright with room and
+     does not fit one on its side, where the whole viewport is 260px. Without
+     the bound the last entries would sit off the bottom of a fixed element
+     and could not be scrolled to at all. svh rather than vh for the reason
+     recorded against .ai-embed below: vh resolves against the viewport with
+     the URL bar retracted and would overstate the room available. 70px is
+     the bar plus its border.
+
+     THE INDICATOR RULE IS KEPT AND RESIZED. 3.5 requires the active page to
+     hold a rule permanently, so that the current page is a state and not only
+     a different colour. Run full width in a stacked list it would read as a
+     divider between entries, so it becomes a short mark at the start of the
+     label, which is the same short teal rule .hero-eyebrow and
+     .section-eyebrow already use. The mechanism is unchanged. */
+  .nav-toggle { display: flex; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: calc(100% + 2px); left: 0; right: 0;
+    flex-direction: column; gap: 0;
+    padding: 8px 20px 14px;
+    max-height: calc(100svh - 70px); overflow-y: auto;
+    background: rgba(30,58,74,0.97); backdrop-filter: blur(8px);
+    border-bottom: 2px solid var(--teal);
+  }
+  .nav-links[data-open="true"] { display: flex; }
+  /* 14px of padding on a 15px label gives a target about 46px tall, which
+     clears the 44px a thumb needs. The anchors stay full width for the same
+     reason, so the target is the row and not the words in it. */
+  .nav-links a { padding: 14px 0; font-size: 15px; }
+  .nav-links a::after { left: 0; right: auto; width: 20px; bottom: 8px; }
   .section-inner { padding: 70px 24px; }
   .two-col-grid, .two-col-wide { grid-template-columns: 1fr; gap: 40px; }
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }

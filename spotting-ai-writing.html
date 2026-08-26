@@ -118,19 +118,93 @@
        from the page's own filename. Five entries as of 14 August 2026: The
        Engagement sits between The Work and Contact. The four discipline pages
        and every other page outside the nav carry no active entry at all,
-       which is correct rather than an omission. -->
+       which is correct rather than an omission.
+
+       File:       _nav_canonical.html
+       Repository: sinclairdynamics-website
+
+       REVISIONS (most recent first, three kept)
+       Session 36  26 Aug 2026  The five links become a panel on a phone,
+                                revealed by a menu button, instead of being
+                                hidden with no replacement. The five anchors
+                                below are untouched: apply-chrome.py sets the
+                                active entry by matching each one exactly, so
+                                a second copy of them would halt the run.
+       Session 18  19 Aug 2026  This fragment created. The nav stops being
+                                duplicated by hand into every page file.
+
+       THE MENU BUTTON, AND WHY THE LINKS ARE NOT REPEATED INSIDE IT.
+       Below 900px shared.css laid these five out as a horizontal row and
+       then hid them, leaving a phone visitor the logo and Get In Touch and
+       nothing else, with the footer as the only route between pages. They
+       are no longer hidden. The same five anchors are laid out as a panel
+       under the bar and revealed by the button. One set of links, two
+       appearances, so there is only ever one answer to what is in the nav.
+
+       Get In Touch stays in the bar and is deliberately not inside the
+       panel. Positioning 8.3 makes the persistent call to action the floor
+       of the invitation ramp, present at every scroll position on every
+       page. Inside the panel it would be conditional on somebody opening
+       the panel first. -->
   <nav>
     <a href="index.html" class="nav-logo"><img src="sinclair-nav-icon.png" alt="Sinclair Dynamics"
         style="height:52px;width:auto;"></a>
-    <div class="nav-links">
+    <div class="nav-links" id="nav-links" data-open="false">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="work.html">The Work</a>
       <a href="engagement.html">The Engagement</a>
       <a href="contact.html">Contact</a>
     </div>
-    <a href="contact.html" class="nav-cta">Get In Touch</a>
+    <div class="nav-right">
+      <button type="button" class="nav-toggle" id="nav-toggle"
+              aria-controls="nav-links" aria-expanded="false" aria-label="Open menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <a href="contact.html" class="nav-cta">Get In Touch</a>
+    </div>
   </nav>
+  <script>
+    /* The button carries the state and the panel follows it, so there is one
+       source of truth rather than two that can disagree. The panel is styled
+       off data-open and the button off aria-expanded; both are set together.
+
+       If this script never runs, a phone visitor is exactly where they were
+       before today, using the footer. It adds a route that does not currently
+       exist rather than propping up one that does. */
+    (function () {
+      var toggle = document.getElementById('nav-toggle');
+      var panel = document.getElementById('nav-links');
+      if (!toggle || !panel) { return; }
+
+      function setOpen(open) {
+        panel.setAttribute('data-open', open ? 'true' : 'false');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      }
+
+      toggle.addEventListener('click', function () {
+        setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+      });
+
+      /* Escape closes it, which is the expected behaviour of any panel a
+         control opens. It is reachable only on a narrow desktop window,
+         since a phone has no such key, and it costs three lines. */
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') { setOpen(false); }
+      });
+
+      /* Closing on a link tap is currently unexercised: all five links leave
+         the page, and the next page arrives with the panel closed because
+         nothing persists. It is here for the first nav entry that is an
+         in-page anchor rather than a page. */
+      panel.addEventListener('click', function (event) {
+        if (event.target.closest('a')) { setOpen(false); }
+      });
+    })();
+  </script>
   <!-- NAV:END -->
 
   <section class="page-hero">

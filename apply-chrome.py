@@ -63,8 +63,8 @@ below, rather than silently in a visitor's browser.
 
 USAGE
 -----
-    python3 apply-chrome.py            apply, verify, and report
-    python3 apply-chrome.py --check    verify only, change nothing
+    python apply-chrome.py            apply, verify, and report
+    python apply-chrome.py --check    verify only, change nothing
 
 Run it from the folder holding the page files and the two fragments.
 Exit code 0 means every page agrees. Any other exit code means stop.
@@ -137,7 +137,13 @@ CONSENT_FRAGMENT = "_consent_canonical.html"
 BLOCKS = [
     ("nav", NAV_FRAGMENT, "<!-- NAV:START", "<!-- NAV:END -->", None),
     ("footer", FOOTER_FRAGMENT, "<!-- FOOTER:START", "<!-- FOOTER:END -->", None),
-    ("consent", CONSENT_FRAGMENT, "<!-- CONSENT:START", "<!-- CONSENT:END -->", "</body>"),
+    (
+        "consent",
+        CONSENT_FRAGMENT,
+        "<!-- CONSENT:START",
+        "<!-- CONSENT:END -->",
+        "</body>",
+    ),
 ]
 
 
@@ -148,6 +154,7 @@ class Stop(Exception):
 # --------------------------------------------------------------------------
 # Helpers
 # --------------------------------------------------------------------------
+
 
 def read(path):
     with open(path, encoding="utf-8") as fh:
@@ -214,8 +221,7 @@ def locate(text, start_marker, end_marker, filename, label, bootstrap_before=Non
         )
     if end_count != 1:
         raise Stop(
-            f"{filename}: expected exactly one '{end_marker}', "
-            f"found {end_count}"
+            f"{filename}: expected exactly one '{end_marker}', " f"found {end_count}"
         )
     start = text.index(start_marker)
     end = text.index(end_marker) + len(end_marker)
@@ -329,6 +335,7 @@ def reconcile_with_sitemap(folder):
 # it watches had failed, because a check incapable of failing confirms nothing.
 # --------------------------------------------------------------------------
 
+
 def verify(folder):
     problems = reconcile_with_sitemap(folder)
     nav_hashes = {}
@@ -365,7 +372,9 @@ def verify(folder):
         # Which entry, if any, is marked active in this page's nav.
         marks = re.findall(r'<a href="([^"]+)" class="active">([^<]+)</a>', nav)
         if len(marks) > 1:
-            problems.append(f"{page}: {len(marks)} active nav entries, expected at most 1")
+            problems.append(
+                f"{page}: {len(marks)} active nav entries, expected at most 1"
+            )
         active_found[page] = marks[0][1] if marks else None
 
         expected = NAV_ACTIVE.get(page)
@@ -415,13 +424,16 @@ def verify(folder):
 # Main
 # --------------------------------------------------------------------------
 
+
 def main():
     check_only = "--check" in sys.argv
     folder = os.getcwd()
 
     print(f"Sinclair Dynamics chrome application")
     print(f"Folder: {folder}")
-    print(f"Mode:   {'verify only, nothing will be written' if check_only else 'apply then verify'}")
+    print(
+        f"Mode:   {'verify only, nothing will be written' if check_only else 'apply then verify'}"
+    )
     print()
 
     if not check_only:
@@ -490,14 +502,20 @@ def main():
     print("VERIFICATION")
     print(f"  Pages checked:        {len(nav_hashes)} of {len(PAGES)}")
     if nav_hashes:
-        print(f"  Nav shapes found:     {len(set(nav_hashes.values()))} "
-              f"(expected 1) -> {sorted(set(nav_hashes.values()))}")
+        print(
+            f"  Nav shapes found:     {len(set(nav_hashes.values()))} "
+            f"(expected 1) -> {sorted(set(nav_hashes.values()))}"
+        )
     if footer_hashes:
-        print(f"  Footer shapes found:  {len(set(footer_hashes.values()))} "
-              f"(expected 1) -> {sorted(set(footer_hashes.values()))}")
+        print(
+            f"  Footer shapes found:  {len(set(footer_hashes.values()))} "
+            f"(expected 1) -> {sorted(set(footer_hashes.values()))}"
+        )
     if consent_hashes:
-        print(f"  Consent shapes found: {len(set(consent_hashes.values()))} "
-              f"(expected 1) -> {sorted(set(consent_hashes.values()))}")
+        print(
+            f"  Consent shapes found: {len(set(consent_hashes.values()))} "
+            f"(expected 1) -> {sorted(set(consent_hashes.values()))}"
+        )
     marked = {p: a for p, a in active_found.items() if a}
     print(f"  Active nav entries:   {len(marked)} (expected {len(NAV_ACTIVE)})")
     for p, a in sorted(marked.items()):
