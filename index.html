@@ -64,6 +64,25 @@
       color: var(--teal-bright);
     }
 
+    /* THE HEADLINE HAS TWO HAND SET BREAKS. See the comment at the <h1>.
+       480px is not a fitting threshold and is deliberately not one. The
+       three-line break actually stops fitting just under 390px, and that
+       figure carries about 6 percent of model error, so a breakpoint placed
+       on it could land the wrong side of itself. 480 sits above every common
+       phone width and below every tablet, so it separates device classes
+       rather than balancing on an arithmetic edge.
+
+       Neither break is ever restored from display: none. Both are shown by
+       default in the markup and each is hidden in the context that does not
+       want it, which is why this is two queries. */
+    @media (min-width: 481px) {
+      .h1-br-sm { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .h1-br-lg { display: none; }
+    }
+
     .hero-sub {
       font-family: var(--font-display);
       font-weight: 300;
@@ -615,7 +634,24 @@
 
     <div class="hero-content">
       <div class="hero-eyebrow">Sinclair Dynamics &middot; Johannesburg, South Africa</div>
-      <h1>Measuring often<br>enough used to be<br><span>too expensive.</span></h1>
+      <!-- The line breaks here are hand set and there are two sets of them.
+           WIDE, three lines: Measuring often / enough used to be / too expensive.
+           NARROW, four lines: Measuring / often enough / used to be / too expensive.
+
+           Why there are two. The type floor is 46px and at 360px of viewport
+           there are 312px of text width, where "enough used to be" needs about
+           320. It overflowed by roughly 8px and dropped "be" onto a line of its
+           own. Measured from Barlow Condensed ExtraBold's own metrics, good to
+           about 6 percent against a line already observed on the deployed page.
+
+           The narrow break keeps "often enough" together, which is the phrase
+           the sentence turns on, and the lines lengthen down to the coloured
+           one so it builds rather than straggles.
+
+           Each break is only ever hidden and never restored from display:none,
+           which is why there are two media queries in the stylesheet rather
+           than one. Hiding a <br> is the reliable half of that technique. -->
+      <h1>Measuring <br class="h1-br-sm">often <br class="h1-br-lg">enough <br class="h1-br-sm">used to be <br><span>too expensive.</span></h1>
       <div class="hero-sub">That constraint moved. The reporting cycles it created did not.</div>
       <p class="hero-body">When a person had to do the looking, the interval was set by what that person could sustain.
         It was the correct decision at the time and it is still in place nearly everywhere. What sits in the gap is the
