@@ -8,6 +8,10 @@
                             the bar, opened by a new .nav-toggle button. The
                             bar itself is unchanged and still 68px, which the
                             .ai-embed arithmetic below depends on.
+                            .nav-cta leaves red for teal-bright, closing the
+                            standing item on it: red on machinery means stop.
+                            .nav-right gap 8px to 16px, so the two controls
+                            on the right are not one mis-tap apart.
    Session 33  25 Aug 2026  .ai-embed height decided by vertical space, not
                             by viewport width. Slack sized to one wheel notch,
                             relaxed again for touch; snap kept only below
@@ -70,17 +74,55 @@ nav {
 .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
 .nav-links a.active { color: var(--teal-bright); }
 /* An illuminated pushbutton acknowledges the hand before it acknowledges the
-   press. Hover raises a bezel inside the fill; the press darkens it. Red to
-   red-dark on its own was close to imperceptible. */
+   press. Hover raises a bezel inside the fill; the press darkens it. The
+   earlier red to red-dark press, on its own, was close to imperceptible.
+
+   ---------------------------------------------------------------------------
+   THIS CONTROL LEFT RED ON 26 AUGUST 2026, SESSION 36. Visual language 9.1,
+   site record item 17. Deferred since 8 August and taken now because it could
+   not be judged separately from the menu button added beside it.
+
+   WHY. On machinery red is reserved and it means stop; on an emergency stop
+   it means stop because something has gone wrong. Getting in touch is the
+   early spotting of a problem rather than a last resort, so a red control was
+   saying something specific and wrong. Green is the machine convention for
+   the opposite and this palette has no green. teal-bright is what occupies
+   that position everywhere else on the site.
+
+   THE PAIRING IS NOT NEW. .nav-monitor:hover, a few lines below, is already
+   teal-bright fill with --dark text in this same bar.
+
+   IT IS ALSO MORE LEGIBLE, MEASURED RATHER THAN ASSUMED. Against the bar's
+   own ground the old red sat at 2.87:1 and this sits at 4.31:1. The label
+   went from white on red at 4.16:1, which is under the 4.5 threshold for text
+   at this size, to --dark on teal-bright at 6.41:1, which clears it.
+
+   WHAT RED NOW MEANS, WHICH IS THE POINT OF DOING IT. One thing: the mark.
+   The logo is an image and never used this token, so red survives on the page
+   as identity and nothing else. The only other use of --red on the site is
+   .spine-node .dot-end, the single point on the contact form diagram where
+   something leaves the page, which is a signal rather than an identity and is
+   left alone deliberately.
+
+   --red-dark has no consumer as of this change. It is kept rather than
+   deleted because red remains the identity colour and a darker partner may be
+   wanted for it. Recorded here so a later session reads that as a decision
+   rather than as something missed.
+
+   THE HOVER BEZEL IS DELIBERATELY UNCHANGED. It is still a white inset ring,
+   which against teal-bright reads as a highlight rather than as a rule. That
+   is the one part of this control not decided by measurement, and if it reads
+   wrong on a device the fix is this one declaration.
+   --------------------------------------------------------------------------- */
 .nav-cta {
   font-family: var(--font-display); font-weight: 700; font-size: 13px;
   letter-spacing: 0.1em; text-transform: uppercase;
-  background: var(--red); color: var(--white);
+  background: var(--teal-bright); color: var(--dark);
   padding: 10px 22px; border-radius: 4px; text-decoration: none;
   transition: background 0.2s ease-out, box-shadow 0.2s ease-out;
 }
 .nav-cta:hover { box-shadow: inset 0 0 0 2px rgba(255,255,255,0.35); }
-.nav-cta:active { background: var(--red-dark); box-shadow: inset 0 0 0 2px rgba(255,255,255,0.18); }
+.nav-cta:active { background: var(--teal); box-shadow: inset 0 0 0 2px rgba(255,255,255,0.18); }
 .nav-monitor {
   font-family: var(--font-display);
   font-weight: 700;
@@ -127,7 +169,12 @@ nav {
    as the call to action inside it and the bar lays out as it always did. The
    markup has changed and the rendered wide layout has not, which are two
    different claims and only the second one is being made here. */
-.nav-right { display: flex; align-items: center; gap: 8px; }
+/* 16px rather than 8px. The button's hit area already extends 9px past its
+   three bars on each side, so at 8px the two tappable regions were 8px apart
+   and a thumb aimed at the menu could reach the contact page instead. There
+   is roughly 90px of unused width in the bar at 360px, so this is bought with
+   space nothing else wanted. */
+.nav-right { display: flex; align-items: center; gap: 16px; }
 .nav-toggle {
   display: none;
   flex-direction: column; align-items: center; justify-content: center;
