@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitoring Calibration and Technical Consulting | Sinclair Dynamics, Johannesburg</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    /* ---------------------------------------------------------------------------
+   HERO
+   The stats row was removed: it carried four credentials in the highest
+   position on the page, which inverts the layer order the page is built on.
+   Credentials now sit in the creds bar near the foot of the page.
+   --------------------------------------------------------------------------- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--slate) 0%, #0D2433 60%, #0A1D28 100%);
+      padding-top: 68px;
+    }
+
+    /* .hero-bg-pattern removed 8 August 2026: the same 45-degree hatch withdrawn from
+   shared.css. See the note there. .hero-accent is a radial wash, not hatch, and stays. */
+    .hero-accent {
+      position: absolute;
+      right: -100px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(26, 122, 110, 0.15) 0%, transparent 70%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 40px;
+      width: 100%;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(46px, 7vw, 88px);
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+
+    .hero h1 span {
+      color: var(--teal-bright);
+    }
+
+    .hero-sub {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(20px, 3vw, 32px);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 34px;
+      max-width: 700px;
+      line-height: 1.15;
+    }
+
+    .hero-body {
+      font-size: 17px;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 580px;
+      margin-bottom: 44px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ---------------------------------------------------------------------------
+   ALIASING FIGURE
+   A real signal (faint), sample points taken at a wide interval (every one of
+   them landing exactly on the curve), and the smooth trend those points appear
+   to form, which the signal never does. It is the argument of the page, drawn.
+   The horizontal mask fades it out under the text column and lets it carry
+   weight on the right, where the layout is empty. It is the only element on
+   the page that moves.
+
+   FOUR STAGES, ALL RUNNING LEFT TO RIGHT. Revised 8 August 2026.
+   Everything reads in the direction of time. The previous version drew left
+   to right and then retreated right to left, which read as the drawing
+   undoing itself rather than as something happening to the data.
+
+     1. The real signal draws in, and the sample points land on it as the
+        sweep passes each one.
+     2. The smooth trend those points appear to form draws in over the top.
+     3. The real signal ERASES left to right, taking its sample points with
+        it, and leaves the trend alone on screen. This is the stage that
+        carries the argument: it is what happens when the underlying data is
+        summarised away and only the report remains.
+     4. The trend then erases left to right as well. The false picture fades
+        too, having already been acted on.
+
+   Sample points leave with the real signal because the readings are
+   supporting data as well. What a report leaves behind is the trend, not the
+   observations that produced it. Keeping the dots would leave evidence still
+   visible, which weakens the claim.
+
+   TIMELINE, in seconds, at a 28s loop. The appearance phase is unchanged
+   from the previous 22s version in absolute time: nothing before 15.8s
+   moves any differently. All the added length sits after the point where the
+   argument is already legible, so the figure still catches a reader early.
+     0.0  - 5.5   real signal draws            (0%    - 19.6%)
+     5.7  - 6.6   sample points land, staggered left to right by delay
+    10.6  - 15.8  trend draws                  (37.9% - 56.4%)
+    15.8  - 18.0  HOLD: the comparison stands  (56.4% - 64.3%)
+    18.0  - 22.0  real signal and points erase (64.3% - 78.6%)
+    22.0  - 25.0  HOLD: the trend stands alone (78.6% - 89.3%)
+    25.0  - 28.0  trend erases                 (89.3% - 100%)
+
+   MECHANISM. Drawing left to right is stroke-dashoffset running from the
+   path length down to zero. Erasing left to right is the same offset
+   continuing past zero into negative, which pulls the visible dash out from
+   the start rather than from the end. One continuous property, no new
+   elements, and the hold sits at zero.
+   --------------------------------------------------------------------------- */
+    .hero-wave {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 38vh;
+      min-height: 220px;
+      max-height: 340px;
+      z-index: 1;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.18) 40%, rgba(0, 0, 0, 0.75) 72%, #000 100%);
+      mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.18) 40%, rgba(0, 0, 0, 0.75) 72%, #000 100%);
+    }
+
+    .wave-true {
+      stroke: var(--teal-bright);
+      stroke-width: 1.4;
+      fill: none;
+      opacity: 0;
+      stroke-dasharray: 2920;
+      stroke-dashoffset: 2920;
+      animation: waveTrue 28s linear infinite;
+    }
+
+    .wave-dot {
+      fill: var(--teal-bright);
+      opacity: 0;
+      animation: waveDot 28s linear infinite;
+    }
+
+    .wave-false {
+      stroke: var(--teal-bright);
+      stroke-width: 2;
+      fill: none;
+      opacity: 0;
+      stroke-dasharray: 1700;
+      stroke-dashoffset: 1700;
+      animation: waveFalse 28s linear infinite;
+    }
+
+    /* The points land, and later leave, in the order the sweep reaches them. A
+   single delay per point staggers both ends, which is what is wanted: the
+   left-most point is the first to appear and the first to go. */
+    .wave-dot:nth-of-type(1) {
+      animation-delay: 0s;
+    }
+
+    .wave-dot:nth-of-type(2) {
+      animation-delay: 0.5s;
+    }
+
+    .wave-dot:nth-of-type(3) {
+      animation-delay: 1s;
+    }
+
+    .wave-dot:nth-of-type(4) {
+      animation-delay: 1.5s;
+    }
+
+    .wave-dot:nth-of-type(5) {
+      animation-delay: 2s;
+    }
+
+    .wave-dot:nth-of-type(6) {
+      animation-delay: 2.5s;
+    }
+
+    .wave-dot:nth-of-type(7) {
+      animation-delay: 3s;
+    }
+
+    .wave-dot:nth-of-type(8) {
+      animation-delay: 3.5s;
+    }
+
+    @keyframes waveTrue {
+      0% {
+        stroke-dashoffset: 2920;
+        opacity: 0;
+      }
+
+      3.1% {
+        opacity: 0.16;
+      }
+
+      19.6% {
+        stroke-dashoffset: 0;
+      }
+
+      64.3% {
+        stroke-dashoffset: 0;
+      }
+
+      78.6%,
+      100% {
+        stroke-dashoffset: -2920;
+      }
+    }
+
+    @keyframes waveDot {
+
+      0%,
+      20.4% {
+        opacity: 0;
+      }
+
+      23.6% {
+        opacity: 1;
+      }
+
+      64.3% {
+        opacity: 1;
+      }
+
+      66.1%,
+      100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes waveFalse {
+
+      0%,
+      37.9% {
+        stroke-dashoffset: 1700;
+        opacity: 0;
+      }
+
+      40.7% {
+        opacity: 0.65;
+      }
+
+      56.4% {
+        stroke-dashoffset: 0;
+      }
+
+      89.3% {
+        stroke-dashoffset: 0;
+      }
+
+      100% {
+        stroke-dashoffset: -1700;
+      }
+    }
+
+    /* Anyone who has asked for less motion gets the final state as a still image.
+   The argument survives intact without any of it moving. */
+    @media (prefers-reduced-motion: reduce) {
+
+      .wave-true,
+      .wave-dot,
+      .wave-false {
+        animation: none;
+      }
+
+      .wave-true {
+        stroke-dashoffset: 0;
+        opacity: 0.16;
+      }
+
+      .wave-dot {
+        opacity: 1;
+      }
+
+      .wave-false {
+        stroke-dashoffset: 0;
+        opacity: 0.65;
+      }
+    }
+
+    /* ---------------------------------------------------------------------------
+   SYMPTOM ROWS
+   Acknowledgement tier: 2px of travel, no shadow. These do not go anywhere,
+   so the movement confirms the cursor and nothing more. The left rule
+   changing state does the real work.
+   --------------------------------------------------------------------------- */
+    /* .symptom, .symptom h3, .symptom p and .symptom-bridge were promoted to
+       shared.css on 18 August 2026, when platform.html became their second
+       consumer. Same move as .proof-box and .named-engagement, and the local
+       copies are removed here in the same deploy so there is never a moment
+       with two copies live.
+       Two things were corrected on promotion and both are visible on this page.
+       The hover travel was translateX(2px) and is now the tier's translateY(-2px),
+       which closes item 3 on this page and item 8 site wide. And the card is now
+       in the reduced motion block, which it had never been in, so a reader who
+       asked for less motion keeps the border lift and loses only the travel. */
+
+    /* SERVICE GRID: four discipline cards, copy untouched pending stage 2.
+       .services-grid-2x2 and .named-engagement moved to shared.css on
+       14 August 2026 when engagement.html became their second consumer. */
+    .service-card {
+      background: var(--white);
+      padding: 44px 38px;
+      border-top: 3px solid transparent;
+      border-radius: 4px;
+      transition: border-top-color 0.3s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease-out;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .service-card:hover {
+      border-top-color: var(--teal);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(30, 58, 74, 0.10);
+    }
+
+    .service-icon-wrap {
+      margin-bottom: 24px;
+    }
+
+    .service-icon-wrap svg {
+      color: var(--teal);
+    }
+
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--slate);
+      margin-bottom: 8px;
+    }
+
+    .service-card p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #556B77;
+    }
+
+    /* ---------------------------------------------------------------------------
+   CREDIBILITY STRIP
+   A box that contains a link is itself the link. Adopted as standard, so
+   these sit on the navigable tier with the full 4px lift.
+   --------------------------------------------------------------------------- */
+    .proof-strip {
+      background: linear-gradient(135deg, var(--slate) 0%, var(--slate-light) 100%);
+      color: var(--white);
+    }
+
+    .proof-strip .section-title {
+      color: var(--white);
+    }
+
+    .proof-strip .section-title span {
+      color: var(--teal-bright);
+    }
+
+    .proof-strip .body-text {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .proof-strip .section-eyebrow {
+      color: var(--teal-bright);
+    }
+
+    .proof-strip .section-eyebrow::before {
+      background: var(--teal-bright);
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+
+
+
+
+
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero .hero-eyebrow {
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero h1 {
+      animation: fadeUp 0.6s ease 0.1s both;
+    }
+
+    .hero .hero-sub {
+      animation: fadeUp 0.6s ease 0.2s both;
+    }
+
+    .hero .hero-body {
+      animation: fadeUp 0.6s ease 0.3s both;
+    }
+
+    .hero .hero-actions {
+      animation: fadeUp 0.6s ease 0.4s both;
+    }
+
+    @media (max-width: 900px) {
+      .hero-content {
+        padding: 60px 24px;
+      }
+
+      .hero-wave {
+        height: 26vh;
+        min-height: 160px;
+        opacity: 0.7;
+      }
+
+      .proof-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      /* .symptom breakpoint padding promoted with the class. */
+    }
+  </style>
+  <!-- Google Analytics -->
+  <!-- Analytics removed 9 August 2026, pending the consent gate and privacy
+     notice. Non-essential tracking must not fire before consent, and the
+     gate belongs with the nav and footer single sourcing rather than
+     duplicated per page. Property G-W94Z1196CH. -->
+  <meta name="description"
+    content="Most reporting intervals were inherited rather than derived. Sinclair Dynamics reviews what you measure, how often you look, and what that gap is costing you. Johannesburg, South Africa.">
+  <meta name="keywords"
+    content="monitoring calibration, reporting interval review, sampling interval business reporting, detection gap analysis, technical consultant Johannesburg, engineering consulting Johannesburg, systems integration South Africa, Sinclair Dynamics, Ainsley Williams">
+  <meta name="author" content="Ainsley Williams, Sinclair Dynamics">
+  <meta name="robots" content="index, follow">
+  <!-- Open Graph. The homepage preview leads with the business, because a bare
+     URL can be shared in any context and the recipient needs to know who it is.
+     The hook belongs on the pages it introduces, not here. -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sinclairdynamics.co/">
+  <meta property="og:title" content="Sinclair Dynamics | Monitoring Calibration and Technical Consulting">
+  <meta property="og:description"
+    content="Most reporting intervals were inherited rather than derived. Sinclair Dynamics reviews what you measure, how often you look, and what that gap is costing you.">
+  <meta property="og:image" content="https://www.sinclairdynamics.co/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Sinclair Dynamics">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sinclair Dynamics | Monitoring Calibration and Technical Consulting">
+  <meta name="twitter:description"
+    content="Most reporting intervals were inherited rather than derived. Sinclair Dynamics reviews what you measure, how often you look, and what that gap is costing you.">
+  <meta name="twitter:image" content="https://www.sinclairdynamics.co/og-image.png">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.sinclairdynamics.co/">
+</head>
+
+<body>
+  <!-- NAV:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE FILE.
+       It is written from _nav_canonical.html by apply-chrome.py, and any hand
+       edit made here will be silently overwritten the next time that script
+       runs. Change the fragment, then run the script.
+       Identical on every page except the active entry, which the script sets
+       from the page's own filename. Five entries as of 14 August 2026: The
+       Engagement sits between The Work and Contact. The four discipline pages
+       and every other page outside the nav carry no active entry at all,
+       which is correct rather than an omission.
+
+       File:       _nav_canonical.html
+       Repository: sinclairdynamics-website
+
+       REVISIONS (most recent first, three kept)
+       Session 36  26 Aug 2026  The five links become a panel on a phone,
+                                revealed by a menu button, instead of being
+                                hidden with no replacement. The five anchors
+                                below are untouched: apply-chrome.py sets the
+                                active entry by matching each one exactly, so
+                                a second copy of them would halt the run.
+       Session 18  19 Aug 2026  This fragment created. The nav stops being
+                                duplicated by hand into every page file.
+
+       THE MENU BUTTON, AND WHY THE LINKS ARE NOT REPEATED INSIDE IT.
+       Below 900px shared.css laid these five out as a horizontal row and
+       then hid them, leaving a phone visitor the logo and Get In Touch and
+       nothing else, with the footer as the only route between pages. They
+       are no longer hidden. The same five anchors are laid out as a panel
+       under the bar and revealed by the button. One set of links, two
+       appearances, so there is only ever one answer to what is in the nav.
+
+       Get In Touch stays in the bar and is deliberately not inside the
+       panel. Positioning 8.3 makes the persistent call to action the floor
+       of the invitation ramp, present at every scroll position on every
+       page. Inside the panel it would be conditional on somebody opening
+       the panel first. -->
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="sinclair-nav-icon.png" alt="Sinclair Dynamics"
+        style="height:52px;width:auto;"></a>
+    <div class="nav-links" id="nav-links" data-open="false">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="work.html">The Work</a>
+      <a href="engagement.html">The Engagement</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button type="button" class="nav-toggle" id="nav-toggle"
+              aria-controls="nav-links" aria-expanded="false" aria-label="Open menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <a href="contact.html" class="nav-cta">Get In Touch</a>
+    </div>
+  </nav>
+  <script>
+    /* The button carries the state and the panel follows it, so there is one
+       source of truth rather than two that can disagree. The panel is styled
+       off data-open and the button off aria-expanded; both are set together.
+
+       If this script never runs, a phone visitor is exactly where they were
+       before today, using the footer. It adds a route that does not currently
+       exist rather than propping up one that does. */
+    (function () {
+      var toggle = document.getElementById('nav-toggle');
+      var panel = document.getElementById('nav-links');
+      if (!toggle || !panel) { return; }
+
+      function setOpen(open) {
+        panel.setAttribute('data-open', open ? 'true' : 'false');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      }
+
+      toggle.addEventListener('click', function () {
+        setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+      });
+
+      /* Escape closes it, which is the expected behaviour of any panel a
+         control opens. It is reachable only on a narrow desktop window,
+         since a phone has no such key, and it costs three lines. */
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') { setOpen(false); }
+      });
+
+      /* Closing on a link tap is currently unexercised: all five links leave
+         the page, and the next page arrives with the panel closed because
+         nothing persists. It is here for the first nav entry that is an
+         in-page anchor rather than a page. */
+      panel.addEventListener('click', function (event) {
+        if (event.target.closest('a')) { setOpen(false); }
+      });
+    })();
+  </script>
+  <!-- NAV:END -->
+
+  <!-- ===== 1. HERO: the cause, stated so nobody has to admit fault ===== -->
+  <section class="hero">
+    <div class="hero-accent"></div>
+
+    <svg class="hero-wave" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <path class="wave-true"
+        d="M 0 167 L 6 185 L 12 201 L 18 213 L 24 219 L 30 219 L 36 214 L 42 204 L 48 188 L 54 170 L 60 150 L 66 130 L 72 112 L 78 96 L 84 86 L 90 81 L 96 81 L 102 87 L 108 99 L 114 115 L 120 133 L 126 153 L 132 173 L 138 191 L 144 206 L 150 215 L 156 220 L 162 218 L 168 211 L 174 199 L 180 183 L 186 163 L 192 143 L 198 124 L 204 106 L 210 92 L 216 83 L 222 80 L 228 82 L 234 91 L 240 104 L 246 121 L 252 140 L 258 160 L 264 179 L 270 196 L 276 209 L 282 218 L 288 220 L 294 217 L 300 208 L 306 194 L 312 176 L 318 157 L 324 137 L 330 117 L 336 101 L 342 89 L 348 82 L 354 80 L 360 85 L 366 94 L 372 109 L 378 127 L 384 147 L 390 167 L 396 185 L 402 201 L 408 213 L 414 219 L 420 219 L 426 214 L 432 204 L 438 188 L 444 170 L 450 150 L 456 130 L 462 112 L 468 96 L 474 86 L 480 81 L 486 81 L 492 87 L 498 99 L 504 115 L 510 133 L 516 153 L 522 173 L 528 191 L 534 206 L 540 215 L 546 220 L 552 218 L 558 211 L 564 199 L 570 183 L 576 163 L 582 143 L 588 124 L 594 106 L 600 92 L 606 83 L 612 80 L 618 82 L 624 91 L 630 104 L 636 121 L 642 140 L 648 160 L 654 179 L 660 196 L 666 209 L 672 218 L 678 220 L 684 217 L 690 208 L 696 194 L 702 176 L 708 157 L 714 137 L 720 117 L 726 101 L 732 89 L 738 82 L 744 80 L 750 85 L 756 94 L 762 109 L 768 127 L 774 147 L 780 167 L 786 185 L 792 201 L 798 213 L 804 219 L 810 219 L 816 214 L 822 204 L 828 188 L 834 170 L 840 150 L 846 130 L 852 112 L 858 96 L 864 86 L 870 81 L 876 81 L 882 87 L 888 99 L 894 115 L 900 133 L 906 153 L 912 173 L 918 191 L 924 206 L 930 215 L 936 220 L 942 218 L 948 211 L 954 199 L 960 183 L 966 163 L 972 143 L 978 124 L 984 106 L 990 92 L 996 83 L 1002 80 L 1008 82 L 1014 91 L 1020 104 L 1026 121 L 1032 140 L 1038 160 L 1044 179 L 1050 196 L 1056 209 L 1062 218 L 1068 220 L 1074 217 L 1080 208 L 1086 194 L 1092 176 L 1098 157 L 1104 137 L 1110 117 L 1116 101 L 1122 89 L 1128 82 L 1134 80 L 1140 85 L 1146 94 L 1152 109 L 1158 127 L 1164 147 L 1170 167 L 1176 185 L 1182 201 L 1188 213 L 1194 219 L 1200 219" />
+      <path class="wave-false"
+        d="M -90 208 C -65 198, 10 169, 60 150 C 110 131, 160 103, 210 92 C 260 81, 310 78, 360 85 C 410 91, 460 115, 510 133 C 560 152, 610 182, 660 196 C 710 211, 760 222, 810 219 C 860 217, 910 200, 960 183 C 1010 166, 1060 134, 1110 117 C 1160 100, 1235 87, 1260 81" />
+      <circle class="wave-dot" cx="60" cy="150" r="4" />
+      <circle class="wave-dot" cx="210" cy="92" r="4" />
+      <circle class="wave-dot" cx="360" cy="85" r="4" />
+      <circle class="wave-dot" cx="510" cy="133" r="4" />
+      <circle class="wave-dot" cx="660" cy="196" r="4" />
+      <circle class="wave-dot" cx="810" cy="220" r="4" />
+      <circle class="wave-dot" cx="960" cy="183" r="4" />
+      <circle class="wave-dot" cx="1110" cy="117" r="4" />
+    </svg>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">Sinclair Dynamics &middot; Johannesburg, South Africa</div>
+      <h1>Measuring often<br>enough used to be<br><span>too expensive.</span></h1>
+      <div class="hero-sub">That constraint moved. The reporting cycles it created did not.</div>
+      <p class="hero-body">When a person had to do the looking, the interval was set by what that person could sustain.
+        It was the correct decision at the time and it is still in place nearly everywhere. What sits in the gap is the
+        failure nobody could date, the cost nobody attributed, and the service whose value cannot be demonstrated to the
+        person paying for it.</p>
+      <div class="hero-actions">
+        <a href="monitoring-calibration.html" class="btn-primary">Monitoring Calibration</a>
+        <a href="contact.html" class="btn-outline">Start a Conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 2. SYMPTOMS: how the fault is actually experienced, then the door ===== -->
+  <section style="background: var(--off-white);">
+    <div class="section-inner">
+      <div class="section-eyebrow">How It Shows Up</div>
+      <h2 class="section-title">The numbers look fine.<br><span>The outcome does not match them.</span></h2>
+      <div class="pull-quote" style="max-width:680px;margin-top:0;">
+        <p>"Under-sampled data does not go quiet. It gives you a confident, stable, plausible picture of something that
+          is not happening."</p>
+      </div>
+      <p class="section-lead" style="margin-bottom:40px;">It arrives in one of three ways.</p>
+
+      <div class="symptom">
+        <h3>The reporting is right and the result is not</h3>
+        <p>Every figure is accurate and reviewed on schedule. The outcome keeps landing somewhere the reporting never
+          indicated, and no single number was ever wrong enough to question.</p>
+      </div>
+      <div class="symptom">
+        <h3>Nobody can say when it started</h3>
+        <p>Something failed. There is a date for when it was noticed and none for when it began, so the cost cannot be
+          sized and the same thing cannot be caught earlier next time.</p>
+      </div>
+      <div class="symptom">
+        <h3>The value is real and cannot be shown</h3>
+        <p>You deliver something that works and cannot evidence it to the person paying for it. This is the same fault
+          seen from the supplier's side, and it is the widest and least obvious of the three.</p>
+      </div>
+
+      <p class="symptom-bridge">All three are one fault. The interval between one look and the next is longer than the
+        time the thing needs to go wrong in. Where that gap is wide, reporting stays correct and stops being useful, and
+        nothing in the report says so.</p>
+
+      <a href="monitoring-calibration.html" class="named-engagement">
+        <div>
+          <svg width="64" height="64" viewBox="0 0 48 48" fill="none" stroke="#1A7A6E" stroke-width="1.8"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2 28h44" opacity="0.35" />
+            <path d="M4 28Q11 10 18 28Q25 46 32 28Q39 10 46 28" />
+            <path d="M11 28V19M25 28v9M39 28V19" opacity="0.5" />
+            <circle cx="11" cy="19" r="2.4" fill="#1A7A6E" stroke="none" />
+            <circle cx="25" cy="37" r="2.4" fill="#1A7A6E" stroke="none" />
+            <circle cx="39" cy="19" r="2.4" fill="#1A7A6E" stroke="none" />
+          </svg>
+        </div>
+        <div>
+          <div class="named-engagement-label">A Defined Engagement</div>
+          <h3>Monitoring Calibration</h3>
+          <p>A structured review of three things set against each other: what you measure, how often somebody actually
+            looks, and how fast each of those can move from healthy to costing you money. Side by side they show where
+            the gap is wide. Approximately two weeks, fixed fee, and a written finding that can be circulated internally
+            without further explanation.</p>
+          <span class="service-link">Explore</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== 3. THE WIDER WORK: what sits behind the door, not beside it ===== -->
+  <section>
+    <div class="section-inner">
+      <div class="section-eyebrow">What Happens Next</div>
+      <h2 class="section-title">Finding the gap is one job.<br><span>Closing it is another.</span></h2>
+      <p class="body-text" style="max-width:640px;">A calibration answers a question. Some arrive already knowing the
+        answer and needing something built, replaced, instrumented, or approached a different way. That is the work the
+        finding points at, and it is not a separate business.</p>
+      <p class="body-text" style="max-width:640px;">These are not four services to choose between. They are the ground
+        the work is done on. Most engagements cross more than one, because a problem worth bringing here rarely sits
+        cleanly inside a single discipline, and that is usually why it has not been solved yet.</p>
+
+      <div class="services-grid-2x2">
+
+        <!-- PROJECT MANAGEMENT -->
+        <a href="project-management.html" class="service-card">
+          <div class="service-icon-wrap">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="6" y="10" width="36" height="30" rx="3" />
+              <path d="M6 18h36" />
+              <path d="M14 6v8M34 6v8" />
+              <path d="M13 28l5 5 13-11" />
+            </svg>
+          </div>
+          <h3>Project Management</h3>
+          <div class="service-tagline">Your technical edge in every decision</div>
+          <p>Senior delivery experience across major infrastructure and technology programmes. The difference between
+            managing a process and understanding what it's actually building.</p>
+          <span class="service-link">Explore</span>
+        </a>
+
+        <!-- TECHNICAL CONSULTING -->
+        <a href="technical-consulting.html" class="service-card">
+          <div class="service-icon-wrap">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="24" cy="24" r="7" />
+              <path
+                d="M24 6v4M24 38v4M6 24h4M38 24h4M10.1 10.1l2.8 2.8M35.1 35.1l2.8 2.8M10.1 37.9l2.8-2.8M35.1 12.9l2.8-2.8" />
+            </svg>
+          </div>
+          <h3>Technical Consulting</h3>
+          <div class="service-tagline">The engineer who figures it out</div>
+          <p>Product design, systems integration, hardware development, and automation. From initial brief to working
+            solution, with the engineering rigour to get it right.</p>
+          <span class="service-link">Explore</span>
+        </a>
+
+        <!-- AI & DIGITAL -->
+        <a href="ai-digital.html" class="service-card">
+          <div class="service-icon-wrap">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="6" y="10" width="36" height="24" rx="3" />
+              <path d="M16 34v6M32 34v6M10 40h28" />
+              <circle cx="17" cy="22" r="2.5" />
+              <circle cx="31" cy="22" r="2.5" />
+              <path d="M17 22h14M17 19.5l-4-4M31 19.5l4-4M17 24.5l-3 4M31 24.5l3 4" />
+            </svg>
+          </div>
+          <h3>AI &amp; Digital</h3>
+          <div class="service-tagline">Tomorrow's tools, today's accountability</div>
+          <p>Practical AI-assisted workflows, process automation, and digital tooling. Applied responsibly, with full
+            professional accountability for every output.</p>
+          <span class="service-link">Explore</span>
+        </a>
+
+        <!-- ENERGY & POWER -->
+        <a href="energy-systems.html" class="service-card">
+          <div class="service-icon-wrap">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M26 6L12 26h10l-2 16 16-22H26L28 6z" />
+            </svg>
+          </div>
+          <h3>Energy &amp; Power Systems</h3>
+          <div class="service-tagline">Cutting through the noise</div>
+          <p>Independent advisory on renewable energy, backup power, and optimisation. Grounded in detailed analysis and
+            simulation, not supplier incentives.</p>
+          <span class="service-link">Explore</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. THE PROOF: a working system and written reasoning, not references ===== -->
+  <section class="proof-strip">
+    <div class="section-inner">
+      <div class="section-eyebrow">Instead Of References</div>
+      <h2 class="section-title">I would rather show you<br><span>something running.</span></h2>
+      <div class="proof-grid">
+        <div>
+          <p class="body-text">Anyone can produce a reference letter. Very few can hand over a working system and say
+            what it caught.</p>
+          <p class="body-text">Sinclair Dynamics Solar Monitor watches six solar installations across several owners. I
+            designed it, I built it, and I run it. It exists because I had been doing the same analysis by hand for
+            years and concluded that the interval was the problem rather than the analysis. It is not what I sell. It is
+            the method, running somewhere it can be inspected.</p>
+          <p class="body-text">The reasoning is written down as well, at whatever length the argument needs. That is a
+            slower way to be assessed than a list of qualifications, and a more useful one, because you can disagree
+            with it.</p>
+          <!-- Relabelled 18 August 2026. It read "Full Background" directly beneath three
+               paragraphs about the platform, so it borrowed its noun from them and promised
+               the platform page while going to the about page. Positioning 8.3 records that
+               an affordance takes its subject from the sentence above it and is therefore
+               not portable. The destination was always correct; the label was not. -->
+          <a href="about.html" class="btn-outline" style="margin-top:8px;">About Ainsley</a>
+        </div>
+        <div>
+          <!-- Repointed to platform.html on 18 August 2026, when that page shipped.
+               This box previously went to contact.html carrying a temporary walkthrough
+               offer, written that way because the platform had no page of its own and a
+               link to the live system delivered a login rather than a door. That was one
+               of four such surfaces and the exit condition was always the page existing.
+               The walkthrough offer has not been deleted, it has moved to where it now
+               belongs, which is the foot of the platform page, after a reader has been
+               given something to ask about. The sentence about the system not being public
+               stays here, because it corrects an assumption a reader genuinely makes when
+               told something is running.
+               Still outstanding: the same offer on energy-systems.html and on
+               interval-question.html. -->
+          <a class="proof-box" href="platform.html"><strong>The Platform</strong>Victron, Huawei
+            and Deye hardware, reaching one interface through five separate third party services that were never
+            designed to agree with each other. Weather corrected performance analysis, with every site observed once an
+            hour. It carries live data for real owners, so it is not a public system.<span class="go">What it watches,
+              and what it has caught</span></a>
+          <a class="proof-box" href="spotting-ai-writing.html"><strong>Written Down</strong>Why people are so confident
+            they can spot AI writing, and what that confidence is actually measuring.<span class="go">Read
+              it</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5. CREDENTIALS: layer three. They reassure. They do not introduce. ===== -->
+  <div class="creds-bar">
+    <div class="creds-inner">
+      <div class="cred-item"><span class="cred-label">Foundation</span><span class="cred-value">BSc (Eng) Mechatronics,
+          University of Cape Town</span></div>
+      <div class="cred-item"><span class="cred-label">Delivery</span><span class="cred-value">Certified
+          ScrumMaster&reg;</span></div>
+      <div class="cred-item"><span class="cred-label">Accountability</span><span class="cred-value">Certified in AI
+          Fluency and Application</span></div>
+      <div class="cred-item"><span class="cred-label">Base</span><span class="cred-value">Johannesburg: Working Across
+          Africa</span></div>
+    </div>
+  </div>
+
+  <!-- ===== 6. CLOSING: two routes in, neither of which requires a diagnosis ===== -->
+  <section>
+    <div class="section-inner" style="text-align:center;">
+      <div class="section-eyebrow" style="justify-content:center;">Where To Start</div>
+      <h2 class="section-title">You do not have to know<br><span>what is wrong yet.</span></h2>
+      <p class="section-lead" style="margin:0 auto 40px;">There are two ways in. One is for a problem you can already
+        describe. The other is for the sense that something is off without being able to say what it is. Both arrive in
+        the same place, and neither of them costs anything to use.</p>
+      <a href="contact.html" class="btn-primary">Start a Conversation</a>
+    </div>
+  </section>
+
+  <!-- FOOTER:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE
+       FILE. It is written from _footer_canonical.html by apply-chrome.py, and
+       any hand edit made here will be silently overwritten the next time that
+       script runs. Change the fragment, then run the script.
+       Byte-identical on every page, with no per-page variation of any kind.
+       The four column headings are singular by design and name a mode rather
+       than a count. That is a different job from the section heading on
+       engagement.html, which is singular because there is one defined
+       engagement and goes plural when a second is written. Do not "correct"
+       Discipline to Disciplines on the strength of that rule. -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <svg width="56" height="56" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:16px;"
+            aria-hidden="true">
+            <rect width="48" height="48" rx="10" fill="#E8392A" />
+            <rect x="27" y="27" width="20" height="20" rx="4" fill="#C0281A" opacity="0.5" />
+            <path
+              d="M24 14.5a1.5 1.5 0 0 1 1.5 1.5v1.2a7.5 7.5 0 0 1 2.6 1.08l.85-.85a1.5 1.5 0 0 1 2.12 2.12l-.85.85A7.5 7.5 0 0 1 31.3 23H32.5a1.5 1.5 0 0 1 0 3h-1.2a7.5 7.5 0 0 1-1.08 2.6l.85.85a1.5 1.5 0 0 1-2.12 2.12l-.85-.85A7.5 7.5 0 0 1 25.5 31.8V33a1.5 1.5 0 0 1-3 0v-1.2a7.5 7.5 0 0 1-2.6-1.08l-.85.85a1.5 1.5 0 0 1-2.12-2.12l.85-.85A7.5 7.5 0 0 1 16.7 26H15.5a1.5 1.5 0 0 1 0-3h1.2a7.5 7.5 0 0 1 1.08-2.6l-.85-.85a1.5 1.5 0 0 1 2.12-2.12l.85.85a7.5 7.5 0 0 1 2.6-1.08V16a1.5 1.5 0 0 1 1.5-1.5zm0 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"
+              fill="white" />
+          </svg>
+          <div class="footer-tagline">Engineering Intelligence. Delivered.</div>
+          <p>Technical consulting and engineering from Johannesburg, South Africa. Working with clients across the
+            continent.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Engagement</h4><a href="monitoring-calibration.html">Monitoring Calibration</a>
+          <h4>Discipline</h4><a href="project-management.html">Project Management</a><a
+            href="technical-consulting.html">Technical Consulting</a><a href="ai-digital.html">AI &amp; Digital</a><a
+            href="energy-systems.html">Energy &amp; Power Systems</a>
+        </div>
+        <div class="footer-col">
+          <h4>Intelligence</h4><a href="platform.html">The Monitoring Platform</a>
+          <h4>Connection</h4><a href="about.html">About Ainsley</a><a href="work.html">The Work</a><a
+            href="engagement.html">The Engagement</a><a href="contact.html">Contact</a><a
+            href="https://www.linkedin.com/in/ainsley-williams-18107015/" target="_blank" rel="noopener" class="footer-linkedin"><svg
+              width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+              style="vertical-align:middle;margin-right:6px;" aria-hidden="true">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>LinkedIn Profile</a>
+          <p style="font-size:13px;margin-top:8px;line-height:1.5;">Profile and work history on LinkedIn.</p>
+        </div>
+      </div>
+      <div class="footer-bottom"><span class="footer-copy">&copy; 2026 Sinclair Dynamics. All rights
+          reserved.</span>
+      <!-- VIEWPORT REPORTER:START
+           DIAGNOSTIC. NOT A DESIGN ELEMENT. NOT PART OF THE SITE.
+
+           Added 23 August 2026, Session 29, for the narrow-width observation
+           pass. The site had never been looked at below desktop width and no
+           reliable way existed to know what width a device was actually
+           reporting to the stylesheet, which made every observation about
+           narrow behaviour a guess.
+
+           Hidden by default on every page. It reveals only when the address
+           ends in #vp, and once revealed it stays revealed while moving
+           around the site in the same browser tab, because the nav and
+           footer links do not carry the hash. The close control ends that.
+
+           It renders fixed to a corner of the viewport rather than in the
+           footer's flow, deliberately: .footer-bottom is a flex row and an
+           extra child would change how that row lays out at exactly the
+           widths this instrument exists to observe. Out of flow, it cannot
+           disturb any layout on any page.
+
+           It is styled to look nothing like this site. Black ground,
+           monospace, amber. Anyone who meets it by accident should be able
+           to tell at a glance that it is not part of the page.
+
+           REMOVAL: delete everything between these markers from
+           _footer_canonical.html and run apply-chrome.py. Nothing else on
+           the site references it. No rule in shared.css belongs to it, no
+           id or class it uses appears anywhere else, and it adds no link.
+
+           DISPOSAL CONDITION: it comes out when the narrow-width work is
+           finished and the site record's item 1 is closed, unless a reason
+           to keep it has been written down by then.
+           -->
+      <style>
+        /* Everything here is prefixed sd-vp so it cannot collide with the
+           site's own classes. Display is controlled by the .on class rather
+           than by the hidden attribute, because a later display rule would
+           silently win over hidden and the block would appear on every page. */
+        #sd-vp { display: none; }
+        #sd-vp.on {
+          display: block;
+          position: fixed;
+          z-index: 2147483000;
+          background: #000;
+          color: #FFB020;
+          border: 1px solid #FFB020;
+          border-radius: 3px;
+          padding: 6px 8px;
+          max-width: 320px;
+          font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+          font-size: 11px;
+          line-height: 1.45;
+          text-align: left;
+          letter-spacing: 0;
+          text-transform: none;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+          -webkit-user-select: text;
+          user-select: text;
+        }
+        /* Four corners, cycled by tapping the readout. The top pair clears the
+           68px nav plus its 2px border, since the nav is the first thing this
+           pass has to look at and the instrument must not cover it. */
+        #sd-vp.sd-vp-br { bottom: 8px; right: 8px; }
+        #sd-vp.sd-vp-bl { bottom: 8px; left: 8px; }
+        #sd-vp.sd-vp-tl { top: 78px; left: 8px; }
+        #sd-vp.sd-vp-tr { top: 78px; right: 8px; }
+        #sd-vp pre {
+          margin: 0;
+          font: inherit;
+          color: inherit;
+          white-space: pre;
+          cursor: pointer;
+        }
+        #sd-vp .sd-vp-bar {
+          display: flex;
+          gap: 6px;
+          margin-top: 6px;
+          border-top: 1px solid rgba(255, 176, 32, 0.35);
+          padding-top: 5px;
+        }
+        #sd-vp button {
+          flex: 1;
+          font-family: inherit;
+          font-size: 10px;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          background: transparent;
+          color: #FFB020;
+          border: 1px solid rgba(255, 176, 32, 0.5);
+          border-radius: 2px;
+          padding: 5px 4px;
+          cursor: pointer;
+          min-height: 30px;
+        }
+        #sd-vp button:active { background: rgba(255, 176, 32, 0.2); }
+        #sd-vp .sd-vp-warn { color: #FF5A4A; }
+      </style>
+      <div id="sd-vp" class="sd-vp-br"><pre data-sd-vp-out>reading</pre>
+        <div class="sd-vp-bar"><button type="button" data-sd-vp-scan>scan</button><button type="button"
+            data-sd-vp-copy>copy</button><button type="button" data-sd-vp-close>close</button></div>
+      </div>
+      <script>
+        (function () {
+          'use strict';
+
+          var KEY = 'sd-vp-visible';
+          var box = document.getElementById('sd-vp');
+          if (!box) { return; }
+
+          var out = box.querySelector('[data-sd-vp-out]');
+          var CORNERS = ['sd-vp-br', 'sd-vp-bl', 'sd-vp-tl', 'sd-vp-tr'];
+          var corner = 0;
+          var scanned = null;
+          var pending = false;
+
+          /* ---- collection -------------------------------------------------
+             Three width measures are reported rather than one, because they
+             disagree in informative ways. innerWidth includes a classic
+             scrollbar, clientWidth does not, and visualViewport reports what
+             is actually on screen after pinch zoom or a soft keyboard. A
+             difference between the first two on the laptop is a scrollbar. A
+             difference involving the third on the phone means the page is
+             zoomed and no width reading can be trusted until it is not. */
+
+          function media(query) {
+            return window.matchMedia ? window.matchMedia(query).matches : null;
+          }
+
+          function viewportMeta() {
+            var tag = document.querySelector('meta[name="viewport"]');
+            if (!tag) { return null; }
+            return tag.getAttribute('content') || '(empty)';
+          }
+
+          /* A short, honest guess at the browser. It exists for one reason:
+             a file opened from a messaging app may render in that app's own
+             WebView rather than in Chrome, and a WebView can report a
+             different viewport from the browser a visitor would use. The
+             full user agent string travels in the copy payload, so nothing
+             is lost by this being a guess. */
+          function browser() {
+            var ua = navigator.userAgent || '';
+            var name = 'unidentified';
+            if (/\bEdgA?\//.test(ua)) { name = 'Edge'; }
+            else if (/\bOPR\//.test(ua)) { name = 'Opera'; }
+            else if (/SamsungBrowser\//.test(ua)) { name = 'Samsung Internet'; }
+            else if (/FBAN|FBAV|Instagram|\bLine\//.test(ua)) { name = 'social app'; }
+            else if (/Firefox\/|FxiOS\//.test(ua)) { name = 'Firefox'; }
+            else if (/CriOS\//.test(ua)) { name = 'Chrome iOS'; }
+            else if (/Chrome\//.test(ua)) { name = 'Chrome'; }
+            else if (/Safari\//.test(ua)) { name = 'Safari'; }
+            if (/;\s?wv\)/.test(ua) || /\bwv\b/.test(ua)) { name += ' WebView'; }
+            return name;
+          }
+
+          function describe(el) {
+            var label = el.tagName.toLowerCase();
+            if (el.id) { return label + '#' + el.id; }
+            var cls = el.getAttribute && el.getAttribute('class');
+            if (cls) {
+              var first = String(cls).trim().split(/\s+/)[0];
+              if (first) { label += '.' + first; }
+            }
+            return label;
+          }
+
+          /* Finds the element reaching furthest past the right edge of the
+             document. Horizontal overflow is the commonest narrow-width fault
+             and a few pixels of it is invisible by eye.
+
+             Two honest limits, so a result is read for what it is. Position
+             fixed elements do not move with horizontal scroll, so their
+             numbers are only correct while the page is unscrolled sideways.
+             And an element can legitimately sit outside the viewport, so this
+             names a candidate rather than declaring a defect. */
+          function findWorst() {
+            var limit = document.documentElement.clientWidth;
+            var offset = window.pageXOffset || 0;
+            var all = document.body ? document.body.querySelectorAll('*') : [];
+            var worst = null;
+            var worstRight = limit + 1;
+            for (var i = 0; i < all.length; i++) {
+              var el = all[i];
+              if (el === box || box.contains(el)) { continue; }
+              var rect = el.getBoundingClientRect();
+              if (rect.width === 0 && rect.height === 0) { continue; }
+              var right = rect.right + offset;
+              if (right > worstRight) {
+                worstRight = right;
+                worst = el;
+              }
+            }
+            if (!worst) { return 'no element past ' + limit + 'px'; }
+            return describe(worst) + ' to ' + Math.round(worstRight) + 'px';
+          }
+
+          function collect() {
+            var doc = document.documentElement;
+            var vv = window.visualViewport;
+            var meta = viewportMeta();
+            return {
+              innerW: window.innerWidth,
+              innerH: window.innerHeight,
+              clientW: doc.clientWidth,
+              visualW: vv ? Math.round(vv.width) : null,
+              dpr: window.devicePixelRatio || 1,
+              screenW: window.screen ? window.screen.width : null,
+              screenH: window.screen ? window.screen.height : null,
+              portrait: media('(orientation: portrait)'),
+              at900: media('(max-width: 900px)'),
+              at700: media('(max-width: 700px)'),
+              reduced: media('(prefers-reduced-motion: reduce)'),
+              meta: meta,
+              metaOk: meta !== null && meta.indexOf('width=device-width') !== -1,
+              overflow: doc.scrollWidth - doc.clientWidth,
+              browser: browser(),
+              page: location.pathname.split('/').pop() || 'index.html'
+            };
+          }
+
+          /* ---- rendering ------------------------------------------------ */
+
+          /* The label column is padded to 9 rather than 8 because 'overflow'
+             is itself 8 characters long and would otherwise render with no
+             gap between its label and its value. Caught in a DOM test rather
+             than by reading it. */
+          function pad(text) {
+            var s = String(text);
+            while (s.length < 9) { s += ' '; }
+            return s;
+          }
+
+          function render() {
+            var d = collect();
+            var lines = [];
+
+            lines.push(pad('page') + d.page);
+            lines.push(pad('css') + d.innerW + ' x ' + d.innerH +
+              '   dpr ' + (Math.round(d.dpr * 100) / 100));
+            lines.push(pad('client') + d.clientW +
+              (d.visualW !== null ? '   visual ' + d.visualW : ''));
+            lines.push(pad('screen') + d.screenW + ' x ' + d.screenH +
+              '   ' + (d.portrait ? 'portrait' : 'landscape'));
+            lines.push(pad('breaks') +
+              '900 ' + (d.at900 ? 'ON ' : 'off') +
+              '   700 ' + (d.at700 ? 'ON' : 'off'));
+
+            if (d.meta === null) {
+              lines.push(pad('meta') + 'ABSENT, page will scale');
+            } else if (!d.metaOk) {
+              lines.push(pad('meta') + 'no width=device-width');
+            } else {
+              lines.push(pad('meta') + 'ok');
+            }
+
+            lines.push(pad('overflow') +
+              (d.overflow > 0 ? d.overflow + 'px past edge' : 'none'));
+
+            if (scanned) { lines.push(pad('widest') + scanned); }
+            if (d.reduced) { lines.push(pad('motion') + 'reduced'); }
+            lines.push(pad('browser') + d.browser);
+
+            out.textContent = lines.join('\n');
+
+            /* The two conditions that make every other number on the panel
+               unreliable are the two that get the alarm colour. */
+            var bad = (d.meta === null) || !d.metaOk || d.overflow > 0;
+            out.className = bad ? 'sd-vp-warn' : '';
+          }
+
+          function schedule() {
+            if (pending) { return; }
+            pending = true;
+            window.requestAnimationFrame(function () {
+              pending = false;
+              scanned = null;
+              render();
+            });
+          }
+
+          /* ---- copy ------------------------------------------------------
+             One line, so it pastes into a message without reflowing. The full
+             user agent and the URL travel with it, because a reading with no
+             provenance is not worth having later. */
+
+          function payload() {
+            var d = collect();
+            return [
+              d.page,
+              'css=' + d.innerW + 'x' + d.innerH,
+              'client=' + d.clientW,
+              'visual=' + (d.visualW === null ? 'n/a' : d.visualW),
+              'dpr=' + d.dpr,
+              'screen=' + d.screenW + 'x' + d.screenH,
+              (d.portrait ? 'portrait' : 'landscape'),
+              'mq900=' + (d.at900 ? 'on' : 'off'),
+              'mq700=' + (d.at700 ? 'on' : 'off'),
+              'meta=' + (d.meta === null ? 'ABSENT' : d.meta),
+              'overflow=' + d.overflow,
+              'widest=' + (scanned || 'not scanned'),
+              'reducedMotion=' + (d.reduced ? 'yes' : 'no'),
+              'browser=' + d.browser,
+              'url=' + location.href,
+              'ua=' + (navigator.userAgent || '')
+            ].join(' | ');
+          }
+
+          function flash(button, word) {
+            var original = button.textContent;
+            button.textContent = word;
+            window.setTimeout(function () { button.textContent = original; }, 1200);
+          }
+
+          function copy(button) {
+            var text = payload();
+            /* The async clipboard API is unavailable over file:// and in some
+               WebViews, which are exactly the conditions this may be opened
+               under, so the old path is kept as a fallback rather than
+               assumed unnecessary. */
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(function () {
+                flash(button, 'copied');
+              }, function () {
+                fallbackCopy(text, button);
+              });
+              return;
+            }
+            fallbackCopy(text, button);
+          }
+
+          function fallbackCopy(text, button) {
+            var field = document.createElement('textarea');
+            field.value = text;
+            field.setAttribute('readonly', 'readonly');
+            field.style.position = 'fixed';
+            field.style.top = '-1000px';
+            document.body.appendChild(field);
+            field.select();
+            var ok = false;
+            try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+            document.body.removeChild(field);
+            flash(button, ok ? 'copied' : 'select it');
+          }
+
+          /* ---- visibility ------------------------------------------------ */
+
+          function remember(state) {
+            try {
+              if (state) { window.sessionStorage.setItem(KEY, '1'); }
+              else { window.sessionStorage.removeItem(KEY); }
+            } catch (err) { /* private mode or file://; the hash still works */ }
+          }
+
+          function remembered() {
+            try { return window.sessionStorage.getItem(KEY) === '1'; }
+            catch (err) { return false; }
+          }
+
+          function show() {
+            if (box.classList.contains('on')) { return; }
+            box.classList.add('on');
+            remember(true);
+            render();
+            window.addEventListener('resize', schedule);
+            window.addEventListener('orientationchange', schedule);
+            if (window.visualViewport) {
+              window.visualViewport.addEventListener('resize', schedule);
+            }
+          }
+
+          function hide() {
+            box.classList.remove('on');
+            remember(false);
+          }
+
+          out.addEventListener('click', function () {
+            box.classList.remove(CORNERS[corner]);
+            corner = (corner + 1) % CORNERS.length;
+            box.classList.add(CORNERS[corner]);
+          });
+
+          box.querySelector('[data-sd-vp-scan]').addEventListener('click', function () {
+            scanned = findWorst();
+            render();
+          });
+
+          box.querySelector('[data-sd-vp-copy]').addEventListener('click', function (event) {
+            copy(event.currentTarget);
+          });
+
+          box.querySelector('[data-sd-vp-close]').addEventListener('click', hide);
+
+          window.addEventListener('hashchange', function () {
+            if (location.hash === '#vp') { show(); }
+          });
+
+          if (location.hash === '#vp' || remembered()) { show(); }
+        })();
+      </script>
+      <!-- VIEWPORT REPORTER:END -->
+        <a class="footer-legal" href="privacy.html">Privacy Notice</a></div>
+    </div>
+  </footer>
+  <!-- FOOTER:END -->
+  <!-- CONSENT:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE
+       FILE. It is written from _consent_canonical.html by apply-chrome.py.
+       The first time this runs against a page that has never carried this
+       block, the script inserts it fresh, immediately before </body>. Every
+       run after that finds the markers this run wrote and keeps it in sync
+       the same way nav and footer already are.
+       Byte-identical on every page: nothing here varies by filename, unlike
+       the nav's active entry.
+       Gates the analytics tag only. Nothing else on the site needs a
+       visitor's answer to work, so this is a bar at the foot of the
+       viewport rather than a modal, and the page underneath stays fully
+       usable while it's up. It shows once, on any page, for as long as
+       sinclair_analytics_consent is unset in the visitor's browser.
+       Whichever button is pressed answers it everywhere, for good, until
+       the visitor clears their own browser storage. See
+       sd-reference-privacy-v0_2.md for the reasoning behind the shape of
+       this control, and sd-copy-privacy-notice-v0_1.md for what it's
+       disclosing. -->
+  <div class="consent-banner" id="consent-banner" role="region" aria-label="Cookie and analytics consent"
+    data-state="hidden">
+    <div class="consent-inner">
+      <p class="consent-text">This site uses Google Analytics to understand how it's used. It only runs if you agree
+        to it, and everything else on the site works exactly the same either way. See the <a
+          href="privacy.html">privacy notice</a> for what's collected and why.</p>
+      <div class="consent-actions">
+        <button type="button" class="consent-btn" id="consent-decline">Decline</button>
+        <button type="button" class="consent-btn" id="consent-accept">Accept</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Consent banner. Self-contained, warns to console rather than failing
+    // silently, and does nothing at all if its own markup is missing.
+    //
+    // Two keys in localStorage, matching the site's existing sinclair_chat_*
+    // convention rather than a JSON blob: sinclair_analytics_consent holds
+    // "accepted" or "declined", sinclair_analytics_consent_at holds when.
+    // Persists indefinitely. There is no re-ask timer: nothing on this site
+    // currently expires anything on a schedule, and building one for this
+    // control alone would be scope the retention item next to it hasn't
+    // earned either. See the working document if that changes.
+    (function () {
+      var KEY = 'sinclair_analytics_consent';
+      var KEY_AT = 'sinclair_analytics_consent_at';
+      var GA_ID = 'G-W94Z1196CH';
+
+      var banner = document.getElementById('consent-banner');
+      if (!banner) {
+        console.warn('[consent] banner markup not found, nothing to wire up');
+        return;
+      }
+
+      function loadAnalytics() {
+        if (window.__sinclairAnalyticsLoaded) return;
+        window.__sinclairAnalyticsLoaded = true;
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', GA_ID);
+        var tag = document.createElement('script');
+        tag.async = true;
+        tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        document.head.appendChild(tag);
+      }
+
+      function recordChoice(choice) {
+        try {
+          localStorage.setItem(KEY, choice);
+          localStorage.setItem(KEY_AT, new Date().toISOString());
+        } catch (e) {
+          console.warn('[consent] could not write the choice to localStorage', e);
+        }
+      }
+
+      var stored = null;
+      try {
+        stored = localStorage.getItem(KEY);
+      } catch (e) {
+        console.warn('[consent] could not read localStorage, treating as unanswered', e);
+      }
+
+      if (stored === 'accepted') {
+        loadAnalytics();
+      } else if (stored !== 'declined') {
+        // Unanswered. Neither key is trusted on its own: only an explicit
+        // "declined" suppresses the banner without also loading the tag.
+        banner.setAttribute('data-state', 'visible');
+      }
+
+      var acceptBtn = document.getElementById('consent-accept');
+      var declineBtn = document.getElementById('consent-decline');
+
+      if (acceptBtn) {
+        acceptBtn.addEventListener('click', function () {
+          recordChoice('accepted');
+          banner.setAttribute('data-state', 'hidden');
+          loadAnalytics();
+        });
+      }
+      if (declineBtn) {
+        declineBtn.addEventListener('click', function () {
+          recordChoice('declined');
+          banner.setAttribute('data-state', 'hidden');
+        });
+      }
+    })();
+  </script>
+  <!-- CONSENT:END -->
+</body>
+
+</html>

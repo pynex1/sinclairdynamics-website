@@ -11,7 +11,10 @@
                             .nav-cta leaves red for teal-bright, closing the
                             standing item on it: red on machinery means stop.
                             .nav-right gap 8px to 16px, so the two controls
-                            on the right are not one mis-tap apart.
+                            on the right are not one mis-tap apart. Below
+                            900px .nav-cta drops its fill for a rule, the
+                            filled block having been 1.37x the logo and the
+                            menu button combined on a 360px bar.
    Session 33  25 Aug 2026  .ai-embed height decided by vertical space, not
                             by viewport width. Slack sized to one wheel notch,
                             relaxed again for touch; snap kept only below
@@ -735,6 +738,44 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
      reason, so the target is the row and not the words in it. */
   .nav-links a { padding: 14px 0; font-size: 15px; }
   .nav-links a::after { left: 0; right: auto; width: 20px; bottom: 8px; }
+
+  /* THE CALL TO ACTION LOSES ITS FILL HERE, AND KEEPS IT ABOVE 900px.
+     Added 26 August 2026, Session 36.
+
+     WHY, AND IT IS THIS DOCUMENT'S OWN RULE RATHER THAN A PREFERENCE.
+     Positioning 8.3 calls this control the floor of the invitation ramp and
+     describes it as deliberately peripheral, at the edge of vision. On a wide
+     screen it is. Measured on a 360px bar it is 123px against 90px for the
+     logo and the menu button together, which is 1.37 times both of them and
+     34 percent of the bar, and it competes with the hero rather than sitting
+     at the edge of it. The rule was being honoured at one width and not at
+     the other.
+
+     WHAT IS DELIBERATELY NOT CHANGED. The footprint. The rule is drawn with
+     an inset box-shadow rather than a border precisely so the element's box
+     is the same size to the pixel as the filled version. Weight and footprint
+     are two complaints and this pass answers one of them, so that whichever
+     remains is legible in the result rather than guessed at afterwards.
+
+     THE LABEL STAYS WHITE AND THE RULE CARRIES THE TEAL. teal-bright text on
+     this ground is 4.31:1, which is under the 4.5 a 13px bold label needs.
+     White is 11.94:1. This is also the shape .btn-outline already uses on
+     this site, which a visitor meets a few hundred pixels below on the same
+     screen.
+
+     HOVER AND PRESS ARE REDECLARED because the filled version expresses both
+     through box-shadow, which is now carrying the rule itself. Hover takes
+     the rule to white and the press adds a faint teal wash inside it. Both
+     are colour only, per 3.5: nothing in this bar travels. */
+  .nav-cta {
+    background: transparent; color: var(--white);
+    box-shadow: inset 0 0 0 2px var(--teal-bright);
+  }
+  .nav-cta:hover { box-shadow: inset 0 0 0 2px var(--white); }
+  .nav-cta:active {
+    background: rgba(42,173,160,0.18);
+    box-shadow: inset 0 0 0 2px var(--teal-bright);
+  }
   .section-inner { padding: 70px 24px; }
   .two-col-grid, .two-col-wide { grid-template-columns: 1fr; gap: 40px; }
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }

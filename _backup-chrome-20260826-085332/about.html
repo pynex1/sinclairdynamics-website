@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ainsley Williams | Mechatronics Engineer, Sinclair Dynamics, Johannesburg</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <!-- Google Analytics -->
+  <!-- Analytics removed 9 August 2026, pending the consent gate and privacy
+     notice. Non-essential tracking must not fire before consent, and the
+     gate belongs with the nav and footer single sourcing rather than
+     duplicated per page. Property G-W94Z1196CH. -->
+  <meta name="description"
+    content="Two decades of engineering where disciplines meet, and a monitoring platform designed, built and run by one person. Background to Sinclair Dynamics, Johannesburg.">
+  <meta name="keywords"
+    content="Ainsley Williams, Sinclair Dynamics, mechatronics engineer Johannesburg, engineering consultant South Africa, monitoring calibration, solar monitoring platform, systems integration South Africa">
+  <meta name="author" content="Ainsley Williams, Sinclair Dynamics">
+  <meta name="robots" content="index, follow">
+  <!-- Open Graph -->
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://www.sinclairdynamics.co/about.html">
+  <meta property="og:title" content="The work was never in one discipline | Ainsley Williams, Sinclair Dynamics">
+  <meta property="og:description"
+    content="Two decades of engineering where disciplines meet, and a monitoring platform designed, built and run by one person. Background to Sinclair Dynamics, Johannesburg.">
+  <meta property="og:image" content="https://www.sinclairdynamics.co/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Sinclair Dynamics">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The work was never in one discipline | Ainsley Williams, Sinclair Dynamics">
+  <meta name="twitter:description"
+    content="Two decades of engineering where disciplines meet, and a monitoring platform designed, built and run by one person. Background to Sinclair Dynamics, Johannesburg.">
+  <meta name="twitter:image" content="https://www.sinclairdynamics.co/og-image.png">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.sinclairdynamics.co/about.html">
+
+  <style>
+    /* ---------------------------------------------------------------------------
+   PAGE LOCAL STYLES
+   Kept on the page rather than in shared.css, consistent with how the homepage
+   was handled. Nothing here overrides a shared class; it only adds the three
+   constructions this page needs and no other page currently uses.
+   --------------------------------------------------------------------------- */
+
+    /* ---------------------------------------------------------------------------
+   SPECIFICATION PLATE
+   A nameplate, not a stats row. It describes a machine rather than a person,
+   which is why it can sit in the body of the page without inverting the layer
+   order. Construction follows .cred-card: dark ground, accent on the top edge,
+   and 4px broken on all four corners: a physical part has every edge broken,
+   not two, and the accent border already carries the orientation.
+   Observation and samples are two separate rows on purpose. Hourly on its own
+   invites the reader to think the platform glances at an instant once an hour.
+   The sample count says it reads an interval.
+   --------------------------------------------------------------------------- */
+    .plate {
+      background: var(--slate);
+      border-top: 3px solid var(--teal-bright);
+      border-radius: 4px;
+      padding: 26px 26px 20px;
+    }
+
+    .plate-heading {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--teal-bright);
+      margin-bottom: 18px;
+    }
+
+    .plate-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .plate-row:last-child {
+      border-bottom: none;
+    }
+
+    .plate-label {
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .plate-value {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--white);
+      white-space: nowrap;
+    }
+
+    .plate-value.accent {
+      color: var(--teal-bright);
+    }
+
+    /* ---------------------------------------------------------------------------
+   LAPSED AUTHORISATIONS
+   Deliberately not a card. A credential that needs a currency disclaimer is
+   evidence in the wrong container, so it sits below the grid as one line with
+   the lapse stated outright rather than implied by the word "prior".
+   --------------------------------------------------------------------------- */
+    .lapsed {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.45);
+      max-width: 760px;
+      margin-top: 34px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, 0.10);
+    }
+
+    /* ---------------------------------------------------------------------------
+   WRITING PANEL
+   A box that contains a link is itself the link, so the whole panel is the
+   anchor and sits on the navigable tier: 4px of travel and the tight shadow.
+   The arrow is retained inside as the visual signal.
+   Width is held below the column on purpose. It was originally held there
+   because a single item stretched full width reads as a row with its siblings
+   missing. A second panel arrived on 22 August 2026 so that reason has gone,
+   but the width stays: 640px is the line length the rest of this page reads
+   at, and a panel wider than the body copy above it would be the odd one.
+   --------------------------------------------------------------------------- */
+    .writing-panel {
+      display: block;
+      text-decoration: none;
+      max-width: 640px;
+      background: var(--teal-pale);
+      border-left: 4px solid var(--teal);
+      border-radius: 4px;
+      padding: 26px 30px;
+      transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    }
+
+    /* Added 22 August 2026 with the second panel. Adjacent-sibling rather than
+       a margin on the class itself, so a lone panel on any future page still
+       closes its section without a trailing gap. */
+    .writing-panel + .writing-panel {
+      margin-top: 20px;
+    }
+
+    .writing-panel:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(30, 58, 74, 0.10);
+    }
+
+    .writing-panel:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(30, 58, 74, 0.14);
+      transition-duration: 0.1s;
+    }
+
+    .writing-panel-label {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+
+    .writing-panel-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 24px;
+      line-height: 1.15;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 10px;
+    }
+
+    .writing-panel p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #2A4A44;
+      margin-bottom: 16px;
+    }
+
+    .writing-panel .go {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .writing-panel .go::after {
+      content: '\2192';
+      transition: transform 0.2s ease-out;
+    }
+
+    .writing-panel:hover .go::after {
+      transform: translateX(4px);
+    }
+
+    @media (max-width: 900px) {
+      .plate {
+        margin-top: 8px;
+      }
+    }
+
+    /* Travel removed for anyone who has asked for less motion. Every other state
+   change still fires, so no feedback is lost. */
+    @media (prefers-reduced-motion: reduce) {
+
+      .writing-panel,
+      .writing-panel:hover,
+      .writing-panel:active {
+        transform: none;
+      }
+
+      .writing-panel:hover .go::after {
+        transform: none;
+      }
+    }
+
+    /* ---------------------------------------------------------------------------
+   HERO FIGURE: DATUM REFERENCE FRAME
+   Built 8 August 2026. This is what the seam figure became, and the change of
+   subject was deliberate rather than a substitute. Three mutually perpendicular
+   datum planes meet along three lines, and those lines are the seams: the places
+   where one thing stops and another starts. A datum reference frame is also the
+   origin every dimension on a drawing is measured from, so the figure carries
+   the measurement argument as well as the seam argument, which the earlier
+   joint drawings could not.
+
+   It is legible at whatever level the reader has. A coordinate axis is school
+   mathematics to one person, a reference frame to an engineer, and a datum
+   reference frame with A, B and C to a metrologist. That is the same mechanism
+   as the sine wave on the homepage and it is why the figure does not need to
+   be obscure to be deep.
+
+   WHAT IS DRAWN, AND WHY IT IS DRAWN THAT WAY
+   - Trimetric projection. No plane sits parallel to the picture plane, which is
+     what stops the whole thing reading as flat cards stacked into the page.
+   - The planes are NOT closed quadrilaterals. Only the central portion of each
+     edge is drawn. Full outlines put a dozen line crossings on the page of which
+     only six meant anything, and a datum plane has no edges anyway.
+   - Every ray runs off the edge of the frame. The six lengths are all different
+     because the origin is not centred, so the inequality is a consequence of
+     the geometry rather than six numbers chosen by eye.
+   - Labels are datum AXES (A-B, A-C, B-C), not datum features. The intersection
+     of two datum planes is a datum axis, so this notation is correct and it puts
+     the naming on the seams rather than on the plane boundaries.
+
+   INTERACTION: four states, all opacity, no travel. Inspect tier.
+   - Anywhere in the region: the three planes establish in order, A then B then
+     C. The order is not decorative. Primary constrains three degrees of freedom,
+     secondary two, tertiary one, and a frame cannot be established in any other
+     sequence.
+   - Within 46 units of a seam: that seam and its two planes come up, and the
+     third plane goes out entirely. Each axis is the intersection of exactly two
+     planes, so "nearest seam" always resolves to a real pair.
+   - On the origin: all three, because that is the one place the answer is
+     genuinely all of them.
+   - Off the figure: lines only.
+
+   FOUR THINGS A LATER SESSION NEEDS TO KNOW
+   1. The hit shapes MUST remain direct siblings of g.fig. The rules use the
+      general sibling combinator, so wrapping the hits in a group silently
+      matches nothing, renders perfectly, and does nothing. That exact fault
+      cost most of a session.
+   2. The hover sector geometry is derived from the projection vectors. If the
+      view angle is ever changed, the wedges must be regenerated from it and
+      not adjusted by hand.
+   3. The hit region starts at x=680 so the hero text stays selectable. The
+      figure sits above the content on z-index, and only the hit shapes take
+      pointer events.
+   4. No painted coordinate may leave the viewBox. Layout was sizing to the
+      painted extent at one point and threw the figure a thousand pixels tall.
+      --------------------------------------------------------------------- */
+    .datum-frame {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .datum-frame svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .datum-frame .hit {
+      fill: #fff;
+      fill-opacity: 0;
+      pointer-events: all;
+    }
+
+    .datum-frame .fig {
+      pointer-events: none;
+    }
+
+    .datum-frame .pf {
+      opacity: 0;
+      transition: opacity 0.4s ease-out;
+    }
+
+    .datum-frame .edg {
+      opacity: 0.26;
+      transition: opacity 0.25s ease-out;
+    }
+
+    .datum-frame .axg {
+      opacity: 0.46;
+      transition: opacity 0.25s ease-out;
+    }
+
+    .datum-frame .lbg {
+      opacity: 0.28;
+      transition: opacity 0.25s ease-out;
+    }
+
+    /* Establishment. The delays are the sequence and they are load bearing. */
+    .datum-frame .hit:hover~.fig .fa {
+      opacity: 0.055;
+      transition-delay: 0s;
+    }
+
+    .datum-frame .hit:hover~.fig .fb {
+      opacity: 0.055;
+      transition-delay: 0.24s;
+    }
+
+    .datum-frame .hit:hover~.fig .fc {
+      opacity: 0.055;
+      transition-delay: 0.48s;
+    }
+
+    .datum-frame .hit:hover~.fig .axg,
+    .datum-frame .hit:hover~.fig .lbg {
+      opacity: 0.20;
+    }
+
+    /* Selection. Two planes up, the third out. Delay reset to zero so switching
+   between seams is immediate rather than inheriting the establishment stagger. */
+    .datum-frame .hx:hover~.fig .fa,
+    .datum-frame .hx:hover~.fig .fb {
+      opacity: 0.095;
+      transition-delay: 0s;
+    }
+
+    .datum-frame .hx:hover~.fig .fc {
+      opacity: 0;
+      transition-delay: 0s;
+    }
+
+    .datum-frame .hy:hover~.fig .fa,
+    .datum-frame .hy:hover~.fig .fc {
+      opacity: 0.095;
+      transition-delay: 0s;
+    }
+
+    .datum-frame .hy:hover~.fig .fb {
+      opacity: 0;
+      transition-delay: 0s;
+    }
+
+    .datum-frame .hz:hover~.fig .fb,
+    .datum-frame .hz:hover~.fig .fc {
+      opacity: 0.095;
+      transition-delay: 0s;
+    }
+
+    .datum-frame .hz:hover~.fig .fa {
+      opacity: 0;
+      transition-delay: 0s;
+    }
+
+    .datum-frame .hx:hover~.fig .ea,
+    .datum-frame .hx:hover~.fig .eb {
+      opacity: 0.62;
+    }
+
+    .datum-frame .hx:hover~.fig .ec {
+      opacity: 0.11;
+    }
+
+    .datum-frame .hy:hover~.fig .ea,
+    .datum-frame .hy:hover~.fig .ec {
+      opacity: 0.62;
+    }
+
+    .datum-frame .hy:hover~.fig .eb {
+      opacity: 0.11;
+    }
+
+    .datum-frame .hz:hover~.fig .eb,
+    .datum-frame .hz:hover~.fig .ec {
+      opacity: 0.62;
+    }
+
+    .datum-frame .hz:hover~.fig .ea {
+      opacity: 0.11;
+    }
+
+    .datum-frame .hx:hover~.fig .ax,
+    .datum-frame .hx:hover~.fig .lx {
+      opacity: 0.9;
+    }
+
+    .datum-frame .hy:hover~.fig .ay,
+    .datum-frame .hy:hover~.fig .ly {
+      opacity: 0.9;
+    }
+
+    .datum-frame .hz:hover~.fig .az,
+    .datum-frame .hz:hover~.fig .lz {
+      opacity: 0.9;
+    }
+
+    /* The origin: where all three seams meet, so all three is the correct answer. */
+    .datum-frame .ho:hover~.fig .pf {
+      opacity: 0.075;
+      transition-delay: 0s;
+    }
+
+    .datum-frame .ho:hover~.fig .axg,
+    .datum-frame .ho:hover~.fig .lbg {
+      opacity: 0.9;
+    }
+
+    .datum-frame .ho:hover~.fig .edg {
+      opacity: 0.62;
+    }
+
+    /* Nothing here travels, so reduced motion has nothing to remove. Every state
+   change is opacity and all of them still fire, which is correct: the tiers
+   carry information and stripping them would be a usability loss. */
+  </style>
+</head>
+
+<body>
+  <!-- NAV:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE FILE.
+       It is written from _nav_canonical.html by apply-chrome.py, and any hand
+       edit made here will be silently overwritten the next time that script
+       runs. Change the fragment, then run the script.
+       Identical on every page except the active entry, which the script sets
+       from the page's own filename. Five entries as of 14 August 2026: The
+       Engagement sits between The Work and Contact. The four discipline pages
+       and every other page outside the nav carry no active entry at all,
+       which is correct rather than an omission.
+
+       File:       _nav_canonical.html
+       Repository: sinclairdynamics-website
+
+       REVISIONS (most recent first, three kept)
+       Session 36  26 Aug 2026  The five links become a panel on a phone,
+                                revealed by a menu button, instead of being
+                                hidden with no replacement. The five anchors
+                                below are untouched: apply-chrome.py sets the
+                                active entry by matching each one exactly, so
+                                a second copy of them would halt the run.
+       Session 18  19 Aug 2026  This fragment created. The nav stops being
+                                duplicated by hand into every page file.
+
+       THE MENU BUTTON, AND WHY THE LINKS ARE NOT REPEATED INSIDE IT.
+       Below 900px shared.css laid these five out as a horizontal row and
+       then hid them, leaving a phone visitor the logo and Get In Touch and
+       nothing else, with the footer as the only route between pages. They
+       are no longer hidden. The same five anchors are laid out as a panel
+       under the bar and revealed by the button. One set of links, two
+       appearances, so there is only ever one answer to what is in the nav.
+
+       Get In Touch stays in the bar and is deliberately not inside the
+       panel. Positioning 8.3 makes the persistent call to action the floor
+       of the invitation ramp, present at every scroll position on every
+       page. Inside the panel it would be conditional on somebody opening
+       the panel first. -->
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="sinclair-nav-icon.png" alt="Sinclair Dynamics"
+        style="height:52px;width:auto;"></a>
+    <div class="nav-links" id="nav-links" data-open="false">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="work.html">The Work</a>
+      <a href="engagement.html">The Engagement</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button type="button" class="nav-toggle" id="nav-toggle"
+              aria-controls="nav-links" aria-expanded="false" aria-label="Open menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <a href="contact.html" class="nav-cta">Get In Touch</a>
+    </div>
+  </nav>
+  <script>
+    /* The button carries the state and the panel follows it, so there is one
+       source of truth rather than two that can disagree. The panel is styled
+       off data-open and the button off aria-expanded; both are set together.
+
+       If this script never runs, a phone visitor is exactly where they were
+       before today, using the footer. It adds a route that does not currently
+       exist rather than propping up one that does. */
+    (function () {
+      var toggle = document.getElementById('nav-toggle');
+      var panel = document.getElementById('nav-links');
+      if (!toggle || !panel) { return; }
+
+      function setOpen(open) {
+        panel.setAttribute('data-open', open ? 'true' : 'false');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      }
+
+      toggle.addEventListener('click', function () {
+        setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+      });
+
+      /* Escape closes it, which is the expected behaviour of any panel a
+         control opens. It is reachable only on a narrow desktop window,
+         since a phone has no such key, and it costs three lines. */
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') { setOpen(false); }
+      });
+
+      /* Closing on a link tap is currently unexercised: all five links leave
+         the page, and the next page arrives with the panel closed because
+         nothing persists. It is here for the first nav entry that is an
+         in-page anchor rather than a page. */
+      panel.addEventListener('click', function (event) {
+        if (event.target.closest('a')) { setOpen(false); }
+      });
+    })();
+  </script>
+  <!-- NAV:END -->
+
+  <!-- ===== 1. HERO =====================================================
+     States what the page is for rather than praising the person. The
+     seam figure belongs here and is built in a separate visual pass:
+     one join, carrying, no comparison and no fault shown. Static, with
+     a single opacity step on hover. The comparison figure (poor fit-up
+     beside good fit-up) belongs to the wider work section elsewhere and
+     is deliberately not previewed here.
+     ================================================================== -->
+  <section class="page-hero">
+    <!-- The seam figure, built 8 August 2026 as a datum reference frame. Full
+       reasoning and the four maintenance warnings are in the .datum-frame
+       block in the page style above. Read that before editing this. -->
+    <div class="datum-frame">
+      <svg viewBox="0 0 1200 480" preserveAspectRatio="xMaxYMax meet" xmlns="http://www.w3.org/2000/svg" role="img"
+        aria-label="Three mutually perpendicular datum planes intersecting in space, their lines of intersection running out of frame from one origin.">
+        <defs>
+          <linearGradient id="rayxp" gradientUnits="userSpaceOnUse" x1="905.0" y1="300.0" x2="1200.0" y2="383.0">
+            <stop offset="0%" stop-color="#2AADA0" stop-opacity="1" />
+            <stop offset="97.6%" stop-color="#2AADA0" stop-opacity="1" />
+            <stop offset="98.6%" stop-color="#2AADA0" stop-opacity="0.42" />
+            <stop offset="100%" stop-color="#2AADA0" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="rayxn" gradientUnits="userSpaceOnUse" x1="905.0" y1="300.0" x2="0.0" y2="45.5">
+            <stop offset="0%" stop-color="#2AADA0" stop-opacity="1" />
+            <stop offset="31.8%" stop-color="#2AADA0" stop-opacity="1" />
+            <stop offset="60.5%" stop-color="#2AADA0" stop-opacity="0.42" />
+            <stop offset="100%" stop-color="#2AADA0" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="rayyp" gradientUnits="userSpaceOnUse" x1="905.0" y1="300.0" x2="554.0" y2="480.0">
+            <stop offset="0%" stop-color="#2AADA0" stop-opacity="1" />
+            <stop offset="60.0%" stop-color="#2AADA0" stop-opacity="1" />
+            <stop offset="76.8%" stop-color="#2AADA0" stop-opacity="0.42" />
+            <stop offset="100%" stop-color="#2AADA0" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="rayyn" gradientUnits="userSpaceOnUse" x1="905.0" y1="300.0" x2="1200.0" y2="148.7">
+            <stop offset="0%" stop-color="#2AADA0" stop-opacity="1" />
+            <stop offset="71.4%" stop-color="#2AADA0" stop-opacity="1" />
+            <stop offset="83.4%" stop-color="#2AADA0" stop-opacity="0.42" />
+            <stop offset="100%" stop-color="#2AADA0" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="rayzp" gradientUnits="userSpaceOnUse" x1="905.0" y1="300.0" x2="905.0" y2="0.0">
+            <stop offset="0%" stop-color="#2AADA0" stop-opacity="1" />
+            <stop offset="46.9%" stop-color="#2AADA0" stop-opacity="1" />
+            <stop offset="69.2%" stop-color="#2AADA0" stop-opacity="0.42" />
+            <stop offset="100%" stop-color="#2AADA0" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="rayzn" gradientUnits="userSpaceOnUse" x1="905.0" y1="300.0" x2="905.0" y2="480.0">
+            <stop offset="0%" stop-color="#2AADA0" stop-opacity="1" />
+            <stop offset="78.1%" stop-color="#2AADA0" stop-opacity="1" />
+            <stop offset="87.3%" stop-color="#2AADA0" stop-opacity="0.42" />
+            <stop offset="100%" stop-color="#2AADA0" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="dg" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#fff" stop-opacity="0.07" />
+            <stop offset="24%" stop-color="#fff" stop-opacity="0.18" />
+            <stop offset="48%" stop-color="#fff" stop-opacity="0.46" />
+            <stop offset="72%" stop-color="#fff" stop-opacity="0.88" />
+            <stop offset="90%" stop-color="#fff" stop-opacity="1" />
+          </linearGradient>
+          <radialGradient id="pg" gradientUnits="userSpaceOnUse" cx="905" cy="300" r="410">
+            <stop offset="0%" stop-color="#2AADA0" stop-opacity="1" />
+            <stop offset="55%" stop-color="#2AADA0" stop-opacity="0.7" />
+            <stop offset="100%" stop-color="#2AADA0" stop-opacity="0" />
+          </radialGradient>
+          <mask id="dm">
+            <rect width="1200" height="480" fill="url(#dg)" />
+          </mask>
+        </defs>
+        <rect class="hit hall" x="680.0" y="40.0" width="520.0" height="440.0" />
+        <path class="hit hx" d="M1200.0,383.0 L1187.5,427.3 L680.0,284.5 L680.0,188.9 L1200.0,335.2 Z" />
+        <path class="hit hy" d="M1200.0,200.4 L680.0,467.1 L680.0,363.7 L1179.0,107.8 L1200.0,148.7 Z" />
+        <path class="hit hz" d="M951.0,40.0 L951.0,480.0 L859.0,480.0 L859.0,40.0 Z" />
+        <circle class="hit ho" cx="905" cy="300" r="52" />
+        <g class="fig" mask="url(#dm)" fill="none" stroke="#2AADA0" stroke-linecap="round">
+          <path class="pf fa" d="M406.4,327.0 L950.4,480.0 L999.9,480.0 L1200.0,377.4 L1200.0,215.7 L827.6,111.0 Z"
+            fill="url(#pg)" stroke="none" />
+          <path class="pf fb" d="M1193.0,240.3 L1193.0,480.0 L1044.9,480.0 L617.0,359.6 L617.0,78.3 Z" fill="url(#pg)"
+            stroke="none" />
+          <path class="pf fc" d="M694.4,267.4 L694.4,480.0 L828.3,480.0 L1115.6,332.6 L1115.6,51.3 Z" fill="url(#pg)"
+            stroke="none" />
+          <g class="edg ea" stroke-linecap="butt">
+            <path d="M1083.5,437.2 L1134.0,411.2" stroke-width="0.9" opacity="0.30" />
+            <path d="M1134.0,411.2 L1200.0,377.4" stroke-width="0.9" opacity="0.70" />
+            <path d="M1200.0,215.7 L1196.2,214.7" stroke-width="0.9" opacity="0.30" />
+            <path d="M1196.2,214.7 L1035.0,169.3" stroke-width="0.9" opacity="0.70" />
+            <path d="M1035.0,169.3 L965.8,149.9" stroke-width="0.9" opacity="0.30" />
+            <path d="M726.5,162.8 L676.0,188.8" stroke-width="0.9" opacity="0.30" />
+            <path d="M676.0,188.8 L558.0,249.2" stroke-width="0.9" opacity="0.70" />
+            <path d="M558.0,249.2 L507.5,275.2" stroke-width="0.9" opacity="0.30" />
+            <path d="M544.6,365.9 L613.8,385.3" stroke-width="0.9" opacity="0.30" />
+            <path d="M613.8,385.3 L775.0,430.7" stroke-width="0.9" opacity="0.70" />
+            <path d="M775.0,430.7 L844.2,450.1" stroke-width="0.9" opacity="0.30" />
+          </g>
+          <g class="edg eb" stroke-linecap="butt">
+            <path d="M1193.0,307.9 L1193.0,341.6" stroke-width="0.9" opacity="0.30" />
+            <path d="M1193.0,341.6 L1193.0,420.4" stroke-width="0.9" opacity="0.70" />
+            <path d="M1193.0,420.4 L1193.0,454.1" stroke-width="0.9" opacity="0.30" />
+            <path d="M1044.9,480.0 L985.6,463.3" stroke-width="0.9" opacity="0.30" />
+            <path d="M985.6,463.3 L824.4,418.0" stroke-width="0.9" opacity="0.70" />
+            <path d="M824.4,418.0 L755.2,398.5" stroke-width="0.9" opacity="0.30" />
+            <path d="M617.0,292.1 L617.0,258.4" stroke-width="0.9" opacity="0.30" />
+            <path d="M617.0,258.4 L617.0,179.6" stroke-width="0.9" opacity="0.70" />
+            <path d="M617.0,179.6 L617.0,145.9" stroke-width="0.9" opacity="0.30" />
+            <path d="M755.2,117.2 L824.4,136.7" stroke-width="0.9" opacity="0.30" />
+            <path d="M824.4,136.7 L985.6,182.0" stroke-width="0.9" opacity="0.70" />
+            <path d="M985.6,182.0 L1054.8,201.5" stroke-width="0.9" opacity="0.30" />
+          </g>
+          <g class="edg ec" stroke-linecap="butt">
+            <path d="M694.4,334.9 L694.4,368.6" stroke-width="0.9" opacity="0.30" />
+            <path d="M694.4,368.6 L694.4,447.4" stroke-width="0.9" opacity="0.70" />
+            <path d="M694.4,447.4 L694.4,480.0" stroke-width="0.9" opacity="0.30" />
+            <path d="M828.3,480.0 L846.0,470.9" stroke-width="0.9" opacity="0.30" />
+            <path d="M846.0,470.9 L964.0,410.4" stroke-width="0.9" opacity="0.70" />
+            <path d="M964.0,410.4 L1014.5,384.5" stroke-width="0.9" opacity="0.30" />
+            <path d="M1115.6,265.1 L1115.6,231.4" stroke-width="0.9" opacity="0.30" />
+            <path d="M1115.6,231.4 L1115.6,152.6" stroke-width="0.9" opacity="0.70" />
+            <path d="M1115.6,152.6 L1115.6,118.9" stroke-width="0.9" opacity="0.30" />
+            <path d="M1014.5,103.2 L964.0,129.1" stroke-width="0.9" opacity="0.30" />
+            <path d="M964.0,129.1 L846.0,189.6" stroke-width="0.9" opacity="0.70" />
+            <path d="M846.0,189.6 L795.5,215.5" stroke-width="0.9" opacity="0.30" />
+          </g>
+          <g class="axg ax">
+            <path d="M905.0,300.0 L1200.0,383.0" stroke="url(#rayxp)" stroke-width="1.7" />
+            <path d="M905.0,300.0 L0.0,45.5" stroke="url(#rayxn)" stroke-width="1.7" />
+          </g>
+          <g class="axg ay">
+            <path d="M905.0,300.0 L554.0,480.0" stroke="url(#rayyp)" stroke-width="1.7" />
+            <path d="M905.0,300.0 L1200.0,148.7" stroke="url(#rayyn)" stroke-width="1.7" />
+          </g>
+          <g class="axg az">
+            <path d="M905.0,300.0 L905.0,0.0" stroke="url(#rayzp)" stroke-width="1.7" />
+            <path d="M905.0,300.0 L905.0,480.0" stroke="url(#rayzn)" stroke-width="1.7" />
+          </g>
+          <circle cx="905" cy="300" r="8.5" stroke-width="1" opacity="0.4" />
+          <circle cx="905" cy="300" r="3.1" fill="#2AADA0" stroke="none" opacity="0.7" />
+          <g class="lbg lx">
+            <path d="M1054.8,342.1 L1048.5,364.3" stroke-width="0.9" />
+            <rect x="1024.6" y="365.4" width="42" height="19" rx="2" stroke-width="1" /><text x="1045.6" y="379.3"
+              text-anchor="middle" fill="#2AADA0" stroke="none" font-family="Barlow Condensed, sans-serif"
+              font-size="12.5" letter-spacing="1.1">A-B</text>
+          </g>
+          <g class="lbg ly">
+            <path d="M997.7,252.5 L986.3,230.2" stroke-width="0.9" />
+            <rect x="960.2" y="210.9" width="42" height="19" rx="2" stroke-width="1" /><text x="981.2" y="224.8"
+              text-anchor="middle" fill="#2AADA0" stroke="none" font-family="Barlow Condensed, sans-serif"
+              font-size="12.5" letter-spacing="1.1">A-C</text>
+          </g>
+          <g class="lbg lz">
+            <path d="M905.0,373.1 L932.0,373.1" stroke-width="0.9" />
+            <rect x="922.0" y="363.6" width="42" height="19" rx="2" stroke-width="1" /><text x="943.0" y="377.5"
+              text-anchor="middle" fill="#2AADA0" stroke="none" font-family="Barlow Condensed, sans-serif"
+              font-size="12.5" letter-spacing="1.1">B-C</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div class="page-hero-content">
+      <div class="hero-eyebrow">About</div>
+      <h1>The work<br>is always<br><span>in the seam.</span></h1>
+      <p class="page-hero-sub">Ainsley Williams, mechatronics engineer in Johannesburg. Two decades spent where one
+        discipline stops and another starts.</p>
+    </div>
+  </section>
+
+  <!-- ===== 2. THE PLATFORM: present tense, verifiable, and the credibility slot ==
+     Opens where the homepage proof strip stops rather than repeating it.
+     The homepage keeps first claim on "I designed it, I built it, and I run it"
+     because it meets the reader cold.
+     ========================================================================= -->
+  <section>
+    <div class="section-inner">
+      <div class="two-col-wide">
+        <div>
+          <div class="section-eyebrow">Where I Am Now</div>
+          <h2 class="section-title">The Solar <span>Monitor</span></h2>
+          <p class="body-text">The Solar Monitor watches six installations for several owners, and each one reports
+            through a different manufacturer's platform. Those platforms do not agree with one another about what they
+            are measuring or how often. Reconciling that is half the work, and it is the half nobody finds interesting.
+          </p>
+          <p class="body-text">The other half is that nobody reads dashboards. Numbers and charts are placed in front of
+            a person who has no time to interpret them, so the interpretation never happens. This platform observes each
+            site on a schedule instead, writes up what changed and what is likely causing it, and answers questions
+            about it in plain language. The charts still exist. They are not the point.</p>
+          <p class="body-text">The monitor can be talked to. A site owner asks what happened yesterday and gets a
+            sentence rather than a chart. The assistant on the contact page of this site is the same build answering a
+            different subject. Neither one improvises: what each is allowed to see is settled before it is asked
+            anything.</p>
+          <!-- Added 18 August 2026, when platform.html shipped. This section is the first
+               substantial content on the page and it is entirely about the platform, so a
+               reader who wants more had nowhere to go and had to find the route from the
+               homepage instead.
+               A text affordance rather than a button, and deliberately quiet: positioning
+               8.3 scales an invitation to how far the reader has come, and this sits near
+               the top of the page. It is also not an invitation to make contact. It goes
+               further into the material, which is the direction this site is supposed to
+               draw. Same construction as the lead exit on work.html.
+               IT MUST NOT BECOME .btn-outline. That class is a dark ground component:
+               white text on a transparent background with a white border at 30 percent.
+               It was used here first and was invisible on this white section until the
+               hover shadow appeared. Both other uses of it on the site are on dark
+               grounds and are correct there. -->
+          <a href="platform.html" class="service-link">How it works</a>
+        </div>
+        <div>
+          <div class="plate">
+            <div class="plate-heading">Running Now</div>
+            <div class="plate-row"><span class="plate-label">Sites</span><span class="plate-value">Six</span></div>
+            <div class="plate-row"><span class="plate-label">Owners</span><span class="plate-value">Several</span></div>
+            <div class="plate-row"><span class="plate-label">Source platforms</span><span
+                class="plate-value">Five</span></div>
+            <div class="plate-row"><span class="plate-label">Observation</span><span class="plate-value">Hourly</span>
+            </div>
+            <div class="plate-row"><span class="plate-label">Samples per observation</span><span
+                class="plate-value">Ten</span></div>
+            <div class="plate-row"><span class="plate-label">Correction</span><span class="plate-value">Weather</span>
+            </div>
+            <div class="plate-row"><span class="plate-label">Write access</span><span
+                class="plate-value accent">None</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. THE CAREER, TOLD AS SEAMS ================================
+     Each entry is named for the boundary the role sat on rather than
+     for a chapter of a story. A reader who scans only the headings gets
+     the intersection claim, made by the evidence instead of asserted.
+     ================================================================== -->
+  <section style="background: var(--off-white);">
+    <div class="section-inner">
+      <div class="section-eyebrow">How I Got Here</div>
+      <h2 class="section-title">The work was never<br><span>in one discipline.</span></h2>
+      <p class="section-lead">The route runs from national infrastructure to a software platform. What the stops have in
+        common is not a subject. Each one sat where two things met, and no single specialist owned the ground in
+        between.</p>
+
+      <div class="story-section">
+        <div class="story-era">Consulting Engineering</div>
+        <h3>Electrical inside civil</h3>
+        <p class="body-text">I started in a large consulting firm on national roadways, toll facilities, urban
+          precincts, and the electrical systems that run underneath them. Electrical infrastructure does not sit beside
+          civil infrastructure. It runs through it, and the drawings are produced by different people. The Johannesburg
+          infrastructure upgrades for the 2010 FIFA World Cup were where I first saw what happens to a programme when
+          the date cannot move.</p>
+      </div>
+
+      <div class="story-section">
+        <div class="story-era">West Africa</div>
+        <h3>Design meets what was built</h3>
+        <p class="body-text">I worked on the commissioning and acceptance testing of a private toll concession in West
+          Africa, the first of its kind in the region. Commissioning is a seam by definition. It is the point where the
+          thing that was designed meets the thing that was actually built, and the two are never identical. Doing it
+          under an unfamiliar regulatory framework adds a second seam that appears on no drawing.</p>
+      </div>
+
+      <div class="story-section">
+        <div class="story-era">Electrical Contracting</div>
+        <h3>Engineering meets money</h3>
+        <p class="body-text">I moved into project and contract management, and eventually ran a division of a national
+          contractor: several project managers, multiple active contracts, tendering strategy, subcontractor
+          development. A technically correct decision that loses the contract is not a correct decision. Where exactly
+          that line falls is not taught anywhere, and getting it wrong is expensive in both directions.</p>
+      </div>
+
+      <div class="story-section">
+        <div class="story-era">Agri-processing</div>
+        <h3>A plant, investors, four countries</h3>
+        <p class="body-text">I co-founded an agri-processing venture and led its operations, working between South
+          Africa, Malawi and Uganda, with investors in Cyprus and the United States. Cross-border logistics, commercial
+          and legal negotiation, and underneath all of it a plant that had to work. It did not go to plan. I learned
+          more there about what a business actually needs from its engineering than on any project that went well.</p>
+      </div>
+
+      <div class="story-section">
+        <div class="story-era">The Platform</div>
+        <h3>Hardware meets software</h3>
+        <p class="body-text">Sinclair Dynamics is the practice I run now, and the monitoring platform came out of it. It
+          is the same kind of edge as the others: a physical system on one side, software watching it on the other, and
+          the decisions that matter all in between. The platform stands on established engineering, on mathematics
+          settled since the 1940s, and on a capability that did not exist two years ago. None of those three is mine.
+          Putting them together is.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. CREDENTIALS: they reassure, they do not introduce =========
+     Three items, each stated as the issuing body states it, and each
+     tied to something demonstrable rather than to a capability it did
+     not produce. Lapsed authorisations sit below the grid rather than
+     inside it.
+     ================================================================== -->
+  <section class="dark-section">
+    <div class="section-inner">
+      <div class="section-eyebrow">Credentials</div>
+      <h2 class="section-title">What is <span>on paper</span></h2>
+      <p class="section-lead">Three items. Each stated the way the issuing body states it.</p>
+      <div class="creds-grid">
+        <div class="cred-card">
+          <div class="cred-card-label">Engineering</div>
+          <div class="cred-card-title">BSc (Eng) Mechatronics</div>
+          <div class="cred-card-body">University of Cape Town, 2003, awarded with honours. Four years across electrical,
+            electronic, mechanical and software engineering, housed in the electrical department because mechatronics is
+            instrumentation and control. It is itself a discipline assembled out of four others.</div>
+        </div>
+        <div class="cred-card">
+          <div class="cred-card-label">Delivery</div>
+          <div class="cred-card-title">Certified ScrumMaster&reg;</div>
+          <div class="cred-card-body">Scrum Alliance, September 2025, valid to September 2027. The platform is built the
+            way it describes: numbered sprints, a written plan before any code, and a handover document at every close.
+          </div>
+        </div>
+        <div class="cred-card">
+          <div class="cred-card-label">AI Practice</div>
+          <div class="cred-card-title">AI Fluency: Framework and Foundations</div>
+          <div class="cred-card-body">Anthropic. Concerned with using these tools accountably rather than with operating
+            them. Every article on this site states the rules it was written under, which is the same claim made where
+            it can be checked.</div>
+        </div>
+      </div>
+      <p class="lapsed">Previously held, all now lapsed: ORHVS Responsible Person for high voltage systems, ISO 9001
+        quality management awareness, and ACSA airside induction and access permit for works at OR Tambo International
+        Airport, a National Key Point, requiring assessment, security vetting and police clearance. The authorisations
+        have expired. The disciplines they enforced have not.</p>
+    </div>
+  </section>
+
+  <!-- ===== 5. OCCASIONAL WRITING ========================================
+     One article, presented as one considered thing rather than as a row
+     with its siblings missing. The cadence is stated so the reader does
+     not have to count.
+     ================================================================== -->
+  <section style="background: var(--off-white);">
+    <div class="section-inner" style="padding-top:70px;padding-bottom:70px;">
+      <div class="section-eyebrow">Occasional Writing</div>
+      <h2 class="section-title">Older Ideas,<br><span>Newer Problems</span></h2>
+      <p class="body-text" style="max-width:640px;margin-bottom:30px;">Most of the interesting problems in engineering
+        and in business are not new ones. The constraints move. The failure modes tend not to. I write occasionally
+        about settled ideas that turn out to explain something current, usually because I have just run into one.
+        Occasional is meant literally.</p>
+      <!-- Two panels as of 22 August 2026, most recent first. If a third
+           arrives, keep that order rather than the order they were written:
+           a reader scanning an occasional series wants the newest thing at
+           the top, and "occasional" means the list will never be long enough
+           to need dates. -->
+      <a class="writing-panel" href="machine-was-never-the-ceiling.html">
+        <div class="writing-panel-label">On Working With AI</div>
+        <div class="writing-panel-title">The Machine Was Never The Ceiling</div>
+        <p>A machine does exactly what it is given, and nothing more. Why judging what one produced always means
+          judging what it was asked to do, and what Ada Lovelace already argued about it in 1843.</p>
+        <span class="go">Read it</span>
+      </a>
+      <a class="writing-panel" href="spotting-ai-writing.html">
+        <div class="writing-panel-label">On Working With AI</div>
+        <div class="writing-panel-title">The Content You Did Not Notice</div>
+        <p>Why "you can always spot AI writing" tells you almost nothing about how much AI writing you have read, and
+          what the instinct is actually detecting.</p>
+        <span class="go">Read it</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== 6. CLOSE: one route out =====================================
+     The homepage close already owns the two routes framing, so this one
+     points at the assistant instead: a lower commitment option that the
+     page has already introduced.
+     ================================================================== -->
+  <section>
+    <div class="section-inner" style="text-align:center;">
+      <div class="section-eyebrow" style="justify-content:center;">Contact</div>
+      <h2 class="section-title">If any of that<br><span>was familiar</span></h2>
+      <p class="section-lead" style="margin:0 auto 40px;">The contact page is where this goes next. There is an
+        assistant on it as well, which will answer questions about any of the above and asks less of you than writing to
+        me does.</p>
+      <a href="contact.html" class="btn-primary">Get In Touch</a>
+    </div>
+  </section>
+
+  <!-- FOOTER:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE
+       FILE. It is written from _footer_canonical.html by apply-chrome.py, and
+       any hand edit made here will be silently overwritten the next time that
+       script runs. Change the fragment, then run the script.
+       Byte-identical on every page, with no per-page variation of any kind.
+       The four column headings are singular by design and name a mode rather
+       than a count. That is a different job from the section heading on
+       engagement.html, which is singular because there is one defined
+       engagement and goes plural when a second is written. Do not "correct"
+       Discipline to Disciplines on the strength of that rule. -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <svg width="56" height="56" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:16px;"
+            aria-hidden="true">
+            <rect width="48" height="48" rx="10" fill="#E8392A" />
+            <rect x="27" y="27" width="20" height="20" rx="4" fill="#C0281A" opacity="0.5" />
+            <path
+              d="M24 14.5a1.5 1.5 0 0 1 1.5 1.5v1.2a7.5 7.5 0 0 1 2.6 1.08l.85-.85a1.5 1.5 0 0 1 2.12 2.12l-.85.85A7.5 7.5 0 0 1 31.3 23H32.5a1.5 1.5 0 0 1 0 3h-1.2a7.5 7.5 0 0 1-1.08 2.6l.85.85a1.5 1.5 0 0 1-2.12 2.12l-.85-.85A7.5 7.5 0 0 1 25.5 31.8V33a1.5 1.5 0 0 1-3 0v-1.2a7.5 7.5 0 0 1-2.6-1.08l-.85.85a1.5 1.5 0 0 1-2.12-2.12l.85-.85A7.5 7.5 0 0 1 16.7 26H15.5a1.5 1.5 0 0 1 0-3h1.2a7.5 7.5 0 0 1 1.08-2.6l-.85-.85a1.5 1.5 0 0 1 2.12-2.12l.85.85a7.5 7.5 0 0 1 2.6-1.08V16a1.5 1.5 0 0 1 1.5-1.5zm0 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"
+              fill="white" />
+          </svg>
+          <div class="footer-tagline">Engineering Intelligence. Delivered.</div>
+          <p>Technical consulting and engineering from Johannesburg, South Africa. Working with clients across the
+            continent.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Engagement</h4><a href="monitoring-calibration.html">Monitoring Calibration</a>
+          <h4>Discipline</h4><a href="project-management.html">Project Management</a><a
+            href="technical-consulting.html">Technical Consulting</a><a href="ai-digital.html">AI &amp; Digital</a><a
+            href="energy-systems.html">Energy &amp; Power Systems</a>
+        </div>
+        <div class="footer-col">
+          <h4>Intelligence</h4><a href="platform.html">The Monitoring Platform</a>
+          <h4>Connection</h4><a href="about.html">About Ainsley</a><a href="work.html">The Work</a><a
+            href="engagement.html">The Engagement</a><a href="contact.html">Contact</a><a
+            href="https://www.linkedin.com/in/ainsley-williams-18107015/" target="_blank" rel="noopener" class="footer-linkedin"><svg
+              width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+              style="vertical-align:middle;margin-right:6px;" aria-hidden="true">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>LinkedIn Profile</a>
+          <p style="font-size:13px;margin-top:8px;line-height:1.5;">Profile and work history on LinkedIn.</p>
+        </div>
+      </div>
+      <div class="footer-bottom"><span class="footer-copy">&copy; 2026 Sinclair Dynamics. All rights
+          reserved.</span>
+      <!-- VIEWPORT REPORTER:START
+           DIAGNOSTIC. NOT A DESIGN ELEMENT. NOT PART OF THE SITE.
+
+           Added 23 August 2026, Session 29, for the narrow-width observation
+           pass. The site had never been looked at below desktop width and no
+           reliable way existed to know what width a device was actually
+           reporting to the stylesheet, which made every observation about
+           narrow behaviour a guess.
+
+           Hidden by default on every page. It reveals only when the address
+           ends in #vp, and once revealed it stays revealed while moving
+           around the site in the same browser tab, because the nav and
+           footer links do not carry the hash. The close control ends that.
+
+           It renders fixed to a corner of the viewport rather than in the
+           footer's flow, deliberately: .footer-bottom is a flex row and an
+           extra child would change how that row lays out at exactly the
+           widths this instrument exists to observe. Out of flow, it cannot
+           disturb any layout on any page.
+
+           It is styled to look nothing like this site. Black ground,
+           monospace, amber. Anyone who meets it by accident should be able
+           to tell at a glance that it is not part of the page.
+
+           REMOVAL: delete everything between these markers from
+           _footer_canonical.html and run apply-chrome.py. Nothing else on
+           the site references it. No rule in shared.css belongs to it, no
+           id or class it uses appears anywhere else, and it adds no link.
+
+           DISPOSAL CONDITION: it comes out when the narrow-width work is
+           finished and the site record's item 1 is closed, unless a reason
+           to keep it has been written down by then.
+           -->
+      <style>
+        /* Everything here is prefixed sd-vp so it cannot collide with the
+           site's own classes. Display is controlled by the .on class rather
+           than by the hidden attribute, because a later display rule would
+           silently win over hidden and the block would appear on every page. */
+        #sd-vp { display: none; }
+        #sd-vp.on {
+          display: block;
+          position: fixed;
+          z-index: 2147483000;
+          background: #000;
+          color: #FFB020;
+          border: 1px solid #FFB020;
+          border-radius: 3px;
+          padding: 6px 8px;
+          max-width: 320px;
+          font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+          font-size: 11px;
+          line-height: 1.45;
+          text-align: left;
+          letter-spacing: 0;
+          text-transform: none;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+          -webkit-user-select: text;
+          user-select: text;
+        }
+        /* Four corners, cycled by tapping the readout. The top pair clears the
+           68px nav plus its 2px border, since the nav is the first thing this
+           pass has to look at and the instrument must not cover it. */
+        #sd-vp.sd-vp-br { bottom: 8px; right: 8px; }
+        #sd-vp.sd-vp-bl { bottom: 8px; left: 8px; }
+        #sd-vp.sd-vp-tl { top: 78px; left: 8px; }
+        #sd-vp.sd-vp-tr { top: 78px; right: 8px; }
+        #sd-vp pre {
+          margin: 0;
+          font: inherit;
+          color: inherit;
+          white-space: pre;
+          cursor: pointer;
+        }
+        #sd-vp .sd-vp-bar {
+          display: flex;
+          gap: 6px;
+          margin-top: 6px;
+          border-top: 1px solid rgba(255, 176, 32, 0.35);
+          padding-top: 5px;
+        }
+        #sd-vp button {
+          flex: 1;
+          font-family: inherit;
+          font-size: 10px;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          background: transparent;
+          color: #FFB020;
+          border: 1px solid rgba(255, 176, 32, 0.5);
+          border-radius: 2px;
+          padding: 5px 4px;
+          cursor: pointer;
+          min-height: 30px;
+        }
+        #sd-vp button:active { background: rgba(255, 176, 32, 0.2); }
+        #sd-vp .sd-vp-warn { color: #FF5A4A; }
+      </style>
+      <div id="sd-vp" class="sd-vp-br"><pre data-sd-vp-out>reading</pre>
+        <div class="sd-vp-bar"><button type="button" data-sd-vp-scan>scan</button><button type="button"
+            data-sd-vp-copy>copy</button><button type="button" data-sd-vp-close>close</button></div>
+      </div>
+      <script>
+        (function () {
+          'use strict';
+
+          var KEY = 'sd-vp-visible';
+          var box = document.getElementById('sd-vp');
+          if (!box) { return; }
+
+          var out = box.querySelector('[data-sd-vp-out]');
+          var CORNERS = ['sd-vp-br', 'sd-vp-bl', 'sd-vp-tl', 'sd-vp-tr'];
+          var corner = 0;
+          var scanned = null;
+          var pending = false;
+
+          /* ---- collection -------------------------------------------------
+             Three width measures are reported rather than one, because they
+             disagree in informative ways. innerWidth includes a classic
+             scrollbar, clientWidth does not, and visualViewport reports what
+             is actually on screen after pinch zoom or a soft keyboard. A
+             difference between the first two on the laptop is a scrollbar. A
+             difference involving the third on the phone means the page is
+             zoomed and no width reading can be trusted until it is not. */
+
+          function media(query) {
+            return window.matchMedia ? window.matchMedia(query).matches : null;
+          }
+
+          function viewportMeta() {
+            var tag = document.querySelector('meta[name="viewport"]');
+            if (!tag) { return null; }
+            return tag.getAttribute('content') || '(empty)';
+          }
+
+          /* A short, honest guess at the browser. It exists for one reason:
+             a file opened from a messaging app may render in that app's own
+             WebView rather than in Chrome, and a WebView can report a
+             different viewport from the browser a visitor would use. The
+             full user agent string travels in the copy payload, so nothing
+             is lost by this being a guess. */
+          function browser() {
+            var ua = navigator.userAgent || '';
+            var name = 'unidentified';
+            if (/\bEdgA?\//.test(ua)) { name = 'Edge'; }
+            else if (/\bOPR\//.test(ua)) { name = 'Opera'; }
+            else if (/SamsungBrowser\//.test(ua)) { name = 'Samsung Internet'; }
+            else if (/FBAN|FBAV|Instagram|\bLine\//.test(ua)) { name = 'social app'; }
+            else if (/Firefox\/|FxiOS\//.test(ua)) { name = 'Firefox'; }
+            else if (/CriOS\//.test(ua)) { name = 'Chrome iOS'; }
+            else if (/Chrome\//.test(ua)) { name = 'Chrome'; }
+            else if (/Safari\//.test(ua)) { name = 'Safari'; }
+            if (/;\s?wv\)/.test(ua) || /\bwv\b/.test(ua)) { name += ' WebView'; }
+            return name;
+          }
+
+          function describe(el) {
+            var label = el.tagName.toLowerCase();
+            if (el.id) { return label + '#' + el.id; }
+            var cls = el.getAttribute && el.getAttribute('class');
+            if (cls) {
+              var first = String(cls).trim().split(/\s+/)[0];
+              if (first) { label += '.' + first; }
+            }
+            return label;
+          }
+
+          /* Finds the element reaching furthest past the right edge of the
+             document. Horizontal overflow is the commonest narrow-width fault
+             and a few pixels of it is invisible by eye.
+
+             Two honest limits, so a result is read for what it is. Position
+             fixed elements do not move with horizontal scroll, so their
+             numbers are only correct while the page is unscrolled sideways.
+             And an element can legitimately sit outside the viewport, so this
+             names a candidate rather than declaring a defect. */
+          function findWorst() {
+            var limit = document.documentElement.clientWidth;
+            var offset = window.pageXOffset || 0;
+            var all = document.body ? document.body.querySelectorAll('*') : [];
+            var worst = null;
+            var worstRight = limit + 1;
+            for (var i = 0; i < all.length; i++) {
+              var el = all[i];
+              if (el === box || box.contains(el)) { continue; }
+              var rect = el.getBoundingClientRect();
+              if (rect.width === 0 && rect.height === 0) { continue; }
+              var right = rect.right + offset;
+              if (right > worstRight) {
+                worstRight = right;
+                worst = el;
+              }
+            }
+            if (!worst) { return 'no element past ' + limit + 'px'; }
+            return describe(worst) + ' to ' + Math.round(worstRight) + 'px';
+          }
+
+          function collect() {
+            var doc = document.documentElement;
+            var vv = window.visualViewport;
+            var meta = viewportMeta();
+            return {
+              innerW: window.innerWidth,
+              innerH: window.innerHeight,
+              clientW: doc.clientWidth,
+              visualW: vv ? Math.round(vv.width) : null,
+              dpr: window.devicePixelRatio || 1,
+              screenW: window.screen ? window.screen.width : null,
+              screenH: window.screen ? window.screen.height : null,
+              portrait: media('(orientation: portrait)'),
+              at900: media('(max-width: 900px)'),
+              at700: media('(max-width: 700px)'),
+              reduced: media('(prefers-reduced-motion: reduce)'),
+              meta: meta,
+              metaOk: meta !== null && meta.indexOf('width=device-width') !== -1,
+              overflow: doc.scrollWidth - doc.clientWidth,
+              browser: browser(),
+              page: location.pathname.split('/').pop() || 'index.html'
+            };
+          }
+
+          /* ---- rendering ------------------------------------------------ */
+
+          /* The label column is padded to 9 rather than 8 because 'overflow'
+             is itself 8 characters long and would otherwise render with no
+             gap between its label and its value. Caught in a DOM test rather
+             than by reading it. */
+          function pad(text) {
+            var s = String(text);
+            while (s.length < 9) { s += ' '; }
+            return s;
+          }
+
+          function render() {
+            var d = collect();
+            var lines = [];
+
+            lines.push(pad('page') + d.page);
+            lines.push(pad('css') + d.innerW + ' x ' + d.innerH +
+              '   dpr ' + (Math.round(d.dpr * 100) / 100));
+            lines.push(pad('client') + d.clientW +
+              (d.visualW !== null ? '   visual ' + d.visualW : ''));
+            lines.push(pad('screen') + d.screenW + ' x ' + d.screenH +
+              '   ' + (d.portrait ? 'portrait' : 'landscape'));
+            lines.push(pad('breaks') +
+              '900 ' + (d.at900 ? 'ON ' : 'off') +
+              '   700 ' + (d.at700 ? 'ON' : 'off'));
+
+            if (d.meta === null) {
+              lines.push(pad('meta') + 'ABSENT, page will scale');
+            } else if (!d.metaOk) {
+              lines.push(pad('meta') + 'no width=device-width');
+            } else {
+              lines.push(pad('meta') + 'ok');
+            }
+
+            lines.push(pad('overflow') +
+              (d.overflow > 0 ? d.overflow + 'px past edge' : 'none'));
+
+            if (scanned) { lines.push(pad('widest') + scanned); }
+            if (d.reduced) { lines.push(pad('motion') + 'reduced'); }
+            lines.push(pad('browser') + d.browser);
+
+            out.textContent = lines.join('\n');
+
+            /* The two conditions that make every other number on the panel
+               unreliable are the two that get the alarm colour. */
+            var bad = (d.meta === null) || !d.metaOk || d.overflow > 0;
+            out.className = bad ? 'sd-vp-warn' : '';
+          }
+
+          function schedule() {
+            if (pending) { return; }
+            pending = true;
+            window.requestAnimationFrame(function () {
+              pending = false;
+              scanned = null;
+              render();
+            });
+          }
+
+          /* ---- copy ------------------------------------------------------
+             One line, so it pastes into a message without reflowing. The full
+             user agent and the URL travel with it, because a reading with no
+             provenance is not worth having later. */
+
+          function payload() {
+            var d = collect();
+            return [
+              d.page,
+              'css=' + d.innerW + 'x' + d.innerH,
+              'client=' + d.clientW,
+              'visual=' + (d.visualW === null ? 'n/a' : d.visualW),
+              'dpr=' + d.dpr,
+              'screen=' + d.screenW + 'x' + d.screenH,
+              (d.portrait ? 'portrait' : 'landscape'),
+              'mq900=' + (d.at900 ? 'on' : 'off'),
+              'mq700=' + (d.at700 ? 'on' : 'off'),
+              'meta=' + (d.meta === null ? 'ABSENT' : d.meta),
+              'overflow=' + d.overflow,
+              'widest=' + (scanned || 'not scanned'),
+              'reducedMotion=' + (d.reduced ? 'yes' : 'no'),
+              'browser=' + d.browser,
+              'url=' + location.href,
+              'ua=' + (navigator.userAgent || '')
+            ].join(' | ');
+          }
+
+          function flash(button, word) {
+            var original = button.textContent;
+            button.textContent = word;
+            window.setTimeout(function () { button.textContent = original; }, 1200);
+          }
+
+          function copy(button) {
+            var text = payload();
+            /* The async clipboard API is unavailable over file:// and in some
+               WebViews, which are exactly the conditions this may be opened
+               under, so the old path is kept as a fallback rather than
+               assumed unnecessary. */
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(function () {
+                flash(button, 'copied');
+              }, function () {
+                fallbackCopy(text, button);
+              });
+              return;
+            }
+            fallbackCopy(text, button);
+          }
+
+          function fallbackCopy(text, button) {
+            var field = document.createElement('textarea');
+            field.value = text;
+            field.setAttribute('readonly', 'readonly');
+            field.style.position = 'fixed';
+            field.style.top = '-1000px';
+            document.body.appendChild(field);
+            field.select();
+            var ok = false;
+            try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+            document.body.removeChild(field);
+            flash(button, ok ? 'copied' : 'select it');
+          }
+
+          /* ---- visibility ------------------------------------------------ */
+
+          function remember(state) {
+            try {
+              if (state) { window.sessionStorage.setItem(KEY, '1'); }
+              else { window.sessionStorage.removeItem(KEY); }
+            } catch (err) { /* private mode or file://; the hash still works */ }
+          }
+
+          function remembered() {
+            try { return window.sessionStorage.getItem(KEY) === '1'; }
+            catch (err) { return false; }
+          }
+
+          function show() {
+            if (box.classList.contains('on')) { return; }
+            box.classList.add('on');
+            remember(true);
+            render();
+            window.addEventListener('resize', schedule);
+            window.addEventListener('orientationchange', schedule);
+            if (window.visualViewport) {
+              window.visualViewport.addEventListener('resize', schedule);
+            }
+          }
+
+          function hide() {
+            box.classList.remove('on');
+            remember(false);
+          }
+
+          out.addEventListener('click', function () {
+            box.classList.remove(CORNERS[corner]);
+            corner = (corner + 1) % CORNERS.length;
+            box.classList.add(CORNERS[corner]);
+          });
+
+          box.querySelector('[data-sd-vp-scan]').addEventListener('click', function () {
+            scanned = findWorst();
+            render();
+          });
+
+          box.querySelector('[data-sd-vp-copy]').addEventListener('click', function (event) {
+            copy(event.currentTarget);
+          });
+
+          box.querySelector('[data-sd-vp-close]').addEventListener('click', hide);
+
+          window.addEventListener('hashchange', function () {
+            if (location.hash === '#vp') { show(); }
+          });
+
+          if (location.hash === '#vp' || remembered()) { show(); }
+        })();
+      </script>
+      <!-- VIEWPORT REPORTER:END -->
+        <a class="footer-legal" href="privacy.html">Privacy Notice</a></div>
+    </div>
+  </footer>
+  <!-- FOOTER:END -->
+  <!-- CONSENT:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE
+       FILE. It is written from _consent_canonical.html by apply-chrome.py.
+       The first time this runs against a page that has never carried this
+       block, the script inserts it fresh, immediately before </body>. Every
+       run after that finds the markers this run wrote and keeps it in sync
+       the same way nav and footer already are.
+       Byte-identical on every page: nothing here varies by filename, unlike
+       the nav's active entry.
+       Gates the analytics tag only. Nothing else on the site needs a
+       visitor's answer to work, so this is a bar at the foot of the
+       viewport rather than a modal, and the page underneath stays fully
+       usable while it's up. It shows once, on any page, for as long as
+       sinclair_analytics_consent is unset in the visitor's browser.
+       Whichever button is pressed answers it everywhere, for good, until
+       the visitor clears their own browser storage. See
+       sd-reference-privacy-v0_2.md for the reasoning behind the shape of
+       this control, and sd-copy-privacy-notice-v0_1.md for what it's
+       disclosing. -->
+  <div class="consent-banner" id="consent-banner" role="region" aria-label="Cookie and analytics consent"
+    data-state="hidden">
+    <div class="consent-inner">
+      <p class="consent-text">This site uses Google Analytics to understand how it's used. It only runs if you agree
+        to it, and everything else on the site works exactly the same either way. See the <a
+          href="privacy.html">privacy notice</a> for what's collected and why.</p>
+      <div class="consent-actions">
+        <button type="button" class="consent-btn" id="consent-decline">Decline</button>
+        <button type="button" class="consent-btn" id="consent-accept">Accept</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Consent banner. Self-contained, warns to console rather than failing
+    // silently, and does nothing at all if its own markup is missing.
+    //
+    // Two keys in localStorage, matching the site's existing sinclair_chat_*
+    // convention rather than a JSON blob: sinclair_analytics_consent holds
+    // "accepted" or "declined", sinclair_analytics_consent_at holds when.
+    // Persists indefinitely. There is no re-ask timer: nothing on this site
+    // currently expires anything on a schedule, and building one for this
+    // control alone would be scope the retention item next to it hasn't
+    // earned either. See the working document if that changes.
+    (function () {
+      var KEY = 'sinclair_analytics_consent';
+      var KEY_AT = 'sinclair_analytics_consent_at';
+      var GA_ID = 'G-W94Z1196CH';
+
+      var banner = document.getElementById('consent-banner');
+      if (!banner) {
+        console.warn('[consent] banner markup not found, nothing to wire up');
+        return;
+      }
+
+      function loadAnalytics() {
+        if (window.__sinclairAnalyticsLoaded) return;
+        window.__sinclairAnalyticsLoaded = true;
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', GA_ID);
+        var tag = document.createElement('script');
+        tag.async = true;
+        tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        document.head.appendChild(tag);
+      }
+
+      function recordChoice(choice) {
+        try {
+          localStorage.setItem(KEY, choice);
+          localStorage.setItem(KEY_AT, new Date().toISOString());
+        } catch (e) {
+          console.warn('[consent] could not write the choice to localStorage', e);
+        }
+      }
+
+      var stored = null;
+      try {
+        stored = localStorage.getItem(KEY);
+      } catch (e) {
+        console.warn('[consent] could not read localStorage, treating as unanswered', e);
+      }
+
+      if (stored === 'accepted') {
+        loadAnalytics();
+      } else if (stored !== 'declined') {
+        // Unanswered. Neither key is trusted on its own: only an explicit
+        // "declined" suppresses the banner without also loading the tag.
+        banner.setAttribute('data-state', 'visible');
+      }
+
+      var acceptBtn = document.getElementById('consent-accept');
+      var declineBtn = document.getElementById('consent-decline');
+
+      if (acceptBtn) {
+        acceptBtn.addEventListener('click', function () {
+          recordChoice('accepted');
+          banner.setAttribute('data-state', 'hidden');
+          loadAnalytics();
+        });
+      }
+      if (declineBtn) {
+        declineBtn.addEventListener('click', function () {
+          recordChoice('declined');
+          banner.setAttribute('data-state', 'hidden');
+        });
+      }
+    })();
+  </script>
+  <!-- CONSENT:END -->
+</body>
+
+</html>

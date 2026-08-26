@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energy & Power Systems Advisory Johannesburg | Sinclair Dynamics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .icon-strip {
+      display: flex;
+      gap: 48px;
+      align-items: flex-start;
+      margin: 48px 0;
+      padding: 40px 48px;
+      background: var(--teal-pale);
+      border-radius: 8px;
+      flex-wrap: wrap;
+    }
+
+    .icon-strip-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .icon-strip-item svg {
+      color: var(--teal);
+    }
+
+    .icon-strip-label {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--slate);
+      text-align: center;
+    }
+  </style>
+  <!-- Google Analytics -->
+  <!-- Analytics removed 9 August 2026, pending the consent gate and privacy
+     notice. Non-essential tracking must not fire before consent, and the
+     gate belongs with the nav and footer single sourcing rather than
+     duplicated per page. Property G-W94Z1196CH. -->
+  <meta name="description"
+    content="Independent PV, backup power, and energy optimisation advisory in Johannesburg and Gauteng. Load studies, system simulation, and honest advice — not supplier incentives.">
+  <meta name="keywords"
+    content="technical consultant Johannesburg, technical problem solver, project manager Gauteng, mechatronics engineer South Africa, engineering consulting Johannesburg, Sinclair Dynamics, Ainsley Williams">
+  <meta name="author" content="Ainsley Williams — Sinclair Dynamics">
+  <meta name="robots" content="index, follow">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sinclairdynamics.co/energy-systems.html">
+  <meta property="og:title" content="Energy & Power Systems — Sinclair Dynamics | Johannesburg">
+  <meta property="og:description"
+    content="Independent PV, backup power, and energy optimisation advisory in Johannesburg and Gauteng. Load studies, system simulation, and honest advice — not supplier incentives.">
+  <meta property="og:image" content="https://www.sinclairdynamics.co/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Sinclair Dynamics">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Energy & Power Systems — Sinclair Dynamics | Johannesburg">
+  <meta name="twitter:description"
+    content="Independent PV, backup power, and energy optimisation advisory in Johannesburg and Gauteng. Load studies, system simulation, and honest advice — not supplier incentives.">
+  <meta name="twitter:image" content="https://www.sinclairdynamics.co/og-image.png">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.sinclairdynamics.co/energy-systems.html">
+</head>
+
+<body>
+  <!-- NAV:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE FILE.
+       It is written from _nav_canonical.html by apply-chrome.py, and any hand
+       edit made here will be silently overwritten the next time that script
+       runs. Change the fragment, then run the script.
+       Identical on every page except the active entry, which the script sets
+       from the page's own filename. Five entries as of 14 August 2026: The
+       Engagement sits between The Work and Contact. The four discipline pages
+       and every other page outside the nav carry no active entry at all,
+       which is correct rather than an omission.
+
+       File:       _nav_canonical.html
+       Repository: sinclairdynamics-website
+
+       REVISIONS (most recent first, three kept)
+       Session 36  26 Aug 2026  The five links become a panel on a phone,
+                                revealed by a menu button, instead of being
+                                hidden with no replacement. The five anchors
+                                below are untouched: apply-chrome.py sets the
+                                active entry by matching each one exactly, so
+                                a second copy of them would halt the run.
+       Session 18  19 Aug 2026  This fragment created. The nav stops being
+                                duplicated by hand into every page file.
+
+       THE MENU BUTTON, AND WHY THE LINKS ARE NOT REPEATED INSIDE IT.
+       Below 900px shared.css laid these five out as a horizontal row and
+       then hid them, leaving a phone visitor the logo and Get In Touch and
+       nothing else, with the footer as the only route between pages. They
+       are no longer hidden. The same five anchors are laid out as a panel
+       under the bar and revealed by the button. One set of links, two
+       appearances, so there is only ever one answer to what is in the nav.
+
+       Get In Touch stays in the bar and is deliberately not inside the
+       panel. Positioning 8.3 makes the persistent call to action the floor
+       of the invitation ramp, present at every scroll position on every
+       page. Inside the panel it would be conditional on somebody opening
+       the panel first. -->
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="sinclair-nav-icon.png" alt="Sinclair Dynamics"
+        style="height:52px;width:auto;"></a>
+    <div class="nav-links" id="nav-links" data-open="false">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="work.html">The Work</a>
+      <a href="engagement.html">The Engagement</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button type="button" class="nav-toggle" id="nav-toggle"
+              aria-controls="nav-links" aria-expanded="false" aria-label="Open menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <a href="contact.html" class="nav-cta">Get In Touch</a>
+    </div>
+  </nav>
+  <script>
+    /* The button carries the state and the panel follows it, so there is one
+       source of truth rather than two that can disagree. The panel is styled
+       off data-open and the button off aria-expanded; both are set together.
+
+       If this script never runs, a phone visitor is exactly where they were
+       before today, using the footer. It adds a route that does not currently
+       exist rather than propping up one that does. */
+    (function () {
+      var toggle = document.getElementById('nav-toggle');
+      var panel = document.getElementById('nav-links');
+      if (!toggle || !panel) { return; }
+
+      function setOpen(open) {
+        panel.setAttribute('data-open', open ? 'true' : 'false');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      }
+
+      toggle.addEventListener('click', function () {
+        setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+      });
+
+      /* Escape closes it, which is the expected behaviour of any panel a
+         control opens. It is reachable only on a narrow desktop window,
+         since a phone has no such key, and it costs three lines. */
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') { setOpen(false); }
+      });
+
+      /* Closing on a link tap is currently unexercised: all five links leave
+         the page, and the next page arrives with the panel closed because
+         nothing persists. It is here for the first nav entry that is an
+         in-page anchor rather than a page. */
+      panel.addEventListener('click', function (event) {
+        if (event.target.closest('a')) { setOpen(false); }
+      });
+    })();
+  </script>
+  <!-- NAV:END -->
+
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-content">
+      <div class="hero-eyebrow">Energy & Power Systems</div>
+      <div style="margin-bottom:20px;">
+        <svg width="52" height="52" viewBox="0 0 48 48" fill="none" stroke="#2AADA0" stroke-width="1.8">
+          <path d="M26 6L12 26h10l-2 16 16-22H26L28 6z" />
+        </svg>
+      </div>
+      <h1>Cutting through<br>the noise to find<br><span>what your system<br>actually needs.</span></h1>
+      <p class="page-hero-sub">Independent advisory on renewable energy, backup power, and optimisation. Backed by
+        engineering analysis and honest advice, not sales incentives.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <div class="two-col-wide">
+        <div>
+          <div class="section-eyebrow">The Value of Independence</div>
+          <h2 class="section-title">Advice You Can <span>Trust</span></h2>
+          <p class="body-text">The energy systems market, particularly on the residential and small commercial side, is
+            full of suppliers who are genuinely knowledgeable but commercially motivated. The advice you get from a
+            supplier is not the same as the advice you'd get from an independent engineer whose only interest is in
+            helping you make the right decision.</p>
+          <p class="body-text">My advisory is grounded in detailed analysis of how you actually use energy, what your
+            system genuinely needs to do, and what the realistic trade-offs are between cost, capacity, and long-term
+            return. I use self-developed simulation tools to model system performance against real usage profiles, not
+            industry averages or optimistic scenarios.</p>
+          <p class="body-text">Beyond the residential and small commercial space, my background includes extensive work
+            on backup power infrastructure at significant scale. Standby generation, uninterruptible power supply
+            systems, power quality management, and the kind of electrical infrastructure that keeps critical facilities
+            running continuously.</p>
+          <div class="pull-quote">
+            <p>"Before you sign any quote or commit to any system, talk to an independent engineer first. It costs far
+              less than the alternative."</p>
+          </div>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=80" alt="Solar PV installation"
+            style="width:100%;height:320px;object-fit:cover;border-radius:6px;filter:saturate(0.75);margin-bottom:24px;">
+          <div class="highlight-box"><strong>What I Work With</strong>Photovoltaic systems · Inverter and battery
+            technology · Backup generation · Load management and scheduling · System monitoring and integration · Power
+            quality and optimisation</div>
+        </div>
+      </div>
+
+      <div class="icon-strip">
+        <div class="icon-strip-item">
+          <!-- Lightning bolt — primary energy icon -->
+          <svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M26 6L12 26h10l-2 16 16-22H26L28 6z" />
+          </svg>
+          <span class="icon-strip-label">Power</span>
+        </div>
+        <div class="icon-strip-item">
+          <!-- Solar panel -->
+          <svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="6" y="14" width="36" height="22" rx="2" />
+            <path d="M6 25h36M18 14v22M30 14v22M24 36v6M16 42h16" />
+            <circle cx="38" cy="10" r="4" />
+            <path d="M35 7l-3 3M41 7l-3 3" />
+          </svg>
+          <span class="icon-strip-label">Solar PV</span>
+        </div>
+        <div class="icon-strip-item">
+          <!-- Battery -->
+          <svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="8" y="14" width="32" height="20" rx="3" />
+            <path d="M40 20v8" />
+            <path d="M20 24h8M24 20v8" />
+          </svg>
+          <span class="icon-strip-label">Storage</span>
+        </div>
+        <div class="icon-strip-item">
+          <!-- Generator -->
+          <svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="6" y="16" width="36" height="20" rx="3" />
+            <circle cx="16" cy="26" r="5" />
+            <path d="M24 22h12M24 26h10M24 30h8" />
+            <path d="M16 16v-4M32 16v-4" />
+          </svg>
+          <span class="icon-strip-label">Backup Gen</span>
+        </div>
+        <div class="icon-strip-item">
+          <!-- Load/graph monitoring -->
+          <svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M6 36l8-12 8 6 8-14 8 8" />
+            <rect x="6" y="8" width="36" height="28" rx="2" />
+            <path d="M6 38h36" />
+          </svg>
+          <span class="icon-strip-label">Load Studies</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--off-white);">
+    <div class="section-inner">
+      <div class="section-eyebrow">The Process</div>
+      <h2 class="section-title">How It <span>Works</span></h2>
+      <p class="body-text" style="max-width:720px;margin-bottom:48px;">Good energy advisory starts with honest analysis,
+        not a product recommendation.</p>
+      <div class="two-col-grid" style="gap:40px;">
+        <div>
+          <p class="body-text"><strong style="color:var(--slate);">Understanding Your Usage.</strong> Before anything
+            else, I want to understand how you actually use energy, not how you think you use it. A detailed load study
+            maps your consumption patterns over time, identifies the appliances and systems that drive your peak demand,
+            and establishes a realistic baseline for system sizing.</p>
+          <p class="body-text"><strong style="color:var(--slate);">Simulating Your Options.</strong> Once I understand
+            your usage profile, I can model how different system configurations would perform against it: realistic
+            projections of battery state-of-charge through a typical day, and identifying the configurations that
+            deliver the best long-term return relative to upfront cost.</p>
+        </div>
+        <div>
+          <p class="body-text"><strong style="color:var(--slate);">Evaluating Proposals.</strong> Armed with accurate
+            analysis, evaluating supplier quotes becomes a very different exercise. I can help you understand whether a
+            proposed system is correctly sized for your needs, whether the components are appropriate, and whether the
+            pricing is reasonable relative to the market.</p>
+          <p class="body-text"><strong style="color:var(--slate);">Optimising Existing Systems.</strong> If you have a
+            system that isn't performing to expectations, I can diagnose the issue: whether it is a configuration
+            problem, a usage behaviour mismatch, a component fault, or a system design issue, and recommend practical
+            remediation steps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark-section">
+    <div class="section-inner">
+      <div class="section-eyebrow">AI-Powered Solar Monitoring</div>
+      <h2 class="section-title">Is Your Solar System Performing <span>As It Should?</span></h2>
+      <p class="section-lead" style="color:rgba(255,255,255,0.7);">Not performing badly. Performing as the weather, the
+        equipment, and the investment should allow.</p>
+
+      <div class="two-col-wide" style="margin-bottom:60px;">
+        <div>
+          <p class="body-text">Most PV solar and battery backup systems are installed and forgotten. The inverter
+            dashboard shows numbers. The numbers do not tell you whether those numbers are good. PV output degrades
+            slowly, battery capacity fades, usage patterns drift against system design. By the time something is
+            obviously wrong, value has already been lost.</p>
+          <p class="body-text">Sinclair Dynamics has developed a purpose-built AI monitoring platform for PV solar and
+            battery backup systems. It connects to your solar inverter via cloud API, pulls live operational data: PV
+            output, battery state of charge, grid interaction, and system state. and cross-references that data against
+            real weather conditions including solar irradiance and cloud cover.</p>
+          <p class="body-text">That weather-corrected analysis is the core differentiator. It tells you whether your
+            system is underperforming because of the weather, or despite it. There is a significant difference between
+            those two answers, and most inverter dashboards cannot tell you which one applies.</p>
+          <p class="body-text">The AI observations engine then reasons across that data and produces plain-language
+            insight specific to PV and battery behaviour: panels producing less than the irradiance should support,
+            batteries not reaching full charge as frequently as they used to, grid import happening when solar and
+            battery should be covering load, usage patterns working against system design. The kinds of observations an
+            experienced solar engineer would make on site, delivered continuously and automatically.</p>
+        </div>
+        <div>
+          <div class="dark-highlight" style="margin-bottom:20px;">
+            <strong>What the Platform Monitors</strong>
+            PV output vs real irradiance conditions. Battery state of charge and state of health trends. Grid import and
+            export patterns. System state and operational flags. Weather-corrected performance deviation. Usage patterns
+            relative to system design.
+          </div>
+          <div class="dark-highlight">
+            <strong>How It Connects</strong>
+            Currently integrated with Victron VRM. The architecture is designed to connect to any solar inverter
+            platform that exposes cloud data via API, making it adaptable as the market and client base evolves.
+          </div>
+        </div>
+      </div>
+
+      <div class="two-col-grid" style="gap:40px; margin-bottom:60px;">
+        <div>
+          <h3
+            style="font-family:var(--font-display);font-weight:700;font-size:22px;text-transform:uppercase;color:var(--white);margin-bottom:16px;">
+            For Solar System Owners</h3>
+          <p class="body-text">You invested in solar and battery backup to reduce grid dependence and protect against
+            outages. The platform tells you whether that investment is delivering what it should, flagging the specific
+            issues when it is not. No engineer visit required. No guesswork from inverter graphs.</p>
+        </div>
+        <div>
+          <h3
+            style="font-family:var(--font-display);font-weight:700;font-size:22px;text-transform:uppercase;color:var(--white);margin-bottom:16px;">
+            For Portfolio Operators</h3>
+          <p class="body-text">Performance accountability across multiple solar installations without an engineer
+            visiting each site. Systems measured not against yesterday's output, but against what the weather and the
+            equipment should be delivering, at every site, continuously.</p>
+        </div>
+      </div>
+
+      <div style="text-align:center;">
+        <p class="body-text" style="margin-bottom:32px;">Interested in what your solar system is actually doing?</p>
+        <!-- The dead link to the platform domain was removed on 14 August 2026 and the
+             surviving route promoted into the solid style. It offered a walkthrough rather
+             than a demo, because the platform is live and carries real owners' data, so
+             what could honestly be offered was being shown the real thing.
+             Repointed to platform.html on 18 August 2026, when that page shipped. This was
+             one of four temporary walkthrough offers and the exit condition was always the
+             page existing. The offer itself has not gone: it now sits at the foot of the
+             platform page, where a reader reaches it having been given something to ask
+             about rather than before. -->
+        <a href="platform.html"
+          style="display:inline-block;font-family:var(--font-display);font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;background:var(--teal-bright);color:var(--white);padding:16px 36px;border-radius:4px;text-decoration:none;">Read
+          About The Platform</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--off-white);">
+    <div class="section-inner" style="padding-top:70px;padding-bottom:70px;">
+      <a href="monitoring-calibration.html" class="highlight-box">
+        <strong>Where This Led: Monitoring Calibration</strong>
+        System monitoring is where this was tested first, on live installations. The constraint turned out to be
+        general. A reporting interval that nobody derived will miss whatever moves fastest, whether that is a battery or
+        a debtors book.
+        <span class="go">Read More</span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner" style="text-align:center;">
+      <div class="section-eyebrow" style="justify-content:center;">Get Started</div>
+      <h2 class="section-title">Know What You <span>Actually Need</span></h2>
+      <p class="section-lead" style="margin:0 auto 40px;">An independent engineering review before you commit to any
+        energy system investment is one of the most cost-effective decisions you can make.</p>
+      <a href="contact.html" class="btn-primary">Book a Consultation</a>
+    </div>
+  </section>
+
+  <!-- FOOTER:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE
+       FILE. It is written from _footer_canonical.html by apply-chrome.py, and
+       any hand edit made here will be silently overwritten the next time that
+       script runs. Change the fragment, then run the script.
+       Byte-identical on every page, with no per-page variation of any kind.
+       The four column headings are singular by design and name a mode rather
+       than a count. That is a different job from the section heading on
+       engagement.html, which is singular because there is one defined
+       engagement and goes plural when a second is written. Do not "correct"
+       Discipline to Disciplines on the strength of that rule. -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <svg width="56" height="56" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:16px;"
+            aria-hidden="true">
+            <rect width="48" height="48" rx="10" fill="#E8392A" />
+            <rect x="27" y="27" width="20" height="20" rx="4" fill="#C0281A" opacity="0.5" />
+            <path
+              d="M24 14.5a1.5 1.5 0 0 1 1.5 1.5v1.2a7.5 7.5 0 0 1 2.6 1.08l.85-.85a1.5 1.5 0 0 1 2.12 2.12l-.85.85A7.5 7.5 0 0 1 31.3 23H32.5a1.5 1.5 0 0 1 0 3h-1.2a7.5 7.5 0 0 1-1.08 2.6l.85.85a1.5 1.5 0 0 1-2.12 2.12l-.85-.85A7.5 7.5 0 0 1 25.5 31.8V33a1.5 1.5 0 0 1-3 0v-1.2a7.5 7.5 0 0 1-2.6-1.08l-.85.85a1.5 1.5 0 0 1-2.12-2.12l.85-.85A7.5 7.5 0 0 1 16.7 26H15.5a1.5 1.5 0 0 1 0-3h1.2a7.5 7.5 0 0 1 1.08-2.6l-.85-.85a1.5 1.5 0 0 1 2.12-2.12l.85.85a7.5 7.5 0 0 1 2.6-1.08V16a1.5 1.5 0 0 1 1.5-1.5zm0 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"
+              fill="white" />
+          </svg>
+          <div class="footer-tagline">Engineering Intelligence. Delivered.</div>
+          <p>Technical consulting and engineering from Johannesburg, South Africa. Working with clients across the
+            continent.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Engagement</h4><a href="monitoring-calibration.html">Monitoring Calibration</a>
+          <h4>Discipline</h4><a href="project-management.html">Project Management</a><a
+            href="technical-consulting.html">Technical Consulting</a><a href="ai-digital.html">AI &amp; Digital</a><a
+            href="energy-systems.html">Energy &amp; Power Systems</a>
+        </div>
+        <div class="footer-col">
+          <h4>Intelligence</h4><a href="platform.html">The Monitoring Platform</a>
+          <h4>Connection</h4><a href="about.html">About Ainsley</a><a href="work.html">The Work</a><a
+            href="engagement.html">The Engagement</a><a href="contact.html">Contact</a><a
+            href="https://www.linkedin.com/in/ainsley-williams-18107015/" target="_blank" rel="noopener" class="footer-linkedin"><svg
+              width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+              style="vertical-align:middle;margin-right:6px;" aria-hidden="true">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>LinkedIn Profile</a>
+          <p style="font-size:13px;margin-top:8px;line-height:1.5;">Profile and work history on LinkedIn.</p>
+        </div>
+      </div>
+      <div class="footer-bottom"><span class="footer-copy">&copy; 2026 Sinclair Dynamics. All rights
+          reserved.</span>
+      <!-- VIEWPORT REPORTER:START
+           DIAGNOSTIC. NOT A DESIGN ELEMENT. NOT PART OF THE SITE.
+
+           Added 23 August 2026, Session 29, for the narrow-width observation
+           pass. The site had never been looked at below desktop width and no
+           reliable way existed to know what width a device was actually
+           reporting to the stylesheet, which made every observation about
+           narrow behaviour a guess.
+
+           Hidden by default on every page. It reveals only when the address
+           ends in #vp, and once revealed it stays revealed while moving
+           around the site in the same browser tab, because the nav and
+           footer links do not carry the hash. The close control ends that.
+
+           It renders fixed to a corner of the viewport rather than in the
+           footer's flow, deliberately: .footer-bottom is a flex row and an
+           extra child would change how that row lays out at exactly the
+           widths this instrument exists to observe. Out of flow, it cannot
+           disturb any layout on any page.
+
+           It is styled to look nothing like this site. Black ground,
+           monospace, amber. Anyone who meets it by accident should be able
+           to tell at a glance that it is not part of the page.
+
+           REMOVAL: delete everything between these markers from
+           _footer_canonical.html and run apply-chrome.py. Nothing else on
+           the site references it. No rule in shared.css belongs to it, no
+           id or class it uses appears anywhere else, and it adds no link.
+
+           DISPOSAL CONDITION: it comes out when the narrow-width work is
+           finished and the site record's item 1 is closed, unless a reason
+           to keep it has been written down by then.
+           -->
+      <style>
+        /* Everything here is prefixed sd-vp so it cannot collide with the
+           site's own classes. Display is controlled by the .on class rather
+           than by the hidden attribute, because a later display rule would
+           silently win over hidden and the block would appear on every page. */
+        #sd-vp { display: none; }
+        #sd-vp.on {
+          display: block;
+          position: fixed;
+          z-index: 2147483000;
+          background: #000;
+          color: #FFB020;
+          border: 1px solid #FFB020;
+          border-radius: 3px;
+          padding: 6px 8px;
+          max-width: 320px;
+          font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+          font-size: 11px;
+          line-height: 1.45;
+          text-align: left;
+          letter-spacing: 0;
+          text-transform: none;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+          -webkit-user-select: text;
+          user-select: text;
+        }
+        /* Four corners, cycled by tapping the readout. The top pair clears the
+           68px nav plus its 2px border, since the nav is the first thing this
+           pass has to look at and the instrument must not cover it. */
+        #sd-vp.sd-vp-br { bottom: 8px; right: 8px; }
+        #sd-vp.sd-vp-bl { bottom: 8px; left: 8px; }
+        #sd-vp.sd-vp-tl { top: 78px; left: 8px; }
+        #sd-vp.sd-vp-tr { top: 78px; right: 8px; }
+        #sd-vp pre {
+          margin: 0;
+          font: inherit;
+          color: inherit;
+          white-space: pre;
+          cursor: pointer;
+        }
+        #sd-vp .sd-vp-bar {
+          display: flex;
+          gap: 6px;
+          margin-top: 6px;
+          border-top: 1px solid rgba(255, 176, 32, 0.35);
+          padding-top: 5px;
+        }
+        #sd-vp button {
+          flex: 1;
+          font-family: inherit;
+          font-size: 10px;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          background: transparent;
+          color: #FFB020;
+          border: 1px solid rgba(255, 176, 32, 0.5);
+          border-radius: 2px;
+          padding: 5px 4px;
+          cursor: pointer;
+          min-height: 30px;
+        }
+        #sd-vp button:active { background: rgba(255, 176, 32, 0.2); }
+        #sd-vp .sd-vp-warn { color: #FF5A4A; }
+      </style>
+      <div id="sd-vp" class="sd-vp-br"><pre data-sd-vp-out>reading</pre>
+        <div class="sd-vp-bar"><button type="button" data-sd-vp-scan>scan</button><button type="button"
+            data-sd-vp-copy>copy</button><button type="button" data-sd-vp-close>close</button></div>
+      </div>
+      <script>
+        (function () {
+          'use strict';
+
+          var KEY = 'sd-vp-visible';
+          var box = document.getElementById('sd-vp');
+          if (!box) { return; }
+
+          var out = box.querySelector('[data-sd-vp-out]');
+          var CORNERS = ['sd-vp-br', 'sd-vp-bl', 'sd-vp-tl', 'sd-vp-tr'];
+          var corner = 0;
+          var scanned = null;
+          var pending = false;
+
+          /* ---- collection -------------------------------------------------
+             Three width measures are reported rather than one, because they
+             disagree in informative ways. innerWidth includes a classic
+             scrollbar, clientWidth does not, and visualViewport reports what
+             is actually on screen after pinch zoom or a soft keyboard. A
+             difference between the first two on the laptop is a scrollbar. A
+             difference involving the third on the phone means the page is
+             zoomed and no width reading can be trusted until it is not. */
+
+          function media(query) {
+            return window.matchMedia ? window.matchMedia(query).matches : null;
+          }
+
+          function viewportMeta() {
+            var tag = document.querySelector('meta[name="viewport"]');
+            if (!tag) { return null; }
+            return tag.getAttribute('content') || '(empty)';
+          }
+
+          /* A short, honest guess at the browser. It exists for one reason:
+             a file opened from a messaging app may render in that app's own
+             WebView rather than in Chrome, and a WebView can report a
+             different viewport from the browser a visitor would use. The
+             full user agent string travels in the copy payload, so nothing
+             is lost by this being a guess. */
+          function browser() {
+            var ua = navigator.userAgent || '';
+            var name = 'unidentified';
+            if (/\bEdgA?\//.test(ua)) { name = 'Edge'; }
+            else if (/\bOPR\//.test(ua)) { name = 'Opera'; }
+            else if (/SamsungBrowser\//.test(ua)) { name = 'Samsung Internet'; }
+            else if (/FBAN|FBAV|Instagram|\bLine\//.test(ua)) { name = 'social app'; }
+            else if (/Firefox\/|FxiOS\//.test(ua)) { name = 'Firefox'; }
+            else if (/CriOS\//.test(ua)) { name = 'Chrome iOS'; }
+            else if (/Chrome\//.test(ua)) { name = 'Chrome'; }
+            else if (/Safari\//.test(ua)) { name = 'Safari'; }
+            if (/;\s?wv\)/.test(ua) || /\bwv\b/.test(ua)) { name += ' WebView'; }
+            return name;
+          }
+
+          function describe(el) {
+            var label = el.tagName.toLowerCase();
+            if (el.id) { return label + '#' + el.id; }
+            var cls = el.getAttribute && el.getAttribute('class');
+            if (cls) {
+              var first = String(cls).trim().split(/\s+/)[0];
+              if (first) { label += '.' + first; }
+            }
+            return label;
+          }
+
+          /* Finds the element reaching furthest past the right edge of the
+             document. Horizontal overflow is the commonest narrow-width fault
+             and a few pixels of it is invisible by eye.
+
+             Two honest limits, so a result is read for what it is. Position
+             fixed elements do not move with horizontal scroll, so their
+             numbers are only correct while the page is unscrolled sideways.
+             And an element can legitimately sit outside the viewport, so this
+             names a candidate rather than declaring a defect. */
+          function findWorst() {
+            var limit = document.documentElement.clientWidth;
+            var offset = window.pageXOffset || 0;
+            var all = document.body ? document.body.querySelectorAll('*') : [];
+            var worst = null;
+            var worstRight = limit + 1;
+            for (var i = 0; i < all.length; i++) {
+              var el = all[i];
+              if (el === box || box.contains(el)) { continue; }
+              var rect = el.getBoundingClientRect();
+              if (rect.width === 0 && rect.height === 0) { continue; }
+              var right = rect.right + offset;
+              if (right > worstRight) {
+                worstRight = right;
+                worst = el;
+              }
+            }
+            if (!worst) { return 'no element past ' + limit + 'px'; }
+            return describe(worst) + ' to ' + Math.round(worstRight) + 'px';
+          }
+
+          function collect() {
+            var doc = document.documentElement;
+            var vv = window.visualViewport;
+            var meta = viewportMeta();
+            return {
+              innerW: window.innerWidth,
+              innerH: window.innerHeight,
+              clientW: doc.clientWidth,
+              visualW: vv ? Math.round(vv.width) : null,
+              dpr: window.devicePixelRatio || 1,
+              screenW: window.screen ? window.screen.width : null,
+              screenH: window.screen ? window.screen.height : null,
+              portrait: media('(orientation: portrait)'),
+              at900: media('(max-width: 900px)'),
+              at700: media('(max-width: 700px)'),
+              reduced: media('(prefers-reduced-motion: reduce)'),
+              meta: meta,
+              metaOk: meta !== null && meta.indexOf('width=device-width') !== -1,
+              overflow: doc.scrollWidth - doc.clientWidth,
+              browser: browser(),
+              page: location.pathname.split('/').pop() || 'index.html'
+            };
+          }
+
+          /* ---- rendering ------------------------------------------------ */
+
+          /* The label column is padded to 9 rather than 8 because 'overflow'
+             is itself 8 characters long and would otherwise render with no
+             gap between its label and its value. Caught in a DOM test rather
+             than by reading it. */
+          function pad(text) {
+            var s = String(text);
+            while (s.length < 9) { s += ' '; }
+            return s;
+          }
+
+          function render() {
+            var d = collect();
+            var lines = [];
+
+            lines.push(pad('page') + d.page);
+            lines.push(pad('css') + d.innerW + ' x ' + d.innerH +
+              '   dpr ' + (Math.round(d.dpr * 100) / 100));
+            lines.push(pad('client') + d.clientW +
+              (d.visualW !== null ? '   visual ' + d.visualW : ''));
+            lines.push(pad('screen') + d.screenW + ' x ' + d.screenH +
+              '   ' + (d.portrait ? 'portrait' : 'landscape'));
+            lines.push(pad('breaks') +
+              '900 ' + (d.at900 ? 'ON ' : 'off') +
+              '   700 ' + (d.at700 ? 'ON' : 'off'));
+
+            if (d.meta === null) {
+              lines.push(pad('meta') + 'ABSENT, page will scale');
+            } else if (!d.metaOk) {
+              lines.push(pad('meta') + 'no width=device-width');
+            } else {
+              lines.push(pad('meta') + 'ok');
+            }
+
+            lines.push(pad('overflow') +
+              (d.overflow > 0 ? d.overflow + 'px past edge' : 'none'));
+
+            if (scanned) { lines.push(pad('widest') + scanned); }
+            if (d.reduced) { lines.push(pad('motion') + 'reduced'); }
+            lines.push(pad('browser') + d.browser);
+
+            out.textContent = lines.join('\n');
+
+            /* The two conditions that make every other number on the panel
+               unreliable are the two that get the alarm colour. */
+            var bad = (d.meta === null) || !d.metaOk || d.overflow > 0;
+            out.className = bad ? 'sd-vp-warn' : '';
+          }
+
+          function schedule() {
+            if (pending) { return; }
+            pending = true;
+            window.requestAnimationFrame(function () {
+              pending = false;
+              scanned = null;
+              render();
+            });
+          }
+
+          /* ---- copy ------------------------------------------------------
+             One line, so it pastes into a message without reflowing. The full
+             user agent and the URL travel with it, because a reading with no
+             provenance is not worth having later. */
+
+          function payload() {
+            var d = collect();
+            return [
+              d.page,
+              'css=' + d.innerW + 'x' + d.innerH,
+              'client=' + d.clientW,
+              'visual=' + (d.visualW === null ? 'n/a' : d.visualW),
+              'dpr=' + d.dpr,
+              'screen=' + d.screenW + 'x' + d.screenH,
+              (d.portrait ? 'portrait' : 'landscape'),
+              'mq900=' + (d.at900 ? 'on' : 'off'),
+              'mq700=' + (d.at700 ? 'on' : 'off'),
+              'meta=' + (d.meta === null ? 'ABSENT' : d.meta),
+              'overflow=' + d.overflow,
+              'widest=' + (scanned || 'not scanned'),
+              'reducedMotion=' + (d.reduced ? 'yes' : 'no'),
+              'browser=' + d.browser,
+              'url=' + location.href,
+              'ua=' + (navigator.userAgent || '')
+            ].join(' | ');
+          }
+
+          function flash(button, word) {
+            var original = button.textContent;
+            button.textContent = word;
+            window.setTimeout(function () { button.textContent = original; }, 1200);
+          }
+
+          function copy(button) {
+            var text = payload();
+            /* The async clipboard API is unavailable over file:// and in some
+               WebViews, which are exactly the conditions this may be opened
+               under, so the old path is kept as a fallback rather than
+               assumed unnecessary. */
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(function () {
+                flash(button, 'copied');
+              }, function () {
+                fallbackCopy(text, button);
+              });
+              return;
+            }
+            fallbackCopy(text, button);
+          }
+
+          function fallbackCopy(text, button) {
+            var field = document.createElement('textarea');
+            field.value = text;
+            field.setAttribute('readonly', 'readonly');
+            field.style.position = 'fixed';
+            field.style.top = '-1000px';
+            document.body.appendChild(field);
+            field.select();
+            var ok = false;
+            try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+            document.body.removeChild(field);
+            flash(button, ok ? 'copied' : 'select it');
+          }
+
+          /* ---- visibility ------------------------------------------------ */
+
+          function remember(state) {
+            try {
+              if (state) { window.sessionStorage.setItem(KEY, '1'); }
+              else { window.sessionStorage.removeItem(KEY); }
+            } catch (err) { /* private mode or file://; the hash still works */ }
+          }
+
+          function remembered() {
+            try { return window.sessionStorage.getItem(KEY) === '1'; }
+            catch (err) { return false; }
+          }
+
+          function show() {
+            if (box.classList.contains('on')) { return; }
+            box.classList.add('on');
+            remember(true);
+            render();
+            window.addEventListener('resize', schedule);
+            window.addEventListener('orientationchange', schedule);
+            if (window.visualViewport) {
+              window.visualViewport.addEventListener('resize', schedule);
+            }
+          }
+
+          function hide() {
+            box.classList.remove('on');
+            remember(false);
+          }
+
+          out.addEventListener('click', function () {
+            box.classList.remove(CORNERS[corner]);
+            corner = (corner + 1) % CORNERS.length;
+            box.classList.add(CORNERS[corner]);
+          });
+
+          box.querySelector('[data-sd-vp-scan]').addEventListener('click', function () {
+            scanned = findWorst();
+            render();
+          });
+
+          box.querySelector('[data-sd-vp-copy]').addEventListener('click', function (event) {
+            copy(event.currentTarget);
+          });
+
+          box.querySelector('[data-sd-vp-close]').addEventListener('click', hide);
+
+          window.addEventListener('hashchange', function () {
+            if (location.hash === '#vp') { show(); }
+          });
+
+          if (location.hash === '#vp' || remembered()) { show(); }
+        })();
+      </script>
+      <!-- VIEWPORT REPORTER:END -->
+        <a class="footer-legal" href="privacy.html">Privacy Notice</a></div>
+    </div>
+  </footer>
+  <!-- FOOTER:END -->
+  <!-- CONSENT:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE
+       FILE. It is written from _consent_canonical.html by apply-chrome.py.
+       The first time this runs against a page that has never carried this
+       block, the script inserts it fresh, immediately before </body>. Every
+       run after that finds the markers this run wrote and keeps it in sync
+       the same way nav and footer already are.
+       Byte-identical on every page: nothing here varies by filename, unlike
+       the nav's active entry.
+       Gates the analytics tag only. Nothing else on the site needs a
+       visitor's answer to work, so this is a bar at the foot of the
+       viewport rather than a modal, and the page underneath stays fully
+       usable while it's up. It shows once, on any page, for as long as
+       sinclair_analytics_consent is unset in the visitor's browser.
+       Whichever button is pressed answers it everywhere, for good, until
+       the visitor clears their own browser storage. See
+       sd-reference-privacy-v0_2.md for the reasoning behind the shape of
+       this control, and sd-copy-privacy-notice-v0_1.md for what it's
+       disclosing. -->
+  <div class="consent-banner" id="consent-banner" role="region" aria-label="Cookie and analytics consent"
+    data-state="hidden">
+    <div class="consent-inner">
+      <p class="consent-text">This site uses Google Analytics to understand how it's used. It only runs if you agree
+        to it, and everything else on the site works exactly the same either way. See the <a
+          href="privacy.html">privacy notice</a> for what's collected and why.</p>
+      <div class="consent-actions">
+        <button type="button" class="consent-btn" id="consent-decline">Decline</button>
+        <button type="button" class="consent-btn" id="consent-accept">Accept</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Consent banner. Self-contained, warns to console rather than failing
+    // silently, and does nothing at all if its own markup is missing.
+    //
+    // Two keys in localStorage, matching the site's existing sinclair_chat_*
+    // convention rather than a JSON blob: sinclair_analytics_consent holds
+    // "accepted" or "declined", sinclair_analytics_consent_at holds when.
+    // Persists indefinitely. There is no re-ask timer: nothing on this site
+    // currently expires anything on a schedule, and building one for this
+    // control alone would be scope the retention item next to it hasn't
+    // earned either. See the working document if that changes.
+    (function () {
+      var KEY = 'sinclair_analytics_consent';
+      var KEY_AT = 'sinclair_analytics_consent_at';
+      var GA_ID = 'G-W94Z1196CH';
+
+      var banner = document.getElementById('consent-banner');
+      if (!banner) {
+        console.warn('[consent] banner markup not found, nothing to wire up');
+        return;
+      }
+
+      function loadAnalytics() {
+        if (window.__sinclairAnalyticsLoaded) return;
+        window.__sinclairAnalyticsLoaded = true;
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', GA_ID);
+        var tag = document.createElement('script');
+        tag.async = true;
+        tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        document.head.appendChild(tag);
+      }
+
+      function recordChoice(choice) {
+        try {
+          localStorage.setItem(KEY, choice);
+          localStorage.setItem(KEY_AT, new Date().toISOString());
+        } catch (e) {
+          console.warn('[consent] could not write the choice to localStorage', e);
+        }
+      }
+
+      var stored = null;
+      try {
+        stored = localStorage.getItem(KEY);
+      } catch (e) {
+        console.warn('[consent] could not read localStorage, treating as unanswered', e);
+      }
+
+      if (stored === 'accepted') {
+        loadAnalytics();
+      } else if (stored !== 'declined') {
+        // Unanswered. Neither key is trusted on its own: only an explicit
+        // "declined" suppresses the banner without also loading the tag.
+        banner.setAttribute('data-state', 'visible');
+      }
+
+      var acceptBtn = document.getElementById('consent-accept');
+      var declineBtn = document.getElementById('consent-decline');
+
+      if (acceptBtn) {
+        acceptBtn.addEventListener('click', function () {
+          recordChoice('accepted');
+          banner.setAttribute('data-state', 'hidden');
+          loadAnalytics();
+        });
+      }
+      if (declineBtn) {
+        declineBtn.addEventListener('click', function () {
+          recordChoice('declined');
+          banner.setAttribute('data-state', 'hidden');
+        });
+      }
+    })();
+  </script>
+  <!-- CONSENT:END -->
+</body>
+
+</html>
