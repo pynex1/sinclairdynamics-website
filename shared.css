@@ -14,7 +14,9 @@
                             on the right are not one mis-tap apart. Below
                             900px .nav-cta drops its fill for a rule, the
                             filled block having been 1.37x the logo and the
-                            menu button combined on a 360px bar.
+                            menu button combined on a 360px bar. .nav-cta is
+                            suppressed on contact.html, where it only reloaded
+                            the page the visitor had just reached.
    Session 33  25 Aug 2026  .ai-embed height decided by vertical space, not
                             by viewport width. Slack sized to one wheel notch,
                             relaxed again for touch; snap kept only below
@@ -125,6 +127,50 @@ nav {
   transition: background 0.2s ease-out, box-shadow 0.2s ease-out;
 }
 .nav-cta:hover { box-shadow: inset 0 0 0 2px rgba(255,255,255,0.35); }
+
+/* ---------------------------------------------------------------------------
+   THE CALL TO ACTION IS SUPPRESSED ON THE CONTACT PAGE.
+   Added 26 August 2026, Session 36, from Ainsley on the deployed site.
+
+   WHAT WAS WRONG. The control is a link to contact.html and it sits on
+   contact.html too, where the only thing it can do is reload the page the
+   visitor has just arrived at. Someone who used it to get here was then
+   offered it again by the page it delivered them to. A visitor who has
+   landed should be following the page down into the conversation or the
+   other routes, not pressing a header control that returns them to where
+   they already are.
+
+   HOW IT KNOWS WHICH PAGE IT IS ON, WITHOUT THE MARKUP DIFFERING. apply-
+   chrome.py already marks the Contact entry active on contact.html and on no
+   other page, so the page identifies itself in the DOM and this rule reads
+   that. Nothing page-specific is added to any page file, which matters: that
+   script asserts one nav shape across all fifteen pages after stripping the
+   active class, and a page-specific class in the markup would fail it.
+
+   POSITIONING 8.3 IS APPLIED HERE RATHER THAN SUSPENDED. Its test is whether
+   an exit says something the nav does not already say. On this page the nav
+   was repeating the page's own offer, more loudly and less usefully.
+
+   TWO TREATMENTS, AND THE REASON IS LAYOUT RATHER THAN TASTE. nav lays out
+   with space-between, so removing the control from the flow moves everything
+   else. On a wide screen that would drift the five links about 70px right on
+   this page alone, and nav furniture that sits differently depending on which
+   page you are on is a fault a later session would log without knowing why.
+   So a wide screen keeps the space and loses the control. A phone has no
+   space to spare and nothing follows the control there, so below 900px it is
+   removed outright and the bar becomes the logo and the menu button.
+
+   IF :has() IS NOT SUPPORTED the whole rule is dropped and the control stays
+   visible, which is the behaviour that shipped before this change. It cannot
+   fail into anything worse than where it started. It is the newest selector
+   in this file and the only one, which is recorded so it is not mistaken for
+   an established pattern here.
+
+   visibility rather than opacity, deliberately: an opacity of zero leaves the
+   control clickable and in the tab order, which would be a worse fault than
+   the one being fixed rather than a cosmetic difference.
+   --------------------------------------------------------------------------- */
+nav:has(.nav-links a.active[href="contact.html"]) .nav-cta { visibility: hidden; }
 .nav-cta:active { background: var(--teal); box-shadow: inset 0 0 0 2px rgba(255,255,255,0.18); }
 .nav-monitor {
   font-family: var(--font-display);
@@ -776,6 +822,11 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
     background: rgba(42,173,160,0.18);
     box-shadow: inset 0 0 0 2px var(--teal-bright);
   }
+
+  /* On a phone the space is worth having and nothing sits to the right of
+     this control, so it goes rather than being held empty. See the wide
+     screen half of this rule above for why the two differ. */
+  nav:has(.nav-links a.active[href="contact.html"]) .nav-cta { display: none; }
   .section-inner { padding: 70px 24px; }
   .two-col-grid, .two-col-wide { grid-template-columns: 1fr; gap: 40px; }
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
