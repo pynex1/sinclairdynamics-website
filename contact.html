@@ -344,6 +344,34 @@
       margin: 0 0 24px;
     }
 
+    /* THE FIRST INLINE BODY LINK ON THIS PAGE'S DARK FIELD. 26 August 2026.
+
+   It needs a rule because shared.css carries none for a bare anchor, so this
+   link would otherwise render as the browser default: blue and underlined on
+   a navy ground. That is the shape of fault the site record already holds
+   against .btn-outline, where a component was placed on the ground it was not
+   drawn for, rendered perfectly validly, and was invisible.
+
+   The pattern is .consent-text a in shared.css, which is the same situation:
+   an inline link inside a sentence on dark ground, colour only and no travel,
+   per the movement tiers. It is repeated here rather than promoted to a shared
+   class because one instance is not yet a pattern; the second use is the
+   trigger to promote it.
+
+   MEASURED ON THIS GROUND RATHER THAN CARRIED FROM THAT RULE. The field is a
+   135deg ramp from --slate to #0D2433, so contrast varies across it:
+   teal-bright reads 4.31:1 at the slate end and 5.76:1 at the dark end,
+   against surrounding body text at 6.75:1 and 8.39:1. */
+    .ct-convo-lead a {
+      color: var(--teal-bright);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .ct-convo-lead a:hover {
+      color: var(--white);
+    }
+
     /* THE GAP BETWEEN THE HERO LEAD AND THE WIDGET. Closed 22 August 2026.
 
    It was 86px: .page-hero-content's shared 70px bottom padding plus this
@@ -651,9 +679,15 @@
               title="Sinclair Dynamics AI assistant"></iframe>
           </div>
           <div>
+            <!-- THE MECHANISM SENTENCE, CORRECTED 26 August 2026. It read "This comes
+                 straight to me. It is stored as well", which described the in-widget
+                 contact form dispatching to an inbox. That form and its route were
+                 removed the same day. Nothing is dispatched: the conversation is kept
+                 and Ainsley reads it. The privacy notice is now reachable from the
+                 word that names it rather than only from the footer. -->
             <p class="ct-convo-lead">My assistant answers from the same material I would, and will tell you
-              when a question needs me rather than it. This comes straight to me. It is stored as well, and the privacy
-              notice sets out exactly what is kept.</p>
+              when a question needs me rather than it. The conversation is kept, and I read it. The
+              <a href="privacy.html">privacy notice</a> sets out exactly what is held.</p>
             <!-- NEW COPY, 22 August 2026. The label follows the series name
                rather than the homepage card's "Written Down", because on this
                page the series is the useful frame. The body is drawn from the
