@@ -518,27 +518,46 @@ section { position: relative; }
    page fills with a .btn-primary, and they are sized to match it: 14px, 0.12em,
    16px by 36px, the same border radius.
 
-   IT IS FILLED RATHER THAN OUTLINED, for the same reason. The old outline was
-   correct for a control that only showed a value. In the close it would be the
-   quietest thing in the taper while being the most important, and a reader
-   scanning down the page would find nothing to land on.
+   THE OUTLINE IS THE POINT, AND ONLY THE SIZE CHANGED. Ainsley's call, taken
+   after seeing three filled blocks on the page: this section closes the site
+   rather than opening it, and it does not need to be the loudest thing on a
+   white ground. The colour treatment is the one this control always had. The
+   dimensions are the only thing that moved.
 
-   THE TIER IS THE COMMIT TIER AND THE SHADOW IS ITS MARKER, per the buttons
-   above. These do commit: one opens a mail client, one dials, one opens
-   WhatsApp with a message already in it.
+   MEASURED RATHER THAN JUDGED. Teal on white is 5.18:1 and white on teal is
+   the same 5.18:1, so the inversion costs nothing in legibility. It is the
+   same two colours the other way round.
+
+   THE TIER STAYS AT COMMIT THOUGH THE COLOUR DROPS, and the two are separate
+   questions. This rule used to call itself the acknowledgement tier on the
+   stated ground that it reveals a detail and does not take the user anywhere.
+   That was true when a click only printed text onto the page. It is not true
+   now: one opens a mail client, one dials, and one opens WhatsApp with a
+   message already in it. The shadow marks consequence rather than prominence,
+   so a quiet control with a real consequence keeps the 4px and the shadow.
+
+   THE HOVER FILLS RATHER THAN DEEPENING THE BORDER, which is the one place
+   this parts company with .btn-outline above. That rule brightens its border
+   and leaves its text alone because on slate there is nowhere brighter for
+   white to go. On white there is. Filling is also what this control already
+   did before tonight, so nothing new is being invented.
+
+   AND --teal-bright IS NOT AVAILABLE TO THE LABEL. It measures 2.77:1 on
+   white, well under the threshold for text, which is why the hover moves the
+   ground and not the type.
 
    IT IS ONLY USED ON contact.html. Nothing else on the site reveals anything,
    which is what makes it safe to change here rather than scope it in the page. */
 .reveal-btn {
-  background: var(--teal); border: 2px solid var(--teal); color: var(--white);
+  background: none; border: 2px solid var(--teal); color: var(--teal);
   padding: 16px 36px; border-radius: 4px; cursor: pointer;
   font-family: var(--font-display); font-weight: 700; font-size: 14px;
   letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
   display: inline-block; text-align: center;
-  transition: background 0.2s ease-out, border-color 0.2s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  transition: background 0.2s ease-out, color 0.2s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease-out;
 }
 .reveal-btn:hover {
-  background: var(--teal-bright); border-color: var(--teal-bright);
+  background: var(--teal); color: var(--white);
   transform: translateY(-4px); box-shadow: 0 10px 24px rgba(30,58,74,0.10);
 }
 .reveal-btn:active {

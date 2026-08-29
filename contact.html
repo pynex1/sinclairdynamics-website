@@ -437,39 +437,45 @@
       margin: 28px auto 40px;
     }
 
-    /* THE TAPER, AND IT IS TWO ROUTES ABOVE ONE. Email and phone are the same
-   tier and sit side by side. WhatsApp is the phone number again rather than a
-   third destination, so it goes beneath them at full width, which says that in
-   the layout where a footnote used to say it in words.
+    /* THREE ROUTES, STACKED, EQUAL. Changed after the first deploy was seen on
+   the page, 29 August 2026.
 
-   EQUAL COLUMNS RATHER THAN CONTENT WIDTH. A revealed address is roughly twice
-   a revealed number in characters, so buttons sized to their content would go
-   visibly lopsided at the moment somebody used them. 1fr 1fr holds the pair
-   symmetrical whatever the strings measure. */
-    .ct-routes .route-pair {
+   WHAT WAS HERE. Email and phone side by side with WhatsApp full width
+   beneath them, which paired the two that share a number and tapered. Two
+   other arrangements were considered and both were rejected for the same
+   reason: any pairing ranks one route above another, and there is no ranking
+   to state. These are three ways to reach the same person.
+
+   WHY A STACK RATHER THAN A GRID THAT COLLAPSES. Everything on this page below
+   900px is already a stack. Forcing it at every width means what is looked at
+   on a desktop is what a phone is served, and an arrangement with no
+   breakpoint behaviour cannot develop a narrow-width fault. Nine pages on this
+   site are still unobserved below desktop width and this one is now not
+   among the ways that list can grow.
+
+   THE TAPER IS THE PAGE AND NOT THE BUTTONS. Wide title, narrower lead, a
+   620px band, then a small link into the dark. Three equal blocks inside that
+   band are one uniform object rather than a widening one.
+
+   620px AGAIN, taken from .section-lead, so the buttons sit inside the same
+   measure as the paragraph above them rather than a second one chosen here. */
+    .ct-routes .route-stack {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 16px;
-      max-width: 620px;
-      margin: 0 auto 16px;
-    }
-
-    .ct-routes .route-wide {
       max-width: 620px;
       margin: 0 auto;
     }
 
-    .ct-routes .route-pair .reveal-btn,
-    .ct-routes .route-wide .reveal-btn,
-    .ct-routes .route-wide .btn-primary {
+    .ct-routes .route-stack .reveal-btn {
       width: 100%;
     }
 
     /* A REVEALED VALUE IS NOT A CONTROL AND STOPS LOOKING LIKE ONE. The button
-   keeps its size and its fill so nothing moves, and drops the uppercase, which
-   is right for REVEAL EMAIL and wrong for an address somebody may copy by
-   hand. Tracking comes back to normal for the same reason: a display face at
-   0.12em is set for short uppercase labels, not for a string that has to be
+   keeps its size and its frame so nothing moves, and drops the uppercase,
+   which is right for REVEAL EMAIL and wrong for an address somebody may copy
+   by hand. Tracking comes back to normal for the same reason: a display face
+   at 0.12em is set for short uppercase labels, not for a string that has to be
    read character by character. */
     .ct-routes .reveal-btn.is-revealed {
       text-transform: none;
@@ -873,12 +879,15 @@
            and would be the only place on this site where either value sits
            there. This page's phone number has never worked without JavaScript,
            so nothing is being made conditional that was not already. -->
-      <div class="route-pair">
+      <!-- ORDERED AS THE ASSISTANT ORDERS THEM. Ada names the email address
+           first and the number second when a visitor asks for a route that
+           does not go through her, so the page and the assistant one screen
+           above it rank these the same way rather than each having their own.
+           WhatsApp is last because it is the number again rather than a third
+           destination. -->
+      <div class="route-stack">
         <button class="reveal-btn" onclick="revealEmail()" id="reveal-email-btn">Reveal Email</button>
         <button class="reveal-btn" onclick="revealPhone()" id="reveal-phone-btn">Reveal Number</button>
-      </div>
-
-      <div class="route-wide">
         <button class="reveal-btn" onclick="openWhatsApp()" id="whatsapp-btn">Message On WhatsApp</button>
       </div>
 
