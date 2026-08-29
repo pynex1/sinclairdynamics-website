@@ -399,14 +399,94 @@
    while every other section on the page had already dropped to 24px. Both
    changes belong at 900px, which is also where the 612px widget stops having
    room beside a card. */
-    /* Air between the new section title and the grid beneath it. Everywhere else
-   on the site a .section-lead sits in this position and contributes its own
-   60px, so content starts 80px below the title. This section has no lead, and
-   .section-title's own 20px alone puts the grid hard up against it. 28px more
-   lands at 48px, which is proportionate for a title with nothing between it
-   and the content rather than a copy of a gap that a paragraph was filling. */
-    .ct-routes .contact-grid {
-      margin-top: 28px;
+    /* THE DIRECT ROUTES AS THE PAGE'S CLOSE. Session 48, 29 August 2026.
+
+   What stood here centred nothing: this was a two-column grid, 1fr 1.2fr, with
+   the contact form filling the larger side and a 28px lift because the section
+   had no .section-lead to space it. The form is gone, and what remained would
+   have been a short column of labelled rows against an empty half.
+
+   WHY CENTRED RATHER THAN REBALANCED. Every other page on this site closes the
+   same way above the footer: eyebrow, title, lead, one control, each narrower
+   than the last, tapering into the dark band. This page never could, because
+   the form occupied that slot. Removing it is the first time this page can end
+   the way the rest of the site ends, and a returning reader meets a shape they
+   already know.
+
+   IT IS NOT PROMOTED TO shared.css. index.html builds the same close from
+   inline styles on three shared classes, so there is no pattern to promote yet
+   and one page is not a second use. If a third surface ever needs it, that is
+   the trigger.
+
+   620px IS .section-lead's OWN max-width, taken rather than chosen, so the
+   measure here agrees with every other body column on the site.
+
+   .section-eyebrow IS A FLEX ROW WITH A ::before RULE, so text-align cannot
+   centre it and justify-content has to. Inherited from shared.css and the
+   reason this needs a declaration of its own rather than nothing. */
+    .ct-routes .section-inner {
+      text-align: center;
+    }
+
+    .ct-routes .section-eyebrow {
+      justify-content: center;
+    }
+
+    .ct-routes .section-lead {
+      max-width: 620px;
+      margin: 28px auto 40px;
+    }
+
+    /* THE TAPER, AND IT IS TWO ROUTES ABOVE ONE. Email and phone are the same
+   tier and sit side by side. WhatsApp is the phone number again rather than a
+   third destination, so it goes beneath them at full width, which says that in
+   the layout where a footnote used to say it in words.
+
+   EQUAL COLUMNS RATHER THAN CONTENT WIDTH. A revealed address is roughly twice
+   a revealed number in characters, so buttons sized to their content would go
+   visibly lopsided at the moment somebody used them. 1fr 1fr holds the pair
+   symmetrical whatever the strings measure. */
+    .ct-routes .route-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 620px;
+      margin: 0 auto 16px;
+    }
+
+    .ct-routes .route-wide {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .ct-routes .route-pair .reveal-btn,
+    .ct-routes .route-wide .reveal-btn,
+    .ct-routes .route-wide .btn-primary {
+      width: 100%;
+    }
+
+    /* A REVEALED VALUE IS NOT A CONTROL AND STOPS LOOKING LIKE ONE. The button
+   keeps its size and its fill so nothing moves, and drops the uppercase, which
+   is right for REVEAL EMAIL and wrong for an address somebody may copy by
+   hand. Tracking comes back to normal for the same reason: a display face at
+   0.12em is set for short uppercase labels, not for a string that has to be
+   read character by character. */
+    .ct-routes .reveal-btn.is-revealed {
+      text-transform: none;
+      letter-spacing: 0.02em;
+      font-family: var(--font-body);
+      font-weight: 600;
+    }
+
+    /* The quiet exit, and it is deliberately the narrowest thing in the taper.
+   This was a .linkedin-block card until Session 48, which was correct in the
+   left column of a two-column grid and wrong here: it was the widest object of
+   the four and it widened the shape again at the point every other page has
+   narrowed to nothing. The demotion is also true rather than only tidier. That
+   card was placed when nothing else on this site carried Ainsley's work history
+   and no assistant could answer for it. Both now do. */
+    .ct-routes .route-linkedin {
+      margin-top: 32px;
     }
 
     @media (max-width: 900px) {
@@ -748,159 +828,72 @@
        THE h3 THAT WAS HERE. "Direct Contact", 22px, in the left column only.
        It was a placeholder that predated this section having any introduction
        of its own, and it became redundant against a section title six lines
-       above it. Removed rather than restyled. Both columns are now unlabelled
-       under one shared title, which is how every other two-column section on
-       this site is built. Its paragraph was kept: it tells a reader the form
-       is the fastest route and what the two options at the top of it do, which
-       is real guidance rather than a label.
+       above it. Removed rather than restyled.
+
+       THE FORM WENT ON 29 AUGUST 2026, SESSION 48, AND THIS SECTION IS NOW
+       THE PAGE'S CLOSE. Formspree's free tier carries no operator agreement,
+       so the transfer had no lawful basis worth standing behind, and unlike
+       most outstanding work it got worse with traffic rather than better: a
+       launch post drives people at the page that feeds it. Removal rather
+       than replacement, because a contact form below an assistant is an
+       admission the assistant cannot do the job.
+
+       WHAT THE OLD PARAGRAPH HERE WAS DOING, AND WHERE IT WENT. It told a
+       reader the form was fastest and what the two branch cards at the top of
+       it did. Both subjects are gone. The .section-lead that replaces it
+       carries the three things the form was holding that a reader still
+       needs: the turnaround, the location, and that the number takes
+       WhatsApp. Those last two were labelled rows in the old grid and cannot
+       survive as rows in a centred column.
+
+       TWO BUSINESS DAYS, NOT ONE. The form said one. The dictionary entry the
+       assistant answers from says two, so this page and the assistant one
+       screen above it contradicted each other. The page was the wrong half.
+
+       THE HEADING IS UNCHANGED AND READS BETTER THAN IT DID. "Prefer A Person
+       From The Start?" was written against a form, where the person was at
+       the far end of a submission. The alternative to the assistant is now
+       actually a person, reachable directly, so the question is answered by
+       what sits under it rather than merely promised.
        ================================================================= -->
   <section class="ct-routes">
     <div class="section-inner">
       <div class="section-eyebrow">Or Reach Me Directly</div>
       <h2 class="section-title">Prefer A Person<br><span>From The Start?</span></h2>
-      <div class="contact-grid">
-        <div class="contact-info">
-          <p>Use the form, or any of the details below. The form reaches me fastest, and the two options at the
-            top of it tell me where to begin.</p>
+      <p class="section-lead">If you would rather not do that here, my email address and phone number are
+        below, and the number takes WhatsApp as well. I am in Johannesburg, working with clients across the
+        continent. I typically respond within two business days.</p>
 
-          <div class="contact-detail">
-            <span class="contact-detail-label">Email</span>
-            <span class="contact-detail-value">
-              <button class="reveal-btn" onclick="revealEmail()" id="reveal-email-btn">Reveal Email</button>
-              <span id="email-address" style="display:none;"></span>
-            </span>
-          </div>
+      <!-- NOTHING HERE PUTS AN ADDRESS OR A NUMBER IN THE SERVED HTML, and
+           that is the reason these are controls rather than links. Both values
+           are assembled from parts in the script at the foot of this file and
+           written in on use, so a scraper reading this markup finds neither.
+           The WhatsApp href is built the same way for the same reason: a bare
+           wa.me link would put the number back into the source in plain text
+           and would be the only place on this site where either value sits
+           there. This page's phone number has never worked without JavaScript,
+           so nothing is being made conditional that was not already. -->
+      <div class="route-pair">
+        <button class="reveal-btn" onclick="revealEmail()" id="reveal-email-btn">Reveal Email</button>
+        <button class="reveal-btn" onclick="revealPhone()" id="reveal-phone-btn">Reveal Number</button>
+      </div>
 
-          <div class="contact-detail">
-            <span class="contact-detail-label">Phone</span>
-            <span class="contact-detail-value">
-              <button class="reveal-btn" onclick="revealPhone()" id="reveal-phone-btn">Reveal Number</button>
-              <span id="phone-number" style="display:none;"></span>
-            </span>
-          </div>
+      <div class="route-wide">
+        <button class="reveal-btn" onclick="openWhatsApp()" id="whatsapp-btn">Message On WhatsApp</button>
+      </div>
 
-          <div class="contact-detail">
-            <span class="contact-detail-label">WhatsApp</span>
-            <span class="contact-detail-value" style="color:#8A9BA3;font-size:14px;">Same number, reveal
-              above</span>
-          </div>
-
-          <div class="contact-detail">
-            <span class="contact-detail-label">Location</span>
-            <span class="contact-detail-value">Johannesburg, South Africa<br><span
-                style="font-size:13px;color:var(--gray-mid);">Working with clients across the continent</span></span>
-          </div>
-
-          <!-- The whole block is the anchor. The visitor should not have to
-               find the small text. -->
-          <a class="linkedin-block" href="https://www.linkedin.com/in/ainsley-williams-18107015/" target="_blank"
-            rel="noopener">
-            <p>Profile and work history on LinkedIn.</p>
-            <span class="go">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;"
-                aria-hidden="true">
-                <path
-                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-              </svg>
-              View LinkedIn Profile
-            </span>
-          </a>
-        </div>
-
-        <div class="contact-form-wrap">
-          <form id="contact-form" action="https://formspree.io/f/mvzyqlql" method="POST" onsubmit="handleSubmit(event)">
-            <input type="hidden" name="_subject" value="New enquiry from sinclairdynamics.co">
-            <input type="text" name="_gotcha" style="display:none">
-            <!-- Records which route the visitor chose, so the reply can be
-                 pitched correctly. The visitor never sees a category label. -->
-            <input type="hidden" name="route" id="route" value="known">
-
-            <div class="form-branches" role="radiogroup" aria-label="How would you describe your situation?">
-              <div class="form-branch is-active" data-branch="known" role="radio" tabindex="0" aria-checked="true">
-                <div class="form-branch-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                    aria-hidden="true">
-                    <circle cx="12" cy="12" r="8" />
-                    <circle cx="12" cy="12" r="2.5" />
-                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
-                  </svg>
-                </div>
-                <div class="form-branch-label">I know what the problem is</div>
-              </div>
-              <div class="form-branch" data-branch="vague" role="radio" tabindex="0" aria-checked="false">
-                <div class="form-branch-icon">
-                  <!-- The sampled waveform, carried over from the Monitoring
-                       Calibration page. Data read too slowly to see properly. -->
-                  <svg width="22" height="22" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"
-                    aria-hidden="true">
-                    <path d="M2 28h44" opacity="0.35" />
-                    <path d="M4 28Q11 10 18 28Q25 46 32 28Q39 10 46 28" />
-                    <path d="M11 28V19M25 28v9M39 28V19" opacity="0.5" />
-                    <circle cx="11" cy="19" r="2.4" fill="currentColor" stroke="none" />
-                    <circle cx="25" cy="37" r="2.4" fill="currentColor" stroke="none" />
-                    <circle cx="39" cy="19" r="2.4" fill="currentColor" stroke="none" />
-                  </svg>
-                </div>
-                <div class="form-branch-label">Something is off and I cannot pin it down</div>
-              </div>
-            </div>
-
-            <svg class="form-converge" viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M150 0 C150 20, 15 20, 15 40" fill="none" stroke="#2AADA0" stroke-width="1.2"
-                vector-effect="non-scaling-stroke" opacity="0.75" />
-              <path d="M450 0 C450 20, 15 20, 15 40" fill="none" stroke="#2AADA0" stroke-width="1.2"
-                vector-effect="non-scaling-stroke" opacity="0.75" />
-            </svg>
-
-            <div class="form-spine">
-
-              <div class="spine-node"><span class="line"></span><span class="dot"></span></div>
-              <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="Your name" required>
-              </div>
-
-              <div class="spine-node"><span class="line"></span><span class="dot"></span></div>
-              <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="your@email.com" required>
-              </div>
-
-              <div class="spine-node"><span class="line"></span><span class="spur"></span><span
-                  class="dot-hollow"></span></div>
-              <div class="form-optional">
-                <div class="form-optional-pair">
-                  <div class="form-group">
-                    <label for="organisation">Organisation (optional)</label>
-                    <input type="text" id="organisation" name="organisation" placeholder="Company">
-                  </div>
-                  <div class="form-group">
-                    <label for="phone">Phone (optional)</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+27 83 000 0000">
-                  </div>
-                </div>
-              </div>
-
-              <div class="spine-node"><span class="line"></span><span class="dot"></span></div>
-              <div class="form-group">
-                <!-- The only thing the branch selection changes. -->
-                <label for="message" id="message-label">What is the problem, and what have you tried?</label>
-                <textarea id="message" name="message" placeholder="As much or as little as you like."
-                  required></textarea>
-              </div>
-
-              <div class="spine-node"><span class="dot-end"></span></div>
-              <div>
-                <button type="submit" class="form-submit">Send Message</button>
-                <p class="form-note">I typically respond within one business day.</p>
-              </div>
-
-            </div>
-          </form>
-          <div class="form-success" id="form-success">
-            ✓ Thank you. Your message has been received. I'll be in touch shortly.
-          </div>
-        </div>
+      <!-- A .service-link and not a card. See the styles above for why the
+           .linkedin-block that stood here was demoted rather than moved. -->
+      <div class="route-linkedin">
+        <a class="service-link" href="https://www.linkedin.com/in/ainsley-williams-18107015/" target="_blank"
+          rel="noopener">
+          View LinkedIn Profile
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;"
+            aria-hidden="true">
+            <path
+              d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+          </svg>
+        </a>
       </div>
     </div>
   </section>
@@ -1414,74 +1407,83 @@
   </script>
 
   <script>
+    /* THE THREE ROUTES. Rewritten 29 August 2026, Session 48.
+
+       WHAT CHANGED AND WHY IT IS NOT COSMETIC. These used to hide the button
+       and show a value beside a label in a two-column grid. In the page's
+       close the buttons are the largest thing on screen, so hiding them would
+       have made the page visibly deflate at the exact moment somebody used
+       one. The button now stays, keeps its size and position, and becomes the
+       value: the label is replaced and the element becomes a real link.
+
+       WHICH IS ALSO A REPAIR. The number was previously plain text that a
+       phone could not dial. Both values are now actionable.
+
+       THE PARTS ARRAYS ARE THE WHOLE OF THE PROTECTION and are not tidied
+       into literals. Neither value exists anywhere in the served HTML, so a
+       scraper reading this page finds nothing to take. Every route below is
+       built from the same parts, including WhatsApp, whose href would
+       otherwise be the one place on this site carrying the number in plain
+       text.
+
+       becomeLink IS SHARED SO THE THREE CANNOT DRIFT. A button is replaced by
+       an anchor rather than restyled, because a value that opens a mail
+       client or a dialler is a link and should be one to a keyboard and to a
+       screen reader. */
+    const EMAIL_PARTS = ['ainsley', '@', 'sinclairdynamics', '.co'];
+    const PHONE_PARTS = ['+27', '83', '235', '2118'];
+
+    function becomeLink(id, href, label) {
+      const btn = document.getElementById(id);
+      if (!btn) { console.warn('contact routes: no control with id', id); return null; }
+      const a = document.createElement('a');
+      a.className = btn.className + ' is-revealed';
+      a.href = href;
+      a.textContent = label;
+      btn.replaceWith(a);
+      return a;
+    }
+
     function revealEmail() {
-      const parts = ['ainsley', '@', 'sinclairdynamics', '.co'];
-      const email = parts.join('');
-      const el = document.getElementById('email-address');
-      el.innerHTML = '<a href="mailto:' + email + '" style="color:var(--teal);text-decoration:none;">' + email + '</a>';
-      el.style.display = 'inline';
-      document.getElementById('reveal-email-btn').style.display = 'none';
+      const email = EMAIL_PARTS.join('');
+      becomeLink('reveal-email-btn', 'mailto:' + email, email);
     }
+
     function revealPhone() {
-      const p = ['+27', '83', '235', '2118'].join(' ');
-      document.getElementById('phone-number').textContent = p;
-      document.getElementById('phone-number').style.display = 'inline';
-      document.getElementById('reveal-phone-btn').style.display = 'none';
-    }
-    async function handleSubmit(e) {
-      e.preventDefault();
-      const form = document.getElementById('contact-form');
-      const data = new FormData(form);
-      try {
-        const response = await fetch('https://formspree.io/f/mvzyqlql', {
-          method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
-        if (response.ok) {
-          form.style.display = 'none';
-          document.getElementById('form-success').style.display = 'block';
-        } else {
-          alert('Something went wrong. Please try again or email ainsley@sinclairdynamics.co directly.');
-        }
-      } catch (error) {
-        alert('Something went wrong. Please try again or email ainsley@sinclairdynamics.co directly.');
-      }
+      /* Spaced for reading, stripped for dialling. A tel: href with spaces in
+         it is accepted by most handsets and not by all of them. */
+      const shown = PHONE_PARTS.join(' ');
+      becomeLink('reveal-phone-btn', 'tel:' + PHONE_PARTS.join(''), shown);
     }
 
-    /* Branch selection changes the message field's label and placeholder,
-       and records the route on a hidden field. Nothing else changes: no
-       fields appear, disappear, or reorder. */
-    (function () {
-      const COPY = {
-        known: ['What is the problem, and what have you tried?', 'As much or as little as you like.'],
-        vague: ['What made you start wondering?', 'A vague sense is enough to work with.']
-      };
-      const cards = document.querySelectorAll('.form-branch');
-      const label = document.getElementById('message-label');
-      const message = document.getElementById('message');
-      const route = document.getElementById('route');
-
-      function select(card) {
-        cards.forEach(function (other) {
-          const on = other === card;
-          other.classList.toggle('is-active', on);
-          other.setAttribute('aria-checked', on ? 'true' : 'false');
-        });
-        const key = card.getAttribute('data-branch');
-        route.value = key;
-        label.textContent = COPY[key][0];
-        message.placeholder = COPY[key][1];
+    /* WhatsApp wants the number with no plus and no spaces. The prefill stops
+       where the visitor's own sentence should start: it says where they came
+       from, which is the one thing the number alone cannot carry, and it is
+       complete enough to send untouched. It does not describe their problem
+       for them, because the hero two screens above tells them a description of
+       what is happening is enough to start, and a prefill reading "I am
+       interested" would take that offer back. */
+    function openWhatsApp() {
+      const number = PHONE_PARTS.join('').replace('+', '');
+      const text = encodeURIComponent('Hi Ainsley. I found you through the Sinclair Dynamics site.');
+      const a = becomeLink('whatsapp-btn', 'https://wa.me/' + number + '?text=' + text,
+        'Message On WhatsApp');
+      if (a) {
+        a.target = '_blank';
+        a.rel = 'noopener';
+        /* This one is a destination rather than a value, so it keeps its
+           label and its uppercase and only the click has to be replayed. */
+        a.classList.remove('is-revealed');
+        a.click();
       }
-
-      cards.forEach(function (card) {
-        card.addEventListener('click', function () { select(card); });
-        // Keyboard parity with the mouse, since these carry radio roles.
-        card.addEventListener('keydown', function (e) {
-          if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); select(card); }
-        });
-      });
-    })();
+    }
+    /* handleSubmit AND THE BRANCH SELECTOR WERE HERE and went with the form,
+       29 August 2026, Session 48. The submit handler posted a FormData to
+       formspree.io and, on failure, put Ainsley's address into an alert() in
+       plain text, which was the one place on this page that published it
+       without the assembly above. The branch selector swapped the message
+       field's label between the two entry routes. Both had exactly one
+       subject and it no longer exists. */
   </script>
   <!-- CONSENT:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE
        FILE. It is written from _consent_canonical.html by apply-chrome.py.

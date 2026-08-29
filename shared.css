@@ -510,17 +510,41 @@ section { position: relative; }
 .contact-detail { display: flex; align-items: flex-start; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--gray-light); }
 .contact-detail-label { font-family: var(--font-display); font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); min-width: 90px; padding-top: 2px; }
 .contact-detail-value { font-size: 15px; color: var(--dark); }
-/* Acknowledgement tier: 2px, no shadow. It reveals a detail, it does not
-   take the user anywhere. */
+/* THE CALL TO ACTION ON THE CONTACT PAGE, AS OF SESSION 48, 29 AUGUST 2026.
+
+   It used to be an acknowledgement-tier control: 12px, 6px of padding, a minor
+   thing at the end of a labelled row. The page form went and this section
+   became the page's close, so these are now what occupies the slot every other
+   page fills with a .btn-primary, and they are sized to match it: 14px, 0.12em,
+   16px by 36px, the same border radius.
+
+   IT IS FILLED RATHER THAN OUTLINED, for the same reason. The old outline was
+   correct for a control that only showed a value. In the close it would be the
+   quietest thing in the taper while being the most important, and a reader
+   scanning down the page would find nothing to land on.
+
+   THE TIER IS THE COMMIT TIER AND THE SHADOW IS ITS MARKER, per the buttons
+   above. These do commit: one opens a mail client, one dials, one opens
+   WhatsApp with a message already in it.
+
+   IT IS ONLY USED ON contact.html. Nothing else on the site reveals anything,
+   which is what makes it safe to change here rather than scope it in the page. */
 .reveal-btn {
-  background: none; border: 1px solid var(--teal); color: var(--teal);
-  padding: 6px 16px; border-radius: 4px; cursor: pointer;
-  font-family: var(--font-display); font-weight: 600; font-size: 12px;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  transition: background 0.2s ease-out, color 0.2s ease-out, transform 0.2s ease-out;
+  background: var(--teal); border: 2px solid var(--teal); color: var(--white);
+  padding: 16px 36px; border-radius: 4px; cursor: pointer;
+  font-family: var(--font-display); font-weight: 700; font-size: 14px;
+  letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
+  display: inline-block; text-align: center;
+  transition: background 0.2s ease-out, border-color 0.2s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease-out;
 }
-.reveal-btn:hover { background: var(--teal); color: var(--white); transform: translateY(-2px); }
-.reveal-btn:active { transform: translateY(0); transition-duration: 0.1s; }
+.reveal-btn:hover {
+  background: var(--teal-bright); border-color: var(--teal-bright);
+  transform: translateY(-4px); box-shadow: 0 10px 24px rgba(30,58,74,0.10);
+}
+.reveal-btn:active {
+  transform: translateY(0); box-shadow: 0 2px 6px rgba(30,58,74,0.14);
+  transition-duration: 0.1s;
+}
 /* A box that contains a link is itself the link, so the whole block is the
    anchor and sits on the commit tier. The arrow stays inside as the signal.
    Same construction as the writing panel on the about page. */
@@ -541,6 +565,36 @@ section { position: relative; }
 .linkedin-block .go::after { content: '\2192'; transition: transform 0.2s ease-out; }
 .linkedin-block:hover .go::after { transform: translateX(4px); }
 
+/* DEAD AS OF SESSION 48, 29 AUGUST 2026. NOT REMOVED, DELIBERATELY.
+
+   WHAT HAPPENED. The contact form on contact.html was the only consumer of
+   every rule in this block and in the FORM DIAGRAM block below it. It posted
+   to Formspree, whose free tier carries no operator agreement, and it was
+   removed on 29 August 2026 rather than replaced, because a contact form below
+   an assistant is an admission the assistant cannot do the job. Nothing else
+   on this site has ever used these.
+
+   WHY THEY ARE STILL HERE. Removing roughly thirty rules from the stylesheet
+   fifteen pages depend on, in the same deploy that restructured the section
+   those rules served, would mean a bad result could not say which of the two
+   caused it. They cost a few hundred bytes on a file every visitor already
+   downloads. They come out in a sweep where nothing else is moving.
+
+   WHAT TO DO BEFORE DELETING THEM, AND IT IS ONE COMMAND. Grep the page set
+   for each class name and confirm the count is zero. Do not trust this comment
+   for that: it was true when it was written and the check is what makes it
+   true when you read it.
+
+   AND STRIP COMMENTS BEFORE YOU COUNT. This project writes its reasoning into
+   its files, so the prose here names every class the code does. A check that
+   greps this stylesheet for .form-branch will find it in this paragraph and
+   report the rules still live. That fault has been paid eleven sessions
+   running and it is the one to expect here.
+
+   WHAT IS NOT IN THIS GROUP. .reveal-btn, directly above, which is live and
+   grew this session. .contact-grid and .contact-detail, also above, which the
+   page no longer uses but which are general-purpose enough that a later
+   contact block might. Only what the form itself needed is marked. */
 /* FORM */
 .contact-form-wrap { background: var(--off-white); padding: 48px 40px; border-radius: 8px; }
 .form-group { margin-bottom: 24px; }
@@ -845,7 +899,15 @@ footer { background: var(--dark); color: rgba(255,255,255,0.5); }
    The form is drawn as a small flowchart. Two entry routes converge into a
    single spine of fields. Required fields sit on the spine with solid nodes.
    Optional fields hang off it on a dashed spur. Nothing is labelled
-   "required" or "optional" in words; the drawing carries it. */
+   "required" or "optional" in words; the drawing carries it.
+
+   DEAD AS OF SESSION 48, 29 AUGUST 2026, WITH THE BLOCK ABOVE. The form this
+   drew went with Formspree. The reasoning, the check to run before deleting
+   any of it, and the warning about grepping a file whose comments name its own
+   classes are all stated once above .contact-form-wrap rather than repeated
+   here. The @media block at the foot of this group goes with it, and so do the
+   .form-submit and .form-branch entries in the reduced-motion block near the
+   end of this file. */
 
 .form-branches { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 0; }
 .form-branch { cursor: pointer; border: 1px solid #D0DCE0; background: var(--white); border-radius: 4px; padding: 16px; transition: border-color 0.2s ease-out, background 0.2s ease-out, transform 0.2s ease-out; }
