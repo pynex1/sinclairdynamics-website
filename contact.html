@@ -457,13 +457,26 @@
    620px band, then a small link into the dark. Three equal blocks inside that
    band are one uniform object rather than a widening one.
 
-   620px AGAIN, taken from .section-lead, so the buttons sit inside the same
-   measure as the paragraph above them rather than a second one chosen here. */
+   302px IS DERIVED AND NOT CHOSEN. It is the width each of these had when two
+   of them sat side by side: a 620px band, two columns, one 16px gap, so
+   (620 - 16) / 2. Keeping that number means the stack is the same three
+   objects rearranged rather than three new ones.
+
+   AND IT IS WHY THE HOVER IS BEARABLE. Filling a 620px block on a white ground
+   is a large change under a cursor moving down a column of three, and it read
+   as flicker rather than as response. Half the width is half the lit area.
+   The fix is the size of the thing rather than the behaviour, so the control
+   still answers the hand.
+
+   IT CANNOT OVERFLOW A NARROW SCREEN. max-width rather than width, so inside a
+   .section-inner narrower than 302px the band takes what is there. Below 360px
+   is untested on this site by standing decision, and this rule degrades rather
+   than breaking there. */
     .ct-routes .route-stack {
       display: grid;
       grid-template-columns: 1fr;
       gap: 16px;
-      max-width: 620px;
+      max-width: 302px;
       margin: 0 auto;
     }
 
