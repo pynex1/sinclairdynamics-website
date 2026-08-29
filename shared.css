@@ -536,15 +536,35 @@ section { position: relative; }
    message already in it. The shadow marks consequence rather than prominence,
    so a quiet control with a real consequence keeps the 4px and the shadow.
 
-   THE HOVER FILLS RATHER THAN DEEPENING THE BORDER, which is the one place
-   this parts company with .btn-outline above. That rule brightens its border
-   and leaves its text alone because on slate there is nowhere brighter for
-   white to go. On white there is. Filling is also what this control already
-   did before tonight, so nothing new is being invented.
+   THE HOVER IS CONFIRMATION RATHER THAN PERSUASION, and that is Ainsley's
+   reasoning rather than a styling preference. Somebody hovering here has
+   scrolled past the assistant, read the close, and decided not to have the
+   conversation. They are not being called to action: they have taken one. A
+   control at the end of a page answers a hand that has already chosen, where a
+   control in the middle of a page is still asking.
 
-   AND --teal-bright IS NOT AVAILABLE TO THE LABEL. It measures 2.77:1 on
-   white, well under the threshold for text, which is why the hover moves the
-   ground and not the type.
+   WHICH IS WHY IT FILLS WITH --teal-pale AND NOT WITH --teal. Measured rather
+   than judged, because the fault was flicker and flicker is luminance. White
+   is 1.0. Filling with teal lands at 0.153, a swing of 0.85, which is nearly
+   the whole available range under a cursor moving down three stacked blocks.
+   teal-pale lands at 0.879, a swing of 0.12, seven times smaller. The label
+   stays at --teal and measures 4.59:1 on it, which clears.
+
+   --teal-bright WAS CONSIDERED AND FAILS ON THE LABEL. It is the hover colour
+   .btn-primary uses on the index close and it looks right there, but that
+   button starts filled and lightens where this one starts white and darkens,
+   so the shade transfers and the small movement does not: the swing would
+   still be 0.67. And nothing can be written on it. White on teal-bright is
+   2.77:1 and teal on teal-bright is 1.87:1, both under the threshold, and only
+   slate clears at 4.31:1, which would put a navy label on a teal button and
+   introduce a colour this control uses nowhere else.
+
+   THE BORDER DOES NOT MOVE. It is already full teal, so the button keeps its
+   edge under the pale fill rather than appearing to dissolve into the page.
+
+   TEAL BORDER PLUS TEAL-PALE FILL IS THIS SITE'S OWN SOFT ACTIVE STATE ON
+   LIGHT GROUND. .pull-quote uses the pair, and .form-branch.is-active used it
+   until the form this session removed. Nothing new is being invented.
 
    IT IS ONLY USED ON contact.html. Nothing else on the site reveals anything,
    which is what makes it safe to change here rather than scope it in the page. */
@@ -557,7 +577,10 @@ section { position: relative; }
   transition: background 0.2s ease-out, color 0.2s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease-out;
 }
 .reveal-btn:hover {
-  background: var(--teal); color: var(--white);
+  /* The label is left alone deliberately: it is already --teal from the rule
+     above and it stays legible on the pale ground at 4.59:1. Only the ground
+     moves, and it moves a little. */
+  background: var(--teal-pale);
   transform: translateY(-4px); box-shadow: 0 10px 24px rgba(30,58,74,0.10);
 }
 .reveal-btn:active {
