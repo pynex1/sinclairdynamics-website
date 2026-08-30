@@ -44,6 +44,30 @@
   <link rel="canonical" href="https://www.sinclairdynamics.co/privacy.html">
 
   <!-- ---------------------------------------------------------------------------
+   File:       privacy.html
+   Repository: sinclairdynamics-website
+
+   REVISIONS (most recent first, three kept)
+   Session 50  30 Aug 2026  Three paragraphs. The two locale fields the widget
+                            sends are disclosed for the first time, with both
+                            purposes. The assistant's email to Ainsley is
+                            disclosed as generated rather than templated,
+                            naming the second Gemini call, ahead of that being
+                            built. The Google item gains the same second call so
+                            the two halves cannot describe one call two ways.
+                            EFFECTIVE DATE NOT MOVED: it already reads 30 August
+                            and today is 30 August. Two versions of this notice
+                            therefore carry one date, which is correct.
+   Session 48  30 Aug 2026  Contact form and Formspree removed, six edits. The
+                            browser storage item rewritten in both the places it
+                            appears, which is the fault where one half is
+                            amended and the other left standing.
+   Session 47  29 Aug 2026  The assistant's email to Ainsley disclosed.
+                            Collection gained a sixth item, Gmail was named
+                            inside the existing Google item rather than under a
+                            heading of its own, and the mailbox copy was put
+                            under the same retention period.
+   ---------------------------------------------------------------------------
    NO PAGE LOCAL STYLES, DELIBERATELY.
 
    Every component on this page is a shared class taken unchanged from
@@ -225,7 +249,9 @@
           <p class="body-text">When you use the chat assistant, everything you type is sent to Google's Gemini API to
             generate a response, and the full conversation, your messages and the assistant's replies, is stored. Each
             stored conversation also includes the date and time of each message, the total number of messages, your IP
-            address, and your browser's user agent string, collected for security and abuse monitoring.</p>
+            address, your browser's user agent string, and the time zone your browser reports along with how far
+            that is from UTC. These are collected for security and abuse monitoring, and the time zone is also kept
+            so that Ainsley knows what a reasonable hour is where you are, should you ask him to get in touch.</p>
         </div>
 
         <div class="story-section">
@@ -234,7 +260,10 @@
             you are talking to it, it reads those out of what you have typed and keeps them alongside the
             conversation as separate details, together with a note of which of your messages each one came from.
             Once it has a name and at least one way to reach you, the conversation and those details are sent to
-            Ainsley by email so that he can come back to you. If you correct something afterwards, an updated
+            Ainsley by email so that he can come back to you. That email is written by the assistant rather than
+            put together from a fixed template: the whole conversation is sent to Google's Gemini API a second
+            time, so that the assistant can write to Ainsley about what you discussed and pass on your details,
+            and the conversation itself is attached to the message. If you correct something afterwards, an updated
             email follows, so that what he has is what you meant to give. Nothing is sent while it still only has
             part of what it needs, and if you would rather not give your details, you are not asked again beyond
             the once.</p>
@@ -291,7 +320,8 @@
         <div class="story-section">
           <h3>Google</h3>
           <p class="body-text">Everything you type to the assistant is sent to Google's Gemini API to generate a
-            response. Conversations are stored using Google Cloud Firestore, hosted in the United Kingdom. Google
+            response, and the whole conversation is sent to the same API again when the assistant writes its email
+            to Ainsley. Conversations are stored using Google Cloud Firestore, hosted in the United Kingdom. Google
             is subject to United Kingdom data protection law and to
             data processing terms with Sinclair Dynamics that provide a level of protection substantially similar to
             POPIA. The email carrying a conversation to Ainsley is sent using Gmail, part of Google Workspace,
