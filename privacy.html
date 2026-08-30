@@ -204,10 +204,15 @@
   </section>
 
   <!-- ===== 3. WHAT IS COLLECTED ========================================
-       Three items, each a .story-section so the divider rule does the
-       separating rather than a run of bold text inside a paragraph. This is
-       the same construction the four accounts on platform.html use, and it
-       is what stops a compliance page reading as a wall.
+       Each item is a .story-section so the divider rule does the separating
+       rather than a run of bold text inside a paragraph. This is the same
+       construction the four accounts on platform.html use, and it is what
+       stops a compliance page reading as a wall.
+
+       THE COUNT THAT USED TO BE HERE SAID THREE and there were six. It was
+       written when there were three and nothing updates a number in a
+       comment when a section grows, so it is gone rather than corrected: the
+       markup below is the count and it cannot drift from itself.
        ================================================================== -->
   <section style="background: var(--off-white);">
     <div class="section-inner">
@@ -236,19 +241,15 @@
         </div>
 
         <div class="story-section">
-          <h3>Information you provide through the contact form</h3>
-          <p class="body-text">If you complete the contact form, this site collects your name and email address,
-            which are required, and your phone number and organisation, which are optional, along with the message
-            you write.</p>
-        </div>
-
-        <div class="story-section">
           <h3>Information stored in your browser</h3>
-          <p class="body-text">The assistant keeps a record of your current conversation and a session identifier in
-            your browser's local storage, so that a conversation can continue if you leave the page and come back
-            within 24 hours. Whether you've agreed to analytics tracking is stored the same way, so you're not asked
-            again on every page. This information stays on your device and is not automatically visible to Sinclair
-            Dynamics beyond what has already been sent and stored as described above.</p>
+          <p class="body-text">Nothing is stored until you send the assistant a message. Once you have, it keeps a
+            record of the conversation, a session identifier, and, if you have given your name, the short form of it,
+            in your browser's local storage. The conversation is kept so that it can continue if you leave the page
+            and come back within 24 hours, and the name so that your own messages are still labelled with it when you
+            return. Starting a new conversation removes all of it immediately. Whether you've agreed to analytics
+            tracking is stored separately and in the same way, so you're not asked again on every page. None of this
+            is automatically visible to Sinclair Dynamics beyond what has already been sent and stored as described
+            above.</p>
         </div>
 
         <div class="story-section">
@@ -272,9 +273,14 @@
   </section>
 
   <!-- ===== 4. THIRD PARTIES ============================================
-       Named plainly. The reasoning for naming Formspree as a fact rather
-       than smoothing over it is in sd-reference-privacy-v0_1.md and is not
-       restated on the page.
+       Named plainly, and the reasoning is in sd-reference-privacy rather than
+       restated here.
+
+       FORMSPREE WAS THE SECOND ITEM HERE UNTIL 30 AUGUST 2026. The contact
+       form it received was removed the day before, so the recipient went with
+       it. The reasoning for having named it as a fact rather than smoothing
+       over it stands and is worth keeping: a notice that omits a recipient is
+       the one failure this page cannot recover from.
        ================================================================== -->
   <section>
     <div class="section-inner">
@@ -290,13 +296,6 @@
             data processing terms with Sinclair Dynamics that provide a level of protection substantially similar to
             POPIA. The email carrying a conversation to Ainsley is sent using Gmail, part of Google Workspace,
             between two addresses on the sinclairdynamics.co domain.</p>
-        </div>
-
-        <div class="story-section">
-          <h3>Formspree</h3>
-          <p class="body-text">If you submit the contact form, your details and message are sent to Formspree, a
-            form delivery service based in the United States, to deliver your enquiry to Ainsley by email. This
-            transfer is necessary to take the steps you have requested in getting in touch.</p>
         </div>
 
         <div class="story-section">
@@ -331,7 +330,7 @@
       <div style="max-width:760px;">
         <div class="story-section">
           <h3>Conversations and lead records</h3>
-          <p class="body-text">Conversations and contact form submissions are kept for three years from your last
+          <p class="body-text">Conversations are kept for three years from your last
             contact with Sinclair Dynamics. This period reflects the time within which a claim relating to a service
             enquiry or engagement could ordinarily be brought under South African law, and the record is kept for that
             purpose: to have an accurate account of what was discussed and agreed, should it ever be needed by either
@@ -341,9 +340,10 @@
 
         <div class="story-section">
           <h3>Information stored in your browser</h3>
-          <p class="body-text">Your current conversation and session identifier are held in your browser for 24 hours
-            of inactivity, after which a new conversation begins. This does not delete the corresponding record
-            described above; it only starts a new one.</p>
+          <p class="body-text">Your conversation, session identifier and the short form of your name are held in
+            your browser for 24 hours of inactivity, after which a new conversation begins. Starting a new
+            conversation yourself removes them straight away. This does not delete the corresponding record described
+            above; it only starts a new one.</p>
         </div>
       </div>
     </div>
@@ -409,7 +409,7 @@
       <div style="max-width:760px;">
         <div class="highlight-box">
           <strong>Effective</strong>
-          29 August 2026
+          30 August 2026
         </div>
       </div>
     </div>
