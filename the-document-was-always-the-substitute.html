@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Title and filename settled 5 September 2026, Session 63. The title is
+       unchanged from the working one. The filename was the-document-was-the-
+       substitute.html and dropped "Always", so it was aligned to the title
+       rather than the title shortened to it. The reason is that "Always" is
+       the word carrying the argument: without it the headline states a fact
+       about the past, and with it the headline states that the document was
+       never anything else. The title tag, the h1, the Open Graph title and
+       the Twitter title all carry the same string. -->
+  <title>The Document Was Always The Substitute | Sinclair Dynamics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    /* Figure card. Same pattern as .filter-figure and .plane-figure in
+       spotting-ai-writing.html and .reveal-figure in machine-was-never-the-
+       ceiling.html: teal-pale card, 6px radius, identical padding, svg to
+       full column width. Named for this page's own figures rather than
+       reusing another page's class name, which is the site's habit until a
+       second consumer would justify promoting it to shared.css. */
+    .register-figure {
+      background: var(--teal-pale);
+      border-radius: 6px;
+      padding: 24px 20px 20px;
+      margin-bottom: 24px;
+    }
+
+    .register-figure svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .register-caption {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #2A4A44;
+      margin-top: 14px;
+    }
+  </style>
+  <!-- Google Analytics -->
+  <!-- Not declared here. Analytics is gated behind the consent banner, which
+     is single sourced from _consent_canonical.html and written into this page
+     by apply-chrome.py along with the nav and the footer. Nothing fires in a
+     visitor's browser until they have answered. Property G-W94Z1196CH. -->
+  <meta name="description"
+    content="A document is written once, read cold, and cannot be asked anything. Why the document was always a substitute for the conversation, and what changes when a reader can ask instead.">
+  <meta name="keywords"
+    content="conversational website, AI assistant on a website, working with AI, CV limitations, professional website, Ada assistant, Sinclair Dynamics, Ainsley Williams, engineering consultant Johannesburg, AI conversation design">
+  <meta name="author" content="Ainsley Williams, Sinclair Dynamics">
+  <meta name="robots" content="index, follow">
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.sinclairdynamics.co/the-document-was-always-the-substitute.html">
+  <meta property="og:title" content="The Document Was Always The Substitute | Sinclair Dynamics">
+  <meta property="og:description"
+    content="A document is written once, read cold, and cannot be asked anything. What changes when a reader can ask instead.">
+  <meta property="og:image" content="https://www.sinclairdynamics.co/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Sinclair Dynamics">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Document Was Always The Substitute | Sinclair Dynamics">
+  <meta name="twitter:description"
+    content="A document is written once, read cold, and cannot be asked anything. What changes when a reader can ask instead.">
+  <meta name="twitter:image" content="https://www.sinclairdynamics.co/og-image.png">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.sinclairdynamics.co/the-document-was-always-the-substitute.html">
+</head>
+
+<body>
+  <!-- NAV:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE FILE.
+       It is written from _nav_canonical.html by apply-chrome.py, and any hand
+       edit made here will be silently overwritten the next time that script
+       runs. Change the fragment, then run the script.
+       Identical on every page except the active entry, which the script sets
+       from the page's own filename. Five entries as of 14 August 2026: The
+       Engagement sits between The Work and Contact. The four discipline pages
+       and every other page outside the nav carry no active entry at all,
+       which is correct rather than an omission.
+
+       File:       _nav_canonical.html
+       Repository: sinclairdynamics-website
+
+       REVISIONS (most recent first, three kept)
+       Session 36  26 Aug 2026  The five links become a panel on a phone,
+                                revealed by a menu button, instead of being
+                                hidden with no replacement. The five anchors
+                                below are untouched: apply-chrome.py sets the
+                                active entry by matching each one exactly, so
+                                a second copy of them would halt the run.
+       Session 18  19 Aug 2026  This fragment created. The nav stops being
+                                duplicated by hand into every page file.
+
+       THE MENU BUTTON, AND WHY THE LINKS ARE NOT REPEATED INSIDE IT.
+       Below 900px shared.css laid these five out as a horizontal row and
+       then hid them, leaving a phone visitor the logo and Get In Touch and
+       nothing else, with the footer as the only route between pages. They
+       are no longer hidden. The same five anchors are laid out as a panel
+       under the bar and revealed by the button. One set of links, two
+       appearances, so there is only ever one answer to what is in the nav.
+
+       Get In Touch stays in the bar and is deliberately not inside the
+       panel. Positioning 8.3 makes the persistent call to action the floor
+       of the invitation ramp, present at every scroll position on every
+       page. Inside the panel it would be conditional on somebody opening
+       the panel first. -->
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="sinclair-nav-icon.png" alt="Sinclair Dynamics"
+        style="height:52px;width:auto;"></a>
+    <div class="nav-links" id="nav-links" data-open="false">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="work.html">The Work</a>
+      <a href="engagement.html">The Engagement</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button type="button" class="nav-toggle" id="nav-toggle"
+              aria-controls="nav-links" aria-expanded="false" aria-label="Open menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <a href="contact.html" class="nav-cta">Get In Touch</a>
+    </div>
+  </nav>
+  <script>
+    /* The button carries the state and the panel follows it, so there is one
+       source of truth rather than two that can disagree. The panel is styled
+       off data-open and the button off aria-expanded; both are set together.
+
+       If this script never runs, a phone visitor is exactly where they were
+       before today, using the footer. It adds a route that does not currently
+       exist rather than propping up one that does. */
+    (function () {
+      var toggle = document.getElementById('nav-toggle');
+      var panel = document.getElementById('nav-links');
+      if (!toggle || !panel) { return; }
+
+      function setOpen(open) {
+        panel.setAttribute('data-open', open ? 'true' : 'false');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      }
+
+      toggle.addEventListener('click', function () {
+        setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+      });
+
+      /* Escape closes it, which is the expected behaviour of any panel a
+         control opens. It is reachable only on a narrow desktop window,
+         since a phone has no such key, and it costs three lines. */
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') { setOpen(false); }
+      });
+
+      /* Closing on a link tap is currently unexercised: all five links leave
+         the page, and the next page arrives with the panel closed because
+         nothing persists. It is here for the first nav entry that is an
+         in-page anchor rather than a page. */
+      panel.addEventListener('click', function (event) {
+        if (event.target.closest('a')) { setOpen(false); }
+      });
+    })();
+  </script>
+  <!-- NAV:END -->
+  <!-- Eyebrow reused from spotting-ai-writing.html and machine-was-never-the-
+       ceiling.html: all three pieces sit in the same occasional-writing line,
+       so the same series label is deliberate. Headline is a working title.
+       Ainsley's decision, taken last before publication, per Session 62. -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <div class="hero-eyebrow">On Working With AI</div>
+      <h1>The Document Was<br><span>Always The Substitute.</span></h1>
+      <p class="page-hero-sub">Why no document can be written for every reader you have never met, and what changes when
+        it can be asked instead.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <div class="two-col-wide">
+        <div>
+          <div class="section-eyebrow">The First Few Seconds</div>
+          <h2 class="section-title">You Cannot Know<br><span>Before You Know</span></h2>
+          <p class="body-text">You land on somebody's website. Within a few seconds you decide whether this person is
+            worth any more of your time, and you make that decision on almost nothing. All you have is a headline, a
+            photograph, the first line of a paragraph you have not read yet.</p>
+          <p class="body-text">That is not a failure of attention. It is the only decision available.</p>
+          <!-- Pull quote, per Ainsley, Session 62. It is not doing emphasis. In a
+               piece arguing that a conversation beats a document, the quotation
+               marks make this the only spoken line on the page, so the reader
+               hears a voice for one line in an article about hearing a voice.
+               The quotation marks are therefore load bearing and are not a
+               formatting choice. Same treatment as the pull quote in
+               spotting-ai-writing.html, marks included. -->
+          <div class="pull-quote">
+            <p>"You cannot know whether you want to know somebody until you already know something about them, and
+              knowing something about them costs attention you have not yet decided to spend."</p>
+          </div>
+          <p class="body-text">The first judgement is usually made too early and on too little, and what it is actually
+            made on is a guess about whether any further effort would be worth it.</p>
+          <p class="body-text">I have spent a long time on the other side of the same problem. Writing about what I do
+            means deciding, in advance, what to leave out on behalf of a reader I have never met and cannot ask.
+            Everything I might want somebody to know exists. It is in the projects, in the interviews I have already
+            sat, in the courses, and in the answers I would give if anybody asked me. None of it is missing. What is
+            missing is somewhere to put it.</p>
+        </div>
+        <div>
+          <!-- Figure 1. Built Session 62, recoloured the same session. Geometry
+               generated and asserted rather than hand placed: margins, row pitch
+               and viewBox fit checked against written failure conditions, and the
+               checks fault injected before being trusted.
+
+               THE ARGUMENT THE GEOMETRY CARRIES. Top row lopsided one way,
+               aperture even, bottom row lopsided the other way. The fault reads as
+               a mismatch of shape rather than as a loss of volume.
+
+               THE ARGUMENT THE COLOUR CARRIES. teal is my material, slate is the
+               reader's questions, and the two are the site's own structural pair.
+               The middle row is red because it is neither: it is the document, a
+               third object imposed between the two parties, which is what this
+               page is named for. An earlier version of this comment said the
+               aperture was teal and not red, and gave a reason. That version is
+               superseded and has been removed rather than left to disagree with
+               the file it describes.
+
+               MEASURED, NOT JUDGED. The top row was #B9D6D1, which is 1.37:1 on
+               this card's ground, so the largest element was doing the least work.
+               teal is 4.59:1, red 3.68:1, slate 10.56:1. Slate is the loudest
+               figure here but is drawn as a 1.4px dashed outline rather than a
+               fill, which is what keeps the unknown row reading as unknown.
+
+               KNOWN AND ACCEPTED. teal and red are 1.25:1 apart in luminance and
+               differ almost only in hue, so a red-green colour blind reader sees
+               the top two rows as near-identical greys. Shapes, labels and rules
+               still carry the structure, so it degrades rather than fails. -->
+          <div class="register-figure">
+    <svg viewBox="0 0 400 356" xmlns="http://www.w3.org/2000/svg" role="img"
+      aria-label="Three rows. The top row is a dense field of shapes, mostly one kind. The middle row has room for only six, two of each kind. The bottom row, drawn in dotted outline with question marks, is mostly a different kind again, and is not visible from the top.">
+      <text x="20" y="22" font-family="'Barlow Condensed',sans-serif" font-size="13" letter-spacing="1.6" fill="#2A4A44">EVERYTHING I COULD TELL YOU</text>
+      <g>
+      <rect x="20" y="33" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="44" y="33" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <circle cx="75" cy="40" r="7" fill="#1A7A6E" />
+      <rect x="92" y="33" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="116" y="33" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="140" y="33" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="164" y="33" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <polygon points="188,40 191.5,34 198.5,34 202,40 198.5,46 191.5,46" fill="#1A7A6E" />
+      <rect x="212" y="33" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="236" y="33" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <circle cx="267" cy="40" r="7" fill="#1A7A6E" />
+      <rect x="284" y="33" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="308" y="33" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="332" y="33" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="20" y="55" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <circle cx="51" cy="62" r="7" fill="#1A7A6E" />
+      <rect x="68" y="55" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="92" y="55" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="116" y="55" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="140" y="55" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="164" y="55" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="188" y="55" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <circle cx="219" cy="62" r="7" fill="#1A7A6E" />
+      <rect x="236" y="55" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="260" y="55" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <polygon points="284,62 287.5,56 294.5,56 298,62 294.5,68 287.5,68" fill="#1A7A6E" />
+      <rect x="308" y="55" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="332" y="55" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="20" y="77" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="44" y="77" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="68" y="77" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <circle cx="99" cy="84" r="7" fill="#1A7A6E" />
+      <rect x="116" y="77" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="140" y="77" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <polygon points="164,84 167.5,78 174.5,78 178,84 174.5,90 167.5,90" fill="#1A7A6E" />
+      <rect x="188" y="77" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="212" y="77" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="236" y="77" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="260" y="77" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <circle cx="291" cy="84" r="7" fill="#1A7A6E" />
+      <rect x="308" y="77" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <rect x="332" y="77" width="14" height="14" rx="2" fill="#1A7A6E" />
+      </g>
+      <path d="M20 106h346" stroke="#1A7A6E" stroke-width="1" stroke-dasharray="3 3" opacity="0.5" />
+      <text x="20" y="124" font-family="'Barlow',sans-serif" font-size="12" fill="#2A4A44" opacity="0.85">elements of it, chosen once, before you arrive</text>
+      <path d="M27 132V158M83 132V158M139 132V158M195 132V158M251 132V158M307 132V158" stroke="#E8392A" stroke-width="1" stroke-dasharray="2 3" opacity="0.55" />
+      <text x="20" y="180" font-family="'Barlow Condensed',sans-serif" font-size="13" letter-spacing="1.6" fill="#2A4A44">WHAT TWO PAGES HOLD</text>
+      <g>
+      <rect x="20" y="191" width="14" height="14" rx="2" fill="#E8392A" />
+      <rect x="76" y="191" width="14" height="14" rx="2" fill="#E8392A" />
+      <circle cx="139" cy="198" r="7" fill="#E8392A" />
+      <circle cx="195" cy="198" r="7" fill="#E8392A" />
+      <polygon points="244,198 247.5,192 254.5,192 258,198 254.5,204 247.5,204" fill="#E8392A" />
+      <polygon points="300,198 303.5,192 310.5,192 314,198 310.5,204 303.5,204" fill="#E8392A" />
+      </g>
+      <path d="M20 222h346" stroke="#1A7A6E" stroke-width="1" stroke-dasharray="3 3" opacity="0.5" />
+      <text x="20" y="240" font-family="'Barlow',sans-serif" font-size="12" fill="#2A4A44" opacity="0.85">and none of this was visible from up there</text>
+      <path d="M27 248V274M83 248V274M139 248V274M195 248V274M251 248V274M307 248V274" stroke="#1E3A4A" stroke-width="1" stroke-dasharray="2 3" opacity="0.55" />
+      <text x="20" y="296" font-family="'Barlow Condensed',sans-serif" font-size="13" letter-spacing="1.6" fill="#2A4A44">WHAT YOU CAME TO FIND OUT</text>
+      <g>
+      <polygon points="20,314 23.5,308 30.5,308 34,314 30.5,320 23.5,320" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <polygon points="54,314 57.5,308 64.5,308 68,314 64.5,320 57.5,320" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <circle cx="95" cy="314" r="7" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <polygon points="122,314 125.5,308 132.5,308 136,314 132.5,320 125.5,320" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <polygon points="156,314 159.5,308 166.5,308 170,314 166.5,320 159.5,320" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <rect x="190" y="307" width="14" height="14" rx="2" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <polygon points="224,314 227.5,308 234.5,308 238,314 234.5,320 227.5,320" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <polygon points="258,314 261.5,308 268.5,308 272,314 268.5,320 261.5,320" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <circle cx="299" cy="314" r="7" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <polygon points="326,314 329.5,308 336.5,308 340,314 336.5,320 329.5,320" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <text x="61" y="317.5" text-anchor="middle" font-family="'Barlow',sans-serif" font-size="10" fill="#1E3A4A" opacity="0.85">?</text>
+      <text x="163" y="317.5" text-anchor="middle" font-family="'Barlow',sans-serif" font-size="10" fill="#1E3A4A" opacity="0.85">?</text>
+      <text x="299" y="317.5" text-anchor="middle" font-family="'Barlow',sans-serif" font-size="10" fill="#1E3A4A" opacity="0.85">?</text>
+      <polygon points="20,336 23.5,330 30.5,330 34,336 30.5,342 23.5,342" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <circle cx="61" cy="336" r="7" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <polygon points="88,336 91.5,330 98.5,330 102,336 98.5,342 91.5,342" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <polygon points="122,336 125.5,330 132.5,330 136,336 132.5,342 125.5,342" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <rect x="156" y="329" width="14" height="14" rx="2" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <polygon points="190,336 193.5,330 200.5,330 204,336 200.5,342 193.5,342" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <polygon points="224,336 227.5,330 234.5,330 238,336 234.5,342 227.5,342" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <circle cx="265" cy="336" r="7" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <polygon points="292,336 295.5,330 302.5,330 306,336 302.5,342 295.5,342" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <polygon points="326,336 329.5,330 336.5,330 340,336 336.5,342 329.5,342" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <text x="27" y="339.5" text-anchor="middle" font-family="'Barlow',sans-serif" font-size="10" fill="#1E3A4A" opacity="0.85">?</text>
+      <text x="197" y="339.5" text-anchor="middle" font-family="'Barlow',sans-serif" font-size="10" fill="#1E3A4A" opacity="0.85">?</text>
+      <text x="333" y="339.5" text-anchor="middle" font-family="'Barlow',sans-serif" font-size="10" fill="#1E3A4A" opacity="0.85">?</text>
+      </g>
+    </svg>
+            <!-- Caption is Ainsley's own sentence, taken verbatim from the session
+                 in which the figure was built. It replaced a three sentence caption
+                 that said less. The writer-side blindness it used to carry is now
+                 held by the second interstitial inside the figure, so nothing was
+                 lost in the trade. -->
+            <p class="register-caption">The top and the bottom have to meet in the middle, on the terms that the
+              middle is willing to have them meet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--off-white);">
+    <div class="section-inner">
+      <div class="two-col-wide">
+        <div>
+          <div class="section-eyebrow">The Format</div>
+          <h2 class="section-title">Editing Does<br><span>Not Fix This</span></h2>
+          <p class="body-text">A CV has one price and you have to pay it before you know whether you want to. That is
+            why writing it better does not solve the problem. A perfectly written two pages still asks for the whole
+            decision up front, from somebody who has no basis for making it yet.</p>
+          <p class="body-text">And because the document is finished before any reader arrives, it has to serve all
+            possible readers in exactly the same way. The person who cares about how a project is run and the person who cares about how a system
+            is measured are both reading the same two pages, and each of them is mostly reading the other one's half.
+            There is no length that escapes this. Make it shorter and it stops meaning anything. Make it longer and
+            nobody reaches the end. Every version is a compromise struck between readers who will never meet each
+            other.</p>
+          <p class="body-text">I used to think this was a problem with me: that I had not yet found the right way to
+            say it. It is not. It is a property of the format we inherited.</p>
+        </div>
+        <div>
+          <!-- The Other Reader. Agreed Session 62. Two bounds held deliberately:
+               it does not complain about screening, because a piece that sounds
+               aggrieved about job applications loses the reader before the next
+               section; and it does not claim the machine gets you wrong, which
+               is a claim nobody here can support and which the point does not
+               need. The point is absence, not inaccuracy. -->
+          <div class="highlight-box"><strong>The Other Reader</strong>Long before a person decides whether to read a
+            document, something else has usually read it: a screening system looking for terms, a search engine
+            deciding where it ranks, and now an AI answering somebody's question about you from it. The document is
+            written for readers you cannot see, and one of them will summarise you to somebody while you are not in
+            the room.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <div class="section-eyebrow">What Came Before</div>
+      <h2 class="section-title">It Was Not<br><span>Always A Problem</span></h2>
+      <p class="body-text" style="max-width:760px;">None of this apparatus is old. Before any of it, if you wanted to
+        know whether somebody could help you, you went and met them and asked. You started with whatever you happened
+        to care about, they answered, and you asked the next thing. Nobody handed anybody a summary of themselves at
+        the door.</p>
+      <p class="body-text" style="max-width:760px;">We stopped doing that because it did not scale. One person can
+        only have so many conversations, and a document could be written once and read by anybody. That was the
+        correct trade at the time, and the whole structure we now take for granted follows from it: the pages, the
+        sections, the search results that deliver you to a paragraph somebody wrote years ago for somebody else.</p>
+      <p class="body-text" style="max-width:760px;">What is easy to lose is that the document was the substitute. It
+        is not the natural form of getting to know what somebody does. It is what we adopted when the natural form
+        was unavailable, and we have lived with it long enough that it has stopped looking like a workaround.</p>
+    </div>
+  </section>
+
+  <section class="dark-section">
+    <div class="section-inner">
+      <div class="section-eyebrow">The Measurement</div>
+      <h2 class="section-title">Opaque In<br><span>Both Directions</span></h2>
+      <p class="body-text" style="max-width:760px;">The reader's half of this is obvious once it is said: you cannot
+        ask a page anything. If a sentence is unclear, or you want to know why something was done that way, there is
+        no mechanism. You can read it again more carefully, and that is all.</p>
+      <p class="body-text" style="max-width:760px;">The writer's half is less obvious and I think it is worse. I have
+        no idea what anybody reads. I do not know which paragraphs were reached, which ones landed, which ones were
+        skimmed past, or whether the page was read at all before somebody left. I know nothing about the one thing I
+        actually care about.</p>
+      <p class="body-text" style="max-width:760px;">What comes back instead is a set of numbers. Impressions. Clicks.
+        Time on page. They are captured, sorted, and available to me on demand, and not one of them can tell me
+        whether a single person understood anything. I have recently spent yet another afternoon looking
+        at those numbers. They are not measuring what I want to know. They are measuring what happens to be easy to
+        count.</p>
+      <p class="body-text" style="max-width:760px;">This is the fault I enjoy finding in other people's systems. A
+        measurement that was reasonable when it was set, that has been running long enough to look authoritative, and
+        that answers a question adjacent to the one being asked. It is unsettling to find it sitting under your own
+        website, but it is the same fault, and noticing it is not optional once you have made a career out of
+        noticing it elsewhere.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <div class="two-col-wide">
+        <div>
+          <div class="section-eyebrow">The Change</div>
+          <h2 class="section-title">What A Conversation<br><span>Actually Changes</span></h2>
+          <p class="body-text">A conversation removes both halves at once, and it does it with one mechanism rather
+            than two.</p>
+          <p class="body-text">The reader stops paying up front and starts paying in instalments. You ask one thing.
+            You get an answer worth having, or you do not. Then you decide whether to ask a second. Nobody has to
+            commit to the whole record in advance, and nobody has to read somebody else's half to reach their own.</p>
+          <!-- TRANSITION, ADDED SESSION 62. Ainsley found a jump here: the section
+               moves from conversation in general to the one running on this site
+               without marking the switch, so "comes back to me" arrived with no
+               mechanism behind it and the reader carried an unanswered question for
+               four paragraphs until Ada is named.
+
+               NAMING ADA AT THE TOP OF THIS SECTION WAS CONSIDERED AND REJECTED. It
+               would fix the jump and fail the test we agreed to run at the end, which
+               is whether the piece stays about the format rather than the assistant.
+               Ainsley: Ada is an implementation of what he is trying to achieve, not
+               the thing he is trying to achieve. Two sentences mark the switch and
+               keep that ordering intact. -->
+          <p class="body-text">That is the general case. Here is the version I actually built. The same exchange
+            comes back to me. I am sent a summary of what was discussed and the full transcript underneath it, so I
+            can join at speed and go back through it properly when I have the time. I am not guessing at what
+            somebody wanted. I am reading what they actually asked, in their own words, and picking the conversation
+            up where they left it.</p>
+          <p class="body-text">That second part is not a feature added alongside the first. It falls out of it. The
+            thing that lets the reader steer is the thing that tells me where they steered, and it is the same
+            object.</p>
+          <!-- New paragraph, Session 62, closing the loop back to The Other
+               Reader. The claim is ownership of the compression rather than
+               its removal, which is both true and the harder version. -->
+          <p class="body-text">The summarising does not stop happening. A conversation compresses too: nobody gets the
+            whole record, and nobody wants it. What changes is who is doing the compressing and whether anybody can
+            see it. It is done from what I actually wrote, in answer to the question somebody actually asked, and I
+            get to read both afterwards.</p>
+          <p class="body-text">The assistant on my contact page, Ada, is where this currently sits. Two things about
+            that are worth being plain about. Ada is not me and does not pretend to be, and a conversation with Ada
+            is not an interview with me: it is a way of asking the record questions instead of reading a summary of
+            it. And this is not a support chatbot in a different jacket. A chatbot is a better index into a fixed set
+            of pages, which is a useful thing and a different thing. This is not indexing the pages. It is an attempt
+            to make the pages less necessary.</p>
+        </div>
+        <div>
+          <!-- Figure 2. Built Session 62. Same generator discipline as figure 1:
+               geometry computed, asserted against failure conditions written before
+               the checks ran, and the checks fault injected.
+
+               IT DEPENDS ON FIGURE 1 AND CANNOT SURVIVE IT BEING CUT. Slate dashed
+               outline is the reader's question and teal fill is my material, both
+               established there. Nothing is re-explained here, which is why there is
+               no legend.
+
+               THE CHANGE OF AXIS IS THE ARGUMENT. Figure 1 is vertical and funnels
+               through one pinch point. This is five independent horizontal channels
+               with no shared line crossing them. Nothing queues behind an aperture.
+
+               THERE IS NO RED HERE, ON PURPOSE. Red in figure 1 is the document, a
+               third object imposed between the parties. An exchange has no such
+               object, so its colour is absent. The absence is the claim. A later
+               session should not reintroduce red here for balance.
+
+               ONE ROW COMES BACK AS A DIFFERENT SHAPE AND ONE COMES BACK FLAT.
+               Ainsley's point: sometimes the nearest thing held is not what was asked
+               for, and sometimes the honest answer is nothing. Five clean matches
+               would assert a completeness the assistant does not have. The fifth row
+               is a match on purpose: a miss does not end the exchange.
+
+               TWO ANSWER TONES, SETTLED SESSION 62. A clean match is full teal.
+               The near match and the flat reply are teal-bright: still my material,
+               but a weaker answer that recedes. This is measured against the card
+               ground rather than judged: on #E6F4F2 full teal is 4.59:1 and
+               teal-bright is 2.45:1, so teal-bright is the quieter of the two here
+               even though it is the brighter colour in the abstract. On a white
+               ground that ordering reverses. Do not swap them without re-measuring
+               against the ground they actually sit on.
+
+               teal-bright IS ALSO .nav-cta. shared.css puts the Get In Touch control
+               on this exact token, and its note there explains why: red said stop, and
+               teal-bright is what occupies the opposite position across the site. So
+               the weaker answers here and the control offering the conversation are
+               the same colour, which is Ainsley's reading and is kept on purpose. A
+               session changing either one is touching both.
+
+               RED WAS CONSIDERED FOR THE FLAT REPLY AND REJECTED. Ainsley's call:
+               red is the imposed constraint in figure 1, and an honest "I do not
+               have that" is not a fault. Colouring it red would say the opposite of
+               what the row exists to say.
+
+               NOT DRAWN, DELIBERATELY: the difference between not known, not
+               recorded, and recorded as no. It is real and it is in the assistant,
+               but three distinguishable kinds of absence would need a legend, and a
+               figure that needs a legend has failed. -->
+          <div class="register-figure">
+    <svg viewBox="0 0 400 290" xmlns="http://www.w3.org/2000/svg" role="img"
+      aria-label="Five separate exchanges, each on its own line. On the left a question drawn as a dashed outline, on the right what came back drawn solid. Three match. One comes back as a different shape. One comes back as a flat line, meaning nothing was held. The exchange carries on afterwards.">
+      <text x="20" y="22" font-family="'Barlow Condensed',sans-serif" font-size="13" letter-spacing="1.6" fill="#2A4A44">YOU ASK</text>
+      <text x="228" y="22" font-family="'Barlow Condensed',sans-serif" font-size="13" letter-spacing="1.6" fill="#2A4A44">WHAT COMES BACK</text>
+      <path d="M56 62H274" stroke="#2A4A44" stroke-width="1" stroke-dasharray="2 3" opacity="0.45" />
+      <circle cx="45" cy="62" r="7" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <circle cx="285" cy="62" r="7" fill="#1A7A6E" />
+      <path d="M56 108H274" stroke="#2A4A44" stroke-width="1" stroke-dasharray="2 3" opacity="0.45" />
+      <rect x="38" y="101" width="14" height="14" rx="2" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <rect x="278" y="101" width="14" height="14" rx="2" fill="#1A7A6E" />
+      <path d="M56 154H274" stroke="#2A4A44" stroke-width="1" stroke-dasharray="2 3" opacity="0.45" />
+      <circle cx="45" cy="154" r="7" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <polygon points="278,154 281.5,148 288.5,148 292,154 288.5,160 281.5,160" fill="#2AADA0" />
+      <text x="20" y="176" font-family="'Barlow',sans-serif" font-size="12" fill="#2A4A44" opacity="0.85">the nearest thing I actually have</text>
+      <path d="M56 212H274" stroke="#2A4A44" stroke-width="1" stroke-dasharray="2 3" opacity="0.45" />
+      <polygon points="38,212 41.5,206 48.5,206 52,212 48.5,218 41.5,218" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <rect x="278" y="210.5" width="14" height="3" rx="1.5" fill="#2AADA0" />
+      <text x="20" y="234" font-family="'Barlow',sans-serif" font-size="12" fill="#2A4A44" opacity="0.85">and sometimes, plainly, nothing</text>
+      <path d="M56 270H274" stroke="#2A4A44" stroke-width="1" stroke-dasharray="2 3" opacity="0.45" />
+      <rect x="38" y="263" width="14" height="14" rx="2" fill="none" stroke="#1E3A4A" stroke-width="1.4" stroke-dasharray="2 2" />
+      <rect x="278" y="263" width="14" height="14" rx="2" fill="#1A7A6E" />
+    </svg>
+            <!-- Caption settled Session 62. It is deliberately the past tense of the
+                 pull quote in section 1: "costs attention you have not yet decided to
+                 spend" becomes "had not already decided to spend". The whole argument
+                 of the piece sits in that tense change, so the two sentences are a
+                 pair and neither should be edited without the other. -->
+            <p class="register-caption">Now you know something about them, and none of it cost attention you had
+              not already decided to spend.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--off-white);">
+    <div class="section-inner">
+      <div class="two-col-wide">
+        <div>
+          <div class="section-eyebrow">Where This Goes</div>
+          <h2 class="section-title">A Step And<br><span>Not A Finish</span></h2>
+          <p class="body-text">I am not going to pretend I have arrived somewhere. What I have built is early, it is
+            unfinished, and the record it draws on will never be complete, because my work is not finished either.</p>
+          <p class="body-text">What I hope is further down this road is a site that is mostly not a site: a landing
+            and an interaction, and then a conversation with me. Something closer to the thing the document replaced,
+            reached by going forward rather than by going back.</p>
+          <p class="body-text">I am aware that I am still saying this on a website with pages on it, and that the
+            pages are doing most of the work today. That is the honest state of it rather than something to hide. The
+            distance between where this is and where I think it could go is not a failure. It is the part I find
+            worth doing.</p>
+        </div>
+        <div>
+          <!-- Aside. Same register as the "Or so they tell us" aside in
+               machine-was-never-the-ceiling.html: short, dry, no explanation.
+               It replaces a proposed dictionary definition of irony, which was
+               the wrong word and a joke that explains itself. -->
+          <div class="highlight-box"><strong>Aside</strong>Written on a page. Read on a page. For now.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner" style="text-align:center;">
+      <div class="section-eyebrow" style="justify-content:center;">The Invitation</div>
+      <h2 class="section-title">Rather Ask <span>Than Read</span></h2>
+      <p class="section-lead" style="margin:0 auto 40px;">If any of this is the kind of thing you would rather ask
+        about than read about, that option is on the contact page.</p>
+      <a href="contact.html" class="btn-primary">Start a Conversation</a>
+      <!-- DISCLOSURE. Settled Session 62, and deliberately one sentence rather
+           than a section of its own. Both earlier pieces carry a full disclosure
+           because in each case it is an instance of that piece's own argument
+           tested on itself. Those two have established the practice; a third
+           recital would be the page describing its habits rather than arguing.
+
+           THE ACTIVE VOICE IS THE POINT. An earlier draft opened "This page was
+           written with AI", which is passive and hides the agent, so a reader
+           supplies one and reads "written by AI". Ainsley caught it. The fix was
+           not to explain the difference but to make him the subject of the
+           writing and the AI the party he talked to.
+
+           THE SECOND SENTENCE IS CHECKABLE, WHICH IS WHY IT EARNS ITS PLACE. The
+           figure 1 caption is Ainsley's own words verbatim from the session. No
+           equivalent claim is made about the figure 2 caption, which he chose
+           between drafted options rather than said outright. Claiming both would
+           be fabricated specificity.
+
+           IT SITS AFTER THE BUTTON so the invitation stays the last thing the
+           reader is offered. -->
+      <p class="body-text" style="max-width:640px;margin:32px auto 0;font-size:14px;opacity:0.85;">I talked this
+        page through with an AI rather than drafting it, which is not far off what the piece argues for. The caption
+        under the first figure is a sentence I said in that conversation, before either of us realised it was a
+        caption.</p>
+    </div>
+  </section>
+
+
+  <!-- FOOTER:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE
+       FILE. It is written from _footer_canonical.html by apply-chrome.py, and
+       any hand edit made here will be silently overwritten the next time that
+       script runs. Change the fragment, then run the script.
+       Byte-identical on every page, with no per-page variation of any kind.
+       The four column headings are singular by design and name a mode rather
+       than a count. That is a different job from the section heading on
+       engagement.html, which is singular because there is one defined
+       engagement and goes plural when a second is written. Do not "correct"
+       Discipline to Disciplines on the strength of that rule. -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <svg width="56" height="56" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:16px;"
+            aria-hidden="true">
+            <rect width="48" height="48" rx="10" fill="#E8392A" />
+            <rect x="27" y="27" width="20" height="20" rx="4" fill="#C0281A" opacity="0.5" />
+            <path
+              d="M24 14.5a1.5 1.5 0 0 1 1.5 1.5v1.2a7.5 7.5 0 0 1 2.6 1.08l.85-.85a1.5 1.5 0 0 1 2.12 2.12l-.85.85A7.5 7.5 0 0 1 31.3 23H32.5a1.5 1.5 0 0 1 0 3h-1.2a7.5 7.5 0 0 1-1.08 2.6l.85.85a1.5 1.5 0 0 1-2.12 2.12l-.85-.85A7.5 7.5 0 0 1 25.5 31.8V33a1.5 1.5 0 0 1-3 0v-1.2a7.5 7.5 0 0 1-2.6-1.08l-.85.85a1.5 1.5 0 0 1-2.12-2.12l.85-.85A7.5 7.5 0 0 1 16.7 26H15.5a1.5 1.5 0 0 1 0-3h1.2a7.5 7.5 0 0 1 1.08-2.6l-.85-.85a1.5 1.5 0 0 1 2.12-2.12l.85.85a7.5 7.5 0 0 1 2.6-1.08V16a1.5 1.5 0 0 1 1.5-1.5zm0 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"
+              fill="white" />
+          </svg>
+          <div class="footer-tagline">Engineering Intelligence. Delivered.</div>
+          <p>Technical consulting and engineering from Johannesburg, South Africa. Working with clients across the
+            continent.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Engagement</h4><a href="monitoring-calibration.html">Monitoring Calibration</a>
+          <h4>Discipline</h4><a href="project-management.html">Project Management</a><a
+            href="technical-consulting.html">Technical Consulting</a><a href="ai-digital.html">AI &amp; Digital</a><a
+            href="energy-systems.html">Energy &amp; Power Systems</a>
+        </div>
+        <div class="footer-col">
+          <h4>Intelligence</h4><a href="platform.html">The Monitoring Platform</a>
+          <h4>Connection</h4><a href="about.html">About Ainsley</a><a href="work.html">The Work</a><a
+            href="engagement.html">The Engagement</a><a href="contact.html">Contact</a><a
+            href="https://www.linkedin.com/in/ainsley-williams-18107015/" target="_blank" rel="noopener" class="footer-linkedin"><svg
+              width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+              style="vertical-align:middle;margin-right:6px;" aria-hidden="true">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>LinkedIn Profile</a>
+          <p style="font-size:13px;margin-top:8px;line-height:1.5;">Profile and work history on LinkedIn.</p>
+        </div>
+      </div>
+      <div class="footer-bottom"><span class="footer-copy">&copy; 2026 Sinclair Dynamics. All rights
+          reserved.</span>
+      <!-- VIEWPORT REPORTER:START
+           DIAGNOSTIC. NOT A DESIGN ELEMENT. NOT PART OF THE SITE.
+
+           Added 23 August 2026, Session 29, for the narrow-width observation
+           pass. The site had never been looked at below desktop width and no
+           reliable way existed to know what width a device was actually
+           reporting to the stylesheet, which made every observation about
+           narrow behaviour a guess.
+
+           Hidden by default on every page. It reveals only when the address
+           ends in #vp, and once revealed it stays revealed while moving
+           around the site in the same browser tab, because the nav and
+           footer links do not carry the hash. The close control ends that.
+
+           It renders fixed to a corner of the viewport rather than in the
+           footer's flow, deliberately: .footer-bottom is a flex row and an
+           extra child would change how that row lays out at exactly the
+           widths this instrument exists to observe. Out of flow, it cannot
+           disturb any layout on any page.
+
+           It is styled to look nothing like this site. Black ground,
+           monospace, amber. Anyone who meets it by accident should be able
+           to tell at a glance that it is not part of the page.
+
+           REMOVAL: delete everything between these markers from
+           _footer_canonical.html and run apply-chrome.py. Nothing else on
+           the site references it. No rule in shared.css belongs to it, no
+           id or class it uses appears anywhere else, and it adds no link.
+
+           DISPOSAL CONDITION: it comes out when the narrow-width work is
+           finished and the site record's item 1 is closed, unless a reason
+           to keep it has been written down by then.
+           -->
+      <style>
+        /* Everything here is prefixed sd-vp so it cannot collide with the
+           site's own classes. Display is controlled by the .on class rather
+           than by the hidden attribute, because a later display rule would
+           silently win over hidden and the block would appear on every page. */
+        #sd-vp { display: none; }
+        #sd-vp.on {
+          display: block;
+          position: fixed;
+          z-index: 2147483000;
+          background: #000;
+          color: #FFB020;
+          border: 1px solid #FFB020;
+          border-radius: 3px;
+          padding: 6px 8px;
+          max-width: 320px;
+          font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+          font-size: 11px;
+          line-height: 1.45;
+          text-align: left;
+          letter-spacing: 0;
+          text-transform: none;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+          -webkit-user-select: text;
+          user-select: text;
+        }
+        /* Four corners, cycled by tapping the readout. The top pair clears the
+           68px nav plus its 2px border, since the nav is the first thing this
+           pass has to look at and the instrument must not cover it. */
+        #sd-vp.sd-vp-br { bottom: 8px; right: 8px; }
+        #sd-vp.sd-vp-bl { bottom: 8px; left: 8px; }
+        #sd-vp.sd-vp-tl { top: 78px; left: 8px; }
+        #sd-vp.sd-vp-tr { top: 78px; right: 8px; }
+        #sd-vp pre {
+          margin: 0;
+          font: inherit;
+          color: inherit;
+          white-space: pre;
+          cursor: pointer;
+        }
+        #sd-vp .sd-vp-bar {
+          display: flex;
+          gap: 6px;
+          margin-top: 6px;
+          border-top: 1px solid rgba(255, 176, 32, 0.35);
+          padding-top: 5px;
+        }
+        #sd-vp button {
+          flex: 1;
+          font-family: inherit;
+          font-size: 10px;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          background: transparent;
+          color: #FFB020;
+          border: 1px solid rgba(255, 176, 32, 0.5);
+          border-radius: 2px;
+          padding: 5px 4px;
+          cursor: pointer;
+          min-height: 30px;
+        }
+        #sd-vp button:active { background: rgba(255, 176, 32, 0.2); }
+        #sd-vp .sd-vp-warn { color: #FF5A4A; }
+      </style>
+      <div id="sd-vp" class="sd-vp-br"><pre data-sd-vp-out>reading</pre>
+        <div class="sd-vp-bar"><button type="button" data-sd-vp-scan>scan</button><button type="button"
+            data-sd-vp-copy>copy</button><button type="button" data-sd-vp-close>close</button></div>
+      </div>
+      <script>
+        (function () {
+          'use strict';
+
+          var KEY = 'sd-vp-visible';
+          var box = document.getElementById('sd-vp');
+          if (!box) { return; }
+
+          var out = box.querySelector('[data-sd-vp-out]');
+          var CORNERS = ['sd-vp-br', 'sd-vp-bl', 'sd-vp-tl', 'sd-vp-tr'];
+          var corner = 0;
+          var scanned = null;
+          var pending = false;
+
+          /* ---- collection -------------------------------------------------
+             Three width measures are reported rather than one, because they
+             disagree in informative ways. innerWidth includes a classic
+             scrollbar, clientWidth does not, and visualViewport reports what
+             is actually on screen after pinch zoom or a soft keyboard. A
+             difference between the first two on the laptop is a scrollbar. A
+             difference involving the third on the phone means the page is
+             zoomed and no width reading can be trusted until it is not. */
+
+          function media(query) {
+            return window.matchMedia ? window.matchMedia(query).matches : null;
+          }
+
+          function viewportMeta() {
+            var tag = document.querySelector('meta[name="viewport"]');
+            if (!tag) { return null; }
+            return tag.getAttribute('content') || '(empty)';
+          }
+
+          /* A short, honest guess at the browser. It exists for one reason:
+             a file opened from a messaging app may render in that app's own
+             WebView rather than in Chrome, and a WebView can report a
+             different viewport from the browser a visitor would use. The
+             full user agent string travels in the copy payload, so nothing
+             is lost by this being a guess. */
+          function browser() {
+            var ua = navigator.userAgent || '';
+            var name = 'unidentified';
+            if (/\bEdgA?\//.test(ua)) { name = 'Edge'; }
+            else if (/\bOPR\//.test(ua)) { name = 'Opera'; }
+            else if (/SamsungBrowser\//.test(ua)) { name = 'Samsung Internet'; }
+            else if (/FBAN|FBAV|Instagram|\bLine\//.test(ua)) { name = 'social app'; }
+            else if (/Firefox\/|FxiOS\//.test(ua)) { name = 'Firefox'; }
+            else if (/CriOS\//.test(ua)) { name = 'Chrome iOS'; }
+            else if (/Chrome\//.test(ua)) { name = 'Chrome'; }
+            else if (/Safari\//.test(ua)) { name = 'Safari'; }
+            if (/;\s?wv\)/.test(ua) || /\bwv\b/.test(ua)) { name += ' WebView'; }
+            return name;
+          }
+
+          function describe(el) {
+            var label = el.tagName.toLowerCase();
+            if (el.id) { return label + '#' + el.id; }
+            var cls = el.getAttribute && el.getAttribute('class');
+            if (cls) {
+              var first = String(cls).trim().split(/\s+/)[0];
+              if (first) { label += '.' + first; }
+            }
+            return label;
+          }
+
+          /* Finds the element reaching furthest past the right edge of the
+             document. Horizontal overflow is the commonest narrow-width fault
+             and a few pixels of it is invisible by eye.
+
+             Two honest limits, so a result is read for what it is. Position
+             fixed elements do not move with horizontal scroll, so their
+             numbers are only correct while the page is unscrolled sideways.
+             And an element can legitimately sit outside the viewport, so this
+             names a candidate rather than declaring a defect. */
+          function findWorst() {
+            var limit = document.documentElement.clientWidth;
+            var offset = window.pageXOffset || 0;
+            var all = document.body ? document.body.querySelectorAll('*') : [];
+            var worst = null;
+            var worstRight = limit + 1;
+            for (var i = 0; i < all.length; i++) {
+              var el = all[i];
+              if (el === box || box.contains(el)) { continue; }
+              var rect = el.getBoundingClientRect();
+              if (rect.width === 0 && rect.height === 0) { continue; }
+              var right = rect.right + offset;
+              if (right > worstRight) {
+                worstRight = right;
+                worst = el;
+              }
+            }
+            if (!worst) { return 'no element past ' + limit + 'px'; }
+            return describe(worst) + ' to ' + Math.round(worstRight) + 'px';
+          }
+
+          function collect() {
+            var doc = document.documentElement;
+            var vv = window.visualViewport;
+            var meta = viewportMeta();
+            return {
+              innerW: window.innerWidth,
+              innerH: window.innerHeight,
+              clientW: doc.clientWidth,
+              visualW: vv ? Math.round(vv.width) : null,
+              dpr: window.devicePixelRatio || 1,
+              screenW: window.screen ? window.screen.width : null,
+              screenH: window.screen ? window.screen.height : null,
+              portrait: media('(orientation: portrait)'),
+              at900: media('(max-width: 900px)'),
+              at700: media('(max-width: 700px)'),
+              reduced: media('(prefers-reduced-motion: reduce)'),
+              meta: meta,
+              metaOk: meta !== null && meta.indexOf('width=device-width') !== -1,
+              overflow: doc.scrollWidth - doc.clientWidth,
+              browser: browser(),
+              page: location.pathname.split('/').pop() || 'index.html'
+            };
+          }
+
+          /* ---- rendering ------------------------------------------------ */
+
+          /* The label column is padded to 9 rather than 8 because 'overflow'
+             is itself 8 characters long and would otherwise render with no
+             gap between its label and its value. Caught in a DOM test rather
+             than by reading it. */
+          function pad(text) {
+            var s = String(text);
+            while (s.length < 9) { s += ' '; }
+            return s;
+          }
+
+          function render() {
+            var d = collect();
+            var lines = [];
+
+            lines.push(pad('page') + d.page);
+            lines.push(pad('css') + d.innerW + ' x ' + d.innerH +
+              '   dpr ' + (Math.round(d.dpr * 100) / 100));
+            lines.push(pad('client') + d.clientW +
+              (d.visualW !== null ? '   visual ' + d.visualW : ''));
+            lines.push(pad('screen') + d.screenW + ' x ' + d.screenH +
+              '   ' + (d.portrait ? 'portrait' : 'landscape'));
+            lines.push(pad('breaks') +
+              '900 ' + (d.at900 ? 'ON ' : 'off') +
+              '   700 ' + (d.at700 ? 'ON' : 'off'));
+
+            if (d.meta === null) {
+              lines.push(pad('meta') + 'ABSENT, page will scale');
+            } else if (!d.metaOk) {
+              lines.push(pad('meta') + 'no width=device-width');
+            } else {
+              lines.push(pad('meta') + 'ok');
+            }
+
+            lines.push(pad('overflow') +
+              (d.overflow > 0 ? d.overflow + 'px past edge' : 'none'));
+
+            if (scanned) { lines.push(pad('widest') + scanned); }
+            if (d.reduced) { lines.push(pad('motion') + 'reduced'); }
+            lines.push(pad('browser') + d.browser);
+
+            out.textContent = lines.join('\n');
+
+            /* The two conditions that make every other number on the panel
+               unreliable are the two that get the alarm colour. */
+            var bad = (d.meta === null) || !d.metaOk || d.overflow > 0;
+            out.className = bad ? 'sd-vp-warn' : '';
+          }
+
+          function schedule() {
+            if (pending) { return; }
+            pending = true;
+            window.requestAnimationFrame(function () {
+              pending = false;
+              scanned = null;
+              render();
+            });
+          }
+
+          /* ---- copy ------------------------------------------------------
+             One line, so it pastes into a message without reflowing. The full
+             user agent and the URL travel with it, because a reading with no
+             provenance is not worth having later. */
+
+          function payload() {
+            var d = collect();
+            return [
+              d.page,
+              'css=' + d.innerW + 'x' + d.innerH,
+              'client=' + d.clientW,
+              'visual=' + (d.visualW === null ? 'n/a' : d.visualW),
+              'dpr=' + d.dpr,
+              'screen=' + d.screenW + 'x' + d.screenH,
+              (d.portrait ? 'portrait' : 'landscape'),
+              'mq900=' + (d.at900 ? 'on' : 'off'),
+              'mq700=' + (d.at700 ? 'on' : 'off'),
+              'meta=' + (d.meta === null ? 'ABSENT' : d.meta),
+              'overflow=' + d.overflow,
+              'widest=' + (scanned || 'not scanned'),
+              'reducedMotion=' + (d.reduced ? 'yes' : 'no'),
+              'browser=' + d.browser,
+              'url=' + location.href,
+              'ua=' + (navigator.userAgent || '')
+            ].join(' | ');
+          }
+
+          function flash(button, word) {
+            var original = button.textContent;
+            button.textContent = word;
+            window.setTimeout(function () { button.textContent = original; }, 1200);
+          }
+
+          function copy(button) {
+            var text = payload();
+            /* The async clipboard API is unavailable over file:// and in some
+               WebViews, which are exactly the conditions this may be opened
+               under, so the old path is kept as a fallback rather than
+               assumed unnecessary. */
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(function () {
+                flash(button, 'copied');
+              }, function () {
+                fallbackCopy(text, button);
+              });
+              return;
+            }
+            fallbackCopy(text, button);
+          }
+
+          function fallbackCopy(text, button) {
+            var field = document.createElement('textarea');
+            field.value = text;
+            field.setAttribute('readonly', 'readonly');
+            field.style.position = 'fixed';
+            field.style.top = '-1000px';
+            document.body.appendChild(field);
+            field.select();
+            var ok = false;
+            try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+            document.body.removeChild(field);
+            flash(button, ok ? 'copied' : 'select it');
+          }
+
+          /* ---- visibility ------------------------------------------------ */
+
+          function remember(state) {
+            try {
+              if (state) { window.sessionStorage.setItem(KEY, '1'); }
+              else { window.sessionStorage.removeItem(KEY); }
+            } catch (err) { /* private mode or file://; the hash still works */ }
+          }
+
+          function remembered() {
+            try { return window.sessionStorage.getItem(KEY) === '1'; }
+            catch (err) { return false; }
+          }
+
+          function show() {
+            if (box.classList.contains('on')) { return; }
+            box.classList.add('on');
+            remember(true);
+            render();
+            window.addEventListener('resize', schedule);
+            window.addEventListener('orientationchange', schedule);
+            if (window.visualViewport) {
+              window.visualViewport.addEventListener('resize', schedule);
+            }
+          }
+
+          function hide() {
+            box.classList.remove('on');
+            remember(false);
+          }
+
+          out.addEventListener('click', function () {
+            box.classList.remove(CORNERS[corner]);
+            corner = (corner + 1) % CORNERS.length;
+            box.classList.add(CORNERS[corner]);
+          });
+
+          box.querySelector('[data-sd-vp-scan]').addEventListener('click', function () {
+            scanned = findWorst();
+            render();
+          });
+
+          box.querySelector('[data-sd-vp-copy]').addEventListener('click', function (event) {
+            copy(event.currentTarget);
+          });
+
+          box.querySelector('[data-sd-vp-close]').addEventListener('click', hide);
+
+          window.addEventListener('hashchange', function () {
+            if (location.hash === '#vp') { show(); }
+          });
+
+          if (location.hash === '#vp' || remembered()) { show(); }
+        })();
+      </script>
+      <!-- VIEWPORT REPORTER:END -->
+        <a class="footer-legal" href="privacy.html">Privacy Notice</a></div>
+    </div>
+  </footer>
+  <!-- FOOTER:END -->
+  <!-- CONSENT:START  Single-sourced block. DO NOT EDIT THIS BLOCK IN A PAGE
+       FILE. It is written from _consent_canonical.html by apply-chrome.py.
+       The first time this runs against a page that has never carried this
+       block, the script inserts it fresh, immediately before </body>. Every
+       run after that finds the markers this run wrote and keeps it in sync
+       the same way nav and footer already are.
+       Byte-identical on every page: nothing here varies by filename, unlike
+       the nav's active entry.
+       Gates the analytics tag only. Nothing else on the site needs a
+       visitor's answer to work, so this is a bar at the foot of the
+       viewport rather than a modal, and the page underneath stays fully
+       usable while it's up. It shows once, on any page, for as long as
+       sinclair_analytics_consent is unset in the visitor's browser.
+       Whichever button is pressed answers it everywhere, for good, until
+       the visitor clears their own browser storage. See
+       sd-reference-privacy-v0_2.md for the reasoning behind the shape of
+       this control, and sd-copy-privacy-notice-v0_1.md for what it's
+       disclosing. -->
+  <div class="consent-banner" id="consent-banner" role="region" aria-label="Cookie and analytics consent"
+    data-state="hidden">
+    <div class="consent-inner">
+      <p class="consent-text">This site uses Google Analytics to understand how it's used. It only runs if you agree
+        to it, and everything else on the site works exactly the same either way. See the <a
+          href="privacy.html">privacy notice</a> for what's collected and why.</p>
+      <div class="consent-actions">
+        <button type="button" class="consent-btn" id="consent-decline">Decline</button>
+        <button type="button" class="consent-btn" id="consent-accept">Accept</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Consent banner. Self-contained, warns to console rather than failing
+    // silently, and does nothing at all if its own markup is missing.
+    //
+    // Two keys in localStorage, matching the site's existing sinclair_chat_*
+    // convention rather than a JSON blob: sinclair_analytics_consent holds
+    // "accepted" or "declined", sinclair_analytics_consent_at holds when.
+    // Persists indefinitely. There is no re-ask timer: nothing on this site
+    // currently expires anything on a schedule, and building one for this
+    // control alone would be scope the retention item next to it hasn't
+    // earned either. See the working document if that changes.
+    (function () {
+      var KEY = 'sinclair_analytics_consent';
+      var KEY_AT = 'sinclair_analytics_consent_at';
+      var GA_ID = 'G-W94Z1196CH';
+
+      var banner = document.getElementById('consent-banner');
+      if (!banner) {
+        console.warn('[consent] banner markup not found, nothing to wire up');
+        return;
+      }
+
+      function loadAnalytics() {
+        if (window.__sinclairAnalyticsLoaded) return;
+        window.__sinclairAnalyticsLoaded = true;
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', GA_ID);
+        var tag = document.createElement('script');
+        tag.async = true;
+        tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        document.head.appendChild(tag);
+      }
+
+      function recordChoice(choice) {
+        try {
+          localStorage.setItem(KEY, choice);
+          localStorage.setItem(KEY_AT, new Date().toISOString());
+        } catch (e) {
+          console.warn('[consent] could not write the choice to localStorage', e);
+        }
+      }
+
+      var stored = null;
+      try {
+        stored = localStorage.getItem(KEY);
+      } catch (e) {
+        console.warn('[consent] could not read localStorage, treating as unanswered', e);
+      }
+
+      if (stored === 'accepted') {
+        loadAnalytics();
+      } else if (stored !== 'declined') {
+        // Unanswered. Neither key is trusted on its own: only an explicit
+        // "declined" suppresses the banner without also loading the tag.
+        banner.setAttribute('data-state', 'visible');
+      }
+
+      var acceptBtn = document.getElementById('consent-accept');
+      var declineBtn = document.getElementById('consent-decline');
+
+      if (acceptBtn) {
+        acceptBtn.addEventListener('click', function () {
+          recordChoice('accepted');
+          banner.setAttribute('data-state', 'hidden');
+          loadAnalytics();
+        });
+      }
+      if (declineBtn) {
+        declineBtn.addEventListener('click', function () {
+          recordChoice('declined');
+          banner.setAttribute('data-state', 'hidden');
+        });
+      }
+    })();
+  </script>
+  <!-- CONSENT:END -->
+</body>
+
+</html>

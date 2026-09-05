@@ -109,6 +109,7 @@ PAGES = [
     "interval-question.html",
     "spotting-ai-writing.html",
     "machine-was-never-the-ceiling.html",
+    "the-document-was-always-the-substitute.html",
     "project-management.html",
     "technical-consulting.html",
     "ai-digital.html",

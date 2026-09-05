@@ -3,6 +3,15 @@
    Repository: sinclairdynamics-website
 
    REVISIONS (most recent first, three kept)
+   Session 63  05 Sep 2026  Comment only. No declaration, selector or value
+                            changed. The paragraph above .nav-cta describing
+                            what --red means was wrong in both halves and is
+                            rewritten from measurement: the mark is inline
+                            SVG rather than an image and carries these exact
+                            values, neither red token has a live consumer,
+                            and red is a semantic marker in the article
+                            figures, where it is written as literal hex and
+                            is therefore invisible to any grep of this file.
    Session 36  26 Aug 2026  The nav works on a phone. Below 900px the five
                             links stop being hidden and become a panel under
                             the bar, opened by a new .nav-toggle button. The
@@ -21,8 +30,6 @@
                             by viewport width. Slack sized to one wheel notch,
                             relaxed again for touch; snap kept only below
                             588px. F1, F3, F4.
-   Session 27  22 Aug 2026  .ai-embed raised to 700px to pay for the widget's
-                            30px construction-mark insets.
    --------------------------------------------------------------------------- */
 
 :root {
@@ -102,17 +109,38 @@ nav {
    went from white on red at 4.16:1, which is under the 4.5 threshold for text
    at this size, to --dark on teal-bright at 6.41:1, which clears it.
 
-   WHAT RED NOW MEANS, WHICH IS THE POINT OF DOING IT. One thing: the mark.
-   The logo is an image and never used this token, so red survives on the page
-   as identity and nothing else. The only other use of --red on the site is
-   .spine-node .dot-end, the single point on the contact form diagram where
-   something leaves the page, which is a signal rather than an identity and is
-   left alone deliberately.
+   WHAT RED NOW MEANS. CORRECTED 5 SEPTEMBER 2026, SESSION 63, AND WHAT STOOD
+   HERE BEFORE WAS WRONG IN BOTH HALVES. It said the logo is an image that
+   never used this token, and that the only other use of --red on the site is
+   .spine-node .dot-end. The second half was already wrong when it was
+   written and nothing could report it.
 
-   --red-dark has no consumer as of this change. It is kept rather than
-   deleted because red remains the identity colour and a darker partner may be
-   wanted for it. Recorded here so a later session reads that as a decision
-   rather than as something missed.
+   THE MARK IS NOT AN IMAGE AND IT IS THIS EXACT RED. The footer draws the
+   gear as inline SVG on every page, tile #E8392A and inner square #C0281A,
+   which are these two tokens' own values written as literals. A raster does
+   exist at gear.png and it is #EF4136, so the drawn mark and the raster have
+   never agreed. The site record holds that from the Open Graph rebuild.
+   There is nothing to reconcile from here; it is stated so that nobody
+   assumes the two are one colour.
+
+   NEITHER TOKEN HAS A LIVE CONSUMER. var(--red) is referenced once in this
+   file, by .spine-node .dot-end, which sits inside the FORM DIAGRAM block
+   marked dead on 29 August 2026 when the contact form went. var(--red-dark)
+   is referenced nowhere at all. Both are kept, because red is the identity
+   colour and this is where its values are stated.
+
+   RED IS ALSO A SEMANTIC MARKER IN ARTICLE FIGURES, WHICH THIS COMMENT NEVER
+   SAID. The visual language separates article figures from hero figures and
+   permits red in the first while barring it from the second. All three
+   occasional writing pieces use it in their figures, and every use is the
+   literal hex rather than the token, because a figure is SVG inside a page
+   file and never reads this stylesheet.
+
+   SO NO GREP OF THIS FILE CAN FIND WHERE RED IS ACTUALLY USED, which is the
+   practical consequence and the reason the old paragraph read as complete for
+   as long as it did. The rule itself is unchanged and it is the rule that
+   matters: red is identity, plus a marker inside an article figure. It is not
+   an interface colour, and no control on this site is red.
 
    THE HOVER BEZEL IS DELIBERATELY UNCHANGED. It is still a white inset ring,
    which against teal-bright reads as a highlight rather than as a rule. That
