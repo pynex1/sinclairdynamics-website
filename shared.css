@@ -3,6 +3,17 @@
    Repository: sinclairdynamics-website
 
    REVISIONS (most recent first, three kept)
+   Session 64  06 Sep 2026  --red and --red-dark take the image assets' own
+                            values, #EF4136 and #E0110B, replacing #E8392A
+                            and #C0281A which matched no asset on the site.
+                            The footer stopped drawing the gear and now uses
+                            sinclair-nav-icon.png, so there is one mark
+                            rather than an image and a replica of it. The 41
+                            figure literals across five pages moved to
+                            #EF4136 with them, so the site has one red. The
+                            red paragraph below is rewritten: it described
+                            the drawn mark and a gear.png that is not in the
+                            repository.
    Session 63  05 Sep 2026  Comment only. No declaration, selector or value
                             changed. The paragraph above .nav-cta describing
                             what --red means was wrong in both halves and is
@@ -26,10 +37,6 @@
                             menu button combined on a 360px bar. .nav-cta is
                             suppressed on contact.html, where it only reloaded
                             the page the visitor had just reached.
-   Session 33  25 Aug 2026  .ai-embed height decided by vertical space, not
-                            by viewport width. Slack sized to one wheel notch,
-                            relaxed again for touch; snap kept only below
-                            588px. F1, F3, F4.
    --------------------------------------------------------------------------- */
 
 :root {
@@ -38,8 +45,8 @@
   --teal:        #1A7A6E;
   --teal-bright: #2AADA0;
   --teal-pale:   #E6F4F2;
-  --red:         #E8392A;
-  --red-dark:    #C0281A;
+  --red:         #EF4136;
+  --red-dark:    #E0110B;
   --white:       #FFFFFF;
   --off-white:   #F7FAFA;
   --gray-light:  #EEF2F3;
@@ -109,19 +116,51 @@ nav {
    went from white on red at 4.16:1, which is under the 4.5 threshold for text
    at this size, to --dark on teal-bright at 6.41:1, which clears it.
 
-   WHAT RED NOW MEANS. CORRECTED 5 SEPTEMBER 2026, SESSION 63, AND WHAT STOOD
-   HERE BEFORE WAS WRONG IN BOTH HALVES. It said the logo is an image that
-   never used this token, and that the only other use of --red on the site is
-   .spine-node .dot-end. The second half was already wrong when it was
-   written and nothing could report it.
+   WHAT RED NOW MEANS. REWRITTEN 6 SEPTEMBER 2026, SESSION 64, AND WHAT STOOD
+   HERE BEFORE DESCRIBED A MECHANISM THAT NO LONGER EXISTS. It said the footer
+   draws the gear as inline SVG carrying these two tokens' values as literals,
+   that a raster exists at gear.png, and that the drawn mark and the raster
+   had never agreed. There is no drawn mark, there is no gear.png, and there
+   is nothing left to disagree.
 
-   THE MARK IS NOT AN IMAGE AND IT IS THIS EXACT RED. The footer draws the
-   gear as inline SVG on every page, tile #E8392A and inner square #C0281A,
-   which are these two tokens' own values written as literals. A raster does
-   exist at gear.png and it is #EF4136, so the drawn mark and the raster have
-   never agreed. The site record holds that from the Open Graph rebuild.
-   There is nothing to reconcile from here; it is stated so that nobody
-   assumes the two are one colour.
+   THERE IS ONE MARK AND IT IS AN IMAGE. The footer stopped drawing the gear
+   on 6 September 2026 and now points at sinclair-nav-icon.png, which is the
+   file the nav has always used. Two places, one file, so they cannot drift
+   apart again. The hand-drawn replica was the whole reason they ever could.
+
+   THESE TOKEN VALUES ARE THE IMAGE'S OWN. Measured from the four image
+   assets, which all agree: sinclair-nav-icon.png, sinclair-logo.png,
+   apple-touch-icon.png and og-image.png carry #EF4136 for the tile and
+   #E0110B for the inner square. The tokens were #E8392A and #C0281A until
+   6 September and matched nothing. Changing an image asset means changing
+   these two lines to match, measured rather than assumed.
+
+   ONE RED, EVERYWHERE. Settled 6 September 2026. Article figures used
+   #E8392A as a marker, 41 times across the five pages that have figures,
+   which matched the old token values and matched no image on the site. All
+   41 now use #EF4136. Figure red and identity red are one colour, and a
+   figure written from now on takes it from here.
+
+   THE REASONING, SO IT IS NOT UNDONE. Marker red and identity red do
+   different jobs, and for an hour this comment argued that the different job
+   justified a different value. It does not. The two reds were 4.14 deltaE
+   apart, which nobody perceives as a decision; a reader sees one red slightly
+   off from another and reads it as carelessness, or does not notice at all.
+   A distinction that cannot be seen buys nothing. The figures never had a
+   separate red on purpose either: they were drawn from the tokens back when
+   the tokens were wrong.
+
+   MEASURED BEFORE THE SWAP, NOT AFTER. On the pale teal figure ground
+   #E6F4F2 the new red gives 3.39:1 against the old 3.68:1, both clear of the
+   3:1 that non-text graphics need. On white, 3.83:1 against 4.16:1. On slate
+   it improves, 3.11:1 against 2.87:1, crossing a line the old red failed.
+   Separation from both teals is unchanged to two decimal places in practice.
+   A figure added later that puts red on a ground not in this list gets
+   measured against it rather than assumed.
+
+   The visual language reference permits red in article figures and bars it
+   from hero figures. That rule is unchanged and is about where red may
+   appear, not which red it is.
 
    NEITHER TOKEN HAS A LIVE CONSUMER. var(--red) is referenced once in this
    file, by .spine-node .dot-end, which sits inside the FORM DIAGRAM block

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Interval Question | How Often You Look | Sinclair Dynamics</title>
+  <title>The Interval Question | Sampling and Reporting Intervals</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap"
@@ -96,14 +96,14 @@
       }
     }
   </style>
-  <!-- Analytics removed 9 August 2026, pending the consent gate and privacy
-       notice. Non-essential tracking must not fire before consent, and the
-       gate belongs with the nav and footer single sourcing rather than being
-       duplicated per page. Property G-W94Z1196CH. -->
+  <!-- Analytics is not declared here. Google Analytics is gated behind the
+       consent banner, which is single sourced from _consent_canonical.html
+       and written into this page by apply-chrome.py immediately before
+       </body>. Nothing fires in a visitor's browser until a visitor has
+       accepted. Do not add a tag to this head: it would run unconditionally
+       and contradict the privacy notice. Property G-W94Z1196CH. -->
   <meta name="description"
-    content="Your systems record constantly. You look monthly. Everything between those two rates is invisible, and not because the data is bad. The sampling argument behind Monitoring Calibration, from Sinclair Dynamics, Johannesburg.">
-  <meta name="keywords"
-    content="reporting interval, sampling interval, Nyquist sampling business reporting, aliasing in business data, detection gap, continuous observation, monitoring calibration, Sinclair Dynamics, Ainsley Williams">
+    content="Your systems record constantly. You look monthly. Everything between those two rates is invisible, and not because anything is broken.">
   <meta name="author" content="Ainsley Williams, Sinclair Dynamics">
   <meta name="robots" content="index, follow">
   <!-- Open Graph -->
@@ -290,18 +290,18 @@
                 fill="none" stroke="#1A7A6E" stroke-width="1.6" opacity="0.45" />
               <path
                 d="M20 100Q47.5 78 75 73.5Q102.5 62 130 57.2Q157.5 54 185 57.2Q212.5 62 240 73.5Q267.5 85 295 100Q322.5 116 350 126.5"
-                fill="none" stroke="#E8392A" stroke-width="2.6" />
-              <circle cx="20" cy="100" r="4.5" fill="#E8392A" />
-              <circle cx="75" cy="73.5" r="4.5" fill="#E8392A" />
-              <circle cx="130" cy="57.2" r="4.5" fill="#E8392A" />
-              <circle cx="185" cy="57.2" r="4.5" fill="#E8392A" />
-              <circle cx="240" cy="73.5" r="4.5" fill="#E8392A" />
-              <circle cx="295" cy="100" r="4.5" fill="#E8392A" />
-              <circle cx="350" cy="126.5" r="4.5" fill="#E8392A" />
+                fill="none" stroke="#EF4136" stroke-width="2.6" />
+              <circle cx="20" cy="100" r="4.5" fill="#EF4136" />
+              <circle cx="75" cy="73.5" r="4.5" fill="#EF4136" />
+              <circle cx="130" cy="57.2" r="4.5" fill="#EF4136" />
+              <circle cx="185" cy="57.2" r="4.5" fill="#EF4136" />
+              <circle cx="240" cy="73.5" r="4.5" fill="#EF4136" />
+              <circle cx="295" cy="100" r="4.5" fill="#EF4136" />
+              <circle cx="350" cy="126.5" r="4.5" fill="#EF4136" />
             </svg>
             <div class="alias-key">
               <span><i style="background:#1A7A6E;opacity:0.45;"></i>Actually happening</span>
-              <span><i style="background:#E8392A;"></i>What you see</span>
+              <span><i style="background:#EF4136;"></i>What you see</span>
             </div>
             <p class="alias-caption">The same data, looked at too slowly. Nothing here is inaccurate. Every reading is
               correct. The trend they appear to form does not exist.</p>
@@ -525,14 +525,8 @@
     <div class="footer-inner">
       <div class="footer-top">
         <div class="footer-brand">
-          <svg width="56" height="56" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:16px;"
-            aria-hidden="true">
-            <rect width="48" height="48" rx="10" fill="#E8392A" />
-            <rect x="27" y="27" width="20" height="20" rx="4" fill="#C0281A" opacity="0.5" />
-            <path
-              d="M24 14.5a1.5 1.5 0 0 1 1.5 1.5v1.2a7.5 7.5 0 0 1 2.6 1.08l.85-.85a1.5 1.5 0 0 1 2.12 2.12l-.85.85A7.5 7.5 0 0 1 31.3 23H32.5a1.5 1.5 0 0 1 0 3h-1.2a7.5 7.5 0 0 1-1.08 2.6l.85.85a1.5 1.5 0 0 1-2.12 2.12l-.85-.85A7.5 7.5 0 0 1 25.5 31.8V33a1.5 1.5 0 0 1-3 0v-1.2a7.5 7.5 0 0 1-2.6-1.08l-.85.85a1.5 1.5 0 0 1-2.12-2.12l.85-.85A7.5 7.5 0 0 1 16.7 26H15.5a1.5 1.5 0 0 1 0-3h1.2a7.5 7.5 0 0 1 1.08-2.6l-.85-.85a1.5 1.5 0 0 1 2.12-2.12l.85.85a7.5 7.5 0 0 1 2.6-1.08V16a1.5 1.5 0 0 1 1.5-1.5zm0 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"
-              fill="white" />
-          </svg>
+          <img src="sinclair-nav-icon.png" alt="" aria-hidden="true"
+            style="height:56px;width:auto;margin-bottom:16px;">
           <div class="footer-tagline">Engineering Intelligence. Delivered.</div>
           <p>Technical consulting and engineering from Johannesburg, South Africa. Working with clients across the
             continent.</p>
@@ -977,9 +971,9 @@
        sinclair_analytics_consent is unset in the visitor's browser.
        Whichever button is pressed answers it everywhere, for good, until
        the visitor clears their own browser storage. See
-       sd-reference-privacy-v0_2.md for the reasoning behind the shape of
-       this control, and sd-copy-privacy-notice-v0_1.md for what it's
-       disclosing. -->
+       sd-reference-privacy for the reasoning behind the shape of this
+       control, and sd-copy-privacy-notice for what it's disclosing.
+       Neither is cited with a version number: consult the current one. -->
   <div class="consent-banner" id="consent-banner" role="region" aria-label="Cookie and analytics consent"
     data-state="hidden">
     <div class="consent-inner">

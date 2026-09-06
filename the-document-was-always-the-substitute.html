@@ -45,15 +45,14 @@
       margin-top: 14px;
     }
   </style>
-  <!-- Google Analytics -->
-  <!-- Not declared here. Analytics is gated behind the consent banner, which
-     is single sourced from _consent_canonical.html and written into this page
-     by apply-chrome.py along with the nav and the footer. Nothing fires in a
-     visitor's browser until they have answered. Property G-W94Z1196CH. -->
+  <!-- Analytics is not declared here. Google Analytics is gated behind the
+     consent banner, which is single sourced from _consent_canonical.html
+     and written into this page by apply-chrome.py immediately before
+     </body>. Nothing fires in a visitor's browser until a visitor has
+     accepted. Do not add a tag to this head: it would run unconditionally
+     and contradict the privacy notice. Property G-W94Z1196CH. -->
   <meta name="description"
-    content="A document is written once, read cold, and cannot be asked anything. Why the document was always a substitute for the conversation, and what changes when a reader can ask instead.">
-  <meta name="keywords"
-    content="conversational website, AI assistant on a website, working with AI, CV limitations, professional website, Ada assistant, Sinclair Dynamics, Ainsley Williams, engineering consultant Johannesburg, AI conversation design">
+    content="A document is written once, read cold, and cannot be asked anything. Why it was always a substitute, and what changes when a reader can ask instead.">
   <meta name="author" content="Ainsley Williams, Sinclair Dynamics">
   <meta name="robots" content="index, follow">
   <!-- Open Graph -->
@@ -294,15 +293,15 @@
       </g>
       <path d="M20 106h346" stroke="#1A7A6E" stroke-width="1" stroke-dasharray="3 3" opacity="0.5" />
       <text x="20" y="124" font-family="'Barlow',sans-serif" font-size="12" fill="#2A4A44" opacity="0.85">elements of it, chosen once, before you arrive</text>
-      <path d="M27 132V158M83 132V158M139 132V158M195 132V158M251 132V158M307 132V158" stroke="#E8392A" stroke-width="1" stroke-dasharray="2 3" opacity="0.55" />
+      <path d="M27 132V158M83 132V158M139 132V158M195 132V158M251 132V158M307 132V158" stroke="#EF4136" stroke-width="1" stroke-dasharray="2 3" opacity="0.55" />
       <text x="20" y="180" font-family="'Barlow Condensed',sans-serif" font-size="13" letter-spacing="1.6" fill="#2A4A44">WHAT TWO PAGES HOLD</text>
       <g>
-      <rect x="20" y="191" width="14" height="14" rx="2" fill="#E8392A" />
-      <rect x="76" y="191" width="14" height="14" rx="2" fill="#E8392A" />
-      <circle cx="139" cy="198" r="7" fill="#E8392A" />
-      <circle cx="195" cy="198" r="7" fill="#E8392A" />
-      <polygon points="244,198 247.5,192 254.5,192 258,198 254.5,204 247.5,204" fill="#E8392A" />
-      <polygon points="300,198 303.5,192 310.5,192 314,198 310.5,204 303.5,204" fill="#E8392A" />
+      <rect x="20" y="191" width="14" height="14" rx="2" fill="#EF4136" />
+      <rect x="76" y="191" width="14" height="14" rx="2" fill="#EF4136" />
+      <circle cx="139" cy="198" r="7" fill="#EF4136" />
+      <circle cx="195" cy="198" r="7" fill="#EF4136" />
+      <polygon points="244,198 247.5,192 254.5,192 258,198 254.5,204 247.5,204" fill="#EF4136" />
+      <polygon points="300,198 303.5,192 310.5,192 314,198 310.5,204 303.5,204" fill="#EF4136" />
       </g>
       <path d="M20 222h346" stroke="#1A7A6E" stroke-width="1" stroke-dasharray="3 3" opacity="0.5" />
       <text x="20" y="240" font-family="'Barlow',sans-serif" font-size="12" fill="#2A4A44" opacity="0.85">and none of this was visible from up there</text>
@@ -634,14 +633,8 @@
     <div class="footer-inner">
       <div class="footer-top">
         <div class="footer-brand">
-          <svg width="56" height="56" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:16px;"
-            aria-hidden="true">
-            <rect width="48" height="48" rx="10" fill="#E8392A" />
-            <rect x="27" y="27" width="20" height="20" rx="4" fill="#C0281A" opacity="0.5" />
-            <path
-              d="M24 14.5a1.5 1.5 0 0 1 1.5 1.5v1.2a7.5 7.5 0 0 1 2.6 1.08l.85-.85a1.5 1.5 0 0 1 2.12 2.12l-.85.85A7.5 7.5 0 0 1 31.3 23H32.5a1.5 1.5 0 0 1 0 3h-1.2a7.5 7.5 0 0 1-1.08 2.6l.85.85a1.5 1.5 0 0 1-2.12 2.12l-.85-.85A7.5 7.5 0 0 1 25.5 31.8V33a1.5 1.5 0 0 1-3 0v-1.2a7.5 7.5 0 0 1-2.6-1.08l-.85.85a1.5 1.5 0 0 1-2.12-2.12l.85-.85A7.5 7.5 0 0 1 16.7 26H15.5a1.5 1.5 0 0 1 0-3h1.2a7.5 7.5 0 0 1 1.08-2.6l-.85-.85a1.5 1.5 0 0 1 2.12-2.12l.85.85a7.5 7.5 0 0 1 2.6-1.08V16a1.5 1.5 0 0 1 1.5-1.5zm0 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"
-              fill="white" />
-          </svg>
+          <img src="sinclair-nav-icon.png" alt="" aria-hidden="true"
+            style="height:56px;width:auto;margin-bottom:16px;">
           <div class="footer-tagline">Engineering Intelligence. Delivered.</div>
           <p>Technical consulting and engineering from Johannesburg, South Africa. Working with clients across the
             continent.</p>
@@ -1086,9 +1079,9 @@
        sinclair_analytics_consent is unset in the visitor's browser.
        Whichever button is pressed answers it everywhere, for good, until
        the visitor clears their own browser storage. See
-       sd-reference-privacy-v0_2.md for the reasoning behind the shape of
-       this control, and sd-copy-privacy-notice-v0_1.md for what it's
-       disclosing. -->
+       sd-reference-privacy for the reasoning behind the shape of this
+       control, and sd-copy-privacy-notice for what it's disclosing.
+       Neither is cited with a version number: consult the current one. -->
   <div class="consent-banner" id="consent-banner" role="region" aria-label="Cookie and analytics consent"
     data-state="hidden">
     <div class="consent-inner">

@@ -79,14 +79,14 @@
       opacity: 0.8;
     }
   </style>
-  <!-- Google Analytics -->
-  <!-- Matches spotting-ai-writing.html: removed pending the consent gate and
-     privacy notice, and single sourced with the nav and footer rather than
-     duplicated per page. -->
+  <!-- Analytics is not declared here. Google Analytics is gated behind the
+     consent banner, which is single sourced from _consent_canonical.html
+     and written into this page by apply-chrome.py immediately before
+     </body>. Nothing fires in a visitor's browser until a visitor has
+     accepted. Do not add a tag to this head: it would run unconditionally
+     and contradict the privacy notice. Property G-W94Z1196CH. -->
   <meta name="description"
     content="A machine does exactly what it is given, and nothing more. Why the ceiling on what AI can achieve was never the tool's to set, and what Ada Lovelace already argued about it in 1843.">
-  <meta name="keywords"
-    content="AI professional responsibility, Ada Lovelace, machine ceiling, AI hallucination, working with AI, Sinclair Dynamics, Ainsley Williams, AI accountability, prompt specification, Voyager 1">
   <meta name="author" content="Ainsley Williams, Sinclair Dynamics">
   <meta name="robots" content="index, follow">
   <!-- Open Graph -->
@@ -259,15 +259,15 @@
               <rect x="20" y="36" width="110" height="30" rx="4" fill="#B9D6D1" />
               <text x="75" y="55" text-anchor="middle" font-family="'Barlow',sans-serif" font-size="11"
                 fill="#1A7A6E">it thinks</text>
-              <line x1="25" y1="41" x2="125" y2="61" stroke="#E8392A" stroke-width="1.5" />
+              <line x1="25" y1="41" x2="125" y2="61" stroke="#EF4136" stroke-width="1.5" />
               <rect x="145" y="36" width="110" height="30" rx="4" fill="#B9D6D1" />
               <text x="200" y="55" text-anchor="middle" font-family="'Barlow',sans-serif" font-size="11"
                 fill="#1A7A6E">it decided</text>
-              <line x1="150" y1="41" x2="250" y2="61" stroke="#E8392A" stroke-width="1.5" />
+              <line x1="150" y1="41" x2="250" y2="61" stroke="#EF4136" stroke-width="1.5" />
               <rect x="270" y="36" width="110" height="30" rx="4" fill="#B9D6D1" />
               <text x="325" y="55" text-anchor="middle" font-family="'Barlow',sans-serif" font-size="11"
                 fill="#1A7A6E">it wants</text>
-              <line x1="275" y1="41" x2="375" y2="61" stroke="#E8392A" stroke-width="1.5" />
+              <line x1="275" y1="41" x2="375" y2="61" stroke="#EF4136" stroke-width="1.5" />
               <path d="M20 90H380" stroke="#1A7A6E" stroke-width="1" stroke-dasharray="3 3" opacity="0.5" />
               <text x="20" y="108" font-family="'Barlow',sans-serif" font-size="12" fill="#2A4A44" opacity="0.85">what
                 did any of it actually want?</text>
@@ -482,14 +482,8 @@
     <div class="footer-inner">
       <div class="footer-top">
         <div class="footer-brand">
-          <svg width="56" height="56" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:16px;"
-            aria-hidden="true">
-            <rect width="48" height="48" rx="10" fill="#E8392A" />
-            <rect x="27" y="27" width="20" height="20" rx="4" fill="#C0281A" opacity="0.5" />
-            <path
-              d="M24 14.5a1.5 1.5 0 0 1 1.5 1.5v1.2a7.5 7.5 0 0 1 2.6 1.08l.85-.85a1.5 1.5 0 0 1 2.12 2.12l-.85.85A7.5 7.5 0 0 1 31.3 23H32.5a1.5 1.5 0 0 1 0 3h-1.2a7.5 7.5 0 0 1-1.08 2.6l.85.85a1.5 1.5 0 0 1-2.12 2.12l-.85-.85A7.5 7.5 0 0 1 25.5 31.8V33a1.5 1.5 0 0 1-3 0v-1.2a7.5 7.5 0 0 1-2.6-1.08l-.85.85a1.5 1.5 0 0 1-2.12-2.12l.85-.85A7.5 7.5 0 0 1 16.7 26H15.5a1.5 1.5 0 0 1 0-3h1.2a7.5 7.5 0 0 1 1.08-2.6l-.85-.85a1.5 1.5 0 0 1 2.12-2.12l.85.85a7.5 7.5 0 0 1 2.6-1.08V16a1.5 1.5 0 0 1 1.5-1.5zm0 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"
-              fill="white" />
-          </svg>
+          <img src="sinclair-nav-icon.png" alt="" aria-hidden="true"
+            style="height:56px;width:auto;margin-bottom:16px;">
           <div class="footer-tagline">Engineering Intelligence. Delivered.</div>
           <p>Technical consulting and engineering from Johannesburg, South Africa. Working with clients across the
             continent.</p>
@@ -934,9 +928,9 @@
        sinclair_analytics_consent is unset in the visitor's browser.
        Whichever button is pressed answers it everywhere, for good, until
        the visitor clears their own browser storage. See
-       sd-reference-privacy-v0_2.md for the reasoning behind the shape of
-       this control, and sd-copy-privacy-notice-v0_1.md for what it's
-       disclosing. -->
+       sd-reference-privacy for the reasoning behind the shape of this
+       control, and sd-copy-privacy-notice for what it's disclosing.
+       Neither is cited with a version number: consult the current one. -->
   <div class="consent-banner" id="consent-banner" role="region" aria-label="Cookie and analytics consent"
     data-state="hidden">
     <div class="consent-inner">
