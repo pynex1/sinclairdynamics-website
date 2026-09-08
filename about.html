@@ -48,21 +48,184 @@
    --------------------------------------------------------------------------- */
 
     /* ---------------------------------------------------------------------------
-   SPECIFICATION PLATE
-   A nameplate, not a stats row. It describes a machine rather than a person,
-   which is why it can sit in the body of the page without inverting the layer
-   order. Construction follows .cred-card: dark ground, accent on the top edge,
-   and 4px broken on all four corners: a physical part has every edge broken,
-   not two, and the accent border already carries the orientation.
-   Observation and samples are two separate rows on purpose. Hourly on its own
-   invites the reader to think the platform glances at an instant once an hour.
-   The sample count says it reads an interval.
+   THE SETTING-OUT                                          SESSION 68, ITEM 29
+   Visual language 7.9.2 developed, and 7.11's language rather than a frame.
+
+   THE ARGUMENT THE DRAWING MAKES. The plate is a finished object: the platform
+   is built and running, and it should read as complete. What has NOT happened
+   is the reader's involvement with it, so the setting-out is what surrounds the
+   plate rather than what the plate is made of. Construction lines are the light
+   lines drawn first to prove the geometry, and then left in place UNDER the
+   finished work rather than erased. That is not incompleteness. It is a
+   finished thing with the working still visible around it.
+
+   WHY NOT A FRAME. 7.11: a technical drawing does not outline the sheet, it
+   marks the corners. A closed rectangle here would reinstate exactly the panel
+   this figure exists to replace, and it broke the page's left margin by 55px,
+   which is the fault that made the first attempt read as a box somebody else
+   filled in.
+
+   NOTHING ON THE TOP OR THE LEFT. Deliberate, and it is the load-bearing
+   constraint on this whole block. The grid sits exactly where it sat before
+   this figure existed, so the eyebrow and the heading keep the site's left
+   margin and line up with the sections above and below. Any padding added to
+   the left of this block breaks that alignment down the whole page.
+
+   WHERE THE MARKS SIT. Outside the content column, in the gutter that
+   .section-inner already reserves: 40px on desktop, 24px below 900px.
+   --key-out stays inside both, so nothing reaches the viewport edge, where
+   body { overflow-x: hidden } clips silently rather than reporting. Drawing
+   them inside the column would run a construction line through the plate's own
+   right border.
+
+   CSS GRADIENTS RATHER THAN SVG, deliberately, and for 7.11's reason: an SVG
+   stretched to width distorts its marks, and separate SVGs need unique gradient
+   ids to avoid duplicates in one document. Plain elements have neither problem
+   and the geometry stays legible as numbers.
+
+   IF THESE MARKS EVER READ AS STRONGLY AS THE PLATE, THE VALUE IS WRONG.
+   A construction line is faint by definition. That is 7.11's own test and it
+   applies here unchanged.
+   --------------------------------------------------------------------------- */
+    .sheet {
+      /* setting-out */
+      /* Full strength. The fade is the gradient's job, not the colour's:
+         alpha on a white ground loses the hue instead of the weight. */
+      --line: var(--teal);
+      --key-out: 20px;      /* how far into the gutter the marks sit */
+      --run-v: 300px;       /* how far the vertical runs before it has faded */
+      --run-h: 62%;         /* how far the horizontal runs before it has faded */
+      --overshoot: 20px;    /* how far the vertical passes the horizontal */
+      --foot-gap: 34px;     /* air between the block and the bottom mark */
+
+      /* the attribution */
+      --mark-key-size: 9px;
+      --mark-value-size: 12px;
+
+      position: relative;
+    }
+
+    /* The vertical. Anchored at the bottom right where the plate lands and
+       fading out upward, because reaching the top of the block takes longer and
+       more has to happen first. It overshoots below the horizontal rather than
+       meeting it, so the two cross instead of closing a corner. */
+    .sheet::after {
+      content: '';
+      position: absolute;
+      right: calc(var(--key-out) * -1);
+      bottom: calc(var(--overshoot) * -1);
+      width: 1px;
+      height: var(--run-v);
+      background: linear-gradient(to top, var(--line), transparent);
+      pointer-events: none;
+    }
+
+    .sheet-foot {
+      margin-top: var(--foot-gap);
+      margin-right: calc(var(--key-out) * -1);
+    }
+
+    /* The horizontal, fading out to the left for the same reason. */
+    .sheet-foot::before {
+      content: '';
+      display: block;
+      width: var(--run-h);
+      height: 1px;
+      margin-left: auto;
+      background: linear-gradient(to left, var(--line), transparent);
+    }
+
+    /* The attribution. 7.9.2 asks for drawing number, revision, date and
+       originator. Three of those have no maintainer, and a title block
+       asserting a revision discipline nobody keeps is worse than none, because
+       that discipline is the argument for having one. What survives is 7.9.2's
+       instruction on WEIGHT (faint, in the corner, readable only by someone who
+       goes looking) and the one field that never goes stale.
+
+       DESIGNED, not DRAWN: it attributes the thing depicted rather than the
+       draughtsmanship, which is the point of putting it here at all.
+
+       The initial is drawing-office convention and is doing deliberate work.
+       The page says Ainsley Williams in full everywhere else; this mark belongs
+       to the drawing rather than to the prose.
+
+       It does not restate the homepage. Positioning 8.2 gives the homepage
+       first claim on "I designed it, I built it, and I run it", which is prose
+       in the proof strip. This is metadata in a different register. */
+    /* The right padding matches the top padding, so the attribution clears
+       the vertical construction line by the same distance it clears the
+       horizontal one. Without it the text sits hard against the line. */
+    .sheet-mark {
+      display: block;
+      text-align: right;
+      padding-top: 9px;
+      padding-right: 9px;
+    }
+
+    .sm-key {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--mark-key-size);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 2px;
+    }
+
+    .sm-value {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: var(--mark-value-size);
+      letter-spacing: 0.06em;
+      color: var(--slate);
+    }
+
+    /* ---------------------------------------------------------------------------
+   THE PLATE
+   Was a dark panel: slate ground, teal top edge, label and value on one line.
+   It is now line work on the page's own white ground, and the label sits ABOVE
+   its value rather than beside it. This object is FINISHED and reads as
+   finished, which is the half of the argument the setting-out does not make.
+
+   WHY STACKED. Beside its label a value had roughly 278px of a 357px inner
+   width, and .plate-value carried white-space: nowrap. Invisible while every
+   value was one word (Six, Several, Five, Hourly, Ten, Weather, None) and not
+   invisible once they are phrases: the value cannot wrap, so the LABEL is
+   squeezed until it wraps, and a two-line label against a one-line value breaks
+   the row alignment the plate's authority rests on. Stacked, the value has the
+   full inner width and nowrap stops being load bearing. Removed rather than
+   kept: a value needing two lines should take two lines inside its box.
+
+   THE BOX IS THE FIELD. On a real plate the value is boxed because that is
+   where the variable data is stamped at manufacture. The box marks the field,
+   not the text, which is why values are left aligned inside it: the box edges
+   carry the column, so it reads the same at four characters and at thirty-six.
+   --plate-align is there to try the alternatives.
+
+   VALUE WEIGHT. 17px semibold was tried first, against 16px body text at
+   1.85 leading beside it, and it shouted. Now 16px: the same nominal size as
+   the body, on a condensed face, so it reads smaller while staying firm.
+
+   4px radius retained from the dark panel, whose own comment gives the reason:
+   a physical part has every edge broken, not two.
    --------------------------------------------------------------------------- */
     .plate {
-      background: var(--slate);
-      border-top: 3px solid var(--teal-bright);
+      --plate-line: var(--teal);
+      --plate-rule: var(--teal);
+      --plate-fill: var(--teal-pale);
+      --plate-label-size: 10.5px;
+      --plate-label-track: 0.18em;
+      --plate-value-size: 16px;
+      --plate-field-pad: 8px 11px;
+      --plate-row-gap: 13px;
+      --plate-align: left;
+
+      background: transparent;
+      border: 1px solid var(--plate-line);
+      border-top: 2px solid var(--plate-rule);
       border-radius: 4px;
-      padding: 26px 26px 20px;
+      padding: 22px;
     }
 
     .plate-heading {
@@ -71,41 +234,49 @@
       font-size: 11px;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--teal-bright);
-      margin-bottom: 18px;
+      color: var(--teal);
+      margin-bottom: 20px;
     }
 
     .plate-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 16px;
-      padding: 11px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      margin-bottom: var(--plate-row-gap);
     }
 
     .plate-row:last-child {
-      border-bottom: none;
+      margin-bottom: 0;
     }
 
     .plate-label {
+      display: block;
       font-family: var(--font-display);
-      font-size: 12px;
-      letter-spacing: 0.15em;
+      font-size: var(--plate-label-size);
+      letter-spacing: var(--plate-label-track);
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.5);
+      color: var(--teal);
+      margin-bottom: 5px;
     }
 
-    .plate-value {
+    /* THE FIELD IS A FILL RATHER THAN AN OUTLINE. Eight hairline boxes at
+       full strength is a lot of repeated line, and it would compete with
+       the two construction marks, which are the only line work that should
+       read as line work in this block. A filled field is as much a stamping
+       area as an outlined one, so the argument for boxing the value at all
+       is unaffected. --teal-pale is already the palette's light fill and is
+       what .highlight-box uses. */
+    .plate-field {
+      display: block;
+      background: var(--plate-fill);
+      padding: var(--plate-field-pad);
+      text-align: var(--plate-align);
       font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 18px;
-      color: var(--white);
-      white-space: nowrap;
+      font-weight: 600;
+      font-size: var(--plate-value-size);
+      line-height: 1.25;
+      color: var(--slate);
     }
 
-    .plate-value.accent {
-      color: var(--teal-bright);
+    .plate-field.accent {
+      color: var(--teal);
     }
 
     /* ---------------------------------------------------------------------------
@@ -215,6 +386,17 @@
     @media (max-width: 900px) {
       .plate {
         margin-top: 8px;
+      }
+
+      /* .section-inner drops to 24px of side padding here, so the marks
+         come in with it. They must stay INSIDE that gutter: past it they
+         meet body { overflow-x: hidden } and are clipped silently rather
+         than reported. The vertical also shortens, the block being taller
+         once the columns stack. */
+      .sheet {
+        --key-out: 12px;
+        --run-v: 180px;
+        --run-h: 80%;
       }
     }
 
@@ -719,13 +901,17 @@
      ========================================================================= -->
   <section>
     <div class="section-inner">
+      <!-- .sheet adds NO padding of its own. It is a positioning context
+           for the setting-out and nothing else, so the grid below starts
+           on the same left margin as every other section on this page. -->
+      <div class="sheet">
       <div class="two-col-wide">
         <div>
           <div class="section-eyebrow">Where I Am Now</div>
           <h2 class="section-title">The Solar <span>Monitor</span></h2>
-          <p class="body-text">The Solar Monitor watches six installations for several owners, and each one reports
-            through a different manufacturer's platform. Those platforms do not agree with one another about what they
-            are measuring or how often. Reconciling that is half the work, and it is the half nobody finds interesting.
+          <p class="body-text">The Solar Monitor reads sites belonging to other people, each reporting through a
+            different platform. Those platforms do not agree with one another about what they are measuring or how
+            often. Reconciling that is half the work, and it is the half nobody finds interesting.
           </p>
           <p class="body-text">The other half is that nobody reads dashboards. Numbers and charts are placed in front of
             a person who has no time to interpret them, so the interpretation never happens. This platform observes each
@@ -754,19 +940,24 @@
         <div>
           <div class="plate">
             <div class="plate-heading">Running Now</div>
-            <div class="plate-row"><span class="plate-label">Sites</span><span class="plate-value">Six</span></div>
-            <div class="plate-row"><span class="plate-label">Owners</span><span class="plate-value">Several</span></div>
-            <div class="plate-row"><span class="plate-label">Source platforms</span><span
-                class="plate-value">Five</span></div>
-            <div class="plate-row"><span class="plate-label">Observation</span><span class="plate-value">Hourly</span>
-            </div>
-            <div class="plate-row"><span class="plate-label">Samples per observation</span><span
-                class="plate-value">Ten</span></div>
-            <div class="plate-row"><span class="plate-label">Correction</span><span class="plate-value">Weather</span>
-            </div>
-            <div class="plate-row"><span class="plate-label">Write access</span><span
-                class="plate-value accent">None</span></div>
+            <div class="plate-row"><span class="plate-label">Scope</span><span class="plate-field">Multi-site, multi-owner</span></div>
+            <div class="plate-row"><span class="plate-label">Sources</span><span class="plate-field">Manufacturer and third party APIs</span></div>
+            <div class="plate-row"><span class="plate-label">Topology</span><span class="plate-field">To string, with orientation</span></div>
+            <div class="plate-row"><span class="plate-label">Measurement</span><span class="plate-field">To the depth the source reports</span></div>
+            <div class="plate-row"><span class="plate-label">Observation</span><span class="plate-field">Hourly, sampled across the interval</span></div>
+            <div class="plate-row"><span class="plate-label">Environment</span><span class="plate-field">Irradiance, cloud cover, temperature</span></div>
+            <div class="plate-row"><span class="plate-label">Metering</span><span class="plate-field">Hierarchical, parent-referenced</span></div>
+            <div class="plate-row"><span class="plate-label">Write access</span><span class="plate-field accent">None</span></div>
           </div>
+        </div>
+      </div>
+        <!-- The setting-out closes the block: a horizontal fading away to
+             the left, crossed by the vertical that runs down the right and
+             overshoots below it. The attribution sits under the rule at the
+             corner, faint enough that only somebody looking for it finds
+             it, which is 7.9.2's instruction on weight. -->
+        <div class="sheet-foot">
+          <div class="sheet-mark"><span class="sm-key">Designed</span><span class="sm-value">A. Williams</span></div>
         </div>
       </div>
     </div>
