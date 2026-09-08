@@ -1,0 +1,41 @@
+# Sinclair Dynamics website: build configuration for GitHub Pages.
+#
+# WHAT THIS DOES. Keeps the repository's tooling and documentation out of the
+# published site. Everything in this folder is served unless it is excluded
+# here or begins with an underscore, which Jekyll skips by default. That is why
+# _nav_canonical.html, _consent_canonical.html and _footer_canonical.html need
+# no entry: they are already out.
+#
+# WHY IT IS PATTERNS RATHER THAN FILENAMES. The list this replaces named one
+# file, apply-chrome.py, and had already fallen behind: check_heads.py shipped
+# after it was written, RENDERING.md after that, and two build scripts on
+# 8 September 2026. A pattern closes the class rather than the instance, so
+# nobody has to come back and add the next one.
+#
+# WHY *.md MATTERS MORE THAN IT LOOKS. Jekyll does not merely copy markdown, it
+# RENDERS it. Without this, RENDERING.md becomes a page on the live site: no
+# inbound link, no head block, no metadata, and indexable. That is a worse fault
+# than a stray file, because it looks like a page.
+#
+# THE MEASUREMENT THAT PROMPTED THIS, 8 September 2026, Session 68.
+# check_heads.py was requested from the live site and the file was served.
+# NOTE WHAT THAT DOES AND DOES NOT ESTABLISH: check_heads.py was never in the
+# exclude list, so it would have been served whether or not this file was being
+# read at all. The measurement proves a leak. It does not prove the cause.
+#
+# THE FILENAME. This file was previously _config.yaml. Jekyll's configuration
+# file is conventionally _config.yml, and a file under any other name is not
+# read. That was the second candidate cause and it has not been measured either
+# way, so the rename is made because it is the documented name and costs
+# nothing, rather than because it has been proven to be the fault. Renaming is
+# safe under both readings: if the old file was being read, behaviour is
+# unchanged; if it was not, the exclusion starts working.
+#
+# HOW TO CONFIRM IT WORKED, and this is the check the first one could not do.
+# Request apply-chrome.py from the live site. That file IS named in the old
+# list, so a 404 after this change means the exclusion is firing. Give the build
+# a minute to run first.
+
+exclude:
+  - "*.py"
+  - "*.md"
