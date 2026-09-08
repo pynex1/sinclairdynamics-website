@@ -3,6 +3,15 @@
    Repository: sinclairdynamics-website
 
    REVISIONS (most recent first, three kept)
+   Session 69  08 Sep 2026  Barlow and Barlow Condensed are self-hosted. Nine
+                            @font-face declarations added above :root, served
+                            from fonts/ in this repository under the SIL Open
+                            Font License 1.1, with fonts/OFL.txt beside them.
+                            No declaration, selector or value below changed.
+                            The two Google Fonts links in the sixteen page
+                            heads are removed in a separate deploy, so a
+                            visual regression and a speed change cannot land
+                            together.
    Session 64  06 Sep 2026  --red and --red-dark take the image assets' own
                             values, #EF4136 and #E0110B, replacing #E8392A
                             and #C0281A which matched no asset on the site.
@@ -23,21 +32,43 @@
                             and red is a semantic marker in the article
                             figures, where it is written as literal hex and
                             is therefore invisible to any grep of this file.
-   Session 36  26 Aug 2026  The nav works on a phone. Below 900px the five
-                            links stop being hidden and become a panel under
-                            the bar, opened by a new .nav-toggle button. The
-                            bar itself is unchanged and still 68px, which the
-                            .ai-embed arithmetic below depends on.
-                            .nav-cta leaves red for teal-bright, closing the
-                            standing item on it: red on machinery means stop.
-                            .nav-right gap 8px to 16px, so the two controls
-                            on the right are not one mis-tap apart. Below
-                            900px .nav-cta drops its fill for a rule, the
-                            filled block having been 1.37x the logo and the
-                            menu button combined on a 360px bar. .nav-cta is
-                            suppressed on contact.html, where it only reloaded
-                            the page the visitor had just reached.
    --------------------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------------------
+   TYPEFACES
+   Barlow and Barlow Condensed are served from this repository rather than from
+   Google Fonts. Self-hosted 8 September 2026: the Google stylesheet was a
+   render-blocking request on a third-party origin, sitting on the critical
+   path ahead of first paint. It also sent every visitor's IP to Google before
+   they had agreed to anything, which the privacy notice disclosed honestly and
+   now no longer has to.
+
+   Licensed under the SIL Open Font License 1.1. The licence and its copyright
+   notice ship beside the files at fonts/OFL.txt, which the licence requires.
+
+   THE PATHS ARE RELATIVE TO THIS FILE, NOT TO THE PAGE. shared.css and fonts/
+   both sit at the repository root, so the prefix is fonts/ and never ../fonts/.
+   A wrong path here does not error. The browser falls back to the system sans
+   and the page merely looks wrong, which is why this is stated rather than
+   left to be noticed.
+
+   font-display: swap is carried across deliberately. It is what keeps the font
+   files off the paint path, and it was already correct on the Google request.
+
+   Nine weights are declared and a browser downloads only the ones it renders,
+   so a weight that is never used costs space here and nothing at load time.
+   --------------------------------------------------------------------------- */
+
+@font-face { font-display: swap; font-family: 'Barlow Condensed'; font-style: normal; font-weight: 300; src: url('fonts/barlow-condensed-v13-latin-300.woff2') format('woff2'); }
+@font-face { font-display: swap; font-family: 'Barlow Condensed'; font-style: normal; font-weight: 400; src: url('fonts/barlow-condensed-v13-latin-regular.woff2') format('woff2'); }
+@font-face { font-display: swap; font-family: 'Barlow Condensed'; font-style: normal; font-weight: 600; src: url('fonts/barlow-condensed-v13-latin-600.woff2') format('woff2'); }
+@font-face { font-display: swap; font-family: 'Barlow Condensed'; font-style: normal; font-weight: 700; src: url('fonts/barlow-condensed-v13-latin-700.woff2') format('woff2'); }
+@font-face { font-display: swap; font-family: 'Barlow Condensed'; font-style: normal; font-weight: 800; src: url('fonts/barlow-condensed-v13-latin-800.woff2') format('woff2'); }
+
+@font-face { font-display: swap; font-family: 'Barlow'; font-style: normal; font-weight: 300; src: url('fonts/barlow-v13-latin-300.woff2') format('woff2'); }
+@font-face { font-display: swap; font-family: 'Barlow'; font-style: normal; font-weight: 400; src: url('fonts/barlow-v13-latin-regular.woff2') format('woff2'); }
+@font-face { font-display: swap; font-family: 'Barlow'; font-style: normal; font-weight: 500; src: url('fonts/barlow-v13-latin-500.woff2') format('woff2'); }
+@font-face { font-display: swap; font-family: 'Barlow'; font-style: normal; font-weight: 600; src: url('fonts/barlow-v13-latin-600.woff2') format('woff2'); }
 
 :root {
   --slate:       #1E3A4A;
